@@ -1,0 +1,14 @@
+#labels SOASE, DynamicContent
+#summary TemplateType Definition
+==References==
+ * [Galaxy]
+ * [GalaxyPlanetType]
+ * [GalaxyScenarioDef]
+
+* [TemplateType]
+ * templateName: [Any]
+ * subTemplates: [Iteration]
+  * template: [GalaxyTemplate]
+ * groups: [Iteration]
+  * [group]: [GroupType]
+

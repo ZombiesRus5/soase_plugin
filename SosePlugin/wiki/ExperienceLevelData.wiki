@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary ExperienceLevelData Definition
+==References==
+ * [GameplayConstants]
+
+* [ExperienceLevelData]
+ * ExperienceNeededForNextLevel: [Decimal]
+ * ExperienceGainedForDestroying: [Decimal]
+ * UpgradePriceForNextLevel: [Decimal]
+

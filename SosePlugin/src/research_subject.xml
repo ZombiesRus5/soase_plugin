@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="ResearchSubject">
+	<field name="hudIcon" validation="Brush"/>
+	<field name="smallHudIcon" validation="Brush"/>
+	<field name="infoCardIcon" validation="Brush"/>
+	<field name="NameStringID" validation="StringInfo"/>
+	<field name="DescriptionStringID" validation="StringInfo"/>
+	<structure name="researchWindowLocation">
+		<field name="block" validation="Integer"/>
+		<field name="pos" validation="Position"/>
+	</structure>
+	<field name="ResearchField" validation="Simple">
+		<value version="Rebellion">ResearchUnlock</value>
+		<value version="Diplomacy">PactBonus</value>
+		<value>Artifact</value>
+		<value version="Diplomacy">Diplomacy</value>
+		<value>Fleet</value>
+		<value>NonCombat</value>
+		<value version="Entrenchment">Defense</value>
+		<value>Combat</value>
+	</field>
+	<structure_reference name="Prerequisites" type="researchPrerequisites"/>
+	<field name="MinimumArtifactLevel" validation="Integer"/>
+	<field name="BaseUpgradeTime" validation="Decimal"/>
+	<field name="PerLevelUpgradeTime" validation="Decimal"/>
+	<structure_reference name="BaseCost" type="Cost"/>
+	<structure_reference name="PerLevelCostIncrease" type="Cost"/>
+	<field name="Tier" validation="Integer"/>
+	<field name="onlyWorksIfTierLabsExist" validation="Boolean"/>
+	<field name="MaxNumResearchLevels" validation="Integer"/>
+	<field name="priority" validation="Decimal"/>
+	<iterative_field name="researchBoolModifiers">
+		<structure_reference required="false" name="researchModifier" type="ResearchBoolModifierType"/>
+	</iterative_field>
+	<iterative_field name="researchFloatModifiers">
+		<structure_reference required="false" name="researchModifier" type="ResearchFloatModifierType"/>
+	</iterative_field>
+	<field name="artifactPicture" validation="Brush"/>
+	<field name="uniqueOverlayBrush" validation="Brush" version="Rebellion"/>
+	<field name="dlcId" validation="Integer" version="Rebellion"/>
+	</structure>
+
+	<element_rule name="linkedPlanetType" validation="Simple">
+			<value version="Rebellion">Moon</value>
+			<value version="Rebellion">Greenhouse</value>
+			<value version="Rebellion">Iron</value>
+			<value version="Rebellion">Barren</value>
+			<value version="Rebellion">Oceanic</value>
+			<value>Asteroid</value>
+			<value>Ice</value>
+			<value>Desert</value>
+			<value>Volcanic</value>
+			<value>Terran</value>
+			<value>Asteroid</value>
+			<value>Uncolonizable</value>
+			<value>Invalid</value>
+	</element_rule>
+	
+	<element_rule name="linkedPlanetUpgradeType" validation="Simple">
+		<value>Invalid</value>
+		<value>ArtifactLevel</value>
+		<value>CivilianModules</value>
+		<value>Infrastructure</value>
+		<value>Population</value>
+		<value>Home</value>
+		<value>TacticalModules</value>
+		<value version="Rebellion">Social</value>
+		<value version="Rebellion">Industry</value>
+	</element_rule>
+	<element_rule name="allianceType" validation="Simple">
+		<value>Invalid</value>
+		<value version="Diplomacy">EfficiencyPact</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">EnergyWeaponCooldownPact</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">MarketPact</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">MassReductionPact</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">ThrusterPact</value> <!-- diplomacy 1.3 -->
+		<value>AntimatterPact</value>
+		<value>ArmorPact</value>
+		<value>BeamWeaponPact</value>
+		<value>CulturePact</value>
+		<value>MetalCrystalPact</value>
+		<value>PhaseJumpPact</value>
+		<value>ResearchPact</value>
+		<value>ShieldPact</value>
+		<value>SupplyPact</value>
+		<value>TacticalSlotsPact</value>
+		<value>TradeIncomePact</value>
+		<value>WeaponCooldownPact</value>
+		<value>PlanetBombingPact</value>
+	</element_rule>
+		
+		<condition_field name="modifierTypeBool">
+			<condition>
+			<value version="Rebellion">CapitalShipsTitansAndStarBasesCountAsPlanetForNoGameLoss</value> <!-- diplomacy 1.3 -->
+				<value version="Rebellion">JumpBlockerImmune</value> 
+				<value version="Rebellion">StarBasesCanHyperspaceOnlyToPhaseNodes</value> 
+				<value version="Rebellion">FriendlyWithPiratesRebelNeutrals</value> 
+				<value version="Rebellion">FriendlyWithPirates</value>
+				<value version="Rebellion">FriendlyWithRebelNeutrals</value>
+				<value version="Rebellion">StripPlanetsOnScuttle</value> 
+				<value version="Rebellion">StarBasesCanHyperspace</value> 
+				<value version="Rebellion">AllowAlliesToUsePhaseGates</value> 
+				<value version="Rebellion">ResearchVictory</value> 
+				<value version="Rebellion">SpawnCopyOfPirateRaidsAtRandomPlanet</value> 
+				<value version="Rebellion">FriendlyInsurgentShipsSpawnedAtHomePlanetWhenEnemyPlanetLiberated</value> 
+				<value version="Rebellion">DestabilizationProtection</value> 
+				<value version="Diplomacy">AllowUseAlliedPhaseGateWithPhaseJumpPact</value> 
+				<value version="Diplomacy">PirateRaidsOneLevelLower</value>
+				<value>AllowGalaxyTravel</value>
+				<value>AllowWormHoleTravel</value>
+				<value>HyperspaceDetectionOneJump</value>
+				<value>HyperspaceDetectionTwoJumps</value>
+				<value>HyperspaceDetectionAnyJumps</value>
+				<value>AllowMissionOffers</value>
+				<value>AllowPirateMissions</value>
+				<value>PlanetsDetectedByCulture</value>
+				<value>RemoveRacialRelationPenalty</value>
+				<value>AllowResourceDemandAndGifts</value>
+				<value>CultureSpreadIsAlwaysVisible</value>
+				<value>AllowPacts</value>
+			</condition>
+			<condition>
+				<value>UnlockPact</value>
+				<field name="allianceType"/>
+				<field name="pactUnlockEntityDefName" validation="Entity"/>
+			</condition>
+			<condition>
+				<value version="Rebellion">ApplyBuffToPlanetsAfterScuttle</value>
+				<value version="Rebellion">ApplyBuffToAllOwnedShipsWhenOwnedPlanetFalls</value>
+				<value version="Rebellion">ApplyBuffToShipsAfterHyperspace</value>
+				<value version="Rebellion">ApplyBuffToOwnedPlanetAfterLastEnemyShipLeavesOrDies</value>
+				<value version="Rebellion">ApplyBuffToPlanetAfterColonization</value>
+				<value version="Rebellion">ApplyBuffToPlanetAfterPlayerDestroys</value>
+				<field name="buffToApply" validation="Entity"/>
+			</condition>
+			<condition>
+				<value version="Rebellion">SetFaction</value>
+				<field name="factionNameID" validation="StringInfo"/>
+			</condition>
+			<condition>
+				<value>PlanetIsColonizable</value>
+				<field name="linkedPlanetType"/>
+			</condition>
+		</condition_field>
+		
+	<structure name="ResearchBoolModifierType">
+		<field name="modifierType" type="modifierTypeBool"></field>
+	</structure>
+
+		<condition_field name="modifierTypeFloat">
+			<condition>
+			<value version="Rebellion">CivilianLabsPerCapitalShip</value> 
+			<value version="Rebellion">MilitaryLabsPerCapitalShip</value> 
+			<value version="Rebellion">OrbitalCannonMaxAdjustment</value> 
+			<value version="Rebellion">StarBaseUpgradeMaxAdjustment</value> 
+			<value version="Rebellion">OrbitalCannonPriceAdjustment</value> 
+			<value version="Rebellion">BombingCooldownDecrease</value> 
+			<value version="Rebellion">TradeGoodsValueAdjustmentWithNonAlliedPlayers</value> 
+			<value version="Rebellion">PopulationTaxRateAdjustmentWhenEnemyInGravityWell</value> 
+			<value version="Rebellion">StarBasesPerGravityWellAdjustment</value> 
+			<value version="Rebellion">TitanConstructionCap</value> 
+			<value version="Rebellion">ShipMaxSlotsWhenOnlyAlliedWithSameRaceSameFactionPlayers</value> 
+			<value version="Rebellion">ChanceToRespawnFrigateAtHomeworldUponDeath</value> 
+			<value version="Rebellion">ChanceToTemporarilyCloneEnemyFrigateWhenKilled</value> 
+			<value version="Rebellion">ChanceToTemporarilyCloneEnemyFrigateWhenKilledDuration</value> 
+			<value version="Rebellion">CultureShieldRegenAmount</value> 
+			<value version="Rebellion">CreditsGainedPerPointOfBombingDamageDealt</value> 
+			<value version="Rebellion">OrbitalCannonSlotCostAdjustment</value> 
+			<value version="Rebellion">ArmorBaseAdjustmentWhenInFriendlyGravityWell</value> 
+			<value version="Rebellion">CultureModuleCostAdjustment</value> 
+			<value version="Rebellion">CultureSpreadRateBaseAdjustment</value> 
+			<value version="Rebellion">HyperspaceAntimatterCostAdjustmentWhenGoingToFriendlyGravityWell</value> 
+			<value version="Rebellion">StarBaseUpgradeCostAdjustment</value> 
+			<value version="Rebellion">CultureChanceToIgnoreShieldsAsDamageTarget</value> 
+			<value version="Rebellion">ChanceToConvertFrigatesHyperspacingFromPlanet</value> 
+			<value version="Rebellion">ShipBuildRateAdjustmentWhenEnemyInGravityWell</value> 
+			<value version="Rebellion">CapitalShipTaxIncome</value> 
+			<value version="Rebellion">CapitalShipAndTitanAngularThrustAdjustment</value> 
+			<value version="Rebellion">ExperienceAwardedAdjustmentWhenInFriendlyGravityWell</value> 
+			<value version="Rebellion">CultureEnemyAllegianceRateAdjustment</value> 
+			<value version="Diplomacy">WeaponTargetsPerBankAdjustmentCapitalShipsOrStarbases</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">CapitalShipWeaponTargetPerBankAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">CargoShipHullPointsMaxAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">CargoShipArmorBaseAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">CapitalShipAccelerationAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">TacticalStructureWeaponDamageAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">TacticalStructureHullPointsMaxAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">TacticalStructureArmorAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">ChanceToIgnoreShieldsAsDamageTarget</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">BombingPopulationKilledAsDamageDealerAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">RefineryShipCapacityAdjustment</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">HullPointsMaxBonusPerArmorPointMax</value> <!-- diplomacy 1.3 -->
+			<value version="Diplomacy">HullPointsMaxBonusPerArmorPoint</value>
+			<value version="Diplomacy">SelfRelationshipBonus</value> <!-- diplomacy 1.3 -->
+			<value>PopulationTaxRateAdjustment</value>
+			<value>ShieldPointsMaxAdjustment</value>
+			<value>AntimatterCapacityAdjustment</value>
+			<value>AntimatterRegenAdjustment</value>
+			<value>ArmorBaseAdjustment</value>
+			<value>CapitalShipMaxTrainableLevel</value>
+			<value>CultureSpreadRateAdjustment</value>
+			<value>CultureShieldMitigationAdjustment</value>
+			<value>HullPointsMaxAdjustment</value>
+			<value>HullPointsRegenAdjustment</value>
+			<value>CapitalShipMaxSlots</value>
+			<value>CapitalShipMaxSlotLevel</value>
+			<value>ShipMaxSlots</value>
+			<value>IncomePercLost</value>
+			<value>ShipMaxSlotLevel</value>
+			<value>ExtractionRateFromResourceFocus</value>
+			<value>HangarFightersPerSquadAdjustment</value>
+			<value>ShieldPointsRegenAdjustment</value>
+			<value>StarBaseHullPointsMaxAdjustment</value>
+			<value>StarBaseArmorAdjustment</value>
+			<value>StarBaseWeaponTargetPerBankAdjustment</value>
+			<value>StarBaseWeaponDamageAdjustment</value>
+			<value>ExtractionRateMetalAdjustment</value>
+			<value>ExtractionRateCrystalAdjustment</value>
+			<value>TradeGoodsValueAdjustment</value>
+			<value>CultureResistPercent</value>
+			<value>CultureWeaponDamageAdjustment</value>
+			<value>StarBaseBuildRateAtEnemyOrbitBodyAdjustment</value>
+			<value>AllegianceFromCultureMaxPerc</value>
+			<value>MassReduction</value>
+			<value>RelationshipBonus</value>
+			<value>BountyBoughtAdjustment</value>
+			<value>BountyCollectedAdjustment</value>
+			<value>ModuleBuildRateAdjustment</value>
+			<value>ShipBuildRateAdjustment</value>
+			<value>CapitalShipCultureProtectRateAdjustment</value>
+			<value>CapitalShipAngularThrustAdjustment</value>
+			<value>BlackMarketBuyPriceAdjustment</value>
+			<value>PlanetSlotsCivilianIncrease</value>
+			<value>ExperienceConstantGainRate</value>
+			<value>ExperienceConstantGainLevelCap</value>
+			<value>ExperienceAwardedAdjustment</value>
+			<value>CreditCostAdjustment</value>
+			<value>DerivativeCreditsFromPurchasesPercent</value>
+			<value>DerivativeCreditsFromTradePercent</value>
+			<value>TemporaryRelationshipFromGiveResourceMaxAdjustment</value>
+			<value>TemporaryRelationshipFromGiveCrystalValueAdjustment</value>
+			<value>CultureEnemyBuildRateAdjustment</value>
+			<value>BombingDamageAsDamageTargetAdjustment</value>
+			<value>HyperspaceAntimatterCostAdjustment</value>
+			<value>HyperspaceChargeUpRateAdjustment</value>
+			<value>TemporaryRelationshipFromGiveMetalValueAdjustment</value>
+			<value>HyperspaceExitDistanceAdjustment</value>
+			<value>HyperspaceInSystemSpeedAdjustment</value>
+			<value>HyperspaceBetweenSystemSpeedAdjustment</value>
+			<value version="NotDiplomacyOrRebellion">PirateStrengthAgainstYouAdjustment</value>
+			<value>BombingPopulationKilledPercAsDamageTarget</value>
+			<value>HyperspaceSpeedPhaseGateAdjustment</value>
+			<value>PlanetSlotsShipsAdjustment</value>
+			<value>CargoShipCapacityAdjustment</value>
+			<value>TemporaryRelationshipFromGiveCreditsValueAdjustment</value>
+			<value>QuestDeadlineAdjustment</value>
+			<value>QuestFailureHappinessAdjustment</value>
+			<value>ResearchCostAdjustment</value>
+			<value>ResearchBuildRateAdjustment</value>
+			<value>ShieldMaxMitigationAdjustment</value>
+			<value>StarBaseShieldPointsMaxAdjustment</value>
+			<value>PlanetSlotsTacticalIncrease</value>
+			<value>BombingDamageAsDamageDealerAdjustment</value>
+			<value>QuestRewardHappinessAdjustment</value>
+			<value>StarBaseShieldPointsRegenAdjustment</value>
+			<value>ResourceCostAdjustment</value>
+			<value>CultureAntimatterRegenAmount</value>
+			<value>CultureSpreadDecayAdjustment</value>
+			<value>PlanetHealthRegenRateAdjustment</value>
+			<value>BombingRangeAdjustment</value>
+			<value>RebellionLevel</value>
+			<value>SalvageWreckagePercent</value>
+			<value>ScuttleRateAdjustment</value>
+			<value>ScuttleValueAdjustment</value>
+			<value>ModuleCostForSimilarTypesAdjustment</value>
+			<value>CarrierFightersPerSquadAdjustment</value>
+			<value>PopulationGrowthRateAdjustment</value>
+			<field name="baseValue" validation="Decimal"/>
+			<field name="perLevelValue" validation="Decimal"/>
+			</condition>
+			<condition>
+			<value>PlanetPopulationCapAdjustment</value>
+			<field name="baseValue" validation="Decimal"/>
+			<field name="perLevelValue" validation="Decimal"/>
+			<field name="linkedPlanetType"/>
+			</condition>
+			<condition>
+			<value version="Rebellion">WeaponRateOfFireAdjustmentWhenInGravityWellBeingBombed</value> <!-- diplomacy 1.3 -->
+			<value version="Rebellion">WeaponDamageAdjustmentWhenInGravityWellBeingBombed</value> <!-- diplomacy 1.3 -->
+			<value version="Rebellion">WeaponDamageAdjustmentWhenInFriendlyGravityWell</value> <!-- diplomacy 1.3 -->
+			<value version="Rebellion">WeaponDamageAdjustmentForEachAlliedPlayerInGravityWell</value>
+			<value>WeaponRangeAdjustment</value>
+			<value>WeaponRateOfFireAdjustment</value>
+			<value>WeaponDamageAdjustment</value>
+			<value>WeaponIgnoresShieldsAdjustment</value>
+			<field name="baseValue" validation="Decimal"/>
+			<field name="perLevelValue" validation="Decimal"/>
+			<field name="linkedWeaponClass"  type="WeaponClassType"/>
+			</condition>
+			<condition>
+			<value>PlanetUpgradeCostAdjustment</value>
+			<value>PlanetUpgradeBuildRateAdjustment</value>
+			<field name="baseValue" validation="Decimal"/>
+			<field name="perLevelValue" validation="Decimal"/>
+			<field name="linkedPlanetUpgradeType"/>
+			</condition>
+		</condition_field>
+
+	<structure name="ResearchFloatModifierType">
+		<field name="modifierType" type="modifierTypeFloat"></field>
+	</structure>
+	
+</tns:entity_definitions>

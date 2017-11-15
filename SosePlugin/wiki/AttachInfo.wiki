@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary AttachInfo Definition
+==References==
+ * [Ability]
+ * [Buff]
+
+* [AttachInfo]
+ * [attachType attachType]: [Enumeration]
+ * abilityIndex: [Integer]
+

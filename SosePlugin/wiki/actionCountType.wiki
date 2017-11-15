@@ -1,0 +1,7 @@
+#labels SOASE, DynamicContent
+#summary actionCountType Condition Definition
+<wiki:toc max_depth="5"/>
+[actionCountType]: [Condition]
+ * Finite
+  * [actionCount]: [GenericLevel]
+ * Infinite

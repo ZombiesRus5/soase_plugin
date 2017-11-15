@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary CultureSpeedData Definition
+==References==
+ * [GameplayConstants]
+
+* [CultureSpeedData]
+ * cultureConnectionReferenceLength: [Decimal]
+ * allegianceShiftRateScalar: [Decimal]
+

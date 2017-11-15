@@ -1,0 +1,41 @@
+#summary Quick Links to all the primary source files and syntax rules
+#labels Featured
+
+  * [Ability Ability ]
+  * [Brushes Brushes ]
+  * [Buff Buff ]
+  * [CannonShell CannonShell ]
+  * [CapitalShip CapitalShip ]
+  * [Constants Gameplay Constants ]
+  * [EntryVehicle EntryVehicle ]
+  * [Fighter Fighter ]
+  * [Frigate Frigate ]
+  * [Galaxy Galaxy]
+  * [GalaxyScenarioDef GalaxyScenarioDef ]
+  * [GameplayConstants GameplayConstants ]
+  * Mission
+   * MissionBuildMines
+   * MissionBuildStarBase
+   * MissionCaptureResources
+   * MissionFosterRelationships
+  * [PipCloud PipCloud ]
+  * [PlanetBonus PlanetBonus ]
+  * PlanetModule
+   * [PlanetModuleHangarDefense]
+   * [PlanetModuleRefinery]
+   * [PlanetModuleShipFactory]
+   * [PlanetModuleStandard]
+   * [PlanetModuleTradePort]
+   * [PlanetModuleWeaponDefense]
+  * [Planet Planet ]
+  * [Player Player ]
+  * [Quest Quest ]
+  * [ResearchSubject ResearchSubject ]
+  * [ResourceAsteroid ResourceAsteroid ]
+  * [SpaceMine SpaceMine ]
+  * [Squad Squad ]
+  * [StarBaseUpgrade StarBaseUpgrade ]
+  * [StarBase StarBase ]
+  * [Star Star ]
+  * [Str String Info]
+  * [Sounddata Sounddata ]

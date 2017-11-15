@@ -1,0 +1,6 @@
+#labels SOASE, DynamicContent
+#summary Explosiondata Definition
+* [Explosiondata]
+ * explosionEffectGroupCount: [Iteration]
+  * [explosionEffectGroup]: [ExplosionEffectGroupType]
+

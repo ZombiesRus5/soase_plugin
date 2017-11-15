@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0126)http://help.eclipse.org/kepler/advanced/indexView.jsp?view=index&topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-icons.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+
+<title>Index View</title>
+
+<style type="text/css">
+/*******************************************************************************
+ * Copyright (c) 2005, 2010 Intel Corporation and others.
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Intel Corporation - initial API and implementation
+ *     IBM Corporation 2006, refactored index view into a single frame
+ *     IBM Corporation 2009, added style for .see
+ *     IBM Corporation 2010, Added see all link
+ *******************************************************************************/
+
+BODY {
+    
+	font:icon;
+	margin-top:5px;
+	margin-left:5px;
+	padding:0px;
+	border:0px;	
+	cursor:default;
+	overflow:hidden;
+}
+
+TABLE, TR, TD, P {
+	margin:0px;
+	padding:0px;
+	border:0px;
+}
+
+TABLE {
+	font:icon;
+	width:100%;
+}
+
+TR {
+	height:21px;
+}
+
+
+INPUT {
+	font:icon;
+	margin:0;
+	padding:0;
+	border:1px solid ThreeDShadow;
+}
+
+INPUT {
+    font-size:1.0em;
+}
+
+#instruction {
+	white-space:nowrap;
+}
+
+#indexList {
+    overflow:auto;
+    width: 100%;
+    height: 100px;
+}
+
+#typein {
+	width:100%;
+}
+
+#typeinTable {
+	width:100%;
+	height: 4em;
+}
+
+#button {
+	background:ThreeDShadow;
+	color:Window;
+	font-size: 1.0em;
+	font-weight:bold;
+	margin-left:1px;
+}
+
+
+
+#root {
+	margin-top:0px;
+	margin-left:5px;	
+}
+
+#innerNavigation {
+    margin-top:0px;
+    padding-bottom: 5px;
+	font-weight:bold;
+	width:100%;
+}
+
+#navigation {
+    width:100%;
+}
+
+#td_previous {   
+    text-align:left;
+    width:50%;
+}
+
+#td_next {
+    text-align:right;
+    width:50%;
+}
+
+DIV.root {
+    font-weight:normal;
+}
+
+DIV.visible, DIV.unopened { 
+	border-width:0; 
+	margin-left:1.5em; 
+	font-weight:normal;
+}
+  
+DIV.hidden {
+	display:none; 
+}
+
+DIV.visible, DIV.root {  
+    margin-top:1px; 
+}
+
+
+DIV.group { 
+	border-width:0; 
+	margin-left:0; 
+}
+
+SPAN.item{
+    white-space: nowrap;
+}
+
+IMG {
+	border:0px;
+	margin:0px;
+	padding:0px;
+	margin-right:4px;
+}
+
+IMG.expander, IMG.h {
+    margin-top:4px;
+    margin-bottom:2px;
+}
+
+A {
+	text-decoration:none; 
+	padding-right:2px;
+	color:WindowText;
+	/* this works in ie5.5, but not in ie5.0  */
+	white-space: nowrap;
+}
+
+A:hover{
+	text-decoration:underline; 
+}
+
+A.active{ 
+	color:HighlightText; 
+	background:Highlight;
+	width:100%;
+}
+
+A.active:hover{
+	text-decoration:underline; 
+}
+
+A.see {
+    font-style : italic;
+    color : #0000FF;
+}
+
+
+
+A.nolink {
+	color:#808080;
+}
+
+
+
+A.nolink {
+	text-decoration:none; 
+	font-weight:bold;
+}
+
+A.nolink:hover {
+	text-decoration:none; 
+}
+
+.h {
+	visibility:hidden;
+}
+
+.showall {
+    text-decoration:underline; 
+    color:#0066FF; 
+	cursor:pointer;
+}
+
+
+
+
+</style>
+
+
+<!--<base target="ContentViewFrame">--><base href="." target="ContentViewFrame">
+
+<script language="JavaScript">
+
+var loadingMessage = "Loading\u002E\u002E\u002E\u0020please\u0020wait";
+</script>
+
+<script language="JavaScript" src="./indexView.js.download"></script>
+<script language="JavaScript" src="./resize.js.download"></script>
+<script language="JavaScript" src="./helptree.js.download"></script>
+<script language="JavaScript" src="./helptreechildren.js.download"></script>
+<script language="JavaScript" src="./xmlajax.js.download"></script>
+<script language="JavaScript" src="./utils.js.download"></script>
+<script language="JavaScript" src="./view.js.download"></script>
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+
+<body dir="ltr" onload="onloadHandler()" onresize="sizeList()" marginwidth="10" marginheight="0">
+
+<table id="typeinTable">
+
+
+	<tbody><tr>
+		<td colspan="2"><p id="instruction">Type in the word to find:</p></td>
+	</tr>
+
+	<tr>
+		<td width="100%"><input type="text" id="typein"></td>
+	
+		<td><input type="button" id="button" value="Display" onclick="this.blur();showIndex()"></td>
+	
+	</tr>
+</tbody></table>
+<div id="indexList" style="height: 100px;">
+
+<div class="group" id="wai_application" role="application">
+    <div class="root" id="tree_root" role="tree">
+    </div>
+</div>
+</div>
+<div id="navigation">
+    <table id="innerNavigation" cellspacing="0" cellpadding="0" border="0" style="background:transparent;">
+		<tbody><tr>
+			<td id="td_previous">				
+                <a id="previous" class="enabled" onclick="this.blur();loadPreviousPage()">&lt;&lt; Previous</a> 
+			</td>
+			<td id="td_next">
+				<a id="next" class="enabled" onclick="this.blur();loadNextPage()">Next &gt;&gt;</a> 
+			</td>
+  	 </tr></tbody></table>
+</div>
+
+
+
+</body></html>

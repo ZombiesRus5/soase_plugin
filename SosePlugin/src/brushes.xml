@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Brushes">
+		<field name="onlyLoadOnDemand" validation="Boolean" />
+		<iterative_field name="brushCount">
+			<structure_reference required="false" name="brush" type="BrushType"/>
+		</iterative_field>
+	</structure>
+
+	<structure name="BrushType">
+		<field name="name" validation="Any"/>
+		<condition_field name="content">
+			<condition value="Simple">
+				<field name="fileName" validation="Texture"/>
+				<field name="pixelBox" validation="Position"/>
+			</condition>
+			<condition value="States">
+				<structure_reference name="Disabled" type="StatesType" />
+				<structure_reference name="Pressed" type="StatesType" />
+				<structure_reference name="CursorOver" type="StatesType" />
+				<structure_reference name="Focused" type="StatesType" />
+				<structure_reference name="Normal" type="StatesType" />
+			</condition>
+			<condition value="MarginsAndStates">
+				<structure_reference name="stretchMargins" type="MarginsType"/>
+				<structure_reference name="contentMargins" type="MarginsType"/>
+				<structure_reference name="Disabled" type="StatesType" />
+				<structure_reference name="Pressed" type="StatesType" />
+				<structure_reference name="CursorOver" type="StatesType" />
+				<structure_reference name="Focused" type="StatesType" />
+				<structure_reference name="Normal" type="StatesType" />
+			</condition>
+			<condition value="Margins">
+				<structure_reference name="stretchMargins" type="MarginsType"/>
+				<structure_reference name="contentMargins" type="MarginsType"/>
+				<field name="fileName" validation="Texture"/>
+				<field name="pixelBox" validation="Position"/>
+			</condition>
+		</condition_field>
+	</structure>
+
+	<structure name="StatesType">
+		<field name="fileName" validation="Texture"/>
+		<field name="pixelBox" validation="Position"/>
+	</structure>
+	
+	<structure name="MarginsType">
+		<field name="left" validation="Integer"/>
+		<field name="right" validation="Integer"/>
+		<field name="top" validation="Integer"/>
+		<field name="bottom" validation="Integer"/>
+	</structure>
+</tns:entity_definitions>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Sounddata">
+		<iterative_field required="false" name="numEffects">
+			<structure_reference required="false" name="effect" type="SoundEffect"/>
+		</iterative_field>
+		<iterative_field required="false" name="numMusic">
+			<structure_reference required="false" name="music" type="Music"/>
+		</iterative_field>
+	</structure>
+
+	<structure name="Music">
+		<field name="name" validation="Any"/>
+		<field name="fileName" validation="SoundFile"/>
+		<field name="isLooping" validation="Boolean" />
+		<field name="actionLevel" validation="Decimal" />
+		<field name="actionRange" validation="Decimal" />
+		<field name="emotionLevel" validation="Decimal" />
+		<field name="emotionRange" validation="Decimal" />
+	</structure>		
+	
+	<structure name="SoundEffect">
+		<field name="name" validation="Any"/>
+		<field name="fileName" validation="SoundFile"/>
+		<condition_field name="type" required="false">
+			<condition value="UI">
+				<field name="is3D" validation="Boolean" help="tells the engine to play the sound based on where the unit is on the screen"/>
+				<field name="priority" validation="Integer" />
+				<field name="threshold" validation="Decimal" help="Theshold is the maximum distance the sound will play at"/>
+				<field name="minAttenuationDist" validation="Decimal" help="MinAttenuationDist is the game distance from the camera when the sound starts to fade out, until it reaches Threshold and you cannot hear it anymore."/>
+				<field name="maxNumPlayingSimultaneously" validation="Integer" />
+				<field name="isLooping" validation="Boolean" />
+				<field name="isResident" validation="Boolean" />
+				<field name="minRespawnTime" validation="Decimal" />
+				<field name="fadeInTime" validation="Decimal" />
+				<field name="fadeOutTime" validation="Decimal" />
+				<field name="alternateGroup" validation="Any" />
+			</condition>
+			<condition value="Effect">
+				<field name="is3D" validation="Boolean" />
+				<field name="priority" validation="Integer" />
+				<field name="threshold" validation="Decimal" />
+				<field name="minAttenuationDist" validation="Decimal" />
+				<field name="maxNumPlayingSimultaneously" validation="Integer" />
+				<field name="isLooping" validation="Boolean" />
+				<field name="isResident" validation="Boolean" />
+				<field name="minRespawnTime" validation="Decimal" />
+				<field name="fadeInTime" validation="Decimal" />
+				<field name="fadeOutTime" validation="Decimal" />
+				<field name="alternateGroup" validation="Any" />
+			</condition>
+			<condition value="Dialogue">
+				<field name="is3D" validation="Boolean" />
+				<field name="priority" validation="Integer" />
+				<field name="threshold" validation="Decimal" />
+				<field name="minAttenuationDist" validation="Decimal" />
+				<field name="maxNumPlayingSimultaneously" validation="Integer" />
+				<field name="isLooping" validation="Boolean" />
+				<field name="isResident" validation="Boolean" />
+				<field name="minRespawnTime" validation="Decimal" />
+				<field name="fadeInTime" validation="Decimal" />
+				<field name="fadeOutTime" validation="Decimal" />
+				<field name="alternateGroup" validation="Any" />
+			</condition>
+		</condition_field>
+	</structure>
+
+</tns:entity_definitions>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="CapitalShip">
+		<field name="ability:0" validation="Entity"/>
+		<field name="ability:1" validation="Entity"/>
+		<field name="ability:2" validation="Entity"/>
+		<field name="ability:3" validation="Entity"/>
+		<field name="ability:4" validation="Entity" version="Entrenchment"/>
+		<field name="defaultAutoAttackRange" type="defaultAutoAttackRange"/>
+		<field name="defaultAutoAttackOn" validation="Boolean"/>
+		<field name="prefersToFocusFire" validation="Boolean"/>
+		<field name="usesFighterAttack" validation="Boolean" version="Entrenchment"/>
+		<field name="autoJoinFleetDefault" validation="Boolean"/>
+		<field name="canBomb" type="canBomb"/>
+		<field name="mainViewIcon" validation="Brush"/>
+		<structure_reference name="basePrice" type="Cost"/>
+		<field name="slotCount" validation="Decimal"/>
+		<field name="BuildTime" validation="Decimal"/>
+		<structure_reference name="MaxHullPoints" type="LevelIncrease"/>
+		<structure_reference name="MaxShieldPoints" type="LevelIncrease"/>
+		<structure_reference name="HullPointRestoreRate" type="LevelIncrease"/>
+		<structure_reference name="ShieldPointRestoreRate" type="LevelIncrease"/>
+		<structure_reference name="ArmorPointsFromExperience" type="LevelIncrease"/>
+		<structure_reference name="maxMitigation" type="LevelIncrease"/>
+		<structure_reference name="MaxAntiMatter" type="LevelIncrease"/>
+		<structure_reference name="AntiMatterRestoreRate" type="LevelIncrease"/>
+		<structure_reference name="CultureProtectRate" type="LevelIncrease"/>
+		<field name="NameStringID" validation="StringInfo"/>
+		<field name="DescriptionStringID" validation="StringInfo"/>
+		<field name="picture" validation="Brush"/>
+		<structure_reference name="Prerequisites" type="researchPrerequisites"/>
+		<field name="roleType" type="roleType"/>
+		<field name="statCountType" type="statCountType"/>
+		<field name="numRandomDebrisLarge" validation="Integer"/>
+		<field name="numRandomDebrisSmall" validation="Integer"/>
+		<iterative_field name="numSpecificDebris" limit="2">
+			<field required="false" name="specificDebrisMeshName" validation="Mesh"/>
+		</iterative_field>
+		<field name="armorType" type="armorType"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+		<field name="minZoomDistanceMult" validation="Decimal"/>
+		<iterative_field name="NumWeapons" limit="5">
+			<structure_reference required="false" name="Weapon"/>
+		</iterative_field>
+		<field name="m_weaponIndexForRange" validation="Integer"/>
+		<field name="firingAlignmentType" type="firingAlignmentType" version="Entrenchment"/>
+		<field name="TargetCountPerBank:FRONT" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:BACK" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:LEFT" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:RIGHT" validation="Integer" version="Entrenchment"/>
+		<field name="canOnlyTargetStructures" validation="Boolean" version="Entrenchment"/>
+		<field name="mass" validation="Decimal"/>
+		<field name="ShieldMeshName" validation="Mesh"/>
+		<field name="renderShield" validation="Boolean" version="Entrenchment"/>
+		<field name="maxAccelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationStrafe" validation="Decimal"/>
+		<field name="maxDecelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationAngular" validation="Decimal"/>
+		<field name="maxDecelerationAngular" validation="Decimal"/>
+		<field name="maxSpeedLinear" validation="Decimal"/>
+		<field name="maxRollRate" validation="Decimal" version="Entrenchment"/>
+		<field name="maxRollAngle" validation="Decimal" version="Entrenchment"/>
+		<field name="squadTypeEntityDef:0" validation="Entity"/>
+		<field name="squadAntiMatterCost:0" validation="Decimal"/>
+		<field name="squadTypeEntityDef:1" validation="Entity"/>
+		<field name="squadAntiMatterCost:1" validation="Decimal"/>
+		<field name="squadTypeEntityDef:2" validation="Entity" version="Entrenchment"/>
+		<field name="squadAntiMatterCost:2" validation="Decimal" version="Entrenchment"/>
+		<field name="squadTypeEntityDef:3" validation="Entity" version="Entrenchment"/>
+		<field name="squadAntiMatterCost:3" validation="Decimal" version="Entrenchment"/>
+		<iterative_field name="NumSoundsFor:ONATTACKORDERISSUED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONCREATION" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONGENERALORDERISSUED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSELECTED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSTARTPHASEJUMP" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<field name="MeshName" validation="Mesh" version="Vanilla"/>
+		<iterative_field name="MeshNameInfoCount" version="Entrenchment" limit="12">
+			<structure_reference required="false" name="MeshNameInfo"/>
+		</iterative_field>
+		<field name="meshNameIncreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="meshNameDecreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="ExhaustParticleSystemName" validation="Particle"/>
+		<field name="ExplosionName" validation="Explosion"/>
+		<structure_reference name="CommandPoints" type="LevelIncrease"/>
+		<structure_reference name="weaponCooldownDecreasePerc" type="LevelIncrease"/>
+		<structure_reference name="weaponDamageIncreasePerc" type="LevelIncrease"/>
+		<field name="HyperspaceChargingSoundID" validation="Sound"/>
+		<field name="HyperspaceTravelSoundID" validation="Sound"/>
+		<field name="EngineSoundID" validation="Sound"/>
+		<field name="formationRank" validation="Integer" values="0,1,2,3"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+	</structure>
+</tns:entity_definitions>

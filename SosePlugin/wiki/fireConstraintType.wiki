@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary fireConstraintType Condition Definition
+<wiki:toc max_depth="5"/>
+[fireConstraintType]: [Condition]
+ * CanAlwaysFire
+ * Research
+  * [researchPrerequisites]
+ * StarBaseUpgradeLevel
+  * requiredStarBaseWeaponLevel: [Integer]

@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary ShipPhysicsSpeedData Definition
+==References==
+ * [GameplayConstants]
+
+* [ShipPhysicsSpeedData]
+ * shipLinearMaxSpeedGameSpeedScalar: [Decimal]
+ * shipLinearAccelerationGameSpeedScalar: [Decimal]
+ * shipLinearDecelerationGameSpeedScalar: [Decimal]
+

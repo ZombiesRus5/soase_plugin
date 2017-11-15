@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0128)http://help.eclipse.org/kepler/advanced/searchView.jsp?view=search&topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-icons.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+
+<title>Search Results</title>
+
+<style type="text/css">
+/*******************************************************************************
+ * Copyright (c) 2000, 2011 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
+
+body {
+    
+	color: WindowText;
+	font: icon;
+	padding: 0px;
+	border: 0px;
+	margin-top: 5px;
+	margin-bottom: 8px;
+	margin-left: 5px;
+	margin-right: 5px;
+	cursor: default;
+}
+
+table {
+	font: icon;
+	width: 100%;
+	table-layout: fixed;
+}
+
+a {
+	text-decoration:none; 
+	padding:0px;
+}
+
+a:hover {
+	text-decoration:underline; 
+}
+
+.category {
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.sectiontitle {
+	background-color: ButtonFace;
+	font-weight:bold;
+	margin-top:7px;
+}
+
+.results .active { 
+	background:Highlight;
+	color:HighlightText;
+	width:100%;
+	height:100%;
+}
+
+.showall {
+    text-decoration:underline; 
+    color:#0066FF; 
+	cursor:pointer;
+}
+
+#menu {
+	position:absolute;
+	display:none;
+	background:ButtonFace;
+	border:2px outset;
+	padding:2px 0px;
+}
+
+.selectedMenuItem {
+	background:Highlight;
+	color:HighlightText;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.unselectedMenuItem {
+	background:ButtonFace;
+	color:WindowText;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.icon {
+	width: 23px;
+	padding-left: 0px;
+}
+
+.description {
+	display: block;
+}
+
+</style>
+
+
+<!--<base target="ContentViewFrame">--><base href="." target="ContentViewFrame">
+<script language="JavaScript" src="./utils.js.download"></script>
+<script language="JavaScript" src="./list.js.download"></script><style type="text/css">.active {background:#B5D5FF;color:#000000;}</style>
+<script language="JavaScript" src="./view.js.download"></script>
+<script language="JavaScript">	
+
+var cookiesRequired = "This\u0020feature\u0020requires\u0020cookies\u0020to\u0020be\u0020enabled\u0020in\u0020your\u0020browser\u002E";	
+var showCategories = false;
+var scope ="All\u0020topics";
+
+function refresh() { 
+	window.location.replace("searchView.jsp?view\u003Dsearch\u0026topic\u003D\u0025\u0032Forg\u002Eeclipse\u002Ejdt\u002Edoc\u002Euser\u0025\u0032Freference\u0025\u0032Fref\u002Dicons\u002Ehtm");
+}
+
+function isShowDescriptions() {
+	var value = getCookie("showDescriptions");
+	return value ? value == "true" : true;
+}
+
+function setShowCategories(value) { 	    
+	parent.searchToolbarFrame.setButtonState("show_categories", value);
+	var searchWord = "";
+	    window.location="searchView.jsp?searchWord=" + encodeURIComponent(searchWord) 
+	       + "&showSearchCategories=" + value +
+	       "&scope=" + encodeURIComponent(scope);    
+}
+
+function setShowDescriptions(value) {
+	setCookie("showDescriptions", value);
+	var newValue = isShowDescriptions();   	
+	parent.searchToolbarFrame.setButtonState("show_descriptions", newValue);
+	if (value != newValue) {
+	    alert(cookiesRequired);
+	} else { 
+	    setCSSRule(".description", "display", value ? "block" : "none");
+	}
+}
+
+function toggleShowCategories() {
+	setShowCategories(!showCategories);
+}
+
+function toggleShowDescriptions() {
+	setShowDescriptions(!isShowDescriptions());
+}
+
+function onShow() { 
+}
+</script>
+
+
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+
+<body dir="ltr" marginwidth="10" marginheight="0">
+
+To search the documentation, type a query in the Search field. The search results will be shown in this view.
+
+<script language="JavaScript">
+	selectTopicById('');
+</script>
+
+
+
+</body></html>

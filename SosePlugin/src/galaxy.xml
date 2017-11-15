@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Galaxy">
+		<field name="versionNumber" validation="Integer"/>
+		<field name="isBrowsable" validation="Boolean"/>
+		<field name="browsePictureName" validation="Any"/> 
+		<field name="browseName" validation="Any"/>
+		<field name="browseDescription" validation="Any"/>
+		<field name="isFirstCapitalShipIsFlagship" validation="Boolean"/>
+		<field name="randomizeStartingPositions" validation="Boolean"/> 
+		<field name="planetArtifactDensity" validation="Decimal"/>
+		<field name="planetBonusDensity" validation="Decimal"/>
+		<field name="normalStartHomePlanetUpgradeLevel:Population" validation="Integer"/>
+		<field name="normalStartHomePlanetUpgradeLevel:CivilianModules" validation="Integer"/>
+		<field name="normalStartHomePlanetUpgradeLevel:TacticalModules" validation="Integer"/>
+		<field name="normalStartHomePlanetUpgradeLevel:Home" validation="Integer"/>
+		<field name="normalStartHomePlanetUpgradeLevel:ArtifactLevel" validation="Integer"/>
+		<field name="normalStartHomePlanetUpgradeLevel:Infrastructure" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:Population" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:CivilianModules" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:TacticalModules" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:Home" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:ArtifactLevel" validation="Integer"/>
+		<field name="quickStartHomePlanetUpgradeLevel:Infrastructure" validation="Integer"/>
+		<iterative_field name="recommendedGameTypeCount">
+			<field required="false" name="recommendedGameType" validation="Simple">
+				<value>Solo</value>
+				<value>FFA</value>
+				<value>TwoTeamsOfTwo</value>
+				<value>TwoTeamsOfThree</value>
+				<value>ThreeTeamsOfThree</value>
+				<value>FourTeamsOfTwo</value>
+				<value>FiveTeamsOfTwo"</value>
+				<value>TwoTeamsOfFive</value>
+				<value>FiveTeamsOfTwo</value>
+				<value>ThreeTeamsOfTwo</value>
+				<value>TwoTeamsOfFour</value>
+			</field>
+		</iterative_field>
+		<field name="metersPerGalaxyUnit" validation="Decimal"/>
+		<field name="pixelsPerGalaxyUnit" validation="Decimal"/>
+		<condition_field name="useRandomGenerator">
+			<condition value="TRUE">
+				<structure name="randomizerParams">
+					<structure name="starPosOffsetRange">
+						<field name="minPercentage" validation="Decimal"/>
+						<field name="maxPercentage" validation="Decimal"/>
+					</structure>
+					<structure name="playerParams">
+						<field name="startingCredits" validation="Integer"/>
+						<field name="startingMetal" validation="Integer"/>
+						<field name="startingCrystal" validation="Integer"/>	
+						<field name="homePlanetType" validation="Any"/>
+						<structure name="homePlanetStarRadiusRange">
+							<field name="minPercentage" validation="Integer"/>
+							<field name="maxPercentage" validation="Integer"/>			
+						</structure>
+						<field name="areExtraPlanetsColonized" validation="Boolean"/>
+						<field name="extraPlanetsMaxRadius" validation="Integer"/>
+						<structure name="extraPlanetsRadiusRange">
+							<field name="minPercentage" validation="Integer"/>
+							<field name="maxPercentage" validation="Integer"/>
+						</structure>
+						<iterative_field name="extraPlanetGroupCount">
+							<structure_reference required="false" name="extraPlanetGroup" type="PlanetGroupType"/>
+						</iterative_field>
+					</structure>
+					<iterative_field name="starCount">
+						<structure_reference required="false" name="star" type="RandomStarType" />
+					</iterative_field>
+				</structure>
+			</condition>
+			<condition value="FALSE">
+				<field name="galaxyWidth" validation="Decimal"/>
+				<field name="galaxyHeight" validation="Decimal"/>
+				<field name="nextStarNameUniqueId" validation="Integer"/>
+				<field name="nextPlanetNameUniqueId" validation="Integer"/>
+				<field name="triggerCount" validation="Integer" version="Rebellion"/>
+				
+				<iterative_field name="starCount">
+					<structure_reference required="false" name="star" type="GalaxyStarType" />
+				</iterative_field>
+				
+				<iterative_field name="interStarConnectionCount">
+					<structure required="false" name="interStarConnection">
+						<field name="starIndexA" validation="Integer"/>
+						<field name="planetIndexA" validation="Integer"/>
+						<field name="starIndexB" validation="Integer"/> 
+						<field name="planetIndexB" validation="Integer"/>
+						<field name="spawnProbability" validation="Decimal"/>
+						<field name="type" validation="Simple" values="Wormhole,PhaseLane"/>
+					</structure>
+				</iterative_field>
+				
+				<iterative_field name="playerCount">
+					<structure required="false" name="player">
+						<field name="designName" validation="Any"/>
+						<field name="inGameName" validation="Any"/>
+						<field name="overrideRaceName" validation="Any"/>
+						<field name="teamIndex" validation="Integer"/> 
+						<field name="startingCredits" validation="Integer"/> 
+						<field name="startingMetal" validation="Integer"/> 
+						<field name="startingCrystal" validation="Integer"/> 
+						<field name="isNormalPlayer" validation="Boolean"/> 
+						<field name="isRaidingPlayer" validation="Boolean"/> 
+						<field name="isInsurgentPlayer" validation="Boolean"/> 
+						<field name="isOccupationPlayer" validation="Boolean" version="Rebellion"/> 
+						<field name="isMadVasariPlayer" validation="Boolean" version="Rebellion"/> 
+						<field name="themeGroup" validation="Any"/>
+						<field name="themeIndex" validation="Integer"/> 
+						<field name="pictureGroup" validation="Any"/>
+						<field name="pictureIndex" validation="Integer"/> 
+					</structure>
+				</iterative_field>
+			</condition>
+		</condition_field>
+		
+		<iterative_field required="false" name="templates">
+			<structure_reference required="false" name="template" type="TemplateType"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="RandomStarType">
+		<field name="type" validation="Any"/>
+		<field name="radius" validation="Integer"/>
+		<field name="moveAreaRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		<field name="hyperspaceExitRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		 
+		<field name="connectionStarRadiusRange" validation="Decimal"/>
+		<field name="connectionChance" validation="Decimal"/>
+		<field name="maxPlayerCount" validation="Integer"/> 
+		<iterative_field name="ringCount">
+			<structure required="false" name="ring">
+				<structure name="starRadiusRange">
+					<field name="minPercentage" validation="Decimal"/>
+					<field name="maxPercentage" validation="Decimal"/>
+				</structure>
+				<field name="militiaColonizationPerc" validation="Integer"/> 
+				<iterative_field name="planetGroupCount">
+					<structure_reference required="false" name="planetGroup" type="PlanetGroupType"/>
+				</iterative_field>
+			</structure>
+		</iterative_field>
+	</structure>
+	
+	<structure name="PlanetGroupType">
+		<field name="minCount" validation="Integer"/>
+		<field name="maxCount" validation="Integer"/>
+		<iterative_field name="planetTypeCount">
+			<field required="false" name="planetType" validation="GalaxyDesign"/>
+		</iterative_field>
+	</structure>
+	
+	
+	<structure name="GalaxyStarType">
+		<field name="designName" validation="Any"/>
+		<field name="inGameName" validation="Any"/>
+		<field name="type" validation="GalaxyDesign"/>
+		<field name="pos" validation="Position"/>
+		<field name="radius" validation="Decimal"/>
+		<field name="moveAreaRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		<field name="hyperspaceExitRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		
+		<iterative_field name="planetCount">
+			<structure_reference required="false" name="planet" type="GalaxyPlanetType" />
+		</iterative_field>
+		
+		<iterative_field name="connectionCount">
+			<structure required="false"  name="connection">
+				<field name="planetIndexA" validation="Integer"/>
+				<field name="planetIndexB" validation="Integer"/>
+				<field name="spawnProbability" validation="Decimal"/>
+				<field name="type" validation="Simple" values="PhaseLane,Wormhole"/>
+			</structure>
+		</iterative_field>
+		
+		<field name="entityCount" validation="Integer" version="Rebellion"/>
+		<field name="spawnProbability" validation="Decimal"/>
+		
+	</structure>
+
+	<structure name="GalaxyPlanetType">
+		<field name="designName" validation="Any"/>
+		<field name="inGameName" validation="Any"/>
+		<field name="type" validation="GalaxyDesign"/>
+		<field name="pos" validation="Position"/>
+		<field name="moveAreaRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		<field name="hyperspaceExitRadius" validation="Decimal" required="false" help="deprecated with Version 5" />
+		<field name="owner" validation="Any">
+			<value></value>
+			<value>Player-0</value>
+			<value>Player-1</value>
+			<value>Player-2</value>
+			<value>Player-3</value>
+			<value>Player-4</value>
+			<value>Player-5</value>
+			<value>Player-6</value>
+			<value>Player-7</value>
+			<value>Player-8</value>
+			<value>Player-9</value>
+			<value>NewPlayer</value>
+			<value>NewPlayer0</value>
+			<value>NewPlayer1</value>
+			<value>NewPlayer2</value>
+			<value>NewPlayer3</value>
+			<value>NewPlayer4</value>
+			<value>NewPlayer5</value>
+			<value>NewPlayer6</value>
+			<value>NewPlayer7</value>
+			<value>NewPlayer8</value>
+			<value>NewPlayer9</value>
+			<value>Player0</value>
+			<value>Player1</value>
+			<value>Player2</value>
+			<value>Player3</value>
+			<value>Player4</value>
+			<value>Player5</value>
+			<value>Player6</value>
+			<value>Player7</value>
+			<value>Player8</value>
+			<value>Player9</value>
+			<value>0</value>
+			<value>1</value>
+			<value>2</value>
+			<value>3</value>
+			<value>4</value>
+			<value>5</value>
+			<value>6</value>
+			<value>7</value>
+			<value>8</value>
+			<value>9</value>
+			<value>Pirate</value>
+		</field>
+		<field name="isHomePlanet" validation="Boolean"/>
+		<field name="normalStartUpgradeLevelForPopulation" validation="Integer"/>
+		<field name="normalStartUpgradeLevelForCivilianModules" validation="Integer"/>
+		<field name="normalStartUpgradeLevelForTacticalModules" validation="Integer"/>
+		<field name="normalStartUpgradeLevelForArtifacts" validation="Integer"/>
+		<field name="normalStartUpgradeLevelForInfrastructure" validation="Integer"/>
+		<field name="quickStartUpgradeLevelForPopulation" validation="Integer"/>
+		<field name="quickStartUpgradeLevelForCivilianModules" validation="Integer"/>
+		<field name="quickStartUpgradeLevelForTacticalModules" validation="Integer"/>
+		<field name="quickStartUpgradeLevelForArtifacts" validation="Integer"/>
+		<field name="quickStartUpgradeLevelForInfrastructure" validation="Integer"/>
+		
+		<structure_reference name="planetItems" type="TemplateType"/>
+		
+		<field name="spawnProbability" validation="Decimal"/>
+		<field name="useDefaultTemplate" validation="Boolean"/>
+		<field name="entityCount" validation="Integer" version="Rebellion"/>
+		
+		<iterative_field name="asteroidCount">
+			<structure required="false"  name="asteroid">
+				<field name="maxRefineryCount" validation="Integer"/>
+				<field name="extractionRate" validation="Decimal"/>
+				<field name="refineryRate" validation="Decimal"/>
+				<field name="pos" validation="Coordinate" />
+				<field name="type" validation="Simple" values="ResourceAsteroidMetal,ResourceAsteroidCrystal" />
+			</structure>
+		</iterative_field>
+		
+	</structure>
+	
+	<structure name="MarginsType">
+		<field name="left" validation="Integer"/>
+		<field name="right" validation="Integer"/>
+		<field name="top" validation="Integer"/>
+		<field name="bottom" validation="Integer"/>
+	</structure>
+</tns:entity_definitions>

@@ -1,0 +1,11 @@
+#labels SOASE, DynamicContent
+#summary MarginsType Definition
+==References==
+ * [BrushType]
+
+* [MarginsType]
+ * left: [Integer]
+ * right: [Integer]
+ * top: [Integer]
+ * bottom: [Integer]
+

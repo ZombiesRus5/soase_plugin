@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/element_definitions/" targetNamespace="http://www.example.org/element_definitions/">
+    <element name="entity_definitions" type="tns:entityDefinitions"></element>
+
+    <complexType name="entityDefinitions">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="structure" type="tns:structure" minOccurs="0"/>
+    		<element name="condition_field" type="tns:conditionalField" minOccurs="0"/>
+    		<element name="element_rule" type="tns:elementRule" minOccurs="0"/>
+    	</sequence>
+    </complexType>
+
+    <complexType name="structure">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="helpText" type="string" minOccurs="0"/>
+    		<element name="structure" type="tns:structure" minOccurs="0"/>
+    		<element name="iterative_field" type="tns:iterativeField" minOccurs="0"/>
+    		<element name="field" type="tns:elementRule" minOccurs="0"/>
+    		<element name="condition_field" type="tns:conditionalField" minOccurs="0"/>
+    		<element name="structure_reference" type="tns:structureReference" minOccurs="0"/>
+    		<element name="condition_reference" type="tns:conditionReference" minOccurs="0"/>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="required" type="boolean"></attribute>
+    	<attribute name="ordered" type="boolean"></attribute>
+    	<attribute name="help" type="string"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+    </complexType>
+
+    <complexType name="iterativeField">
+    	<sequence minOccurs="1" maxOccurs="2">
+    		<element name="helpText" type="string" minOccurs="0"/>
+    		<element name="structure" type="tns:structure" minOccurs="0"/>
+    		<element name="iterative_field" type="tns:iterativeField" minOccurs="0"/>
+    		<element name="field" type="tns:elementRule" minOccurs="0"/>
+    		<element name="condition_field" type="tns:conditionalField" minOccurs="0"/>
+    		<element name="structure_reference" type="tns:structureReference" minOccurs="0"/>
+    		<element name="condition_reference" type="tns:conditionReference" minOccurs="0"/>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="required" type="boolean"></attribute>
+    	<attribute name="limit" type="integer"></attribute>
+    	<attribute name="help" type="string"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+    </complexType>
+
+	<complexType name="structureReference">
+		<attribute name="name" type="string"></attribute>
+    	<attribute name="required" type="boolean"></attribute>
+		<attribute name="type" type="string"></attribute>
+    	<attribute name="help" type="string"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+	</complexType>
+	
+	<complexType name="conditionReference">
+		<attribute name="name" type="string"></attribute>
+    	<attribute name="required" type="boolean"></attribute>
+		<attribute name="type" type="string"></attribute>
+    	<attribute name="help" type="string"></attribute>
+	</complexType>
+	
+	<complexType name="conditionalField">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+    		<element name="helpText" type="string" minOccurs="0"/>
+			<element name="condition" type="tns:conditionType"></element>
+		</sequence>
+		<attribute name="name" type="string"></attribute>
+     	<attribute name="required" type="boolean"></attribute>
+    	<attribute name="help" type="string"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+	</complexType>
+	
+	<complexType name="conditionType">
+    	<sequence minOccurs="1" maxOccurs="unbounded">
+     		<element name="helpText" type="string" minOccurs="0"/>
+    		<element name="value" type="tns:ValueType" minOccurs="0"/>
+    		<element name="structure" type="tns:structure" minOccurs="0"/>
+    		<element name="iterative_field" type="tns:iterativeField" minOccurs="0"/>
+    		<element name="field" type="tns:elementRule" minOccurs="0"/>
+    		<element name="condition_field" type="tns:conditionalField" minOccurs="0"/>
+    		<element name="structure_reference" type="tns:structureReference" minOccurs="0"/>
+    		<element name="condition_reference" type="tns:conditionReference" minOccurs="0"/>
+		</sequence>
+		<attribute name="value" type="string"></attribute>
+ 	    <attribute name="required" type="boolean"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+	</complexType>
+	
+	<complexType name="ValueType" >
+		<simpleContent>
+			<extension base="string">
+				<attribute name="version" type="string"/>
+				<attribute name="help" type="string"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	
+	<complexType name="elementRule">
+		<sequence>
+    		<element name="helpText" type="string" minOccurs="0"/>
+			<element name="value" type="tns:ValueType" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="type" type="string"></attribute>
+		<attribute name="required" type="boolean"></attribute>
+		<attribute name="validation" type="tns:validationType"></attribute>
+		<attribute name="values" type="string"></attribute>
+    	<attribute name="help" type="string"></attribute>
+    	<attribute name="version" type="tns:versionType"></attribute>
+    	<attribute name="constraint" type="string"></attribute>
+    	<attribute name="referenceType" type="string"></attribute>
+	</complexType>
+	
+	<simpleType name="versionType">
+		<restriction base="string">
+			<enumeration value="Vanilla" />
+			<enumeration value="Entrenchment" />
+			<enumeration value="EntrenchmentOnly" />
+			<enumeration value="Diplomacy" />
+			<enumeration value="DiplomacyOnly" />
+			<enumeration value="Rebellion" />
+			<enumeration value="NotRebellion" />
+			<enumeration value="NotDiplomacyOrRebellion" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="validationType">
+		<restriction base="string">
+			<enumeration value="Any"></enumeration>
+			<enumeration value="Simple"></enumeration>
+			<enumeration value="StringInfo"></enumeration>
+			<enumeration value="Brush"></enumeration>
+			<enumeration value="Mesh"></enumeration>
+			<enumeration value="Explosion"></enumeration>
+			<enumeration value="Texture"></enumeration>
+			<enumeration value="Sound"></enumeration>
+			<enumeration value="Entity"></enumeration>
+			<enumeration value="Research"></enumeration>
+			<enumeration value="Particle"></enumeration>
+			<enumeration value="Integer"></enumeration>
+			<enumeration value="Decimal"></enumeration>
+			<enumeration value="Structure"></enumeration>
+			<enumeration value="Boolean"></enumeration>
+			<enumeration value="Color"></enumeration>
+			<enumeration value="Position"></enumeration>
+			<enumeration value="Orientation"></enumeration>
+			<enumeration value="Coordinate"></enumeration>
+			<enumeration value="Theme"></enumeration>
+			<enumeration value="SoundFile"></enumeration>
+			<enumeration value="GalaxyDesign"></enumeration>
+			<enumeration value="GalaxyTemplate"></enumeration>
+			<enumeration value="GalaxyOrbitBodyType"></enumeration>
+			<enumeration value="TemplateName"></enumeration>
+		</restriction>
+	</simpleType>
+
+</schema>

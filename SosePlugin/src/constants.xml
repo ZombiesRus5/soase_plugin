@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Constants">
+		<structure_reference name="GameplayConstants" type="GameplayConstants"/>
+	</structure>
+
+	<structure name="ExperienceLevelData">
+		<field name="ExperienceNeededForNextLevel" validation="Decimal" />
+		<field name="ExperienceGainedForDestroying" validation="Decimal" />
+		<field name="UpgradePriceForNextLevel" validation="Decimal" />
+	</structure>
+	
+	<structure version="Rebellion" name="TitanExperienceLevelData">
+		<field name="ExperienceNeededForNextLevel" validation="Decimal" />
+		<field name="ExperienceGainedForDestroying" validation="Decimal" />
+	</structure>
+	
+	<structure name="ChanceToHitTarget">
+		<field name="CAPITALSHIP" validation="Decimal" />
+		<field name="INTERCEPTOR" validation="Decimal" />
+		<field name="BOMBER" validation="Decimal" />
+	</structure>
+	
+	<structure name="KilledType">
+		<field name="AllyKilled" validation="Decimal" />
+		<field name="EnemyKilled" validation="Decimal" />
+	</structure>
+	
+	<structure name="RelationShipChangesType">
+		<field name="Trade" validation="Decimal" />
+		<field name="ExternalVision" validation="Decimal" />
+		<field name="InternalVision" validation="Decimal" />
+		<field name="CeaseFire" validation="Decimal" />
+		<field name="PeaceTreaty" validation="Decimal" />
+	</structure>
+	
+	<structure name="QuestLevelInfosType">
+		<iterative_field name="QuestDefNameCount">
+			<field required="false" name="QuestDefName" validation="Entity"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="PirateRaidComposition">
+		<iterative_field name="requiredShipCount">
+			<structure required="false" name="requiredShip">
+				<field name="type" validation="Entity" />
+				<field name="minCount" validation="Integer" />
+				<field name="maxCount" validation="Integer" />
+			</structure>
+		</iterative_field>
+		<iterative_field name="randomShipCount">
+			<structure required="false" name="randomShip">
+				<field name="type" validation="Entity" />
+				<field name="weight" validation="Integer" />
+			</structure>
+		</iterative_field>
+	</structure>
+	
+	<structure name="BuildSpeedData">
+		<field name="shipBuildRateGameSpeedScalar" validation="Decimal" />
+		<field name="moduleBuildRateGameSpeedScalar" validation="Decimal" />
+	</structure>
+
+	<structure name="CultureSpeedData">
+		<field name="cultureConnectionReferenceLength" validation="Decimal" />
+		<field name="allegianceShiftRateScalar" validation="Decimal" />
+	</structure>
+	
+	<structure name="ResearchSpeedData">
+		<field name="researchRateGameSpeedScalar" validation="Decimal" />
+	</structure>
+
+	<structure name="IncomeSpeedData">
+		<field name="incomeRateGameSpeedScalar" validation="Decimal" />
+	</structure>
+
+	<structure name="FleetSupplyData">
+		<field name="fleetSupplyScalar" validation="Decimal" />
+	</structure>
+
+	<structure name="ShipPhysicsSpeedData">
+		<field name="shipLinearMaxSpeedGameSpeedScalar" validation="Decimal" />
+		<field name="shipLinearAccelerationGameSpeedScalar" validation="Decimal" />
+		<field name="shipLinearDecelerationGameSpeedScalar" validation="Decimal" />
+	</structure>
+
+	<structure name="DiplomaticPointsSpeedData">
+		<field name="diplomaticPointsRateSpeedScalar" validation="Decimal" />
+		<field name="occupyVictoryTimeScalar" validation="Decimal" version="Rebellion"/>
+	</structure>
+
+	<structure name="PlayerAITable">
+		<field name="BuildShip" validation="Integer" />
+		<field name="BuildModuleTactical" validation="Integer" />
+		<field name="BuildModuleCivilian" validation="Integer" />
+		<field name="BuildModuleResearch" validation="Integer" />
+		<field name="UpgradeResearch" validation="Integer" />
+		<field name="UpgradePlanetArtifactLevel" validation="Integer" />
+		<field name="UpgradePlanetPopulation" validation="Integer" />
+		<field name="UpgradePlanetInfastructure" validation="Integer" />
+		<field name="UpgradePlanetSocial" validation="Integer" version="Rebellion"/>
+		<field name="UpgradePlanetIndustry" validation="Integer" version="Rebellion"/>
+		<field name="MaxBountyBidCount" validation="Integer" />
+		<field name="UpgradeStarBase" validation="Integer" version="Entrenchment"/>
+		<field name="BuildMines" validation="Integer" version="Diplomacy" />
+	</structure>
+
+	<structure name="GameplayConstants">
+		<field name="pingTime" validation="Decimal" />
+		<field name="zoomDistanceLevel0ScalarForPlanets" validation="Decimal" />
+		<field name="zoomDistanceLevel0ScalarForNonPlanets" validation="Decimal" />
+		<field name="zoomDistanceLevel0" validation="Integer" />
+		<field name="zoomDistanceLevel1" validation="Integer" />
+		<field name="zoomDistanceLevel2" validation="Integer" />
+		<field name="nearFarThreshold" validation="Integer" />
+		<field name="baseHyperspaceRange" validation="Decimal" />
+		<field name="jumpAngle" validation="Decimal" />
+		<field name="timeForPeaceTreatyCooldown" validation="Integer" />
+		<field name="defaultGravWellColor" validation="Color" version="Rebellion"/>
+		<field name="phaseLaneWidth" validation="Decimal" version="Rebellion"/>
+		<field name="unexploredPhaseLaneWidth" validation="Decimal" version="Rebellion"/>
+		<field name="gravWellThickness" validation="Decimal" version="Rebellion"/>
+		<field name="cannonsPerGravityWellRatio" validation="Integer" version="Rebellion"/>
+		<field name="cannonGravityWellRatioDenominator" validation="Integer" version="Rebellion"/>
+		<field name="preferNewAssetsGameCountThreshold" validation="Integer" version="Rebellion"/>
+		<structure name="EconomyData">
+			<field name="DefaultSalvageRefundPercent" validation="Decimal" />
+			<field name="bountyPerExperiencePointMin" validation="Decimal" />
+			<field name="bountyPerExperiencePointMax" validation="Decimal" />
+			<field name="bountyThresholdMin" validation="Decimal" />
+			<field name="bountyThresholdMax" validation="Decimal" />
+			<field name="percOfBuildTimeForScuttleTime" validation="Decimal" />
+			<field name="buildCountSmallPerButtonPress" validation="Decimal" />
+			<field name="buildCountLargePerButtonPress" validation="Decimal" />
+			<field name="minTimeBetweenResourcePickUps" validation="Decimal" />
+		</structure>
+		<structure name="PlanetData">
+			<field name="allegiancePassiveGainRate" validation="Decimal" />
+			<field name="allegiancePassiveLossRate" validation="Decimal" />
+			<field name="allegianceFriendlyMaxGainRate" validation="Decimal" />
+			<field name="allegianceEnemyMaxLossRate" validation="Decimal" />
+			<field name="allegianceGainFromCultureMax" validation="Decimal" />
+			<field name="startingPopulationPercOfMax" validation="Decimal" />
+			<field name="healthOnColonize" validation="Decimal" />
+			<field name="healthRegenRatePercWhenBombed" validation="Decimal" />
+			<field name="nearPlacementDistOffset" validation="Integer" version="Vanilla" />
+			<field name="farPlacementDistOffset" validation="Integer" version="Vanilla" />
+			<field name="placementRadiusOffset" validation="Integer" version="Vanilla" />
+			<field name="considerBeingBombedTimeForHealthRegen" validation="Decimal" />
+			<field name="considerBeingBombedTimeForPopulationGrowth" validation="Decimal" />
+			<field name="populationGrowthPercWhenBombed" validation="Decimal" />
+			<field name="minPropagatedCultureRate" validation="Decimal"  version="Vanilla"/>
+			<field name="culturePropagationPerc" validation="Decimal"  version="Vanilla"/>
+			<field name="cultureDecayRate" validation="Decimal" version="Vanilla"/>
+			<field name="moduleConstructorRespawnTime" validation="Decimal" />
+			<field name="moduleConstructorRespawnTimeWithEnemies" validation="Decimal" />
+			<field name="baseTaxRatePerPopulation" validation="Decimal" />
+			<iterative_field name="planetBaseAllegianceAtDistanceCount">
+				<field required="false" name="allegiance" validation="Decimal"/>
+			</iterative_field>
+			<field name="planetCultureTakeOverPercWarning" validation="Decimal" />
+			<field name="experienceGainedForDestroying" validation="Decimal" />
+			<field name="scuttleTime" validation="Decimal" />
+			<field name="stripTime" validation="Decimal" version="Rebellion"/>
+		</structure>
+		<structure name="CapitalShipData">
+			<structure_reference name="ExperienceLevelData:0" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:1" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:2" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:3" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:4" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:5" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:6" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:7" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:8" type="ExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:9" type="ExperienceLevelData" />
+			<field name="LevelUpEffectName" validation="Particle"/>
+			<field name="LevelUpEffectSoundID" validation="Sound"/>
+			<field name="PurchaseNextLevelTime" validation="Integer"/>
+			<field name="neutralPlanetCultureRepelRateMultiplier" validation="Decimal" version="Vanilla" />
+			<field name="enemyPlanetCultureRepelRateMultiplier" validation="Decimal" version="Vanilla" />
+		</structure>
+		<structure version="Rebellion" name="TitanData">
+			<structure_reference name="ExperienceLevelData:0" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:1" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:2" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:3" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:4" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:5" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:6" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:7" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:8" type="TitanExperienceLevelData" />
+			<structure_reference name="ExperienceLevelData:9" type="TitanExperienceLevelData" />
+			<field name="LevelUpEffectName" validation="Particle"/>
+			<field name="LevelUpEffectSoundID" validation="Sound"/>
+			<field name="AdditionalPriceModifierPerLevel" validation="Decimal" />
+			<field name="AdditionalBuildTimeModifierPerLevel" validation="Decimal" />
+		</structure>
+		<structure name="cultureData" version="Entrenchment">
+			<field name="minPropagatedCultureRate" validation="Decimal" />
+			<field name="culturePropagationPerc" validation="Decimal" />
+			<field name="cultureDecayRate" validation="Decimal" />
+			<field name="neutralOrbitBodyCultureRepelRateMultiplier" validation="Decimal" />
+			<field name="enemyOrbitBodyCultureRepelRateMultiplier" validation="Decimal" />
+		</structure>
+		<structure name="effectData">
+			<field name="pingEffect" validation="Particle"/>
+			<field name="rallyPointEffect" validation="Particle"/>
+		</structure>
+		<structure name="OrbitBodyData">
+			<field name="MinStarToPlanetGravityDistance" validation="Decimal" />
+			<field name="MinInterPlanetGravityDistance" validation="Decimal" />
+			<field name="MaxInterPlanetGravityDistance" validation="Decimal" />
+		</structure>
+		<structure name="StarBaseData" version="Entrenchment">
+			<field name="friendlyOrbitBodyBuildTimeScalar" validation="Decimal" />
+			<field name="neutralOrbitBodyBuildTimeScalar" validation="Decimal" />
+			<field name="enemyOrbitBodyBuildTimeScalar" validation="Decimal" />
+		</structure>
+		<structure name="DamageData">
+			<structure_reference name="ChanceToHitTargetType:ANTIVERYLIGHT" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:ANTILIGHT" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:ANTIMEDIUM" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:ANTIHEAVY" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:ANTIVERYHEAVY" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:ANTIMODULE" type="ChanceToHitTarget"  version="Entrenchment"/>
+			<structure_reference name="ChanceToHitTargetType:COMPOSITE" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:CAPITALSHIP" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:CAPITALABILITY" type="ChanceToHitTarget" />
+			<structure_reference name="ChanceToHitTargetType:TITAN" type="ChanceToHitTarget" version="Rebellion"/>
+			<structure_reference name="ChanceToHitTargetType:CORVETTE" type="ChanceToHitTarget" version="Rebellion"/>
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:ANTIVERYLIGHT:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:ANTILIGHT:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTILIGHT:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTILIGHT:Pirate" validation="Decimal" version="Diplomacy" />	
+			<field name="DamagePercentBonus:ANTILIGHT:Titan" validation="Decimal" version="Rebellion" />	
+			<field name="DamagePercentBonus:ANTIMEDIUM:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:ANTIMEDIUM:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:ANTIHEAVY:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:ANTIHEAVY:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Pirate" validation="Decimal" version="Diplomacy" />		
+			<field name="DamagePercentBonus:ANTIVERYHEAVY:Titan" validation="Decimal" version="Rebellion" />		
+			<field name="DamagePercentBonus:ANTIMODULE:CapitalShip" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:VeryLight" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:Light" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:Medium" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:Heavy" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:VeryHeavy" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:ANTIMODULE:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:ANTIMODULE:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:COMPOSITE:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:COMPOSITE:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:COMPOSITE:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:COMPOSITE:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CAPITALSHIP:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Pirate" validation="Decimal" version="Diplomacy" />
+			<field name="DamagePercentBonus:CAPITALSHIP:Titan" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CAPITALABILITY:CapitalShip" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:VeryLight" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:Light" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:Medium" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:Heavy" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:VeryHeavy" validation="Decimal" />
+			<field name="DamagePercentBonus:CAPITALABILITY:Module" validation="Decimal" version="Entrenchment" />
+			<field name="DamagePercentBonus:CAPITALABILITY:Pirate" validation="Decimal" version="Diplomacy" />	
+			<field name="DamagePercentBonus:CAPITALABILITY:Titan" validation="Decimal" version="Rebellion" />	
+			<field name="DamagePercentBonus:TITAN:CapitalShip" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:VeryLight" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:Light" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:Medium" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:Heavy" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:VeryHeavy" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:Module" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:TITAN:Pirate" validation="Decimal" version="Rebellion" />	
+			<field name="DamagePercentBonus:TITAN:Titan" validation="Decimal" version="Rebellion" />	
+			<field name="DamagePercentBonus:CORVETTE:CapitalShip" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:VeryLight" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:Light" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:Medium" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:Heavy" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:VeryHeavy" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:Module" validation="Decimal" version="Rebellion" />
+			<field name="DamagePercentBonus:CORVETTE:Pirate" validation="Decimal" version="Rebellion" />	
+			<field name="DamagePercentBonus:CORVETTE:Titan" validation="Decimal" version="Rebellion" />	
+			<field name="HullPointPercentageIncreasePerArmorPoint" validation="Decimal" />
+			<iterative_field name="NumCriticalHitEffectNames">
+				<field required="false" name="EffectName" validation="Particle"/>
+			</iterative_field>
+			<iterative_field name="NumCriticalHitEffectSoundIDs">
+				<field required="false" name="SoundID" validation="Sound"/>
+			</iterative_field>
+			<iterative_field name="NumPersistentHullDamageEffects">
+				<structure required="false" name="Definition">
+					<field name="effectName" validation="Particle" />
+					<field name="maxNumEffects" validation="Integer" />
+					<field name="minHullDamagePercentage" validation="Decimal" />
+				</structure>
+			</iterative_field>
+			<field name="InCombatHullRegenerationPenalty" validation="Decimal" />
+			<field name="InCombatFighterBuildRatePenalty" validation="Decimal" />
+			<field name="considerBeingDamagedTime" validation="Decimal" />
+			<field name="enemyDPSInOrbitBodyISquadOwnerBuildRateScalar" validation="Decimal" version="Entrenchment" />
+		</structure>
+		<structure name="ResearchData">
+			<field name="tierLabCount-0" validation="Integer" />
+			<field name="tierLabCount-1" validation="Integer" />
+			<field name="tierLabCount-2" validation="Integer" />
+			<field name="tierLabCount-3" validation="Integer" />
+			<field name="tierLabCount-4" validation="Integer" />
+			<field name="tierLabCount-5" validation="Integer" />
+			<field name="tierLabCount-6" validation="Integer" />
+			<field name="tierLabCount-7" validation="Integer" />
+			<iterative_field name="rebellionInfoCount">
+				<structure required="false" name="rebellionInfo">
+					<field name="minTimeBetweenAttacks" validation="Integer" />
+					<field name="maxTimeBetweenAttacks" validation="Integer" />
+					<field name="arrivalDelayTime" validation="Integer" />
+					<structure name="spawnShips">
+						<field name="minFleetPoints" validation="Integer" />
+						<field name="maxFleetPoints" validation="Integer" />
+						<iterative_field name="requiredShipCount">
+							<structure required="false" name="requiredShip">
+								<field name="type" validation="Entity" />
+								<field name="minCount" validation="Integer"/>
+								<field name="maxCount" validation="Integer"/>
+							</structure>
+						</iterative_field>
+						<iterative_field name="randomShipCount">
+							<structure required="false" name="randomShip">
+								<field name="type" validation="Entity" />
+								<field name="weight" validation="Integer" />
+							</structure>
+						</iterative_field>
+					</structure>
+				</structure>
+			</iterative_field>
+				<structure required="false" name="pirateMercenariesInfo" version="Rebellion">
+					<field name="minTimeBetweenAttacks" validation="Integer" />
+					<field name="maxTimeBetweenAttacks" validation="Integer" />
+					<field name="arrivalDelayTime" validation="Integer" />
+					<structure name="spawnShips">
+						<field name="minFleetPoints" validation="Integer" />
+						<field name="maxFleetPoints" validation="Integer" />
+						<iterative_field name="requiredShipCount">
+							<structure required="false" name="requiredShip">
+								<field name="type" validation="Entity" />
+								<field name="minCount" validation="Integer"/>
+								<field name="maxCount" validation="Integer"/>
+							</structure>
+						</iterative_field>
+						<iterative_field name="randomShipCount">
+							<structure required="false" name="randomShip">
+								<field name="type" validation="Entity" />
+								<field name="weight" validation="Integer" />
+							</structure>
+						</iterative_field>
+					</structure>
+				</structure>
+		</structure>
+		<structure name="VisibilityDistanceData">
+			<field name="capitalShipRadiusMultiplier" validation="Integer" />
+			<field name="entryVehicleRadiusMultiplier" validation="Integer" />
+			<field name="frigateRadiusMultiplier" validation="Integer" />
+			<field name="planetRadiusMultiplier" validation="Integer" />
+			<field name="asteroidRadiusMultiplier" validation="Integer" />
+			<field name="resourceAsteroidRadiusMultiplier" validation="Integer" />
+			<field name="debrisRadiusMultiplier" validation="Integer" />
+			<field name="cannonShellRadiusMultiplier" validation="Integer" />
+			<field name="starRadiusMultiplier" validation="Integer" />
+			<field name="planetModuleRadiusMultiplier" validation="Integer" />
+			<field name="starBaseRadiusMultiplier" validation="Integer" version="Entrenchment" />
+			<field name="spaceMineRadiusMultiplier" validation="Integer" version="Entrenchment" />
+			<field name="fighterRadiusMultiplier" validation="Integer" />
+			<field name="maxFighterMeshDistanceToCamera" validation="Integer" />
+			<field name="mainViewIconChildrenPlanetRadiusMultiplier" validation="Integer" />
+			<field name="mainViewIconChildrenAsteroidRadiusMultiplier" validation="Integer" />
+			<field name="mainViewIconChildrenStarRadiusMultiplier" validation="Integer" />
+			<field name="veryDistantIconFadeNearThresholdDistance" validation="Integer" />
+			<field name="veryDistantIconFadeFarThresholdDistance" validation="Integer" />
+		</structure>
+		<structure name="PhysicsData">
+			<field name="shipLinearMaxSpeedWhileSafeScalar" validation="Decimal" />
+			<field name="shipLinearAccelerationWhileSafeScalar" validation="Decimal" />
+			<field name="shipLinearDecelerationWhileSafeScalar" validation="Decimal" />
+		</structure>
+		<structure name="pirateRaidDef">
+			<field name="arrivalDelayTime" validation="Decimal" />
+			<field name="minSupply" validation="Integer" />
+			<field name="maxSupply" validation="Integer" />
+			<field name="strengthPerOwnedPlanet" validation="Decimal" />
+			<field name="strengthPerCargoShip" validation="Decimal" />
+			<field name="strengthPerBounty" validation="Decimal" />
+			<field name="firstWarningTime" validation="Integer" />
+			<field name="normalWarningTime" validation="Integer" />
+			<field name="minSendRaidTime" validation="Integer" />
+			<field name="maxSendRaidTime" validation="Integer" />
+			<field name="pirateQuestCooldownTime" validation="Integer" version="Diplomacy" />
+			<field name="minQuestCredits" validation="Integer" version="Diplomacy" />
+			<field name="maxQuestCredits" validation="Integer" version="Diplomacy" />
+			<field name="maxNumUpgradesPerRaid" validation="Integer" version="Diplomacy" />
+			<field name="juicyPlanetModuleThreshold" validation="Integer" version="Diplomacy" />
+			<field name="raidStrengthThreshold:0" validation="Decimal" />
+			<field name="raidStrengthThreshold:1" validation="Decimal" />
+			<field name="raidStrengthThreshold:2" validation="Decimal" />
+			<field name="raidStrengthThreshold:3" validation="Decimal" />
+			<field name="raidStrengthThreshold:4" validation="Decimal" />
+			<structure_reference name="pirateRaidComposition:0" type="PirateRaidComposition" />
+			<structure_reference name="pirateRaidComposition:1" type="PirateRaidComposition" />
+			<structure_reference name="pirateRaidComposition:2" type="PirateRaidComposition" />
+			<structure_reference name="pirateRaidComposition:3" type="PirateRaidComposition" />
+			<structure_reference name="pirateRaidComposition:4" type="PirateRaidComposition" />
+			<field name="fleetStrengthLevel:Weak" validation="Integer" version="Diplomacy" />
+			<field name="fleetStrengthLevel:Moderate" validation="Integer" version="Diplomacy" />
+			<field name="fleetStrengthLevel:Strong" validation="Integer" version="Diplomacy" />
+			<field name="fleetStrengthLevel:Massive" validation="Integer" version="Diplomacy" />
+			<field name="fleetStrengthLevel:Overwhelming" validation="Integer" version="Diplomacy" />
+			<field name="raidCost:0" validation="Integer" version="Diplomacy" />
+			<field name="raidCost:1" validation="Integer" version="Diplomacy" />
+			<field name="raidCost:2" validation="Integer" version="Diplomacy" />
+			<field name="raidCost:3" validation="Integer" version="Diplomacy" />
+			<field name="raidCost:4" validation="Integer" version="Diplomacy" />
+		</structure>
+		<structure_reference name="buildSpeedData-Slow" type="BuildSpeedData" />
+		<structure_reference name="buildSpeedData-Normal" type="BuildSpeedData" />
+		<structure_reference name="buildSpeedData-Fast" type="BuildSpeedData" />
+		<structure_reference name="buildSpeedData-Faster" type="BuildSpeedData" version="Diplomacy"/>
+		<structure_reference name="cultureSpeedData-Slow" type="CultureSpeedData" />
+		<structure_reference name="cultureSpeedData-Normal" type="CultureSpeedData" />
+		<structure_reference name="cultureSpeedData-Fast" type="CultureSpeedData" />
+		<structure_reference name="cultureSpeedData-Faster" type="CultureSpeedData"  version="Diplomacy"/>
+		<structure_reference name="researchSpeedData-Slow" type="ResearchSpeedData" />
+		<structure_reference name="researchSpeedData-Normal" type="ResearchSpeedData" />
+		<structure_reference name="researchSpeedData-Fast" type="ResearchSpeedData" />
+		<structure_reference name="researchSpeedData-Faster" type="ResearchSpeedData"  version="Diplomacy"/>
+		<structure_reference name="incomeSpeedData-Slow" type="IncomeSpeedData" />
+		<structure_reference name="incomeSpeedData-Normal" type="IncomeSpeedData" />
+		<structure_reference name="incomeSpeedData-Fast" type="IncomeSpeedData" />
+		<structure_reference name="incomeSpeedData-Faster" type="IncomeSpeedData"  version="Diplomacy"/>
+		<structure_reference name="fleetSupplyData-Small" type="FleetSupplyData" />
+		<structure_reference name="fleetSupplyData-Normal" type="FleetSupplyData" />
+		<structure_reference name="fleetSupplyData-Large" type="FleetSupplyData" />
+		<structure_reference name="shipPhysicsSpeedData-Slow" type="ShipPhysicsSpeedData" />
+		<structure_reference name="shipPhysicsSpeedData-Normal" type="ShipPhysicsSpeedData" />
+		<structure_reference name="shipPhysicsSpeedData-Fast" type="ShipPhysicsSpeedData" />
+		<structure_reference name="shipPhysicsSpeedData-Faster" type="ShipPhysicsSpeedData"  version="Diplomacy"/>
+		<structure_reference name="diplomaticPointsSpeedData-Slow" type="DiplomaticPointsSpeedData"  version="DiplomacyOnly"/>
+		<structure_reference name="diplomaticPointsSpeedData-Normal" type="DiplomaticPointsSpeedData"  version="DiplomacyOnly"/>
+		<structure_reference name="diplomaticPointsSpeedData-Fast" type="DiplomaticPointsSpeedData"  version="DiplomacyOnly"/>
+		<structure_reference name="diplomaticPointsSpeedData-Faster" type="DiplomaticPointsSpeedData"  version="DiplomacyOnly"/>
+		<structure_reference name="victorySpeedData-Slow" type="DiplomaticPointsSpeedData"  version="Rebellion"/>
+		<structure_reference name="victorySpeedData-Normal" type="DiplomaticPointsSpeedData"  version="Rebellion"/>
+		<structure_reference name="victorySpeedData-Fast" type="DiplomaticPointsSpeedData"  version="Rebellion"/>
+		<structure_reference name="victorySpeedData-Faster" type="DiplomaticPointsSpeedData"  version="Rebellion"/>
+		<structure name="marketDef">
+			<field name="sellPrice" validation="Integer" />
+			<field name="buyPrice" validation="Integer" />
+			<field name="priceIncreaseAtMaxShift" validation="Integer" />
+			<field name="minTimeForMarketChange" validation="Integer" />
+			<field name="maxTimeForMarketChange" validation="Integer" />
+			<field name="minTimeToCrashOrBoom" validation="Integer" />
+			<field name="maxTimeToCrashOrBoom" validation="Integer" />
+			<field name="minLengthOfCrashOrBoom" validation="Integer" />
+			<field name="maxLengthOfCrashOrBoom" validation="Integer" />
+			<field name="normalMarketMinShift" validation="Integer" />
+			<field name="normalMarketMaxShift" validation="Integer" />
+			<field name="boomThresholdPerPlayer" validation="Integer" />
+			<field name="crashThresholdPerPlayer" validation="Integer" />
+			<field name="boomMinShift" validation="Integer" />
+			<field name="crashMaxShift" validation="Integer" />
+			<field name="netChangeForCrash" validation="Integer" />
+			<field name="netChangeForBoom" validation="Integer" />
+		</structure>
+		<structure name="playerAISharedDef">
+			<structure_reference name="table-Aggressive" type="PlayerAITable" />
+			<structure_reference name="table-Defensive" type="PlayerAITable" />
+			<structure_reference name="table-Research" type="PlayerAITable" />
+			<structure_reference name="table-Economic" type="PlayerAITable" />
+		</structure>
+		<structure name="playerDiplomacyAIDef">
+			<field name="offerOrAcceptTreatyHappinessThreshold:Trade" validation="Decimal" version="Vanilla"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:ExternalVision" validation="Decimal"  version="Vanilla"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:InternalVision" validation="Decimal"  version="Vanilla"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:CeaseFire" validation="Decimal"  version="Vanilla"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:PeaceTreaty" validation="Decimal"  version="Vanilla"/>
+			<field name="breakTreatyHappinessThreshold:Trade" validation="Decimal"  version="Vanilla"/>
+			<field name="breakTreatyHappinessThreshold:ExternalVision" validation="Decimal"  version="Vanilla"/>
+			<field name="breakTreatyHappinessThreshold:InternalVision" validation="Decimal"  version="Vanilla"/>
+			<field name="breakTreatyHappinessThreshold:CeaseFire" validation="Decimal"  version="Vanilla"/>
+			<field name="breakTreatyHappinessThreshold:PeaceTreaty" validation="Decimal"  version="Vanilla"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:Trade" validation="Decimal" version="EntrenchmentOnly"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:ExternalVision" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:InternalVision" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:CeaseFire" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="offerOrAcceptTreatyHappinessThreshold:PeaceTreaty" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakTreatyHappinessThreshold:Trade" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakTreatyHappinessThreshold:ExternalVision" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakTreatyHappinessThreshold:InternalVision" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakTreatyHappinessThreshold:CeaseFire" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakTreatyHappinessThreshold:PeaceTreaty" validation="Decimal"  version="EntrenchmentOnly"/>
+			<field name="breakRelationshipThreshold:Trade" validation="Decimal" version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:ExternalVision" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:InternalVision" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:CeaseFire" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:PeaceTreaty" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:ResearchPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:EfficiencyPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:AntimatterPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:ArmorPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:BeamWeaponPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:CulturePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:MetalCrystalPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:ThrusterPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:PhaseJumpPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:PlanetBombingPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:ShieldPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:MarketPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:EnergyWeaponCooldownPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:MassReductionPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:SupplyPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:TacticalSlotsPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:WeaponCooldownPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipThreshold:TradeIncomePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:Trade" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:ExternalVision" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:InternalVision" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:CeaseFire" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:PeaceTreaty" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:ResearchPact" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:EfficiencyPact" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:AntimatterPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:ArmorPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:BeamWeaponPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:CulturePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:MetalCrystalPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:ThrusterPact" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipRequirement:PhaseJumpPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:PlanetBombingPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:ShieldPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:MarketPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:EnergyWeaponCooldownPact" validation="Decimal" version="Diplomacy" />
+			<field name="relationshipRequirement:MassReductionPact" validation="Decimal" version="Diplomacy" />
+			<field name="relationshipRequirement:SupplyPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:TacticalSlotsPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:WeaponCooldownPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="relationshipRequirement:TradeIncomePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:Trade" validation="Decimal" version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:ExternalVision" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:InternalVision" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:CeaseFire" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:PeaceTreaty" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:ResearchPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:EfficiencyPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:AntimatterPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:ArmorPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:BeamWeaponPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:CulturePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:MetalCrystalPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:ThrusterPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:PhaseJumpPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:PlanetBombingPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:ShieldPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:MarketPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:EnergyWeaponCooldownPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:MassReductionPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:SupplyPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:TacticalSlotsPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:WeaponCooldownPact" validation="Decimal"  version="Diplomacy"/>
+			<field name="breakRelationshipPenalty:TradeIncomePact" validation="Decimal"  version="Diplomacy"/>
+			<field name="diplomacyPointsForRelationship:Trade" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForRelationship:ExternalVision" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForRelationship:InternalVision" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForRelationship:CeaseFire" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForRelationship:PeaceTreaty" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:1" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:2" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:3" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:4" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:5" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:6" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:7" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:8" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:9" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:10" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:11" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomacyPointsForPactCount:12" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:2" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:3" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:4" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:5" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:6" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:7" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:8" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:9" validation="Decimal"  version="Rebellion"/>
+			<field name="diplomaticVictoryForPlayerCount:10" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Easy" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Medium" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Hard" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Unfair" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Nightmare" validation="Decimal"  version="Rebellion"/>
+			<field name="aiDiplomaticPointBonusScalar:Impossible" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenTreatyOffers" validation="Decimal" />
+			<field name="timeBetweenQuests" validation="Decimal" />
+			<field name="maxRelationship" validation="Decimal" version="Diplomacy"/>
+			<field name="rejectMissionsPenalty" validation="Decimal" version="Diplomacy"/>
+			<field name="rejectMissionsMin" validation="Decimal" version="Diplomacy"/>
+			<field name="militaryActionsMin" validation="Decimal" version="Diplomacy"/>
+			<field name="militaryActionsMax" validation="Decimal" version="Diplomacy"/>
+			<field name="militaryActionsDecayRate" validation="Decimal" version="Diplomacy"/>
+			<structure_reference name="KilledShip" type="KilledType" version="Diplomacy"/>
+			<structure_reference name="KilledCivilianStructure" type="KilledType" version="Diplomacy"/>
+			<structure_reference name="KilledTacticalStructure" type="KilledType" version="Diplomacy"/>
+			<structure_reference name="KilledPlanet" type="KilledType" version="Diplomacy"/>
+			<structure_reference name="KilledStarbase" type="KilledType" version="Diplomacy"/>
+			<iterative_field name="adjacentTerritoryModifiers" version="Diplomacy">
+				<field required="false" name="modifier" validation="Decimal" />
+			</iterative_field>
+			<field name="aggressivenessModifierMax" validation="Decimal" version="Diplomacy"/>
+			<field name="aggressivenessModifierMin" validation="Decimal" version="Diplomacy"/>
+			<field name="aggressivenessModifierIncrement" validation="Decimal" version="Diplomacy"/>
+			<field name="raceRelationsIncrement" validation="Decimal" version="Diplomacy"/>
+			<field name="factionRelationsIncrement" validation="Decimal" version="Rebellion"/>
+			<field name="militaryPresenceMin" validation="Decimal" version="Diplomacy"/>
+			<field name="militaryPresenceMax" validation="Decimal" version="Diplomacy"/>
+			<structure_reference name="allyTreatyRelationshipChanges" type="RelationShipChangesType" version="Diplomacy"/>
+			<structure_reference name="enemyTreatyRelationshipChanges" type="RelationShipChangesType" version="Diplomacy"/>
+			<iterative_field name="allyPactCountRelationshipChanges" version="Diplomacy">
+				<field required="false" name="modifier" validation="Decimal" />
+			</iterative_field>
+			<iterative_field name="enemyPactCountRelationshipChanges" version="Diplomacy">
+				<field required="false" name="modifier" validation="Decimal" />
+			</iterative_field>
+			
+			<field name="creditsGivenRelationshipRatio" validation="Decimal" version="Diplomacy"/>
+			<field name="metalGivenRelationshipRatio" validation="Decimal" version="Diplomacy"/>
+			<field name="crystalGivenRelationshipRatio" validation="Decimal" version="Diplomacy"/>
+			<field name="resourceGivenMax" validation="Decimal" version="Diplomacy"/>
+			<field name="resourceGivenChangeRate" validation="Decimal" version="Diplomacy"/>
+			<field name="tradeBonusRatePerTrip" validation="Decimal" version="Diplomacy"/>
+			<field name="tradeBonusCap" validation="Decimal" version="Diplomacy"/>
+			<field name="tradeBonusDecayRate" validation="Decimal" version="Diplomacy"/>
+			<field name="planetaryEnvoyBonusDecayRate" validation="Decimal" version="Diplomacy"/>
+			<field name="planetaryEnvoyBonusMax" validation="Decimal" version="Diplomacy"/>
+			<field name="planetaryEnvoyBonusTimeout" validation="Decimal" version="Diplomacy"/>
+			<field name="questTimeoutRatio" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Hateful" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Abysmal" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Warming" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Neutral" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Friendly" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Peaceful" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Cooperative" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Beneficial" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Symbiotic" validation="Decimal" version="Diplomacy"/>
+			<field name="flavorTextLevel:Devoted" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Hateful" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Abysmal" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Warming" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Neutral" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Friendly" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Peaceful" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Cooperative" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Beneficial" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Symbiotic" validation="Decimal" version="Diplomacy"/>
+			<field name="relationshipLevelMissionBonus:Devoted" validation="Decimal" version="Diplomacy"/>
+			<field name="diplomaticVictoryMultiplier" validation="Decimal" version="DiplomacyOnly"/>
+			<field name="positiveDiplomaticPointsPerPoint" validation="Decimal" version="DiplomacyOnly"/>
+			<field name="negativeDiplomaticPointsPerPoint" validation="Decimal" version="DiplomacyOnly"/>
+			<field name="aiBonusMax" validation="Decimal" version="Diplomacy"/>
+			<field name="aiBonusRate" validation="Decimal" version="Diplomacy"/>
+			<structure_reference name="QuestTypeBombAnyPlanetLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeGiveResourcesLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeKillShipsLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeKillCapitalShipsLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeKillCivilianStructuresLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeKillTacticalStructuresLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<structure_reference name="QuestTypeSendEnvoyLevelInfos" type="QuestLevelInfosType" version="Diplomacy"/>
+			<iterative_field name="FactionCount" version="Rebellion">
+				<field required="false" name="FactionName" validation="StringInfo"/>
+			</iterative_field>
+			</structure>
+		<structure name="playerTradeNetworkDef">
+			<field name="incomeRateBonusPerLongestNodeDistanceNode" validation="Decimal" />
+		</structure>
+		<field name="targetTypeCounterData" validation="Any" version="Entrenchment" />
+		<structure name="aiData" version="Entrenchment" >
+			<field name="aiRetreatThreshold" validation="Decimal" />
+		</structure>
+		<structure name="victoryData" version="Rebellion">
+			<field name="occupationVictoryStarType" validation="Entity"/>
+			<field name="occupationVictoryStarName" validation="Any"/>
+			<field name="occupationVictoryPlanetType" validation="Entity"/>
+			<field name="occupationVictoryPlanetName" validation="Any"/>
+			<field name="occupationVictoryPlanetTemplate" validation="GalaxyTemplate"/>
+			<field name="occupationVictoryTime" validation="Integer"/>
+		</structure>
+		<structure name="outlawSectorsData" version="Rebellion">
+			<field name="militiaMainViewXOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaMainViewYOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaMainViewIconSizeScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaMainViewIconXOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaMainViewIconYOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaHUDIconSizeScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaHUDIconXOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="militiaHUDIconYOffsetScalar" validation="Decimal"  version="Rebellion"/>
+			<structure name="spawnShips">
+				<field name="minFleetPoints" validation="Integer" />
+				<field name="maxFleetPoints" validation="Integer" />
+				<iterative_field name="requiredShipCount">
+					<structure required="false" name="requiredShip">
+						<field name="type" validation="Entity" />
+						<field name="minCount" validation="Integer"/>
+						<field name="maxCount" validation="Integer"/>
+					</structure>
+				</iterative_field>
+				<iterative_field name="randomShipCount">
+					<structure required="false" name="randomShip">
+						<field name="type" validation="Entity" />
+						<field name="weight" validation="Integer" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<field name="baseFleetCapacity" validation="Decimal"  version="Rebellion"/>
+			<field name="maxFleetSupplyPerPlanetPopulation" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyMin" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyMax" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyScalarAtMinFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyScalarAtMaxFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsAtMinFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsAtMaxFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsVariancePercent" validation="Decimal"  version="Rebellion"/>
+			<field name="planetsAtMinFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="planetsAtMaxFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="minPlanetsFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>	
+			<field name="maxPlanetsFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="pirateBountyBonusScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="pirateRaidRaidTimeScalar" validation="Decimal"  version="Rebellion"/>
+		</structure>
+	</structure>
+
+</tns:entity_definitions>

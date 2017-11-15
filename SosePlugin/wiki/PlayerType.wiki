@@ -1,0 +1,21 @@
+#labels SOASE, DynamicContent
+#summary PlayerType Definition
+==References==
+ * [GalaxyScenarioDef]
+
+* [PlayerType]
+ * designName: [Any]
+ * inGameName: [Any]
+ * overrideRaceName: [Any]
+ * teamIndex: [Integer]
+ * startingCredits: [Integer]
+ * startingMetal: [Integer]
+ * startingCrystal: [Integer]
+ * isNormalPlayer: [Boolean]
+ * isRaidingPlayer: [Boolean]
+ * isInsurgentPlayer: [Boolean]
+ * themeGroup: [Any]
+ * themeIndex: [Integer]
+ * pictureGroup: [Any]
+ * pictureIndex: [Integer]
+

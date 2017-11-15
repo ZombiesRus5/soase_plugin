@@ -1,0 +1,1 @@
+Enumeration Validation: Validates an entry confirms to an allowed set of values (i.e. buffInstantActionType)

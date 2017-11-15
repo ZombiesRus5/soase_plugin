@@ -1,0 +1,19 @@
+#labels Featured,Phase-Deploy
+How to execute the build.xml
+
+= Introduction =
+
+This guide demonstrates how to execute the build.xml from Eclipse.
+
+
+= Details =
+
+ # Open the build.xml into an eclipse editor.
+
+ # Locate the outline view. (Upper right in Java perspective, lower left in resource perspective). Perspectives can be changed by selecting Window/Open Perspective. (See reply 28 for a visual).
+
+ # Right click in the "Outline View" the line saying "deploy_mod" or optionally an individual task you wish to execute.
+
+ # Select Run As/Ant Build.
+
+http://dl.dropbox.com/u/5790092/SinsTools/Executing_ant_build.jpg

@@ -1,0 +1,13 @@
+#labels SOASE, DynamicContent
+#summary GenericLevel Definition
+==References==
+ * [Ability]
+ * [Buff]
+ * [CapitalShip]
+ * [Frigate]
+
+* [GenericLevel]
+ * Level:0: [Decimal]
+ * Level:1: [Decimal]
+ * Level:2: [Decimal]
+

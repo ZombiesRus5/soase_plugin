@@ -1,0 +1,7 @@
+#labels SOASE, DynamicContent
+#summary firingAlignmentType Condition Definition
+<wiki:toc max_depth="5"/>
+[firingAlignmentType]: [Condition]
+ * Default
+ * TiltForward
+  * firingTiltAngle: [Decimal]

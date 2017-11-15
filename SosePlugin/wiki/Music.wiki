@@ -1,0 +1,14 @@
+#labels SOASE, DynamicContent
+#summary Music Definition
+==References==
+ * [Sounddata]
+
+* [Music]
+ * name: [Any]
+ * fileName: [SoundFile]
+ * isLooping: [Boolean]
+ * actionLevel: [Decimal]
+ * actionRange: [Decimal]
+ * emotionLevel: [Decimal]
+ * emotionRange: [Decimal]
+

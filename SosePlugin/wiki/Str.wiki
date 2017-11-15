@@ -1,0 +1,6 @@
+#labels SOASE, DynamicContent
+#summary Str Definition
+* [Str]
+ * NumStrings: [Iteration]
+  * [StringInfo]
+

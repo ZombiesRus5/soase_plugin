@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Ability" help="Used to create abilities.">
+		<helpText>
+An Ability is an entity file that can be assigned to an object as the 
+"front end" for a buff.	
+		</helpText>
+		<field required="true" name="buffInstantActionType" type="buffInstantActionType"/>
+		<field required="false" name="toggleStateOnNameStringID" validation="StringInfo"/>
+		<field required="false" name="toggleStateOnDescStringID" validation="StringInfo"/>
+		<field required="true" name="needsToFaceTarget" validation="Boolean"/>
+		<field required="true" name="canCollideWithTarget" validation="Boolean"/>
+		<field required="true" name="moveThruTarget" validation="Boolean"/>
+		<field required="true" name="isUltimateAbility" validation="Boolean"/>
+		<field required="true" name="maxNumLevels" validation="Integer"/>
+		<field required="true" name="levelSourceType" type="levelSourceType"/>
+		<field required="true" name="aiUseTime" type="aiUseTime"/>
+		<field required="true" name="aiUseTargetCondition" type="aiUseTargetCondition"/>
+		<field required="true" name="isAutoCastAvailable" validation="Boolean"/>
+		<field required="true" name="isAutoCastOnByDefault" validation="Boolean"/>
+		<field required="true" name="pickRandomPlanetToExploreForAutoCastTarget" validation="Boolean"/>
+		<field required="true" name="ignoreNonCombatShipsForAutoCastTarget" validation="Boolean"/>
+		<field required="true" name="onlyAutoCastWhenDamageTakenExceedsPerc" validation="Decimal"/>
+		<field required="true" name="useCostType" type="useCostType"/>
+		<structure_reference required="true" name="researchPrerequisites"/>
+		<field required="true" name="nameStringID" validation="StringInfo"/>
+		<field required="true" name="descStringID" validation="StringInfo"/>
+		<field required="true" name="hudIcon" validation="Brush"/>
+		<field required="true" name="smallHudIcon" validation="Brush"/>
+		<field required="true" name="infoCardIcon" validation="Brush"/>
+	</structure>
+</tns:entity_definitions>

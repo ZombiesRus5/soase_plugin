@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary space Definition
+==References==
+ * [targetFilter]
+
+==Values==
+ * [Normal Normal]
+ * [Phase Phase]

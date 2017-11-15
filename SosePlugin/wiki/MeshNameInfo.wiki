@@ -1,0 +1,18 @@
+#labels SOASE, DynamicContent
+#summary MeshNameInfo Definition
+==References==
+ * [CapitalShip]
+ * [Frigate]
+ * [PlanetModuleHangarDefense]
+ * [PlanetModuleRefinery]
+ * [PlanetModuleShipFactory]
+ * [PlanetModuleStandard]
+ * [PlanetModuleTradePort]
+ * [PlanetModuleWeaponDefense]
+ * [SpaceMine]
+ * [StarBase]
+
+* [MeshNameInfo]
+ * meshName: [Mesh]
+ * [criteriaType]: [Condition]
+

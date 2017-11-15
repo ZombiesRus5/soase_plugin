@@ -1,0 +1,20 @@
+#labels SOASE, DynamicContent
+#summary hasLevels Condition Definition
+<wiki:toc max_depth="5"/>
+[hasLevels]: [Condition]
+ * FALSE
+  * ExperiencePointsForDestroying: [Decimal]
+  * MaxHullPoints: [Decimal]
+  * MaxShieldPoints: [Decimal]
+  * HullPointRestoreRate: [Decimal]
+  * ShieldPointRestoreRate: [Decimal]
+  * BaseArmorPoints: [Decimal]
+  * maxMitigation: [Decimal]
+ * TRUE
+  * [ExperiencePointsForDestroying]: [GenericLevel]
+  * [MaxHullPoints]: [GenericLevel]
+  * [MaxShieldPoints]: [GenericLevel]
+  * [HullPointRestoreRate]: [GenericLevel]
+  * [ShieldPointRestoreRate]: [GenericLevel]
+  * [BaseArmorPoints]: [GenericLevel]
+  * [maxMitigation]: [GenericLevel]

@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary StatesType Definition
+==References==
+ * [BrushType]
+
+* [StatesType]
+ * fileName: [Texture]
+ * pixelBox: [Position]
+

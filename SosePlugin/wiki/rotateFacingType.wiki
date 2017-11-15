@@ -1,0 +1,15 @@
+#labels SOASE, DynamicContent
+#summary rotateFacingType Definition
+==References==
+ * [PlanetModuleHangarDefense]
+ * [PlanetModuleRefinery]
+ * [PlanetModuleShipFactory]
+ * [PlanetModuleStandard]
+ * [PlanetModuleTradePort]
+ * [PlanetModuleWeaponDefense]
+ * [StarBase]
+
+==Values==
+ * [None None]
+ * [AwayFromOrbitBody AwayFromOrbitBody]
+ * [TowardsOrbitBody TowardsOrbitBody]

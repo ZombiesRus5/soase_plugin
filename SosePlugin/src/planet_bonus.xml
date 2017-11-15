@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="PlanetBonus">
+		<field name="minUpgradeLevelNeeded" validation="Integer"/>
+		<field name="maxUpgradeLevelNeeded" validation="Integer"/>
+		<field name="nameStringID" validation="StringInfo"/>
+		<field name="descStringID" validation="StringInfo"/>
+		<field name="floatBonus:AdditiveCultureSpreadPerc" validation="Decimal"/>
+		<field name="floatBonus:AdditivePopulation" validation="Decimal"/>
+		<field name="floatBonus:AdditivePlanetHealth" validation="Decimal"/>
+		<field name="floatBonus:AdditiveSlotsCivilian" validation="Decimal"/>
+		<field name="floatBonus:AdditiveSlotsTactical" validation="Decimal"/>
+		<field name="floatBonus:AdditiveTaxIncome" validation="Decimal"/>
+		<field name="floatBonus:AdditiveTradeIncomePerc" validation="Decimal"/>
+		<field name="floatBonus:BombingDamageAsDamageTargetAdjustment" validation="Decimal" version="Rebellion"/>
+		<field name="floatBonus:MaxAllegiancePercBonus" validation="Decimal" version="Rebellion"/>
+		<field name="floatBonus:MetalIncomePerc" validation="Decimal"/>
+		<field name="floatBonus:CrystalIncomePerc" validation="Decimal"/>
+		<field name="floatBonus:GravityWellRadiusPerc" validation="Decimal"/>
+		<field name="floatBonus:ModuleBuildCostPerc" validation="Decimal"/>
+		<field name="floatBonus:ModuleBuildRatePerc" validation="Decimal"/>
+		<field name="floatBonus:PlanetUpgradeBuildCostPerc" validation="Decimal"/>
+		<field name="floatBonus:PlanetUpgradeBuildRatePerc" validation="Decimal"/>
+		<field name="floatBonus:PopulationGrowthPerc" validation="Decimal"/>
+		<field name="floatBonus:ShipBuildCostAdjustment" validation="Decimal" version="Rebellion"/>
+		<field name="floatBonus:WeaponDamageAtGravityWellMultiplier" validation="Decimal" version="Rebellion"/>
+		<field name="intBonus:MaxSpaceMines" validation="Integer" version="Rebellion"/>
+		<field name="intBonus:MaxStarbases" validation="Integer" version="Rebellion"/>
+		<field name="intBonus:ModuleConstructors" validation="Integer"/>
+		<field name="intBonus:SpacePonies" validation="Integer"/>
+		<field name="dlcId" validation="Integer" version="Rebellion"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+	</structure>
+</tns:entity_definitions>

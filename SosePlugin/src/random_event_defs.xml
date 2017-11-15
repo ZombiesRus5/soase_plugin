@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+	<structure name="Randomeventdefs">
+		<field name="initialSpawnTimeMin" validation="Decimal"/>
+		<field name="initialSpawnTimeMax" validation="Decimal"/>
+		<field name="failedRespawnTimeMin" validation="Decimal"/>
+		<field name="failedRespawnTimeMax" validation="Decimal"/>
+		<field name="lowAllegianceCheckPeriod" validation="Decimal"/>
+		<field name="lowAllegianceThreshold" validation="Decimal"/>
+		<iterative_field name="randomEventDefCount">
+			<structure_reference required="false" name="randomEventDef" type="RandomEventDefType"/>
+		</iterative_field>
+	</structure>
+
+	<structure name="RandomEventDefType">
+		<field name="id" validation="Any"></field>
+		<field name="nameID" validation="StringInfo"></field>
+		<field name="warningID" validation="StringInfo"></field>
+		<condition_field name="spawnType">
+			<condition>
+				<value version="Rebellion">Projectile</value>
+				<field name="projectileTarget" validation="Simple" values="RandomConnectedLocation" />
+				<field name="spawnEntity" validation="Entity" />
+			</condition>
+			<condition>
+				<value>BuffAtLocation</value>
+				<field name="spawnEntity" validation="Entity" />
+			</condition>
+			<condition>
+				<value>RacialBuffAtLocation</value>
+				<iterative_field name="racialBuffCount">
+					<field name="race" validation="StringInfo" required="false" />
+					<field name="buff" validation="Entity" required="false" />
+				</iterative_field>
+			</condition>
+			<condition>
+				<value>PeriodicBuffAtLocation</value>
+				<field name="spawnEntity" validation="Entity" />
+				<field name="duration" validation="Decimal" />
+				<field name="period" validation="Decimal" />
+			</condition>
+		</condition_field>
+		<field name="playerOwnerType" validation="Simple">
+			<value>Invalid</value>
+			<value>LocationOwner</value>
+			<value>Pirate</value>
+			<value>Rebel</value>
+			<value>Occupation</value>
+			<value>MadVasari</value>
+			<value>Null</value>
+		</field>
+		<field name="spawnLocation" validation="Simple">
+			<value>Invalid</value>
+			<value>RandomStar</value>
+			<value>RandomLocation</value>
+			<value>RandomPirateBase</value>
+			<value>TriggerLocation</value>
+			<value>AllLocations</value>
+			<value>RandomPlayerAllLocations</value>
+			<value>RandomNonHomeworld</value>
+			<value>RandomLocationSpace</value>
+		</field>
+		<iterative_field name="excludedSpawnLocationCount">
+			<field name="excludedSpawnLocation" validation="Entity" required="false"/>
+		</iterative_field>
+		<condition_field name="spawnRequirement">
+			<condition>
+				<value>Timer</value>
+				<field required="false" name="respawnCount" validation="Decimal" />
+				<field name="nextSpawnTimeMin" validation="Decimal" />
+				<field name="nextSpawnTimeMax" validation="Decimal" />
+			</condition>
+			<condition>
+				<value>TriggerCultureFlip</value>
+				<field name="triggerWeight" validation="Decimal" />
+			</condition>
+			<condition>
+				<value>TriggerLowAllegiance</value>
+				<field name="triggerWeight" validation="Decimal" />
+			</condition>
+		</condition_field>
+		<field name="spawnWeight" validation="Decimal" />		
+	</structure>	
+</tns:entity_definitions>

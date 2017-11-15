@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0120)http://help.eclipse.org/kepler/advanced/contentToolbar.jsp?topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-icons.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Toolbar</title>
+ 
+<style type="text/css">
+
+/* need this one for Mozilla */
+HTML { 
+	margin:0px;
+	padding:0px;
+}
+ 
+BODY {
+	background:ButtonFace;
+}
+
+#titleText {
+	font-weight:bold;
+	color:WindowText;
+}
+
+a {
+    cursor : default
+}
+ 
+.buttonOn a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	width:18px;
+	height:18px;
+	border:1px solid Highlight;
+	
+    vertical-align:middle;
+
+	background: Window;
+
+}
+
+.button a, .buttonMenu a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	height:18px;
+	border:1px solid ButtonFace;
+	
+	vertical-align:middle;
+}
+
+.button a {
+	width:18px;
+}
+
+.buttonMenu a {
+	width:30px;
+}
+
+.buttonHidden a { 
+	display:none;
+}
+
+.button a:hover, .buttonMenu a:hover { 
+	border-top:1px solid ButtonHighlight; 
+	border-left:1px solid ButtonHighlight; 
+	border-right:1px solid ButtonShadow; 
+	border-bottom:1px solid ButtonShadow;
+}
+
+
+
+.separator {
+	background-color: ThreeDShadow;
+	height:100%;
+	width: 1px;
+	border-top:2px solid ButtonFace;
+	border-bottom:2px solid ButtonFace;
+	border-left:3px solid ButtonFace;
+	border-right:3px solid ButtonFace;
+	
+}
+
+#container {
+	border-bottom:1px solid ThreeDShadow;
+
+	border-top:1px solid ThreeDShadow;
+	height:24px;
+
+}
+
+
+
+/* need this one for Mozilla */
+HTML { 
+	margin:0px;
+	padding:0px;
+}
+
+
+</style>
+
+
+
+<script language="JavaScript">
+
+var bRestore = false;
+// Preload images
+
+	var toggle_highlight = new Image();
+	toggle\u005Fhighlight.src = "images\u002Fe\u005Fhighlight\u002Egif";
+
+	var back = new Image();
+	back.src = "images\u002Fe\u005Fback\u002Egif";
+
+	var forward = new Image();
+	forward.src = "images\u002Fe\u005Fforward\u002Egif";
+
+	var home = new Image();
+	home.src = "images\u002Fe\u005Fhome\u002Egif";
+
+	var synch = new Image();
+	synch.src = "images\u002Fe\u005Fsynch\u005Ftoc\u005Fnav\u002Egif";
+
+	var add_bkmrk = new Image();
+	add\u005Fbkmrk.src = "images\u002Fe\u005Fadd\u005Fbkmrk\u002Egif";
+
+	var print = new Image();
+	print.src = "images\u002Fe\u005Fprint\u005Ftopic\u002Egif";
+
+	var maximize_restore = new Image();
+	maximize\u005Frestore.src = "images\u002Fmaximize\u002Egif";
+
+
+function setTitle(label)
+{
+	if( label == null) label = "";
+	var title = document.getElementById("titleText");
+	if (title == null) return;
+	var text = title.lastChild;
+	if (text == null) return;
+	text.nodeValue = label;
+}
+
+
+function registerMaximizedChangedListener(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.registerMaximizeListener) {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.registerMaximizeListener('Toolbar', maximizedChanged);
+	}
+}
+registerMaximizedChangedListener();
+
+/**
+ * Handler for double click: maximize/restore this view
+ * Note: Mozilla browsers prior to 1.2.1 do not support programmatic frame resizing well.
+ */
+function mouseDblClickHandler(e) {
+	// ignore double click on buttons
+	var target=e.target;
+	if (target.tagName && (target.tagName == "A" || target.tagName == "IMG"))
+		return;
+	toggleFrame();
+	return false;
+}		
+function restore_maximize(button)
+{
+	toggleFrame();
+	if (button && document.getElementById(button)){
+		document.getElementById(button).blur();
+	}
+}
+function toggleFrame(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.toggleFrame)  {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.toggleFrame('');
+	}
+	document.selection.clear;	
+}
+
+function maximizedChanged(maximizedNotRestored){
+	if(maximizedNotRestored){
+		document.getElementById("maximize_restore").src="images/e_restore.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Restore");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Restore");
+		bRestore = true;
+	}else{
+		document.getElementById("maximize_restore").src="images/e_maximize.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Maximize");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Maximize");
+		bRestore = false;
+	}
+}
+
+document.ondblclick = mouseDblClickHandler;
+
+
+function setButtonState(buttonName, pressed) {
+	if(!document.getElementById("tdb_"+buttonName))
+		return;
+	if (pressed == "hidden")
+		document.getElementById("tdb_"+buttonName).className="buttonHidden";
+	else if(pressed == true)
+		document.getElementById("tdb_"+buttonName).className="buttonOn";
+	else
+		document.getElementById("tdb_"+buttonName).className="button";
+}
+
+function setWindowStatus(buttonName){
+	
+		if (buttonName == "toggle\u005Fhighlight"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Highlight\u0020Search\u0020Terms";
+			}
+		}
+	
+		if (buttonName == "back"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Go\u0020Back";
+			}
+		}
+	
+		if (buttonName == "forward"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Go\u0020Forward";
+			}
+		}
+	
+		if (buttonName == "home"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Home";
+			}
+		}
+	
+		if (buttonName == "null"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "null";
+			}
+		}
+	
+		if (buttonName == "synch"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Show\u0020in\u0020Table\u0020of\u0020Contents";
+			}
+		}
+	
+		if (buttonName == "add\u005Fbkmrk"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Bookmark\u0020Document";
+			}
+		}
+	
+		if (buttonName == "print"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Print\u0020Page";
+			}
+		}
+	
+		if (buttonName == "maximize\u005Frestore"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Maximize";
+			}
+		}
+	
+}
+
+
+
+</script>
+
+
+<script language="JavaScript" src="./contentActions.js.download"></script>
+
+
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+ 
+
+	<body dir="ltr" marginwidth="0" marginheight="0">
+
+
+<table id="container" width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="padding-left:8px;">
+
+	<tbody><tr>
+		<td nowrap="" style="font: icon" valign="middle">
+			<div id="titleTextTableDiv" style="overflow:hidden; height:22px;"><table><tbody><tr><td nowrap="" style="font:icon"><div id="titleText">&nbsp;</div></td></tr></tbody></table>
+			</div>
+		
+		
+		<div style="position:absolute; top:1px; right:0px;">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" height="100%">
+			<tbody><tr>
+				<td align="right">
+					<table align="right" border="0" cellspacing="0" cellpadding="0" height="100%" style="background:ButtonFace">
+					<tbody><tr>
+
+						<td align="middle" id="tdb_toggle_highlight" class="buttonHidden" height="18">
+							<a href="javascript:toggleHighlight(&#39;b0&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;toggle_highlight&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b0">
+							   <img src="./e_highlight.gif" alt="Highlight Search Terms" title="Highlight Search Terms" border="0" id="toggle_highlight">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_back" class="button" height="18">
+							<a href="javascript:goBack(&#39;b1&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;back&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b1">
+							   <img src="./e_back.gif" alt="Go Back" title="Go Back" border="0" id="back">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_forward" class="button" height="18">
+							<a href="javascript:goForward(&#39;b2&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;forward&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b2">
+							   <img src="./e_forward.gif" alt="Go Forward" title="Go Forward" border="0" id="forward">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_home" class="button" height="18">
+							<a href="javascript:goHome(&#39;b3&#39;, &#39;../topic/org.eclipse.help.base/doc/help_home.html&#39;);" onmouseover="javascript:setWindowStatus(&#39;home&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b3">
+							   <img src="./e_home.gif" alt="Home" title="Home" border="0" id="home">
+							</a>
+						</td>
+
+						<td align="middle" class="separator" valign="middle">
+						</td>
+
+						<td align="middle" id="tdb_synch" class="button" height="18">
+							<a href="javascript:resynch(&#39;b5&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;synch&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b5">
+							   <img src="./e_synch_toc_nav.gif" alt="Show in Table of Contents" title="Show in Table of Contents" border="0" id="synch">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_add_bkmrk" class="buttonHidden" height="18">
+							<a href="javascript:bookmarkInfocenterPage(&#39;b6&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;add_bkmrk&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b6">
+							   <img src="./e_add_bkmrk.gif" alt="Bookmark Document" title="Bookmark Document" border="0" id="add_bkmrk">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_print" class="button" height="18">
+							<a href="javascript:printContent(&#39;b7&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;print&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b7">
+							   <img src="./e_print_topic.gif" alt="Print Page" title="Print Page" border="0" id="print">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_maximize_restore" class="button" height="18">
+							<a href="javascript:restore_maximize(&#39;b8&#39;, &#39;null&#39;);" onmouseover="javascript:setWindowStatus(&#39;maximize_restore&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b8">
+							   <img src="./maximize.gif" alt="Maximize" title="Maximize" border="0" id="maximize_restore">
+							</a>
+						</td>
+				
+					</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table> 
+		</div>
+		</td>
+	</tr>
+</tbody></table>
+
+
+    <iframe name="liveHelpFrame" title="Layout frame: liveHelpFrame" src="./blank.html" style="visibility:hidden" tabindex="-1" frameborder="no" width="0" height="0" scrolling="no">
+    </iframe>
+
+
+     
+
+
+
+</body></html>

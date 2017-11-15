@@ -1,0 +1,25 @@
+#labels SOASE, DynamicContent
+#summary researchPrerequisites Definition
+==References==
+ * [Ability]
+ * [Buff]
+ * [CapitalShip]
+ * [Frigate]
+ * [MeshNameInfo]
+ * [PlanetModuleHangarDefense]
+ * [PlanetModuleRefinery]
+ * [PlanetModuleShipFactory]
+ * [PlanetModuleStandard]
+ * [PlanetModuleTradePort]
+ * [PlanetModuleWeaponDefense]
+ * [ResearchSubject]
+ * [Squad]
+ * [StarBaseUpgrade]
+ * [Weapon]
+
+* [researchPrerequisites]
+ * NumResearchPrerequisites: [Iteration]
+  * [ResearchPrerequisite]
+   * Subject: [Entity]
+   * Level: [Integer]
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="useCostType">
+		<condition><value>None</value>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">AntiMatterAndNotBeAtStar</value>
+			<value>AntiMatter</value>
+			<structure_reference name="antiMatterCost" type="GenericLevel"/>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+		<condition><value>Passive</value>
+		</condition>
+		<condition>
+			<value version="Rebellion">ResourcesAndMustHaveTitan</value>
+			<value>Resources</value>
+			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">ResourcesAndMustHaveCapitalCrew</value>
+			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="requiredShipSlots" type="GenericLevel"/>
+			<structure_reference name="requiredCapitalShipSlots" type="GenericLevel"/>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">ResourcesAndMustHaveShipSlots</value>
+			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="requiredShipSlots" type="GenericLevel"/>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+		<condition><value version="Rebellion">HullAndAntimatter</value>
+			<structure_reference name="hullCost" type="GenericLevel"/>
+			<structure_reference name="antiMatterCost" type="GenericLevel"/>
+			<structure_reference name="cooldownTime" type="GenericLevel"/>
+			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

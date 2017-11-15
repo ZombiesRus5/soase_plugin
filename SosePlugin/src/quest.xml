@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Quest">
+		<field name="titleStringId" validation="StringInfo"/>
+		<field name="infoCardDescStringId" validation="StringInfo"/>
+		<field name="questType" validation="Simple">
+			<value>BombAnyPlanet</value>
+			<value>GiveResources</value>
+			<value>KillCivilianStructures</value>
+			<value>KillShips</value>
+			<value>KillTacticalStructures</value>
+			<value version="Diplomacy">SendEnvoy</value>
+			<value version="Diplomacy">KillCapitalShips</value>
+		</field>
+		<field name="duration" validation="Decimal"/>
+		<field name="relationshipDecayRate" validation="Decimal" version="Diplomacy"/>
+		<field name="happinessChangeForSuccess" validation="Decimal"/>
+		<field name="happinessChangeForFailure" validation="Decimal"/>
+		<structure_reference name="reward" type="Cost"/>
+		<structure_reference name="priceDemanded" type="Cost"/>
+		<field name="valueToKill" validation="Decimal"/>
+		<iterative_field name="numReceiverConstraints">
+			<structure_reference required="false" name="ReceiverConstraint" type="QuestTarget"/>
+		</iterative_field>
+		<iterative_field name="numTargetConstraints">
+			<structure_reference required="false" name="TargetConstraint" type="QuestTarget"/>
+		</iterative_field>
+		<field name="weight" validation="Decimal"/>
+	</structure>
+		
+	<structure name="QuestTarget">
+		<field name="type" validation="Simple">
+			<value>TargetHappiness</value>
+			<value>TargetDist</value>
+			<value>TargetShipSlots</value>
+			<value>TargetCreditIncome</value>
+			<value>TargetCrystalIncome</value>
+			<value>TargetMetalIncome</value>
+			<value>TargetCivilianSlots</value>
+			<value>TargetTacticalSlots</value>
+		</field>
+		<field name="min" validation="Decimal"/>
+		<field name="max" validation="Decimal"/>
+	</structure>
+
+</tns:entity_definitions>

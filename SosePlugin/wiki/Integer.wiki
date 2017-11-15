@@ -1,0 +1,1 @@
+Integer: Validates integer entries contain digits

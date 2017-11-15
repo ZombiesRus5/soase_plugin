@@ -1,0 +1,59 @@
+#labels SOASE, DynamicContent
+#summary researchModifier Definition
+* [researchModifier]
+ * [modifierType modifierType]: [Enumeration]
+ * baseValue: [Decimal]
+ * perLevelValue: [Decimal]
+ * [linkedPlanetType linkedPlanetType]: [Enumeration]
+  * Asteroid
+  * GasGiant
+  * Ice
+  * Desert
+  * Volcanic
+  * Terran
+  * Invalid
+ * [linkedWeaponClass linkedWeaponClass]: [Enumeration]
+  * AUTOCANNON
+  * BEAM
+  * CHAOSBOLT
+  * DART
+  * FLASHBEAM
+  * GAUSS
+  * ION
+  * Invalid
+  * LASERPSI
+  * LASERTECH
+  * MISSILE
+  * PHASEMISSILE
+  * PLANETBOMBARDMENT
+  * PLASMA
+  * PULSEGUN
+  * SPIRITBLADE
+  * WAVE
+ * [linkedPlanetUpgradeType linkedPlanetUpgradeType]: [Enumeration]
+  * ArtifactLevel
+  * CivilianModules
+  * Infrastructure
+  * Invalid
+ * [allianceType allianceType]: [Enumeration]
+  * AntimatterPact
+  * ArmorPact
+  * BeamWeaponPact
+  * CulturePact
+  * Invalid
+  * MetalCrystalPact
+  * MetalPact
+  * MissileWeaponPact
+  * PhaseJumpPact
+  * PlanetBombingPact
+  * ResearchPact
+  * ShieldPact
+  * ShipStructureMaxPact
+  * ShipStructureRegenPact
+  * StrikecraftPact
+  * SupplyPact
+  * TacticalSlotsPact
+  * TradeIncomePact
+  * WeaponCooldownPact
+ * pactUnlockEntityDefName: [Entity]
+

@@ -1,0 +1,12 @@
+#labels SOASE, DynamicContent
+#summary PlanetGroupType Definition
+==References==
+ * [Galaxy]
+ * [RandomStarType]
+
+* [PlanetGroupType]
+ * minCount: [Integer]
+ * maxCount: [Integer]
+ * planetTypeCount: [Iteration]
+  * planetType: [GalaxyDesign]
+

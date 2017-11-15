@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary hasBombingLevels Condition Definition
+<wiki:toc max_depth="5"/>
+[hasBombingLevels]: [Condition]
+ * FALSE
+  * baseDamage: [Decimal]
+  * basePopulationKilled: [Decimal]
+ * TRUE
+  * [baseDamage]: [GenericLevel]
+  * [basePopulationKilled]: [GenericLevel]

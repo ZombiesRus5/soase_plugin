@@ -1,0 +1,1 @@
+Explosion Validation: Validates a referenced explosion entry exists for the value entered

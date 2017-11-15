@@ -1,0 +1,19 @@
+#labels SOASE, DynamicContent
+#summary levelSourceType Condition Definition
+<wiki:toc max_depth="5"/>
+[levelSourceType]: [Condition]
+ * FixedLevel0
+ * Intrinsic
+  * [minExperienceLevelRequired]: [GenericLevel]
+ * ResearchWithBase
+  * baseSourceResearchSubject: [Entity]
+  * improveSourceResearchSubject: [Entity]
+ * ResearchWithoutBase
+  * improveSourceResearchSubject: [Entity]
+ * StarBaseUpgradeLevel
+  * [sourcePropertyType sourcePropertyType]: [Enumeration]
+   * AbilityALevel
+   * AbilityBLevel
+   * AbilityCLevel
+   * AbilityDLevel
+   * AbilityELevel

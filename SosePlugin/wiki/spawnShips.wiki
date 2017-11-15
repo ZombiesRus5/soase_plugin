@@ -1,0 +1,20 @@
+#labels SOASE, DynamicContent
+#summary spawnShips Definition
+==References==
+ * [Ability]
+ * [Buff]
+ * [GameplayConstants]
+
+* [spawnShips]
+ * minFleetPoints: [Decimal]
+ * maxFleetPoints: [Decimal]
+ * requiredShipCount: [Iteration]
+  * [requiredShip]
+   * type: [Entity]
+   * minCount: [Integer]
+   * maxCount: [Integer]
+ * randomShipCount: [Iteration]
+  * [randomShip]
+   * type: [Entity]
+   * weight: [Decimal]
+

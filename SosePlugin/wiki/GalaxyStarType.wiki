@@ -1,0 +1,23 @@
+#labels SOASE, DynamicContent
+#summary GalaxyStarType Definition
+==References==
+ * [Galaxy]
+
+* [GalaxyStarType]
+ * designName: [Any]
+ * inGameName: [Any]
+ * type: [GalaxyDesign]
+ * pos: [Position]
+ * radius: [Decimal]
+ * planetCount: [Iteration]
+  * [planet]: [GalaxyPlanetType]
+ * connectionCount: [Iteration]
+  * [connection]
+   * planetIndexA: [Integer]
+   * planetIndexB: [Integer]
+   * spawnProbability: [Decimal]
+   * [type type]: [Enumeration]
+    * PhaseLane
+    * Wormhole
+ * spawnProbability: [Decimal]
+

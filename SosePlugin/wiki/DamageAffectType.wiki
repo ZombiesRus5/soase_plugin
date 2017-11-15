@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary DamageAffectType Definition
+==References==
+ * [Weapon]
+
+==Values==
+ * [AFFECTS_ONLY_HULL AFFECTS_ONLY_HULL]
+ * [AFFECTS_ONLY_SHIELDS AFFECTS_ONLY_SHIELDS]
+ * [AFFECTS_SHIELDS_AND_HULL AFFECTS_SHIELDS_AND_HULL]

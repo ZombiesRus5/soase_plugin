@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="StarBaseUpgrade">
+		<iterative_field name="stageCount">
+			<structure required="false" name="stage">
+				<structure_reference name="price" type="Cost"/>
+				<field name="upgradeTime" validation="Decimal"/>
+				<field name="nameStringID" validation="StringInfo"/>
+				<field name="descStringID" validation="StringInfo"/>
+				<structure_reference name="researchPrerequisites"/>
+				<field name="hudIcon" validation="Brush"/>
+				<field name="smallHudIcon" validation="Brush"/>
+				<field name="infoCardIcon" validation="Brush"/>
+				<iterative_field name="upgradePropertyCount" limit="10">
+					<structure required="false" name="upgradeProperty">
+						<field name="propertyType" validation="Simple">
+							<value>Population</value>
+							<value>MaxAntiMatterPoints</value>
+							<value>AntiMatterRestoreRate</value>
+							<value>AbilityALevel</value>
+							<value>AbilityBLevel</value>
+							<value>AbilityCLevel</value>
+							<value>AbilityDLevel</value>
+							<value>MaxNumSquads</value>
+							<value>MaxHullPoints</value>
+							<value>HullPointRestoreRate</value>
+							<value>MaxShieldPoints</value>
+							<value>BaseArmorPoints</value>
+							<value>MaxShieldMitigation</value>
+							<value>BaseTradeIncomeRate</value>
+							<value>WeaponUpgradeLevel</value>
+							<value>WeaponDamage</value>
+							<value>ShieldPointRestoreRate</value>
+							<value>TradePortMeshLevel</value>
+							<value>CultureSpreadRate</value>
+							<value>EnemyCultureRepelRate</value>
+							<value>CultureMeshLevel</value>
+							<value>MaxAllegianceBonus</value>
+							<value>FrigateBuildRate</value>
+						</field>
+						<field name="value" validation="Decimal"/>
+					</structure>
+				</iterative_field>
+				<iterative_field name="upgradeBoolPropertyCount">
+					<field required="false" name="upgradeBoolProperty" validation="Simple">
+						<value>CanPreventEnemyColonize</value>
+						<value>CanPreventPlanetLossByBombing</value>
+						<value>CanPreventEnemyColonize</value>
+						<value>CanPreventPlanetLossByBombing</value>
+					</field>
+				</iterative_field>
+			</structure>
+		</iterative_field>
+		<field name="xpModifier" validation="Decimal" version="Rebellion"/>
+		
+	</structure>
+</tns:entity_definitions>

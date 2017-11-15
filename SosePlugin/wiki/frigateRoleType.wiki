@@ -1,0 +1,28 @@
+#labels SOASE, DynamicContent
+#summary frigateRoleType Definition
+==References==
+ * [Frigate]
+
+==Values==
+ * [AntiFighter AntiFighter]
+ * [AntiMine AntiMine]
+ * [AntiModule AntiModule]
+ * [Cargo Cargo]
+ * [Carrier Carrier]
+ * [Colony Colony]
+ * [Envoy Envoy]
+ * [Heavy Heavy]
+ * [Invalid Invalid]
+ * [Light Light]
+ * [Lrm Lrm]
+ * [MineLayer MineLayer]
+ * [ModuleConstructor ModuleConstructor]
+ * [ModulePointDefense ModulePointDefense]
+ * [ModuleRepair ModuleRepair]
+ * [ModuleUtility ModuleUtility]
+ * [Raider Raider]
+ * [ResourceCapturer ResourceCapturer]
+ * [Scout Scout]
+ * [Siege Siege]
+ * [StarBaseConstructor StarBaseConstructor]
+ * [Support Support]

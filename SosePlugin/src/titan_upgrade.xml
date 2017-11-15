@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure version="Rebellion" name="TitanUpgrade">
+		<iterative_field name="stageCount">
+			<structure required="false" name="stage">
+				<field name="nameStringID" validation="StringInfo"/>
+				<field name="descStringID" validation="StringInfo"/>
+				<structure_reference name="researchPrerequisites"/>
+				<field name="levelRequirement" validation="Integer"/>
+				<field name="hudIcon" validation="Brush"/>
+				<field name="smallHudIcon" validation="Brush"/>
+				<field name="infoCardIcon" validation="Brush"/>
+				<iterative_field name="upgradePropertyCount">
+					<structure required="false" name="upgradeProperty">
+						<field name="propertyType" validation="Simple">
+							<value>WeaponDamage</value>
+							<value>MaxHullPoints</value>
+							<value>HullPointRestoreRate</value>
+							<value>MaxShieldPoints</value>
+							<value>ShieldPointRestoreRate</value>
+							<value>BaseArmorPoints</value>
+							<value>MaxAntiMatterPoints</value>
+							<value>AntiMatterRestoreRate</value>
+							<value>AbilityCooldownRate</value>
+							<value>AbilityALevel</value>
+							<value>AbilityBLevel</value>
+							<value>AbilityCLevel</value>
+							<value>AbilityDLevel</value>
+							<value>AbilityELevel</value>
+						</field>
+						<field name="value" validation="Decimal"/>
+					</structure>
+				</iterative_field>
+				<iterative_field name="upgradeBoolPropertyCount">
+					<field required="false" name="upgradeBoolProperty" validation="Simple">
+						<value>CanPreventEnemyColonize</value>
+						<value>CanPreventPlanetLossByBombing</value>
+						<value>CanPreventEnemyColonize</value>
+						<value>CanPreventPlanetLossByBombing</value>
+					</field>
+				</iterative_field>
+			</structure>
+		</iterative_field>
+	</structure>
+</tns:entity_definitions>

@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary linkedPlanetUpgradeType Definition
+==References==
+ * [ResearchFloatModifierType]
+
+==Values==
+ * [ArtifactLevel ArtifactLevel]
+ * [CivilianModules CivilianModules]
+ * [Infrastructure Infrastructure]
+ * [Invalid Invalid]

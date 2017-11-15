@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary BuildSpeedData Definition
+==References==
+ * [GameplayConstants]
+
+* [BuildSpeedData]
+ * shipBuildRateGameSpeedScalar: [Decimal]
+ * moduleBuildRateGameSpeedScalar: [Decimal]
+

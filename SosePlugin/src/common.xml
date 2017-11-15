@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure version="Rebellion" name="Trigger">
+	</structure>
+	
+	<structure name="Debris">
+		<field name="averageLifetime" validation="Decimal"/>
+		<field name="lifetimeVariancePerc" validation="Decimal"/>
+		<field name="minLinearSpeed" validation="Decimal"/>
+		<field name="maxLinearSpeed" validation="Decimal"/>
+		<field name="minAngularSpeed" validation="Decimal"/>
+		<field name="maxAngularSpeed" validation="Decimal"/>
+		<field name="dragRate" validation="Decimal"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+	</structure>
+
+	<structure name="EmpireWindowNode">
+		<field required="false" name="hyperspaceNodeIcon" validation="Brush" version="Vanilla"/>
+		<field required="false" name="EmpireWindowHyperspaceNodeIcon" validation="Brush"/>
+	</structure>
+	
+	<structure name="Fleet">
+		<field name="defaultCohesionRange" validation="Simple" values="Near" />
+	</structure>
+	
+	<structure name="Formation">
+	</structure>
+	
+	
+	<structure name="PlanetConnection">
+	</structure>
+	
+	<structure name="spawnShips">
+		<field name="minFleetPoints" validation="Decimal"/>
+		<field name="maxFleetPoints" validation="Decimal"/>
+		<iterative_field name="requiredShipCount">
+			<structure required="false" name="requiredShip">
+				<field name="type" validation="Entity"/>
+				<field name="minCount" validation="Integer"/>
+				<field name="maxCount" validation="Integer"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="randomShipCount">
+			<structure required="false" name="randomShip">
+				<field name="type" validation="Entity"/>
+				<field name="weight" validation="Decimal"/>
+			</structure>
+		</iterative_field>
+	</structure>
+
+	<structure name="MeshNameInfo">
+		<field name="meshName" validation="Mesh"/>
+		<condition_field name="criteriaType">
+			<condition value="None"></condition>
+			<condition value="Research">
+				<structure_reference name="prerequisites" type="researchPrerequisites"/>
+			</condition>
+			<condition value="StarBaseUpgradeLevel">
+				<structure_reference name="levelRequirements"/>
+			</condition>
+		</condition_field>
+	</structure>
+	
+	<structure name="levelRequirements">
+		<iterative_field name="levelRequirementCount">
+			<structure required="false" name="levelRequirement">
+				<field name="upgradePropertyType" validation="Simple">
+					<value>TradePortMeshLevel</value>
+					<value>WeaponUpgradeLevel</value>
+					<value>CultureMeshLevel</value>
+				</field>
+				<field name="upgradeLevel" validation="Integer"/>
+			</structure>
+		</iterative_field>
+	</structure>
+
+	<structure name="Weapon" >
+		<field name="WeaponType" validation="Simple" values="Beam,Projectile,Missile"/>
+		<structure name="damageEnums">
+			<field name="AttackType" type="AttackType"/>
+			<field name="DamageAffectType" type="damageAffectType"/>
+			<field name="DamageApplyType" type="DamageApplyType"/>
+			<field name="DamageType" type="damageType"/>
+			<field name="WeaponClassType" type="WeaponClassType"/>
+		</structure>
+		<field name="DamagePerBank:FRONT" validation="Decimal" help="This is the damage done per volley by the this bank. This is not the same as weapon null points on the mesh which are only visual and not used in any weapon calculations."/>
+		<field name="DamagePerBank:BACK" validation="Decimal" help="This is the damage done per volley by the this bank. This is not the same as weapon null points on the mesh which are only visual and not used in any weapon calculations."/>
+		<field name="DamagePerBank:LEFT" validation="Decimal" help="This is the damage done per volley by the this bank. This is not the same as weapon null points on the mesh which are only visual and not used in any weapon calculations."/>
+		<field name="DamagePerBank:RIGHT" validation="Decimal" help="This is the damage done per volley by the this bank. This is not the same as weapon null points on the mesh which are only visual and not used in any weapon calculations."/>
+		<field name="Range" validation="Decimal"/>
+		<field name="PreBuffCooldownTime" validation="Decimal" help="How long the weapon must cool down between shots. It also effects how much damage over time the weapon does. Shorter cool downs mean more DPS. While longer cool downs mean less DPS."/>
+		<field name="CanFireAtFighter" validation="Boolean"/>
+		<field name="SynchronizedTargeting" validation="Boolean" help="Synchronized targetting determines if the weapon effects fire at the same spot on the target mesh or shield. If it's false then then the weapon effects can fire at random points on the target mesh or shield."/>
+		<field name="PointStaggerDelay" validation="Decimal" help="Spreads effects from multiple weapon nulls so they don't all fire at the same time."/>
+		<field name="TravelSpeed" validation="Decimal" help="The speed at which a projectile, or missile effect travels. Beam weapons are always zero"/>
+		<field name="Duration" validation="Decimal" help="How long the weapon will fire (beam, and projectile). In a missiles case how long it will stay on the map. If it goes over the duration it will disappear, and do no damage"/>
+		<condition_field name="fireConstraintType" version="Entrenchment">
+			<condition value="Research">
+				<structure_reference name="researchPrerequisites"/>
+			</condition>
+			<condition value="StarBaseUpgradeLevel">
+				<field name="requiredStarBaseWeaponLevel" validation="Integer"/>
+			</condition>
+			<condition value="CanAlwaysFire"/>
+		</condition_field>
+		<structure_reference name="WeaponEffects" type="weaponEffectsDef"/>
+	</structure>
+	
+	<structure name="LevelIncrease">
+		<field name="StartValue" validation="Decimal"/>
+		<field name="ValueIncreasePerLevel" validation="Decimal"/>
+	</structure>
+	
+	<structure name="Cost">
+		<field name="credits" validation="Decimal"/>
+		<field name="metal" validation="Decimal"/>
+		<field name="crystal" validation="Decimal"/>
+	</structure>
+	
+	<structure name="weaponEffectsDef">
+		<condition_field name="weaponType">
+			<condition value="Projectile">
+				<field name="burstCount" validation="Decimal"/>
+				<field name="burstDelay" validation="Decimal"/>
+				<field name="fireDelay" validation="Decimal" version="Rebellion"/>
+				<field name="muzzleEffectName" validation="Particle"/>
+				<field name="muzzleSoundMinRespawnTime" validation="Decimal"/>
+				<structure name="muzzleSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="hitEffectName" validation="Particle"/>
+				<structure name="hitHullEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<structure name="hitShieldsEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="projectileTravelEffectName" validation="Particle"/>
+			</condition>
+			<condition value="Missile">
+				<field name="burstCount" validation="Decimal"/>
+				<field name="burstDelay" validation="Decimal"/>
+				<field name="fireDelay" validation="Decimal" version="Rebellion"/>
+				<field name="muzzleEffectName" validation="Particle"/>
+				<field name="muzzleSoundMinRespawnTime" validation="Decimal"/>
+				<structure name="muzzleSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="hitEffectName" validation="Particle"/>
+				<structure name="hitHullEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<structure name="hitShieldsEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="missileTravelEffectName" validation="Particle"/>
+				<field name="missileStartTurningDistance" validation="Decimal"/>
+				<field name="missileSlowTurnRate" validation="Decimal"/>
+				<field name="missileMaxSlowTurnTime" validation="Decimal"/>
+			</condition>
+			<condition value="Beam">
+				<field name="burstCount" validation="Decimal"/>
+				<field name="burstDelay" validation="Decimal"/>
+				<field name="fireDelay" validation="Decimal" version="Rebellion"/>
+				<field name="muzzleEffectName" validation="Particle"/>
+				<field name="muzzleSoundMinRespawnTime" validation="Decimal"/>
+				<structure name="muzzleSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="hitEffectName" validation="Particle"/>
+				<structure name="hitHullEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<structure name="hitShieldsEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<structure name="beamEffectSounds">
+					<iterative_field name="soundCount" limit="6">
+						<field required="false" name="sound" validation="Sound"/>
+					</iterative_field>
+				</structure>
+				<field name="beamGlowTextureName" validation="Texture"/>
+				<field name="beamCoreTextureName" validation="Texture"/>
+				<field name="beamWidth" validation="Decimal"/>
+				<field name="beamGlowColor" validation="Color"/>
+				<field name="beamCoreColor" validation="Color"/>
+				<field name="beamTilingRate" validation="Decimal"/>
+			</condition>
+		</condition_field>
+	</structure>
+	
+	<structure name="researchPrerequisites">
+		<iterative_field name="NumResearchPrerequisites" limit="2">
+			<structure required="false" name="ResearchPrerequisite">
+				<field name="Subject" validation="Entity"/>
+				<field name="Level" validation="Integer"/>
+			</structure>
+		</iterative_field>
+		<field name="RequiredFactionNameID" validation="StringInfo" version="Rebellion"/>
+		<field name="RequiredCompletedResearchSubjects" validation="Integer" version="Rebellion"/>
+		
+	</structure>
+	
+	<structure name="targetFilter">
+		<iterative_field name="numOwnerships">
+			<field required="false" name="ownership"/>
+		</iterative_field>
+		<iterative_field name="numObjects">
+			<field required="false" name="object"/>
+		</iterative_field>
+		<iterative_field name="numSpaces" version="Entrenchment">
+			<field required="false" name="space"/>
+		</iterative_field>
+		<iterative_field name="numConstraints">
+			<field required="false" name="constraint"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="GenericLevel">
+		<field name="Level:0" validation="Decimal"/>
+		<field name="Level:1" validation="Decimal"/>
+		<field name="Level:2" validation="Decimal"/>
+		<field name="Level:3" validation="Decimal" version="Rebellion"/>
+	</structure>
+	
+	<structure name="AttachInfo">
+		<condition_field name="attachType">
+			<condition value="Invalid"/>
+			<condition value="Center"/>
+			<condition value="Ability">
+				<field name="abilityIndex" validation="Integer"/>
+			</condition>
+			<condition value="Aura"/>
+			<condition value="Above"/>
+		</condition_field>
+	</structure>
+	
+	<structure name="effectInfo">
+		<structure_reference name="effectAttachInfo" type="AttachInfo"/>
+		<field name="smallEffectName" validation="Particle"/>
+		<field name="mediumEffectName" validation="Particle" version="Rebellion"/>
+		<field name="largeEffectName" validation="Particle"/>
+		<field name="soundID" validation="Sound"/>
+	</structure>
+
+	<element_rule name="entityType" validation="Structure">
+		<value version="Rebellion">Cosmetic</value>
+		<value version="Rebellion">Titan</value>
+		<value version="Rebellion">TitanUpgrade</value>
+		<value>Ability</value>
+		<value>Buff</value>
+		<value>CapitalShip</value>
+		<value>Debris</value>
+		<value>EmpireWindowNode</value>
+		<value>Frigate</value>
+		<value>CannonShell</value>
+		<value>Fighter</value>
+		<value>Fleet</value>
+		<value>Formation</value>
+		<value>PlanetConnection</value>
+		<value>PlanetModuleWeaponDefense</value>
+		<value>PlanetModuleStandard</value>
+		<value>PlanetModuleShipFactory</value>
+		<value>PlanetModuleHangarDefense</value>
+		<value>PlanetModuleTradePort</value>
+		<value>PlanetModuleRefinery</value>
+		<value>Player</value>
+		<value>ResearchSubject</value>
+		<value>Squad</value>
+		<value>StarBase</value>
+		<value>StarBaseUpgrade</value>
+		<value>EntryVehicle</value>
+		<value>Planet</value>
+		<value>PlanetBonus</value>
+		<value>ResourceAsteroid</value>
+		<value>Star</value>
+		<value>SpaceMine</value>
+		<value>MissionBuildMines</value>
+		<value>MissionBuildStarBase</value>
+		<value>MissionCaptureResources</value>
+		<value>MissionAttackPlanet</value>
+		<value>MissionColonize</value>
+		<value version="Rebellion">MissionDefendFlagship</value>
+		<value>MissionExplore</value>
+		<value>MissionRaid</value>
+		<value>MissionFosterRelationships</value>
+		<value>PipCloud</value>
+		<value>Quest</value>
+		<value version="Rebellion">Trigger</value>
+	</element_rule>
+	<element_rule name="frigateRoleType" validation="Simple">
+		<value version="Rebellion">AbilityCreated</value>
+		<value version="Rebellion">Corvette</value>
+		<value>AntiFighter</value>
+		<value>AntiModule</value>
+		<value>Carrier</value>
+		<value>Light</value>
+		<value>Lrm</value>
+		<value>MineLayer</value>
+		<value>Colony</value>
+		<value>Scout</value>
+		<value>Heavy</value>
+		<value>ResourceCapturer</value>
+		<value>ModuleConstructor</value>
+		<value>Cargo</value>
+		<value>AntiMine</value>
+		<value>Siege</value>
+		<value>StarBaseConstructor</value>
+		<value>Support</value>
+		<value>Envoy</value>
+		<value>Invalid</value>
+		<value>ModuleRepair</value>
+		<value>ModuleUtility</value>
+		<value>ModulePointDefense</value>
+		<value>Raider</value>
+	</element_rule>
+	<element_rule name="cargoType" validation="Simple" values="TradeCredits,RefineryResources,Invalid"/>
+	<element_rule name="defaultAutoAttackRange" validation="Simple" values="None,GravityWell"/>
+	<element_rule name="roleType" validation="Simple">
+		<value>Invalid</value>
+		<value>COLONY</value>
+	</element_rule>
+	<element_rule name="statCountType" validation="Simple">
+		<value version="Rebellion">Titan</value>
+		<value>CapitalShipBattleship</value>
+		<value>CapitalShipCarrier</value>
+		<value>CapitalShipUtility0</value>
+		<value>CapitalShipUtility1</value>
+		<value>CapitalShipUtility2</value>
+		<value>FighterBomber</value>
+		<value>FighterCombat</value>
+		<value>FrigateAntiFighter</value>
+		<value version="Rebellion">FrigateCorvette</value>
+		<value>FrigateScout</value>
+		<value>FrigateColony</value>
+		<value>FrigateLight</value>
+		<value>FrigateLongRange</value>
+		<value>FrigateHeavy</value>
+		<value>FrigateUtility0</value>
+		<value>FrigateUtility1</value>
+		<value>FrigateAntiModule</value>
+		<value>FrigateCarrier</value>
+		<value>FrigateConstructor</value>
+		<value>FrigateRefineryShip</value>
+		<value>FrigateSiege</value>
+		<value>FrigateStarBaseConstructor</value>
+		<value>FrigateTradeShip</value>
+		<value>FrigateMineLayer</value>
+		<value>FrigateSpawnedByAbility</value>
+		<value>FrigateEnvoy</value>
+		<value>ModuleHangarDefense</value>
+		<value>ModuleRepair</value>
+		<value>ModuleUtility</value>
+		<value>ModulePointDefense</value>
+		<value>FighterMineLayer</value>
+		<value>ModuleCannon</value>
+		<value>ModuleCapitalShipFactory</value>
+		<value>ModuleCombatLab</value>
+		<value>ModuleCrystalExtractor</value>
+		<value>ModuleCultureCenter</value>
+		<value>ModuleFrigateFactory</value>
+		<value>ModuleHangarDefense</value>
+		<value>ModuleJumpBlocker</value>
+		<value>ModuleMetalExtractor</value>
+		<value>ModuleNonCombatLab</value>
+		<value>ModuleTradePort</value>
+		<value>ModuleRefinery</value>
+		<value>SquadBomber</value>
+		<value>SquadCombat</value>
+		<value>StarBase</value>
+		<value>Invalid</value>
+		<value>SquadMineLayer</value>
+	</element_rule>
+	<element_rule name="armorType" validation="Simple">
+		<value version="Rebellion">Titan</value>
+		<value>Pirate</value>
+		<value>Module</value>
+		<value>CapitalShip</value>
+		<value>Heavy</value>
+		<value>Light</value>
+		<value>VeryLight</value>
+		<value>Medium</value>
+		<value>VeryHeavy</value>
+	</element_rule>
+	<element_rule name="WeaponWeaponType" validation="Simple" values="Beam,Projectile,Missile"/>
+	<element_rule name="AttackType" validation="Simple">
+		<value version="Rebellion">CORVETTE</value>
+		<value version="Rebellion">TITAN</value>
+		<value>COMPOSITE</value>
+		<value>ANTIMODULE</value>
+		<value>CAPITALSHIP</value>
+		<value>ANTIVERYLIGHT</value>
+		<value>ANTILIGHT</value>
+		<value>ANTIMEDIUM</value>
+		<value>ANTIHEAVY</value>
+		<value>ANTIVERYHEAVY</value>
+	</element_rule> 
+	<element_rule name="DamageApplyType" validation="Simple" values="OVERTIME,BACKLOADED"/>
+	<element_rule name="fireConstraintType" validation="Simple" values="CanAlwaysFire,Research,StarBaseUpgradeLevel"/>
+	<element_rule name="firingAlignmentType" validation="Simple" values="Default,TiltForward"/>
+	<element_rule name="criteriaType" validation="Simple" values="None,Research,StarBaseUpgradeLevel"/>
+	<element_rule name="onReapplyDuplicateType" validation="Simple">
+		<value version="Entrenchment">PrioritizeOldBuffs</value>
+		<value version="Entrenchment">PrioritizeNewBuffs</value>
+		<value version="Vanilla">StackNewBuff</value>
+		<value version="Vanilla">ReplaceWithNewBuffIfSamePlayer</value>
+		<value version="Vanilla">ReplaceWithNewBuff</value>
+		<value version="Vanilla">KeepOldBuff</value>
+		<value>Invalid</value>
+	</element_rule>
+	<element_rule name="buffStackingLimitType" validation="Simple" values="PerPlayer,ForAllPlayers"/>
+	<element_rule name="buffExclusivityForAIType" validation="Simple"  values="ExclusivePerPlayer,ExclusiveForAllPlayers,NotExclusive"/>
+	<element_rule name="instantActionTriggerType" validation="Simple" values="OnAbilityUsed,OnChance,OnHyperspaceExit,OnOwnerDeath,OnDamageTaken,AlwaysPerform,OnDelay,OnBuffFinish,OnWeaponFired"/>
+	<element_rule name="actionCountType" validation="Simple" values="Finite,Infinite"/>
+	<element_rule name="buffEntityModifierType" validation="Simple">
+		<value version="Rebellion">EnemyCultureSpread</value>
+		<value version="Rebellion">CultureSpreadModifier</value>
+		<value version="Rebellion">ShieldPointRestoration</value>
+		<value version="Rebellion">PhysicalDamageAsDamageTarget</value>
+		<value version="Rebellion">HullPointRestoration</value>
+		<value version="Rebellion">AntimatterRestoration</value>
+		<value version="Rebellion">PlanetTaxRate</value> 
+		<value version="Diplomacy">PlanetHealthMaxAdjustment</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">AntimatterRestoreRate</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">PlanetUpgradeBuildRateAdjustment</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">RefineryIncome</value> <!-- diplomacy 1.3 -->
+		<value version="Diplomacy">TradeIncome</value> <!-- diplomacy -->
+		<value version="Diplomacy">CultureSpreadRateForOwner</value> <!-- diplomacy -->
+		<value>FightersPerSquadron</value>
+		<value>HullPointRestoreRate</value>
+		<value>ShieldPointRestoreRate</value>
+		<value>GravityWellRangeForHyperspace</value>
+		<value>PropagateWeaponDamagePerc</value>
+		<value>ResourceExtractionRate</value>
+		<value>PlanetPopulationGrowthRate</value>
+		<value>HyperspaceSpeed</value>
+		<value>DamageSharing</value>
+		<value>MaxHullPoints</value>
+		<value>BonusMaxSquads</value>
+		<value>PlanetBombingDamageAbsorption</value>
+		<value>PlanetResourceOutput</value>
+		<value>UnderConstructionRate</value>
+		<value>HyperspaceChargeUpRate</value>
+		<value>LinearThrust</value>
+		<value>LinearMaxSpeed</value>
+		<value>EnergyWeaponCooldown</value>
+		<value>PlanetProductionStolen</value>
+		<value>ShipBuildTime</value>
+		<value>PlanetModuleBuildTime</value>
+		<value>AntimatterCostOfNonUltimates</value>
+		<value>AngularThrust</value>
+		<value>PlanetMaxPopulation</value>
+		<value>WeaponCooldown</value>
+		<value>ChanceToIgnoreShieldsAsDamageDealer</value>
+		<value>ChanceToIgnoreShieldsAsDamageTarget</value>
+		<value>DamageAsDamageTarget</value>
+		<value>CultureSpread</value>
+		<value>ChanceToBeNotOptimallyTargetted</value>
+		<value>WeaponRange</value>
+		<value>ChanceToHitAsDamageDealer</value>
+		<value>ChanceToHitAsDamageTarget</value>
+		<value>ArmorAsDamageTarget</value>
+		<value>PhysicalDamageAsDamageDealer</value>
+		<value>AbilityCooldownRate</value>
+		<value>ShieldMitigation</value>
+		<value>PlanetUpgradeCost</value>
+		<value>DamageAsDamageTargetFromForward</value>
+		<value>DamageAsDamageDealer</value>
+		<value>MaxShieldPoints</value>
+		<value>PlanetBombingCooldown</value>
+	</element_rule>
+	<element_rule name="damageAffectType" validation="Simple" values="AFFECTS_ONLY_HULL,AFFECTS_ONLY_SHIELDS,AFFECTS_SHIELDS_AND_HULL"/>
+	<element_rule name="typeOfDamageNeeded" validation="Simple" values="AFFECTS_ONLY_HULL,AFFECTS_ONLY_SHIELDS,AFFECTS_SHIELDS_AND_HULL"/>
+	<element_rule name="damageType" validation="Simple" values="PHYSICAL,ENERGY"/>
+	<element_rule name="ownership" validation="Simple">
+		<value>Enemy</value>
+		<value>Friendly</value>
+		<value>NoOwner</value>
+		<value>Player</value>
+		<value>Allied</value>
+		<value version="Diplomacy">AlliedOrEnemy</value>
+	</element_rule>
+	<element_rule name="object" validation="Simple">
+		<value version="Rebellion">EnvoyFrigate</value>
+		<value version="Rebellion">Titan</value>
+		<value version="Rebellion">Corvette</value>
+		<value>Star</value>
+		<value>Planet</value>
+		<value>Frigate</value>
+		<value>CapitalShip</value>
+		<value>Fighter</value>
+		<value>PlanetModule</value>
+		<value>StarBase</value>
+		<value>SpaceMine</value>
+		<value>PlaceHolderPlanetModule</value>
+		<value>PlaceHolderSpaceMine</value>
+	</element_rule>
+	<element_rule name="space" validation="Simple" values="Normal,Phase"/>
+	<element_rule name="constraint" validation="Simple">
+		<value version="Rebellion">IsRuinable</value>
+		<value version="Rebellion">Invalid</value>
+		<value version="Rebellion">NotIsBoarded</value>
+		<value version="Rebellion">IsBoarded</value>
+		<value version="Rebellion">NotIsIllusionShip</value>
+		<value version="Rebellion">IsHomeworld</value>
+		<value version="Rebellion">NotIsHomeworld</value>
+		<value version="Rebellion">NotFlagship</value>
+		<value version="Rebellion">NotIsOccupationPlanet</value>
+		<value version="Rebellion">IsInNonFriendlyGravityWell</value>
+		<value version="Rebellion">IsPetOfTargetter</value>
+		<value version="Rebellion">HasDestabilizationProtection</value>
+		<value version="Rebellion">DoesNotHaveDestabilizationProtection</value>
+		<value version="Rebellion">IsInFriendlyGravityWell</value>
+		<value version="Rebellion">IsControllable</value>
+		<value version="Rebellion">IsNotStarBaseConstructor</value>
+		<value>NotInvulnerable</value>
+		<value>CanBeCaptured</value>
+		<value>CanBeJumpBlocked</value>
+		<value>CanHaveFighters</value>
+		<value>CanHaveShields</value>
+		<value>CanPhaseDodge</value>
+		<value>CanSpreadWeaponDamage</value>
+		<value>HasAbilityWithCooldown</value>
+		<value>HasAntiMatterPool</value>
+		<value>HasAntiMatterShortage</value>
+		<value>HasEnergyWeapons</value>
+		<value>HasHullDamage</value>
+		<value>HasPhaseMissiles</value>
+		<value>HasPopulation</value>
+		<value>HasShieldDamage</value>
+		<value>HasWeapons</value>
+		<value>IsActivelyBeingConstructed</value>
+		<value>IsCargoShip</value>
+		<value>IsColonizable</value>
+		<value>IsExplored</value>
+		<value>IsMovingToLocalOrbitBody</value>
+		<value>IsPsi</value>
+		<value>IsResourceExtractor</value>
+		<value>LinkedCargoShip</value>
+		<value>LinkedSquad</value>
+		<value>ModuleUnderConstruction</value>
+		<value>NotSelf</value>
+		<value>WithinCurrentSolarSystem</value>
+		<value>NotActivelyBeingConstructed</value>
+	</element_rule>
+	<element_rule name="weaponEffectOriginType" validation="Simple" values="Targetter,Target"/>
+	<element_rule name="weaponEffectImpactOffsetType" validation="Simple" values="RandomMesh,Center,CenterOffsetBySpatialRadius"/>
+	<element_rule name="weaponType" validation="Simple" values="Projectile,Missile,Beam"/>
+	<element_rule name="attachType" validation="Simple" values="Invalid,Center,Ability,Aura,Above"/>
+	<element_rule name="sourcePropertyType" validation="Simple" values="AbilityALevel,AbilityBLevel,AbilityCLevel"/>
+	<element_rule name="orderAcknowledgementType" validation="Simple" values="ONATTACKORDERISSUED,ONCREATION,ONGENERALORDERISSUED,ONSELECTED,ONSTARTPHASEJUMP,Invalid"/>
+	<element_rule name="planetUpgradeSlotType" validation="Simple" values="Civilian,Tactical"/>
+	<element_rule name="planetModuleRoleType" validation="Simple">
+		<value version="Rebellion">TITANFACTORY</value>
+		<value>CULTURE</value>
+		<value>FRIGATEFACTORY</value>
+		<value>RESEARCHCOMBAT</value>
+		<value>WEAPONDEFENSE</value>
+		<value>CRYSTALEXTRACTOR</value>
+		<value>CAPITALSHIPFACTORY</value>
+		<value>CANNON</value>
+		<value>JUMPBLOCKER</value>
+		<value>HANGARDEFENSE</value>
+		<value>METALEXTRACTOR</value>
+		<value>REPAIRPLATFORM</value>
+		<value>TRADEPORT</value>
+		<value>RESEARCHNONCOMBAT</value>
+		<value>REFINERY</value>
+		<value>PHASEGATE</value>
+		<value>ANTIMATTERRECHARGER</value>
+		<value>NANOWEAPONJAMMER</value>
+		<value>SPACEMINE</value>
+		<value>SHIELDGENERATOR</value>
+	</element_rule>
+	<element_rule name="resourceExtractionType" validation="Simple" values="Crystal,Metal,Invalid"/>
+	<element_rule name="rotateFacingType" validation="Simple" values="None,AwayFromOrbitBody,TowardsOrbitBody"/>
+	<element_rule name="WeaponClassType" validation="Simple">
+		<value version="Rebellion">POINTDEFENSELASER</value>
+		<value version="Rebellion">FLAK</value>
+		<value version="Rebellion">RAILGUN</value>
+		<value version="Rebellion">PULSEWAVE</value>
+		<value version="Rebellion">PHASECANNON</value>
+		<value>CAPITALABILITY</value>
+		<value>BEAM</value>
+		<value>FLASHBEAM</value>
+		<value>PULSEGUN</value>
+		<value>MISSILE</value>
+		<value>PHASEMISSILE</value>
+		<value>DART</value>
+		<value>AUTOCANNON</value>
+		<value>LASERTECH</value>
+		<value>LASERPSI</value>
+		<value>WAVE</value>
+		<value>PLASMA</value>
+		<value>PLANETBOMBARDMENT</value>
+		<value>ION</value>
+		<value>SPIRITBLADE</value>
+		<value>GAUSS</value>
+		<value>CHAOSBOLT</value>
+		<value>Invalid</value>
+	</element_rule>
+	<element_rule name="weaponClassForWeaponPassive" validation="Simple">
+		<value version="Rebellion">POINTDEFENSELASER</value>
+		<value version="Rebellion">FLAK</value>
+		<value version="Rebellion">RAILGUN</value>
+		<value version="Rebellion">PULSEWAVE</value>
+		<value version="Rebellion">PHASECANNON</value>
+		<value>CAPITALABILITY</value>
+		<value>BEAM</value>
+		<value>FLASHBEAM</value>
+		<value>PULSEGUN</value>
+		<value>MISSILE</value>
+		<value>PHASEMISSILE</value>
+		<value>DART</value>
+		<value>AUTOCANNON</value>
+		<value>LASERTECH</value>
+		<value>LASERPSI</value>
+		<value>WAVE</value>
+		<value>PLASMA</value>
+		<value>PLANETBOMBARDMENT</value>
+		<value>ION</value>
+		<value>SPIRITBLADE</value>
+		<value>GAUSS</value>
+		<value>CHAOSBOLT</value>
+	</element_rule>
+	<element_rule name="spawnShipsHyperspaceSpawnType" validation="Simple">
+		<value version="Rebellion">PirateRaid</value>
+		<value>FleetBeacon</value>
+	</element_rule>
+	<element_rule name="spawnType" validation="Simple" values="CompletelyRandom,RandomFromUp"/>
+	<element_rule name="resourceToSteal" validation="Simple" values="Credits,Metal,Crystal"/>
+	<element_rule name="role" validation="Simple" values="Bomber,Combat,MineLayer"/>
+	<element_rule name="resource" validation="Simple" values="Crystal,Metal"/>
+</tns:entity_definitions>

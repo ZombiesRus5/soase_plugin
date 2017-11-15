@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="GalaxyScenarioDef">
+		<iterative_field name="starTypeCount">
+			<structure_reference required="false" name="starType" type="OrbitBodyDesign"/>
+		</iterative_field>
+		<iterative_field name="planetTypeCount">
+			<structure_reference required="false" name="planetType" type="OrbitBodyDesign"/>
+		</iterative_field>
+		<iterative_field name="orbitBodyTypeCount">
+			<structure_reference required="false" name="orbitBodyType" type="OrbitBodyType"/>
+		</iterative_field>
+		<iterative_field name="planetItemTypeCount">
+			<structure_reference required="false" name="planetItemType" type="EntityDesign"/>
+		</iterative_field>
+		<iterative_field name="playerTypeCount">
+			<structure_reference required="false" name="playerType" type="EntityDesign"/>
+		</iterative_field>
+		<iterative_field name="planetItemsTemplateCount">
+			<structure_reference required="false" name="planetItemsTemplate" type="TemplateType"/>
+		</iterative_field>
+		<iterative_field name="validPictureGroups">
+			<field required="false" name="pictureGroup" validation="Any" />
+		</iterative_field>
+		<iterative_field name="validThemeGroups">
+			<field required="false" name="themeGroup"  validation="Any" />
+		</iterative_field>
+		<iterative_field name="autoAddPlayers">
+			<structure_reference required="false" name="player" type="PlayerType" />
+		</iterative_field>
+		<field name="autoAddMiltiaPlayerCountPerGalaxy" validation="Decimal"/>
+		<iterative_field name="autoAddMilitiaPlayers">
+			<structure_reference required="false" name="player" type="PlayerType" />
+		</iterative_field>
+	</structure>
+		
+	<structure name="OrbitBodyDesign">
+		<field name="designName" validation="Any"/>
+		<field name="designStringId" validation="StringInfo"/>
+		<iterative_field name="orbitBodyTypeCount">
+			<field required="false" name="orbitBodyType" validation="GalaxyOrbitBodyType"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="OrbitBodyType">
+		<field name="typeName" validation="Any" />
+		<field name="entityDefName" validation="Entity"/>
+		<field name="defaultTemplateName" validation="GalaxyTemplate" />
+	</structure>
+	
+	<structure name="EntityDesign">
+		<field name="designName" validation="Any" />
+		<field name="entityDefName" validation="Entity" />
+	</structure>
+
+	<structure name="TemplateType">
+		<field name="templateName" validation="Any" />
+		<iterative_field name="subTemplates">
+			<field required="false" name="template" validation="GalaxyTemplate" />
+		</iterative_field>
+		<iterative_field name="groups">
+			<structure_reference required="false" name="group" type="GroupType"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="GroupType">
+		<structure name="condition">
+			<field name="type" validation="Simple" >
+				<value></value>
+				<value>Always</value>
+				<value>NoPlanetOwner</value>
+				<value>PlanetOwnerIsMilitiaWithChance</value>
+				<value>NoPlanetOwnerWithChance</value>
+				<value>PlanetOwnerIsMilitia</value>
+				<value>PlanetOwnerIsRaceNormalStart</value>
+				<value>PlanetOwnerIsRaceQuickStart</value>
+			</field>
+			<field name="param" validation="Any" />
+		</structure>
+		<field name="owner" validation="Any"/>
+		<field name="colonizeChance" validation="Integer"/>
+		<iterative_field name="items">
+			<field required="false" name="item" validation="GalaxyDesign" />
+		</iterative_field>
+	</structure>
+	
+	<structure name="PlayerType">
+		<field name="designName" validation="Any" />
+		<field name="inGameName" validation="Any" />
+		<field name="overrideRaceName" validation="Any" />
+		<field name="teamIndex" validation="Integer" />
+		<field name="startingCredits" validation="Integer" />
+		<field name="startingMetal" validation="Integer" />
+		<field name="startingCrystal" validation="Integer" />
+		<field name="isNormalPlayer" validation="Boolean" />
+		<field name="isRaidingPlayer" validation="Boolean" />
+		<field name="isInsurgentPlayer" validation="Boolean" />
+		<field name="isOccupationPlayer" validation="Boolean" version="Rebellion"/> 
+		<field name="isMadVasariPlayer" validation="Boolean" version="Rebellion"/>
+		<field name="themeGroup" validation="Any" />
+		<field name="themeIndex" validation="Integer" />
+		<field name="pictureGroup" validation="Any" />
+		<field name="pictureIndex" validation="Integer" />
+		
+	</structure>
+</tns:entity_definitions>

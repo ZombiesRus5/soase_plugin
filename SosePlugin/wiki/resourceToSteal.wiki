@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary resourceToSteal Definition
+==References==
+ * [Ability]
+ * [Buff]
+
+==Values==
+ * [Credits Credits]

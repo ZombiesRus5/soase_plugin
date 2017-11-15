@@ -1,0 +1,35 @@
+#labels SOASE, DynamicContent
+#summary ResearchSubject Definition
+* [ResearchSubject]
+ * hudIcon: [Brush]
+ * smallHudIcon: [Brush]
+ * infoCardIcon: [Brush]
+ * NameStringID: [StringInfo]
+ * DescriptionStringID: [StringInfo]
+ * [researchWindowLocation]
+  * block: [Integer]
+  * pos: [Position]
+ * [ResearchField ResearchField]: [Enumeration]
+  * Artifact
+  * Combat
+  * Defense
+  * Diplomacy
+  * Fleet
+  * NonCombat
+  * PactBonus
+ * [Prerequisites]: [researchPrerequisites]
+ * MinimumArtifactLevel: [Integer]
+ * BaseUpgradeTime: [Decimal]
+ * PerLevelUpgradeTime: [Decimal]
+ * [BaseCost]: [Cost]
+ * [PerLevelCostIncrease]: [Cost]
+ * Tier: [Integer]
+ * onlyWorksIfTierLabsExist: [Boolean]
+ * MaxNumResearchLevels: [Integer]
+ * priority: [Decimal]
+ * researchBoolModifiers: [Iteration]
+  * [researchModifier]: [ResearchBoolModifierType]
+ * researchFloatModifiers: [Iteration]
+  * [researchModifier]: [ResearchFloatModifierType]
+ * artifactPicture: [Brush]
+

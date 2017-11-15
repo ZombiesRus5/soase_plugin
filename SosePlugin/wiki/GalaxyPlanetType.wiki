@@ -1,0 +1,26 @@
+#labels SOASE, DynamicContent
+#summary GalaxyPlanetType Definition
+==References==
+ * [GalaxyStarType]
+
+* [GalaxyPlanetType]
+ * designName: [Any]
+ * inGameName: [Any]
+ * type: [GalaxyDesign]
+ * pos: [Position]
+ * owner: [Any]
+ * isHomePlanet: [Boolean]
+ * normalStartUpgradeLevelForPopulation: [Integer]
+ * normalStartUpgradeLevelForCivilianModules: [Integer]
+ * normalStartUpgradeLevelForTacticalModules: [Integer]
+ * normalStartUpgradeLevelForArtifacts: [Integer]
+ * normalStartUpgradeLevelForInfrastructure: [Integer]
+ * quickStartUpgradeLevelForPopulation: [Integer]
+ * quickStartUpgradeLevelForCivilianModules: [Integer]
+ * quickStartUpgradeLevelForTacticalModules: [Integer]
+ * quickStartUpgradeLevelForArtifacts: [Integer]
+ * quickStartUpgradeLevelForInfrastructure: [Integer]
+ * [planetItems]: [TemplateType]
+ * spawnProbability: [Decimal]
+ * useDefaultTemplate: [Boolean]
+

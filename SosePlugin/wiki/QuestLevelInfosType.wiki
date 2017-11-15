@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary QuestLevelInfosType Definition
+==References==
+ * [GameplayConstants]
+
+* [QuestLevelInfosType]
+ * QuestDefNameCount: [Iteration]
+  * QuestDefName: [Entity]
+

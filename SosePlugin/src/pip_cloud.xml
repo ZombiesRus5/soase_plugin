@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="PipCloud">
+		<field name="pipCloudType" validation="Simple" values="EnemyShips,FriendlyShips,Modules,Planets" />
+		<field name="empireWindowPipIcon" validation="Brush"/>
+		<field name="mainViewIconAreaOffsetFromCenter" validation="Position"/>
+		<field name="mainViewOverlay" validation="Brush"/>
+		<field name="mainViewOverlayUnderCursor" validation="Brush"/>
+		<field name="mainViewIconMaxEntityCount" validation="Integer"/>
+	</structure>
+
+</tns:entity_definitions>

@@ -1,0 +1,1 @@
+Color: Validates the color entries are a valid hex RGB or RGBA color value

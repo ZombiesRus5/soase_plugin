@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Mesh" help="Used to create abilities.">
+		<structure_reference name="MeshData" type="MeshData"/>
+	</structure>
+	
+	<structure name="MeshData">
+		<field required="true" name="maxDiffuseMipLevel" validation="Integer"/>
+		<field required="true" name="hasValidTangents" validation="Boolean"/>
+		<field required="true" name="BoundingRadius" validation="Decimal"/>
+		<field required="true" name="MaxBoundingExtents" validation="Any"/>
+		<field required="true" name="MinBoundingExtents" validation="Any"/>
+		<iterative_field name="NumMaterials">
+			<structure name="Material">
+				<field required="true" name="DiffuseTextureFileName" validation="Texture"/>
+				<field required="true" name="SelfIlluminationTextureFileName" validation="Texture"/>
+				<field required="true" name="NormalTextureFileName" validation="Texture"/>
+				<field required="true" name="DisplacementTextureFileName" validation="Any"/>
+				<field required="true" name="TeamColorTextureFileName" validation="Any"/>
+				<field required="true" name="Diffuse" validation="Color"/>
+				<field required="true" name="Ambient" validation="Color"/>
+				<field required="true" name="Specular" validation="Color"/>
+				<field required="true" name="Emissive" validation="Color"/>
+				<field required="true" name="Glossiness" validation="Decimal"/>
+			</structure>
+		</iterative_field>		
+		<iterative_field name="NumMaterials">
+			<structure required="true" name="Point">
+				<field required="true" name="DataString" validation="MeshPoint"/>
+				<field required="true" name="Position" validation="Any"/>
+				<field required="true" name="Orientation" validation="Orientation"/>
+			</structure>
+		</iterative_field>		
+		<end_validation />
+	</structure>
+</tns:entity_definitions>

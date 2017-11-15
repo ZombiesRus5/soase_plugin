@@ -1,0 +1,5 @@
+#labels SOASE, DynamicContent
+#summary EmpireWindowNode Definition
+* [EmpireWindowNode]
+ * EmpireWindowHyperspaceNodeIcon: [Brush]
+

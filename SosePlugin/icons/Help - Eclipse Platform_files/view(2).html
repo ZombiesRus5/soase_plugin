@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0122)http://help.eclipse.org/kepler/advanced/view.jsp?view=search&topic=%2Forg.eclipse.jdt.doc.user%2Freference%2Fref-icons.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Search Results</title>
+
+<script language="JavaScript">
+
+function onloadHandler(e)
+{
+    resize();
+}
+
+function resize()
+{
+
+}
+
+var resized = false;
+
+// Called when the view is made visible. This function is needed because 
+// with IE the resize only works after the view has been displayed for the first time.
+
+function onShow() 
+{
+    if (!resized) {
+        resize();
+        resized = true;
+    }
+    try{
+		window.searchViewFrame.onShow();
+	} catch(ex) {}
+    
+}
+
+</script>
+
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+
+<frameset id="viewFrameset" onload="onloadHandler()" rows="24,*" frameborder="0" framespacing="0" border="0">
+	<frame id="toolbar" name="searchToolbarFrame" title="Search Results View Toolbar" src="./searchToolbar.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" noresize="0">
+	
+		<frame name="searchViewFrame" title="Search Results View" src="./searchView.html" marginwidth="10" marginheight="0" frameborder="0">
+	
+</frameset>
+
+
+
+</html>

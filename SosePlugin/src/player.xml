@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Player">
+		<field name="raceNameStringID" validation="StringInfo"/>
+		<field name="canColonize" validation="Boolean"/>
+		<field name="isPsi" validation="Boolean"/>
+		<field name="isSelectable" validation="Boolean"/>
+		<field name="selectablePriorty" validation="Integer"/>
+		<field name="capitalShipNameType" validation="Any" version="Vanilla"/>
+		<field name="randomCapitalShipNamePrefix" validation="Any" version="Entrenchment"/>
+		<field name="randomStarBaseNamePrefix" validation="Any" version="Entrenchment"/>
+		<structure name="entities">
+			<structure name="planetModuleInfo">
+				<structure_reference name="Page:0" type="EntityDefPage"/>
+				<structure_reference name="Page:1" type="EntityDefPage"/>
+			</structure>
+			<structure version="Rebellion" name="titanInfo">
+				<structure_reference name="Page:0" type="EntityDefPage"/>
+			</structure>
+			<structure name="capitalShipInfo">
+				<structure_reference name="Page:0" type="EntityDefPage"/>
+			</structure>
+			<structure name="frigateInfo">
+				<structure_reference name="Page:0" type="EntityDefPage"/>
+				<structure_reference name="Page:1" type="EntityDefPage"/>
+				<structure_reference name="NotOnPage" type="EntityDefPage"/>
+			</structure>
+			<structure_reference name="researchInfo" type="EntityDefPage"/>
+			<structure_reference name="starBaseInfo" type="EntityDefPage" version="Entrenchment"/>
+			<field name="flagship" validation="Entity" version="Rebellion"/>
+		</structure>
+		<structure name="debrisData">
+			<iterative_field name="numRandomMeshNamesLarge">
+				<field required="false" name="randomMeshName" validation="Mesh"/>
+			</iterative_field>
+			<iterative_field name="numRandomMeshNamesSmall">
+				<field required="false" name="randomMeshName" validation="Mesh"/>
+			</iterative_field>
+		</structure>
+		<structure name="hyperspaceData">
+			<field name="frigateChargeUpEffectName" validation="Particle" version="Rebellion"/>
+			<field name="frigateChargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="frigateChargeUpEffectNameDestabilized" validation="Particle" version="Rebellion"/>
+			<field name="frigateChargeUpEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="frigateTravelEffectName" validation="Particle" version="Rebellion"/>
+			<field name="frigateTravelEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="frigateTravelEffectNameDestabilized" validation="Particle" version="Rebellion"/>
+			<field name="frigateTravelEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="frigateExitEffectName" validation="Particle" version="Rebellion"/>
+			<field name="frigateExitEffectSoundID" validation="Sound" version="Rebellion"/>
+			
+			<field name="capitalShipChargeUpEffectName" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipChargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipChargeUpEffectNameDestabilized" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipChargeUpEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="capitalShipTravelEffectName" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipTravelEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipTravelEffectNameDestabilized" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipTravelEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="capitalShipExitEffectName" validation="Particle" version="Rebellion"/>
+			<field name="capitalShipExitEffectSoundID" validation="Sound" version="Rebellion"/>
+			
+			<field name="titanChargeUpEffectName" validation="Particle" version="Rebellion"/>
+			<field name="titanChargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="titanChargeUpEffectNameDestabilized" validation="Particle"  version="Rebellion"/>
+			<field name="titanChargeUpEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="titanTravelEffectName" validation="Particle" version="Rebellion"/>
+			<field name="titanTravelEffectNameBetweenStars" validation="Particle" version="Rebellion"/>
+			<field name="titanTravelEffectNameDestabilized" validation="Particle" version="Rebellion"/>
+			<field name="titanTravelEffectSoundID" validation="Sound" version="Rebellion"/>
+			<field name="titanExitEffectName" validation="Particle" version="Rebellion"/>
+			<field name="titanExitEffectSoundID" validation="Sound" version="Rebellion"/>
+			
+			<field required="false" name="chargeUpEffectName" validation="Particle"/>
+			<field required="false" name="chargeUpEffectNameBetweenStars" validation="Particle"/>
+			<field required="false" name="chargeUpEffectNameDestabilized" validation="Particle" version="Entrenchment"/>
+			<field required="false" name="chargeUpEffectSoundID" validation="Sound"/>
+			<field required="false" name="travelEffectName" validation="Particle"/>
+			<field required="false" name="travelEffectNameBetweenStars" validation="Particle"/>
+			<field required="false" name="travelEffectNameDestabilized" validation="Particle" version="Entrenchment" />
+			<field required="false" name="travelEffectSoundID" validation="Sound"/>
+			<field required="false" name="exitEffectName" validation="Particle"/>
+			<field required="false" name="exitEffectSoundID" validation="Sound"/>
+			
+			<field name="baseHyperspaceSpeed" validation="Decimal"/>
+			<field name="hyperspaceSpeedBetweenStarsMultiplier" validation="Decimal"/>
+			<field name="hyperspaceSpeedToFriendlyOrbitBodiesMultiplier" validation="Decimal"/>
+			<field name="baseHyperspaceAntiMatterCost" validation="Decimal"/>
+			<field name="baseHyperspaceChargeUpTime" validation="Decimal"/>
+		</structure>
+		<structure name="shieldData">
+			<field name="shieldAbsorbGrowthPerDamage" validation="Decimal"/>
+			<field name="shieldAbsorbDecayRate" validation="Decimal"/>
+			<field name="shieldAbsorbBaseMin" validation="Decimal"/>
+			<field name="shieldColor" validation="Color"/>
+		</structure>
+		
+		<structure name="gameEventData">
+			<field name="GameEventSound:AllianceCeaseFireBroken" validation="Sound"/>
+			<field name="GameEventSound:AllianceCeaseFireFormed" validation="Sound"/>
+			<field name="GameEventSound:AllianceCeaseFireOffered" validation="Sound"/>
+			<field name="GameEventSound:AllianceOtherBroken" validation="Sound"/>
+			<field name="GameEventSound:AllianceOtherFormed" validation="Sound"/>
+			<field name="GameEventSound:AllianceOtherOffered" validation="Sound"/>
+			<field name="GameEventSound:AllyBackUpArrived" validation="Sound"/>
+			<field name="GameEventSound:AllyBackUpEnRoute" validation="Sound"/>
+			<field name="GameEventSound:AllyTitanQueued" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyTitanCompleted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyTitanQueued" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyTitanCompleted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyTitanLost" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyCapitalShipLost" validation="Sound"/>
+			<field name="GameEventSound:AllyFleetArrived" validation="Sound"/>
+			<field name="GameEventSound:AllyPlanetLost" validation="Sound"/>
+			<field name="GameEventSound:AllyPlanetUnderAttack" validation="Sound"/>
+			<field name="GameEventSound:AllyRequestAttackPlanet" validation="Sound"/>
+			<field name="GameEventSound:AllyRequestDefendPlanet" validation="Sound"/>
+			<field name="GameEventSound:AllyUnitUnderAttack" validation="Sound"/>
+			<field name="GameEventSound:BountyAllDepleted" validation="Sound"/>
+			<field name="GameEventSound:BountyIncreasedOther" validation="Sound"/>
+			<field name="GameEventSound:BountyIncreasedPlayer" validation="Sound"/>
+			<field name="GameEventSound:BuyNoCommand" validation="Sound"/>
+			<field name="GameEventSound:BuyNoCredits" validation="Sound"/>
+			<field name="GameEventSound:BuyNoMetal" validation="Sound"/>
+			<field name="GameEventSound:BuyNoCrystal" validation="Sound"/>
+			<field name="GameEventSound:BuyNoFrigateFactory" validation="Sound"/>
+			<field name="GameEventSound:BuyNoCapitalShipFactory" validation="Sound"/>
+			<field name="GameEventSound:BuyNoTitanFactory" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:BuyNoAvailableShipSlots" validation="Sound"/>
+			<field name="GameEventSound:BuyNoAvailableCapitalShipSlots" validation="Sound"/>
+			<field name="GameEventSound:BuyAlreadyHasTitan" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:CannonShellDetected" validation="Sound"/>
+			<field name="GameEventSound:RandomEventDetected" validation="Sound"/>
+			<field name="GameEventSound:CannonUnderConstruction" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetAlreadyOwned" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetNotColonizable" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetAlreadyBeingColonized" validation="Sound"/>
+			<field name="GameEventSound:ColonizeNeedPrerequisiteResearch" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetHasTakeoverCulture" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetHasDebuff" validation="Sound"/>
+			<field name="GameEventSound:ColonizePlanetBlockedByEnemyStarBase" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:RuinPlanetNotRuinable" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PirateFleetArrived" validation="Sound"/>
+			<field name="GameEventSound:PirateRaidImminent" validation="Sound"/>
+			<field name="GameEventSound:PirateRaidLaunched" validation="Sound"/>
+			<field name="GameEventSound:HostileFleetArrived" validation="Sound"/>
+			<field name="GameEventSound:HostileFleetEnRoute" validation="Sound"/>
+			<field name="GameEventSound:HostilePlanetDestroyed" validation="Sound"/>
+			<field name="GameEventSound:ModuleComplete" validation="Sound"/>
+			<field name="GameEventSound:MoveCannotTravelBetweenPlanets" validation="Sound"/>
+			<field name="GameEventSound:NoValidPath" validation="Sound"/>
+			<field name="GameEventSound:NoValidPathObserved" validation="Sound"/>
+			<field name="GameEventSound:NoValidPathBetweenStars" validation="Sound"/>
+			<field name="GameEventSound:NoValidPathDueToBuff" validation="Sound"/>
+			<field name="GameEventSound:Ping" validation="Sound"/>
+			<field name="GameEventSound:PlanetUpgradeAlreadyMaxLevel" validation="Sound"/>
+			<field name="GameEventSound:PlanetUpgradeComplete" validation="Sound"/>
+			<field name="GameEventSound:PlanetUpgradeMaxLevelQueued" validation="Sound"/>
+			<field name="GameEventSound:NewPlanetDiscovered" validation="Sound"/>
+			<field name="GameEventSound:ArtifactDiscovered" validation="Sound"/>
+			<field name="GameEventSound:ArtifactDiscoveredOther" validation="Sound"/>
+			<field name="GameEventSound:BonusDiscovered" validation="Sound"/>
+			<field name="GameEventSound:NothingDiscovered" validation="Sound"/>
+			<field name="GameEventSound:LaunchSquadsDisabledByDebuff" validation="Sound"/>
+			<field name="GameEventSound:PlayerBackUpArrived" validation="Sound"/>
+			<field name="GameEventSound:PlayerTitanCreated" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerTitanLost" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerCapitalShipCreated" validation="Sound"/>
+			<field name="GameEventSound:PlayerCapitalShipLost" validation="Sound"/>
+			<field name="GameEventSound:PlayerStarbaseLost" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:PlayerFleetArrived" validation="Sound"/>
+			<field name="GameEventSound:PlayerFleetArrivedToFleetBeacon" validation="Sound"/>
+			<field name="GameEventSound:PlayerFleetDeparted" validation="Sound"/>
+			<field name="GameEventSound:PlayerFrigateCreated" validation="Sound"/>
+			<field name="GameEventSound:PlayerPlanetColonized" validation="Sound"/>
+			<field name="GameEventSound:PlayerCapitalPlanetChanged" validation="Sound"/>
+			<field name="GameEventSound:PlayerCapitalPlanetLost" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyCapitalPlanetLost" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyCapitalPlanetLost" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerPlanetLost" validation="Sound"/>
+			<field name="GameEventSound:PlayerPlanetLostToCulture" validation="Sound"/>
+			<field name="GameEventSound:PlayerPlanetSoonLostToCulture" validation="Sound"/>
+			<field name="GameEventSound:PlayerPlanetUnderAttack" validation="Sound"/>
+			<field name="GameEventSound:PlayerReceivedResourcesFromAlly" validation="Sound"/>
+			<field name="GameEventSound:PlayerUnitUnderAttack" validation="Sound"/>
+			<field name="GameEventSound:PlayerFlagshipUnderAttack" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerFlagshipShieldsDown" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerFlagshipHullSeverelyDamaged" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerFlagshipDestroyed" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyFlagshipDestroyed" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyFlagshipDestroyed" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerTitanShieldsDown" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerTitanHullSeverelyDamaged" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:PlayerCapitalShipShieldsDown" validation="Sound"/>
+			<field name="GameEventSound:PlayerCapitalShipHullSeverelyDamaged" validation="Sound"/>
+			<field name="GameEventSound:AchievementCompleted" validation="Sound"/>
+			<field name="GameEventSound:QuestAdded" validation="Sound"/>
+			<field name="GameEventSound:QuestCompleted" validation="Sound"/>
+			<field name="GameEventSound:QuestFailed" validation="Sound"/>
+			<field name="GameEventSound:QuestEnded" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:QuestRejected" validation="Sound" version="Diplomacy"/> <!-- diplomacy 1.3 -->
+			<field name="GameEventSound:PlayerQuestAdded" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:PlayerQuestCompleted" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:PlayerQuestFailed" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:DiplomaticVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:DiplomaticVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyDiplomaticVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyDiplomaticVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyDiplomaticVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyDiplomaticVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:OccupationVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:OccupationVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:OccupationVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyOccupationVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyOccupationVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyOccupationVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyOccupationVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyOccupationVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyOccupationVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:ResearchVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:ResearchVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:ResearchVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:ResearchComplete" validation="Sound"/>
+			<field name="GameEventSound:AllyResearchVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyResearchVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyResearchVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyResearchVictoryStarted" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyResearchVictoryHalfway" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:EnemyResearchVictoryComplete" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:ResearchAlreadyMaxLevel" validation="Sound"/>
+			<field name="GameEventSound:ResearchMaxLevelQueued" validation="Sound"/>
+			<field name="GameEventSound:ResearchNotEnoughPointsInTier" validation="Sound"/>
+			<field name="GameEventSound:ResearchNeedMoreLabModules" validation="Sound"/>
+			<field name="GameEventSound:ResearchNeedPrerequisite" validation="Sound"/>
+			<field name="GameEventSound:MoreModuleSlotsNeeded" validation="Sound"/>
+			<field name="GameEventSound:SpaceMineLimitReached" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:StarBaseUpgradeNotEnoughUpgradePoints" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:StarBaseUpgradeAlreadyMaxLevel" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:StarBaseUpgradeMaxLevelQueued" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:TitanUpgradeNotEnoughUpgradePoints" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:TitanUpgradeAlreadyMaxLevel" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:InvalidModulePlacementPosition" validation="Sound"/>
+			<field name="GameEventSound:AbilityUpgradeAlreadyMaxLevel" validation="Sound"/>
+			<field name="GameEventSound:AbilityUpgradeRequiresHigherLevel" validation="Sound"/>
+			<field name="GameEventSound:AbilityUpgradeNoUnspentPoints" validation="Sound"/>
+			<field name="GameEventSound:ShipUpgradeAlreadyMaxLevel" validation="Sound"/>
+			<field name="GameEventSound:ShipUpgradeAlreadyQueuedMaxLevel" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityCooldownNotExpired" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityDisabledByDebuff" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityNoAntimatter" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityNoUndockedSquadMembers" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityNotEnoughRoomForStarBase" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityCannotUseAbitraryLocationOnEntity" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityTooManyStarBases" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityMineIsNotActivated" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityTargetNotInRange" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityNoValidObjectType" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityPhaseSpaceTarget" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityNormalSpaceTarget" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintCanBeCaptured" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintCanHaveFighters" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintCanHaveShields" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintCanSpreadWeaponDamage" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintCanPhaseDodge" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasAbilityWithCooldown" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasAntimatter" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasPhaseMissiles" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasPopulation" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasEnergyWeapons" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasHullDamage" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasShieldDamage" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasAntiMatterShortage" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasWeapons" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsCargoShip" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsExplored" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsResourceExtractor" validation="Sound" />
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsMovingToLocalOrbitBody" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsPsi" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintLinkedCargoShip" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintLinkedSquad" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotSelf" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintWithinSolarSystem" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintModuleUnderConstruction" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintModuleIsActivelyBeingConstructed" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintModuleNotActivelyBeingConstructed" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsNotHomeworld" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotInvulnerable" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsInFriendlyGravityWell" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintIsInNonFriendlyGravityWell" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerLinked" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerPlayer" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerFriendly" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerHostile" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerNoOwner" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetOwnerAlliedOrEnemy" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:GameStart" validation="Sound"/>
+			<field name="GameEventSound:GameWin" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:AllyGameWin" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:CapitalShipLevelUp" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidWithNoReason" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsNotDamagableDueToBuffs" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsNotEnemy" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsCantFireAtFighters" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsCantMoveAndTargetNotInRange" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsCantMoveToTarget" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsCanOnlyAttackStructures" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:AttackTargetInvalidAsMustBeInSameOrbitWell" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsNoWeaponsToBombPlanet" validation="Sound"/>
+			<field name="GameEventSound:AttackTargetInvalidAsPlanetCantBeBombed" validation="Sound"/>
+			<field name="GameEventSound:ScuttleShipStarted" validation="Sound"/>
+			<field name="GameEventSound:ScuttleShipStopped" validation="Sound"/>
+			<field name="GameEventSound:ScuttlePlanetStarted" validation="Sound"/>
+			<field name="GameEventSound:ScuttlePlanetStopped" validation="Sound"/>
+			<field name="GameEventSound:MarketBoom" validation="Sound"/>
+			<field name="GameEventSound:MarketCrash" validation="Sound"/>
+			<field name="GameEventSound:PlayerCultureFlippedEnemyPlanet" validation="Sound"/>
+			<field name="GameEventSound:EnvoyTargetPlanetIsNowInvalid" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:OffensiveMissionDiscovered" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:MissionDiscovered" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+		</structure>
+		<structure name="planetElevatorData">
+			<field name="elevatorMeshName:TaxCenter" validation="Mesh"/>
+			<field name="elevatorMeshName:CultureCenter" validation="Mesh"/>
+			<field name="elevatorMeshName:MetalExtractor" validation="Mesh"/>
+			<field name="elevatorMeshName:CrystalExtractor" validation="Mesh"/>
+			<field name="elevatorMeshName:Bunker" validation="Mesh"/>
+			<field name="elevatorMeshName:GoodsFactory" validation="Mesh"/>
+			<field name="elevatorMeshName:ProductionCenter" validation="Mesh"/>
+		</structure>
+		<structure name="musicThemeData">
+			<iterative_field name="startupMusicThemeCount" version="Rebellion">
+				<field required="false" name="musicTheme" validation="Sound"/>
+			</iterative_field>
+			<iterative_field name="neutralMusicThemeCount" version="Rebellion">
+				<field required="false" name="musicTheme" validation="Sound"/>
+			</iterative_field>
+			<iterative_field required="false" name="musicThemeCount">
+				<field required="false" name="musicTheme" validation="Sound"/>
+			</iterative_field>
+			<iterative_field name="scareThemeCount">
+				<field required="false" name="musicTheme" validation="Sound"/>
+			</iterative_field>
+			<iterative_field name="announcementCount">
+				<field required="false" name="musicTheme" validation="Sound"/>
+			</iterative_field>
+		</structure>
+		<structure name="hudSkinData">
+			<field name="loadScreenCharacterBrush" validation="Brush"/>
+			<iterative_field name="fleetIconCount">
+				<field required="false" name="fleetIcon" validation="Brush"/>
+			</iterative_field>
+			<field name="Bandbox" validation="Simple" values="BANDBOX"/>
+			<field name="FogOfWar" validation="Simple" values="FogOfWar"/>
+			<field name="ActionGridSlotBackdrop" validation="Brush"/>
+			<field name="BottomWindowBackdrop" validation="Brush"/>
+			<field name="BottomWindowOverlay" validation="Brush"/>
+			<field name="TopWindowBackdrop" validation="Brush"/>
+			<field name="TopWindowOverlay" validation="Brush"/>
+			<field name="InfoCardAttachedToBottomBackdrop" validation="Brush"/>
+			<field name="InfoCardAttachedToScreenEdgeBackdrop" validation="Brush"/>
+			<field name="TopWindowLeftCapLowRes" validation="Brush" version="Rebellion"/>
+			<field name="TopWindowLeftCapHighRes" validation="Brush" version="Rebellion"/>
+			<field name="TopWindowRightCapLowRes" validation="Brush" version="Rebellion"/>
+			<field name="TopWindowRightCapHighRes" validation="Brush" version="Rebellion"/>
+			<field name="EmpireWindowBackdrop" validation="Brush" version="Rebellion"/>
+			<field name="EmpireWindowHighResBackdrop" validation="Brush" version="Rebellion"/>
+			<field name="QuickMarketBackdrop" validation="Brush" version="Rebellion"/>
+			<field name="QuickMarketBackdropNoPirates" validation="Brush" version="Rebellion"/>
+			<field name="UnknownPlanetHUDIcon" validation="Brush"/>
+			<field name="UnknownPlanetHUDSmallIcon" validation="Brush"/>
+			<field name="UnknownPlanetInfoCardIcon" validation="Brush"/>
+			<field name="UnknownPlanetMainViewIcon" validation="Brush"/>
+			<field name="UnknownPlanetPicture" validation="Brush"/>
+			<field name="AutoAttackRangeStateMixed" validation="Brush"/>
+			<field name="AutoAttackRangeStateAllNone" validation="Brush"/>
+			<field name="AutoAttackRangeStateAllLocalArea" validation="Brush"/>
+			<field name="AutoAttackRangeStateAllGravityWell" validation="Brush"/>
+			<field name="CohesionRangeStateMixed" validation="Brush"/>
+			<field name="CohesionRangeStateAllNone" validation="Brush"/>
+			<field name="CohesionRangeStateAllNear" validation="Brush"/>
+			<field name="CohesionRangeStateAllFar" validation="Brush"/>
+			<field name="GroupMoveStateNone" validation="Brush"/>
+			<field name="GroupMoveStateSome" validation="Brush"/>
+			<field name="GroupMoveStateAll" validation="Brush"/>
+			<field name="ZoomInstantContextNear" validation="Brush"/>
+			<field name="ZoomInstantContextFar" validation="Brush"/>
+			<field name="GameEventCategoryPing" validation="Brush"/>
+			<field name="GameEventCategoryProduction" validation="Brush"/>
+			<field name="GameEventCategoryAlliance" validation="Brush"/>
+			<field name="GameEventCategoryThreat" validation="Brush"/>
+			<field name="HUDIconQuest" validation="Brush"/>
+			<field name="HUDIconHappiness" validation="Brush"/>
+			<field name="HUDIconOverlayNotEnoughCredits" validation="Brush"/>
+			<field name="HUDIconOverlayNotEnoughMetal" validation="Brush"/>
+			<field name="HUDIconOverlayNotEnoughCrystal" validation="Brush"/>
+			<field name="HUDIconOverlayNotResearched" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetUpgradePathLastStageUpgraded" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetModuleNoAvailableResourceAsteroids" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetModuleNoTacticalSlotsAvailable" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetModuleNoCivilianSlotsAvailable" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetBuildShipNoFrigateFactories" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetBuildShipNoCapitalShipFactories" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetBuildShipNotEnoughShipSlots" validation="Brush"/>
+			<field name="HUDIconOverlayPlanetBuildShipNotEnoughCapitalShipSlots" validation="Brush"/>
+			<field name="HUDIconOverlayStarBaseUpgradeNotEnoughUpgradePoints" validation="Brush" version="Entrenchment"/>
+			<field name="HUDIconOverlayStarBaseUpgradePathLastStageUpgraded" validation="Brush" version="Entrenchment"/>
+			<field name="HUDIconOverlayInFleet" validation="Brush"/>
+			<field name="AllianceHUDIconTrade" validation="Brush"/>
+			<field name="AllianceHUDIconExternalVision" validation="Brush"/>
+			<field name="AllianceHUDIconInternalVision" validation="Brush"/>
+			<field name="AllianceHUDIconCeaseFire" validation="Brush"/>
+			<field name="AllianceHUDIconPeaceTreaty" validation="Brush"/>
+			<field name="AllianceHUDIconResearchPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconEfficiencyPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconAntimatterPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconArmorPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconBeamWeaponPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconCulturePact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconMetalCrystlPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconThrusterPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconPhaseJumpPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconPlanetBombingPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconShieldPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconMarketPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconEnergyWeaponCooldownPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconMassReductionPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconSupplyPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconTacticalSlotsPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconWeaponCooldownPact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="AllianceHUDIconTradeIncomePact" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="ResourceHUDIconCredits" validation="Brush"/>
+			<field name="ResourceHUDIconMetal" validation="Brush"/>
+			<field name="ResourceHUDIconCrystal" validation="Brush"/>
+			<field name="ResourceInfoCardIconCredits" validation="Brush"/>
+			<field name="ResourceInfoCardIconMetal" validation="Brush"/>
+			<field name="ResourceInfoCardIconCrystal" validation="Brush"/>
+			<field name="ResearchFieldButtonIconCombat" validation="Brush"/>
+			<field name="ResearchFieldButtonIconDefense" validation="Brush" version="Entrenchment"/>
+			<field name="ResearchFieldButtonIconNonCombat" validation="Brush"/>
+			<field name="ResearchFieldButtonIconDiplomacy" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="ResearchFieldButtonIconFleet" validation="Brush"/>
+			<field name="ResearchFieldButtonIconArtifact" validation="Brush"/>
+			<field name="QuestStatusIconBombAnyPlanet" validation="Brush"/>
+			<field name="QuestStatusIconKillShips" validation="Brush"/>
+			<field name="QuestStatusIconKillCapitalShips" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="QuestStatusIconKillCivilianStructures" validation="Brush"/>
+			<field name="QuestStatusIconKillTacticalStructures" validation="Brush"/>
+			<field name="QuestStatusIconSendEnvoy" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="OrderInfoCardIconNone" validation="Brush"/>
+			<field name="OrderInfoCardIconAttack" validation="Brush"/>
+			<field name="OrderInfoCardIconMove" validation="Brush"/>
+			<field name="OrderInfoCardIconAbility" validation="Brush"/>
+			<field name="OrderInfoCardIconRetreat" validation="Brush"/>
+			<field name="InfoCardIconAutoCast" validation="Brush"/>
+			<field name="InfoCardIconCombinedPlanetIncome" validation="Brush"/>
+			<field name="InfoCardIconCombinedStarBaseIncome" validation="Brush" version="Entrenchment"/>
+			<field name="InfoCardIconFleetUpkeep" validation="Brush"/>
+			<field name="InfoCardIconCapitalShip" validation="Brush"/>
+			<field name="InfoCardIconFrigate" validation="Brush"/>
+			<field name="InfoCardIconTradeShip" validation="Brush"/>
+			<field name="InfoCardIconRefineryShip" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel0" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel1" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel2" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel3" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel4" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel5" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel6" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel7" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel8" validation="Brush"/>
+			<field name="MainViewIconOverlayCapitalShipLevel9" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedColonyShips" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedScoutShips" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedCapitalShips" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedStarbases" validation="Brush" version="Entrenchment"/>
+			<field name="EmpireWindowFindIconOwnedEnvoys" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="EmpireWindowFindIconOwnedPlanetsWithResourceAsteroids" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedPlanetsWithFactories" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedPlanetsWithUpgrades" validation="Brush"/>
+			<field name="EmpireWindowFindIconOwnedPlanetsWithCivilianSlots" validation="Brush"/>
+			<field name="EmpireWindowFindIconPlanetsWithArtifacts" validation="Brush"/>
+			<field name="UserActionIconAttack" validation="Brush"/>
+			<field name="UserActionIconStop" validation="Brush"/>
+			<field name="UserActionIconCreateFleet" validation="Brush"/>
+			<field name="UserActionIconDisbandFleet" validation="Brush"/>
+			<field name="UserActionIconRetreat" validation="Brush"/>
+			<field name="UserActionIconSetRallyPoint" validation="Brush"/>
+			<field name="UserActionIconOpenModulePage0" validation="Brush"/>
+			<field name="UserActionIconOpenModulePage1" validation="Brush"/>
+			<field name="UserActionIconCloseModulePage0" validation="Brush"/>
+			<field name="UserActionIconCloseModulePage1" validation="Brush"/>
+			<field name="UserActionIconOpenPlanetTitanManagement" validation="Brush" version="Rebellion"/>
+			<field name="UserActionIconClosePlanetTitanManagement" validation="Brush" version="Rebellion"/>
+			<field name="UserActionIconOpenPlanetCapitalShipManagement" validation="Brush"/>
+			<field name="UserActionIconClosePlanetCapitalShipManagement" validation="Brush"/>
+			<field name="UserActionIconOpenPlanetFrigateManagement0" validation="Brush"/>
+			<field name="UserActionIconOpenPlanetFrigateManagement1" validation="Brush"/>
+			<field name="UserActionIconClosePlanetFrigateManagement0" validation="Brush"/>
+			<field name="UserActionIconClosePlanetFrigateManagement1" validation="Brush"/>
+			<field name="UserActionIconOpenSquadManagement" validation="Brush"/>
+			<field name="UserActionIconCloseSquadManagement" validation="Brush"/>
+			<field name="UserActionIconOpenShipAbilityManagement" validation="Brush"/>
+			<field name="UserActionIconCloseShipAbilityManagement" validation="Brush"/>
+			<field name="UserActionIconOpenShipTacticsManagement" validation="Brush"/>
+			<field name="UserActionIconCloseShipTacticsManagement" validation="Brush"/>
+			<field name="UserActionIconPurchaseCapitalShipLevel" validation="Brush"/>
+			<field name="UserActionIconOpenPlanetUpgradeManagement" validation="Brush"/>
+			<field name="UserActionIconClosePlanetUpgradeManagement" validation="Brush"/>
+			<field name="UserActionIconOpenStarBaseUpgradeManagement" validation="Brush" version="Entrenchment"/>
+			<field name="UserActionIconCloseStarBaseUpgradeManagement" validation="Brush" version="Entrenchment"/>
+			<field name="UserActionIconUpgradePlanetPopulation" validation="Brush"/>
+			<field name="UserActionIconUpdatePlanetInfrastructure" validation="Brush"/>
+			<field name="UserActionIconUpgradePlanetArtifactLevel" validation="Brush"/>
+			<field name="UserActionIconUpgradePlanetHome" validation="Brush"/>
+			<field name="UserActionIconUpgradePlanetCivilianModules" validation="Brush"/>
+			<field name="UserActionIconUpgradePlanetTacticalModules" validation="Brush"/>
+			<field name="UserActionIconUpgradePlanetSocial" validation="Brush" version="Rebellion"/>
+			<field name="UserActionIconUpgradePlanetIndustry" validation="Brush" version="Rebellion"/>
+			<field name="UserActionIconUpgradePlanetSmuggler" validation="Brush" version="Rebellion"/>
+			<field name="UserActionIconBuildResourceAsteroidExtractor" validation="Brush"/>
+			<field name="UserActionIconPing" validation="Brush"/>
+			<field name="UserActionIconPingAllyAttack" validation="Brush"/>
+			<field name="UserActionIconPingAllyDefend" validation="Brush"/>
+			<field name="UserActionIconPingAllyStop" validation="Brush"/>
+			<field name="UserActionIconToggleZoomToCursor" validation="Brush"/>
+			<field name="UserActionIconToggleScuttle" validation="Brush"/>
+			<field name="UserActionIconOpenRenameWindow" validation="Brush"/>
+			<field name="UserActionIconChangeAutoAttackRange" validation="Brush"/>
+			<field name="UserActionIconChangeCohesionRange" validation="Brush"/>
+			<field name="UserActionIconOpenEscapeMenuScreen" validation="Brush"/>
+			<field name="UserActionIconOpenNPCScreen" validation="Brush"/>
+			<field name="UserActionIconOpenRelationshipsScreen" validation="Brush" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="UserActionIconOpenResearchScreen" validation="Brush"/>
+			<field name="UserActionIconOpenPlayerScreen" validation="Brush"/>
+			<field name="UserActionIconToggleEmpireWindowStacked" validation="Brush"/>
+			<field name="UserActionIconToggleIsAutoPlaceModuleActive" validation="Brush"/>
+			<field name="UserActionIconIncreaseGameSpeed" validation="Brush" version="Entrenchment"/>
+			<field name="UserActionIconDecreaseGameSpeed" validation="Brush" version="Entrenchment"/>
+		</structure>
+		<structure name="researchScreenData">
+			<structure name="Combat">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<structure name="Defense" version="Entrenchment">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<structure name="NonCombat">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<structure name="Diplomacy" version="Diplomacy">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<structure name="Artifact">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<structure name="Fleet">
+				<iterative_field name="blockCount">
+					<structure_reference required="false" name="block" type="ResearchBlock"/>
+				</iterative_field>
+			</structure>
+			<field name="capitalShipSlotLevelPicture-0" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-1" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-2" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-3" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-4" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-5" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-6" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-7" validation="Brush"/>
+			<field name="capitalShipSlotLevelPicture-8" validation="Brush"/>
+			<field name="shipSlotLevelPicture-0" validation="Brush"/>
+			<field name="shipSlotLevelPicture-1" validation="Brush"/>
+			<field name="shipSlotLevelPicture-2" validation="Brush"/>
+			<field name="shipSlotLevelPicture-3" validation="Brush"/>
+			<field name="shipSlotLevelPicture-4" validation="Brush"/>
+			<field name="shipSlotLevelPicture-5" validation="Brush"/>
+			<field name="shipSlotLevelPicture-6" validation="Brush"/>
+			<field name="shipSlotLevelPicture-7" validation="Brush"/>
+			<field name="shipSlotLevelPicture-8" validation="Brush"/>
+		</structure>
+		<structure name="gameOverWindowData">
+			<field name="hasWonPicture" validation="Brush"/>
+			<field name="hasLostPicture" validation="Brush"/>
+			<field name="themeBackdropBrush" validation="Brush"/>
+			<field name="hasWonStatusFormatStringId" validation="StringInfo" version="Vanilla"/>
+			<field name="hasLostStatusFormatStringId" validation="StringInfo" version="Vanilla"/>
+			<field name="hasWonPhraseStringId" validation="StringInfo" version="Vanilla"/>
+			<field name="hasLostPhraseStringId" validation="StringInfo" version="Vanilla"/>
+			<field name="hasWonStatusFormatStringId" validation="StringInfo" version="EntrenchmentOnly"/>
+			<field name="hasLostStatusFormatStringId" validation="StringInfo" version="EntrenchmentOnly"/>
+			<field name="hasWonPhraseStringId" validation="StringInfo" version="EntrenchmentOnly"/>
+			<field name="hasLostPhraseStringId" validation="StringInfo" version="EntrenchmentOnly"/>
+			<field name="hasWonMilitaryStatusFormatStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasLostMilitaryStatusFormatStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasWonFlagshipStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostFlagshipStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonHomeworldStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostHomeworldStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonDiplomaticStatusFormatStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasLostDiplomaticStatusFormatStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasWonResearchStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostResearchStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonOccupationStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostOccupationStatusFormatStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonMilitaryPhraseStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasLostMilitaryPhraseStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasWonFlagshipPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostFlagshipPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonHomeworldPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostHomeworldPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonDiplomaticPhraseStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasLostDiplomaticPhraseStringId" validation="StringInfo" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="hasWonResearchPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostResearchPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasWonOccupationPhraseStringId" validation="StringInfo" version="Rebellion"/>
+			<field name="hasLostOccupationPhraseStringId" validation="StringInfo" version="Rebellion"/>
+		</structure>
+		<structure name="aiNameData">
+			<iterative_field name="nameCount">
+				<field required="false" name="name" validation="StringInfo"/>
+			</iterative_field>
+		</structure>
+		<field name="raceNameParsePrefix" validation="Any"/>
+		<field name="raceNameParsePrefixFallback" validation="Any"/>
+		<iterative_field name="numResearchFields">
+			<field required="false" name="field" validation="StringInfo"/>
+		</iterative_field>
+		<field name="playerThemeGroupName" validation="Any"/>
+		<field name="playerPictureGroupName" validation="Any"/>
+		<iterative_field name="raceRelationsModCount" version="DiplomacyOnly"> <!-- diplomacy -->
+			<structure required="false" name="raceRelationsModifier" version="Diplomacy">
+				<field name="raceRelationsModRace" validation="StringInfo" version="Diplomacy"/>
+				<field name="raceRelationsModMin" validation="Decimal" version="Diplomacy"/>
+				<field name="raceRelationsModMax" validation="Decimal" version="Diplomacy"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="raceRelationsModCount" version="Rebellion">
+			<structure required="false" name="raceRelationsModifier" version="Rebellion">
+				<field name="raceNameID" validation="StringInfo" version="Rebellion"/>
+				<field name="modifierMin" validation="Decimal" version="Rebellion"/>
+				<field name="modifierMax" validation="Decimal" version="Rebellion"/>
+				<iterative_field name="factionRelationsModCount" version="Rebellion">
+					<structure required="false" name="factionRelationsModifier" version="Rebellion">
+						<field name="factionNameID" validation="StringInfo" version="Rebellion"/>
+						<field name="otherFactionNameID" validation="StringInfo" version="Rebellion"/>
+						<field name="modifierMin" validation="Decimal" version="Rebellion"/>
+						<field name="modifierMax" validation="Decimal" version="Rebellion"/>
+					</structure>
+				</iterative_field>
+			</structure>
+		</iterative_field>
+		<field name="defaultFactionNameID" validation="StringInfo" version="Rebellion"/>
+	</structure>
+
+	<structure name="EntityDefPage">
+		<iterative_field name="count">
+			<field required="false" name="entityDefName" validation="Entity"/>
+		</iterative_field>
+	</structure>
+	
+	<structure name="ResearchBlock">
+			<field name="area" validation="Position"/> <!-- [ 50 , 93 , 690 , 192 ] --> 
+			<field name="backdrop" validation="Brush"/>
+			<field name="tierIndicatorBackdrop" validation="Brush"/>
+			<field name="title" validation="StringInfo"/>
+			<field name="picture" validation="Brush"/>
+	</structure>
+</tns:entity_definitions>

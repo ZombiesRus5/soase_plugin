@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary FleetSupplyData Definition
+==References==
+ * [GameplayConstants]
+
+* [FleetSupplyData]
+ * fleetSupplyScalar: [Decimal]
+

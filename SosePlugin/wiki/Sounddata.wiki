@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary Sounddata Definition
+* [Sounddata]
+ * numEffects: [Iteration]
+  * [effect]: [SoundEffect]
+ * numMusic: [Iteration]
+  * [music]: [Music]
+

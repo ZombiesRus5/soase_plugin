@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary weaponEffectOriginType Condition Definition
+<wiki:toc max_depth="5"/>
+[weaponEffectOriginType]: [Condition]
+ * Target
+  * [targetCentricEffectPointSpawnInfo]
+   * [spawnType]: [Condition]
+ * Targetter
+  * [weaponEffectAttachInfo]: [AttachInfo]

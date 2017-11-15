@@ -1,0 +1,19 @@
+#labels SOASE, DynamicContent
+#summary ResourceAsteroid Definition
+* [ResourceAsteroid]
+ * [resource resource]: [Enumeration]
+ * hudIcon: [Brush]
+ * smallHudIcon: [Brush]
+ * infoCardIcon: [Brush]
+ * mainViewIcon: [Brush]
+ * picture: [Brush]
+ * meshNameCount: [Iteration]
+  * meshName: [Mesh]
+ * nameStringID: [StringInfo]
+ * descStringID: [StringInfo]
+ * nearPlacementDistOffset: [Decimal]
+ * farPlacementDistOffset: [Decimal]
+ * minShadow: [Decimal]
+ * maxShadow: [Decimal]
+ * minZoomDistanceMult: [Decimal]
+

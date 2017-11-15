@@ -1,0 +1,9 @@
+#labels SOASE, DynamicContent
+#summary onReapplyDuplicateType Definition
+==References==
+ * [Buff]
+
+==Values==
+ * [Invalid Invalid]
+ * [PrioritizeNewBuffs PrioritizeNewBuffs]
+ * [PrioritizeOldBuffs PrioritizeOldBuffs]

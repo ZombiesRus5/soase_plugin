@@ -1,0 +1,16 @@
+#labels SOASE, DynamicContent
+#summary object Definition
+==References==
+ * [targetFilter]
+
+==Values==
+ * [Star Star]
+ * [Planet Planet]
+ * [Frigate Frigate]
+ * [CapitalShip CapitalShip]
+ * [Fighter Fighter]
+ * [PlanetModule PlanetModule]
+ * [StarBase StarBase]
+ * [SpaceMine SpaceMine]
+ * [PlaceHolderPlanetModule PlaceHolderPlanetModule]
+ * [PlaceHolderSpaceMine PlaceHolderSpaceMine]

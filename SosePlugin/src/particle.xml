@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+<structure name="Particle">
+		<structure_reference name="ParticleSimulation" type="ParticleSimulation"/>
+</structure>
+
+<structure name="ParticleSimulation">
+	<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+	<field required="true" name="TotalLifeTime" validation="Decimal"/>
+	<iterative_field name="NumEmitters" limit="99">
+		<condition_field required="false" name="EmitterType">
+			<condition value="Point">
+				<structure_reference required="true" name="EmitterContents" type="EmitterContentsPoint"/>
+			</condition>
+			<condition value="Ring">
+				<structure_reference required="true" name="EmitterContents" type="EmitterContentsRing"/>
+			</condition>
+			<condition value="Sphere">
+				<structure_reference required="true" name="EmitterContents" type="EmitterContentsSphere"/>
+			</condition>
+		</condition_field>
+	</iterative_field>
+	<iterative_field name="NumAffectors">
+		<condition_field required="false" name="AffectorType">
+			<condition value="LinearInflate">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsLinearInflate"/>
+			</condition>
+			<condition value="Fade">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsFade"/>
+			</condition>
+			<condition value="LinearForceToPoint">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsLinearForceToPoint"/>
+			</condition>
+			<condition value="ColorOscillator">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsColorOscillator"/>
+			</condition>
+			<condition value="Jitter">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsJitter"/>
+			</condition>
+			<condition value="SizeOscillator">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsSizeOscillator"/>
+			</condition>
+			<condition value="LinearForceInDirection">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsLinearForceInDirection"/>
+			</condition>
+			<condition value="RotateAboutAxis">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsRotateAboutAxis"/>
+			</condition>
+			<condition value="KillParticlesNearPoint">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsKillParticlesNearPoint"/>
+			</condition>
+			<condition value="Drag">
+				<structure_reference required="true" name="AffectorContents" type="AffectorContentsDrag"/>
+			</condition>
+		</condition_field>
+	</iterative_field>
+	<field required="true" name="length" validation="Decimal"/>
+</structure>
+
+<structure name="EmitterContentsPoint">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="EmitRate" validation="Decimal"/>
+		<field required="true" name="HasInfiniteEmitCount" validation="Boolean"/>
+		<field required="true" name="MaxEmitCount" validation="Integer"/>
+		<field required="true" name="hasEmitIntervals" validation="Boolean"/>
+		<field required="true" name="emitIntervalRunDuration" validation="Decimal"/>
+		<field required="true" name="emitIntervalWaitDuration" validation="Decimal"/>
+		<field required="true" name="ParticleLifeTime" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleStartMass" validation="Decimal"/>
+		<field required="true" name="ParticleStartColor" validation="Color"/>
+		<field required="true" name="ParticleWidth" validation="Decimal"/>
+		<field required="true" name="ParticleHeight" validation="Decimal"/>
+		<field required="true" name="MeshName" validation="Mesh"/>
+		<field required="true" name="Position" validation="Coordinate"/>
+		<field required="true" name="Orientation" validation="Orientation"/>
+		<field required="true" name="RotateAboutForward" validation="Decimal"/>
+		<field required="true" name="RotateAboutUp" validation="Decimal"/>
+		<field required="true" name="RotateAboutCross" validation="Decimal"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="BillboardAnchor" validation="Integer"/>
+		<field required="true" name="ParticleFacing" validation="Integer"/>
+		<field required="true" name="PipelineEffectID" validation="Any"/>
+		<field required="true" name="AreParticlesAttached" validation="Boolean"/>
+		<iterative_field name="numTextures">
+			<field required="false" name="textureName" validation="Texture"/>
+		</iterative_field>
+		<field required="true" name="textureAnimationName" validation="Any"/>
+		<field required="true" name="textureAnimationSpawnType" validation="Any"/>
+		<field required="true" name="textureAnimationOnParticleFPS" validation="Decimal"/>
+		<field required="true" name="ParticlesRotate" validation="Boolean"/>
+		<field required="true" name="MeshParticleRotationAxisType" validation="Integer"/>
+		<field required="true" name="MeshParticleRotationAxis" validation="Coordinate"/>
+		<field required="true" name="RotationDirectionType" validation="Integer"/>
+		<field required="true" name="AngleVariance" validation="Decimal"/>
+</structure>
+
+<structure name="EmitterContentsRing">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="EmitRate" validation="Decimal"/>
+		<field required="true" name="HasInfiniteEmitCount" validation="Boolean"/>
+		<field required="true" name="MaxEmitCount" validation="Integer"/>
+		<field required="true" name="hasEmitIntervals" validation="Boolean"/>
+		<field required="true" name="emitIntervalRunDuration" validation="Decimal"/>
+		<field required="true" name="emitIntervalWaitDuration" validation="Decimal"/>
+		<field required="true" name="ParticleLifeTime" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleStartMass" validation="Decimal"/>
+		<field required="true" name="ParticleStartColor" validation="Color"/>
+		<field required="true" name="ParticleWidth" validation="Decimal"/>
+		<field required="true" name="ParticleHeight" validation="Decimal"/>
+		<field required="true" name="MeshName" validation="Mesh"/>
+		<field required="true" name="Position" validation="Coordinate"/>
+		<field required="true" name="Orientation" validation="Orientation"/>
+		<field required="true" name="RotateAboutForward" validation="Decimal"/>
+		<field required="true" name="RotateAboutUp" validation="Decimal"/>
+		<field required="true" name="RotateAboutCross" validation="Decimal"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="BillboardAnchor" validation="Integer"/>
+		<field required="true" name="ParticleFacing" validation="Integer"/>
+		<field required="true" name="PipelineEffectID" validation="Any"/>
+		<field required="true" name="AreParticlesAttached" validation="Boolean"/>
+		<iterative_field name="numTextures">
+			<field required="false" name="textureName" validation="Texture" />
+		</iterative_field>
+		<field required="true" name="textureAnimationName" validation="Any"/>
+		<field required="true" name="textureAnimationSpawnType" validation="Any"/>
+		<field required="true" name="textureAnimationOnParticleFPS" validation="Decimal"/>
+		<field required="true" name="ParticlesRotate" validation="Boolean"/>
+		<field required="true" name="MeshParticleRotationAxisType" validation="Integer"/>
+		<field required="true" name="MeshParticleRotationAxis" validation="Coordinate"/>
+		<field required="true" name="RotationDirectionType" validation="Integer"/>
+		<field required="true" name="RingRadiusXMin" validation="Decimal"/>
+		<field required="true" name="RingRadiusXMax" validation="Decimal"/>
+		<field required="true" name="RingRadiusYMin" validation="Decimal"/>
+		<field required="true" name="RingRadiusYMax" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartSpeedTangential" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartSpeedRingNormal" validation="Decimal"/>
+		<field required="true" name="ScaleStartSpeedsByRadius" validation="Boolean"/>
+		<field required="true" name="SpawnAngleStart" validation="Decimal"/>
+		<field required="true" name="SpawnAngleStop" validation="Decimal"/>
+		<field required="true" name="minSpawnHeight" validation="Decimal"/>
+		<field required="true" name="maxSpawnHeight" validation="Decimal"/>
+		<field required="true" name="spawnDirectionIsParallelToPlane" validation="Boolean"/>
+		<field required="true" name="isSpawnAngleRandom" validation="Boolean"/>
+		<field required="true" name="nonRandomSpawnLoopEmittedParticleCount" validation="Integer"/>
+</structure>
+
+<structure name="EmitterContentsSphere">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="EmitRate" validation="Decimal"/>
+		<field required="true" name="HasInfiniteEmitCount" validation="Boolean"/>
+		<field required="true" name="MaxEmitCount" validation="Integer"/>
+		<field required="true" name="hasEmitIntervals" validation="Boolean"/>
+		<field required="true" name="emitIntervalRunDuration" validation="Decimal"/>
+		<field required="true" name="emitIntervalWaitDuration" validation="Decimal"/>
+		<field required="true" name="ParticleLifeTime" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartLinearSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartAngularSpeed" validation="Decimal"/>
+		<field required="true" name="ParticleMinStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartRotation" validation="Decimal"/>
+		<field required="true" name="ParticleStartMass" validation="Decimal"/>
+		<field required="true" name="ParticleStartColor" validation="Color"/>
+		<field required="true" name="ParticleWidth" validation="Decimal"/>
+		<field required="true" name="ParticleHeight" validation="Decimal"/>
+		<field required="true" name="MeshName" validation="Mesh"/>
+		<field required="true" name="Position" validation="Coordinate"/>
+		<field required="true" name="Orientation" validation="Orientation"/>
+		<field required="true" name="RotateAboutForward" validation="Decimal"/>
+		<field required="true" name="RotateAboutUp" validation="Decimal"/>
+		<field required="true" name="RotateAboutCross" validation="Decimal"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="BillboardAnchor" validation="Integer"/>
+		<field required="true" name="ParticleFacing" validation="Integer"/>
+		<field required="true" name="PipelineEffectID" validation="Any"/>
+		<field required="true" name="AreParticlesAttached" validation="Boolean"/>
+		<iterative_field name="numTextures">
+			<field required="false" name="textureName" validation="Texture" />
+		</iterative_field>
+		<field required="true" name="textureAnimationName" validation="Any"/>
+		<field required="true" name="textureAnimationSpawnType" validation="Any"/>
+		<field required="true" name="textureAnimationOnParticleFPS" validation="Decimal"/>
+		<field required="true" name="ParticlesRotate" validation="Boolean"/>
+		<field required="true" name="MeshParticleRotationAxisType" validation="Integer"/>
+		<field required="true" name="MeshParticleRotationAxis" validation="Coordinate"/>
+		<field required="true" name="RotationDirectionType" validation="Integer"/>
+		<field required="true" name="SphereRadiusXMax" validation="Decimal"/>
+		<field required="true" name="SphereRadiusXMin" validation="Decimal"/>
+		<field required="true" name="SphereRadiusYMax" validation="Decimal"/>
+		<field required="true" name="SphereRadiusYMin" validation="Decimal"/>
+		<field required="true" name="SphereRadiusZMax" validation="Decimal"/>
+		<field required="true" name="SphereRadiusZMin" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartSpeedAzimuthalTangential" validation="Decimal"/>
+		<field required="true" name="ParticleMaxStartSpeedPolarTangential" validation="Decimal"/>
+		<field required="true" name="ScaleStartSpeedsByRadius" validation="Boolean"/>
+		<field required="true" name="SpawnAngleLatitudinalStart" validation="Decimal"/>
+		<field required="true" name="SpawnAngleLatitudinalStop" validation="Decimal"/>
+		<field required="true" name="SpawnAngleLongitudinalStart" validation="Decimal"/>
+		<field required="true" name="SpawnAngleLongitudinalStop" validation="Decimal"/>
+</structure>
+
+<structure name="AffectorContentsLinearInflate">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="WidthInflateRate" validation="Decimal"/>
+		<field required="true" name="HeightInflateRate" validation="Decimal"/>
+</structure>
+
+<structure name="AffectorContentsFade">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="DoFadeOut" validation="Boolean"/>
+		<field required="true" name="FadeOutTime" validation="Decimal"/>
+		<field required="true" name="DoFadeIn" validation="Boolean"/>
+		<field required="true" name="FadeInTime" validation="Decimal"/>
+</structure>
+
+<structure name="AffectorContentsLinearForceToPoint">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="MinForce" validation="Decimal"/>
+		<field required="true" name="MaxForce" validation="Decimal"/>
+		<field required="true" name="Point" validation="Coordinate"/>
+</structure>
+
+<structure name="AffectorContentsColorOscillator">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="TransitionPeriod" validation="Decimal"/>
+		<field required="true" name="StartColor" validation="Color"/>
+		<field required="true" name="StartAlpha" validation="Decimal"/>
+		<field required="true" name="EndColor" validation="Color"/>
+		<field required="true" name="EndAlpha" validation="Decimal"/>
+</structure>
+
+<structure name="AffectorContentsJitter">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="JitterForce" validation="Decimal"/>
+		<field required="true" name="UseCommonForce" validation="Boolean"/>
+
+</structure>
+
+<structure name="AffectorContentsSizeOscillator">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="TransitionPeriod" validation="Decimal"/>
+		<field required="true" name="BeginSizeX" validation="Decimal"/>
+		<field required="true" name="BeginSizeY" validation="Decimal"/>
+		<field required="true" name="EndSizeX" validation="Decimal"/>
+		<field required="true" name="EndSizeY" validation="Decimal"/>
+
+</structure>
+
+<structure name="AffectorContentsLinearForceInDirection">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="MinForce" validation="Decimal"/>
+		<field required="true" name="MaxForce" validation="Decimal"/>
+		<field required="true" name="Direction" validation="Coordinate"/>
+
+</structure>
+
+<structure name="AffectorContentsRotateAboutAxis">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="AngularVelocity" validation="Decimal"/>
+		<field required="true" name="Radius" validation="Decimal"/>
+		<field required="true" name="AxisOfRotation" validation="Coordinate"/>
+		<field required="true" name="AxisOrigin" validation="Coordinate"/>
+</structure>
+
+<structure name="AffectorContentsKillParticlesNearPoint">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="Point" validation="Coordinate"/>
+		<field required="true" name="Distance" validation="Decimal"/>
+</structure>
+
+<structure name="AffectorContentsDrag">
+		<field required="true" name="Name" validation="Any"/>
+		<field required="true" name="Enabled" validation="Boolean"/>
+		<field required="true" name="StartTime" validation="Decimal"/>
+		<field required="true" name="HasInfiniteLifeTime" validation="Boolean"/>
+		<field required="true" name="TotalLifeTime" validation="Decimal"/>
+		<field required="true" name="UseYoungParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="YoungParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="UseOldParticleAffectThreshold" validation="Boolean"/>
+		<field required="true" name="OldParticleAffectThreshold" validation="Decimal"/>
+		<field required="true" name="AffectAttachedParticles" validation="Boolean"/>
+		<iterative_field name="numAttachedEmitters" >
+			<field required="false" name="attachedEmitterName" validation="Any"/>
+		</iterative_field>
+		<field required="true" name="DragCoefficient" validation="Decimal"/>
+</structure>
+
+</tns:entity_definitions>

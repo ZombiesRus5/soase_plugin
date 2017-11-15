@@ -1,0 +1,35 @@
+#labels SOASE, DynamicContent
+#summary Ability Definition
+
+Used to create abilities.
+
+An Ability is an entity file that can be assigned to an object as the 
+"front end" for a buff.	
+		
+
+* [Ability]
+ * [buffInstantActionType]: [Condition]
+ * toggleStateOnNameStringID: [StringInfo]
+ * toggleStateOnDescStringID: [StringInfo]
+ * [hasWeaponEffects]: [Condition]
+ * needsToFaceTarget: [Boolean]
+ * canCollideWithTarget: [Boolean]
+ * moveThruTarget: [Boolean]
+ * isUltimateAbility: [Boolean]
+ * maxNumLevels: [Integer]
+ * [levelSourceType]: [Condition]
+ * [aiUseTime]: [Condition]
+ * [aiUseTargetCondition]: [Condition]
+ * isAutoCastAvailable: [Boolean]
+ * isAutoCastOnByDefault: [Boolean]
+ * pickRandomPlanetToExploreForAutoCastTarget: [Boolean]
+ * ignoreNonCombatShipsForAutoCastTarget: [Boolean]
+ * onlyAutoCastWhenDamageTakenExceedsPerc: [Decimal]
+ * [useCostType]: [Condition]
+ * [researchPrerequisites]
+ * nameStringID: [StringInfo]
+ * descStringID: [StringInfo]
+ * hudIcon: [Brush]
+ * smallHudIcon: [Brush]
+ * infoCardIcon: [Brush]
+

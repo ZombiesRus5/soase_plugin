@@ -1,0 +1,12 @@
+#labels SOASE, DynamicContent
+#summary ResearchBoolModifierType Definition
+==References==
+ * [ResearchSubject]
+
+* [ResearchBoolModifierType]
+ * [modifierTypeBool modifierType]: [Enumeration]
+ * [linkedPlanetType linkedPlanetType]: [Enumeration]
+ * [linkedWeaponClass linkedWeaponClass]: [Enumeration]
+ * [allianceType allianceType]: [Enumeration]
+ * pactUnlockEntityDefName: [Entity]
+

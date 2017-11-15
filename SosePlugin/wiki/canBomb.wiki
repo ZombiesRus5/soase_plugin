@@ -1,0 +1,13 @@
+#labels SOASE, DynamicContent
+#summary canBomb Condition Definition
+<wiki:toc max_depth="5"/>
+[canBomb]: [Condition]
+ * FALSE
+ * TRUE
+  * [hasBombingLevels]: [Condition]
+  * bombingFreqTime: [Decimal]
+  * baseRange: [Decimal]
+  * bombTransitTime: [Decimal]
+  * bombEffectCount: [Integer]
+  * bombEffectAngleVariance: [Decimal]
+  * [bombEffectsDef]: [weaponEffectsDef]

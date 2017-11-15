@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary ChanceToHitTarget Definition
+==References==
+ * [GameplayConstants]
+
+* [ChanceToHitTarget]
+ * CAPITALSHIP: [Decimal]
+ * INTERCEPTOR: [Decimal]
+ * BOMBER: [Decimal]
+

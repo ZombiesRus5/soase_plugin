@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0057)http://help.eclipse.org/kepler/advanced/searchToolbar.jsp -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Toolbar</title>
+ 
+<style type="text/css">
+
+/* need this one for Mozilla */
+HTML { 
+	margin:0px;
+	padding:0px;
+}
+ 
+BODY {
+	background:ButtonFace;
+}
+
+#titleText {
+	font-weight:bold;
+	color:WindowText;
+}
+
+a {
+    cursor : default
+}
+ 
+.buttonOn a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	width:18px;
+	height:18px;
+	border:1px solid Highlight;
+	
+    vertical-align:middle;
+
+	background: Window;
+
+}
+
+.button a, .buttonMenu a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	height:18px;
+	border:1px solid ButtonFace;
+	
+	vertical-align:middle;
+}
+
+.button a {
+	width:18px;
+}
+
+.buttonMenu a {
+	width:30px;
+}
+
+.buttonHidden a { 
+	display:none;
+}
+
+.button a:hover, .buttonMenu a:hover { 
+	border-top:1px solid ButtonHighlight; 
+	border-left:1px solid ButtonHighlight; 
+	border-right:1px solid ButtonShadow; 
+	border-bottom:1px solid ButtonShadow;
+}
+
+
+
+.separator {
+	background-color: ThreeDShadow;
+	height:100%;
+	width: 1px;
+	border-top:2px solid ButtonFace;
+	border-bottom:2px solid ButtonFace;
+	border-left:3px solid ButtonFace;
+	border-right:3px solid ButtonFace;
+	
+}
+
+#container {
+	border-bottom:1px solid ThreeDShadow;
+
+	border-top:1px solid ThreeDShadow;
+	height:24px;
+
+}
+
+
+
+</style>
+
+
+
+<script language="JavaScript">
+
+var bRestore = false;
+// Preload images
+
+	var show_all = new Image();
+	show\u005Fall.src = "images\u002Fe\u005Fshow\u005Fall\u002Egif";
+
+	var show_categories = new Image();
+	show\u005Fcategories.src = "images\u002Fe\u005Fshow\u005Fcategories\u002Egif";
+
+	var show_descriptions = new Image();
+	show\u005Fdescriptions.src = "images\u002Fe\u005Fshow\u005Fdescriptions\u002Egif";
+
+	var maximize_restore = new Image();
+	maximize\u005Frestore.src = "images\u002Fmaximize\u002Egif";
+
+
+function setTitle(label)
+{
+	if( label == null) label = "";
+	var title = document.getElementById("titleText");
+	if (title == null) return;
+	var text = title.lastChild;
+	if (text == null) return;
+	text.nodeValue = label;
+}
+
+
+function registerMaximizedChangedListener(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.registerMaximizeListener) {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.registerMaximizeListener('searchToolbar', maximizedChanged);
+	}
+}
+registerMaximizedChangedListener();
+
+/**
+ * Handler for double click: maximize/restore this view
+ * Note: Mozilla browsers prior to 1.2.1 do not support programmatic frame resizing well.
+ */
+function mouseDblClickHandler(e) {
+	// ignore double click on buttons
+	var target=e.target;
+	if (target.tagName && (target.tagName == "A" || target.tagName == "IMG"))
+		return;
+	toggleFrame();
+	return false;
+}		
+function restore_maximize(button)
+{
+	toggleFrame();
+	if (button && document.getElementById(button)){
+		document.getElementById(button).blur();
+	}
+}
+function toggleFrame(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.toggleFrame)  {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.toggleFrame('Search\u0020Results');
+	}
+	document.selection.clear;	
+}
+
+function maximizedChanged(maximizedNotRestored){
+	if(maximizedNotRestored){
+		document.getElementById("maximize_restore").src="images/e_restore.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Restore");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Restore");
+		bRestore = true;
+	}else{
+		document.getElementById("maximize_restore").src="images/e_maximize.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Maximize");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Maximize");
+		bRestore = false;
+	}
+}
+
+document.ondblclick = mouseDblClickHandler;
+
+
+function setButtonState(buttonName, pressed) {
+	if(!document.getElementById("tdb_"+buttonName))
+		return;
+	if (pressed == "hidden")
+		document.getElementById("tdb_"+buttonName).className="buttonHidden";
+	else if(pressed == true)
+		document.getElementById("tdb_"+buttonName).className="buttonOn";
+	else
+		document.getElementById("tdb_"+buttonName).className="button";
+}
+
+function setWindowStatus(buttonName){
+	
+		if (buttonName == "show\u005Fall"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Show\u0020All\u0020Topics";
+			}
+		}
+	
+		if (buttonName == "show\u005Fcategories"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Show\u0020result\u0020categories";
+			}
+		}
+	
+		if (buttonName == "show\u005Fdescriptions"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Show\u0020result\u0020descriptions";
+			}
+		}
+	
+		if (buttonName == "maximize\u005Frestore"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Maximize";
+			}
+		}
+	
+}
+
+
+
+</script>
+
+
+<script language="JavaScript" src="./navActions.js.download"></script>
+
+
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+ 
+
+	<body dir="ltr" marginwidth="0" marginheight="0">
+
+
+<table id="container" width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="padding-left:8px;">
+
+	<tbody><tr>
+		<td nowrap="" style="font: icon" valign="middle">
+			<div id="titleTextTableDiv" style="overflow:hidden; height:22px;"><table><tbody><tr><td nowrap="" style="font:icon"><div id="titleText">&nbsp;Search Results</div></td></tr></tbody></table>
+			</div>
+		
+		
+		<div style="position:absolute; top:1px; right:0px;">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" height="100%">
+			<tbody><tr>
+				<td align="right">
+					<table align="right" border="0" cellspacing="0" cellpadding="0" height="100%" style="background:ButtonFace">
+					<tbody><tr>
+
+						<td align="middle" id="tdb_show_all" class="buttonHidden" height="18">
+							<a href="javascript:toggleShowAll(&#39;b0&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;show_all&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b0">
+							   <img src="./e_show_all.gif" alt="Show All Topics" title="Show All Topics" border="0" id="show_all">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_show_categories" class="button" height="18">
+							<a href="javascript:toggleShowCategories(&#39;b1&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;show_categories&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b1">
+							   <img src="./e_show_categories.gif" alt="Show result categories" title="Show result categories" border="0" id="show_categories">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_show_descriptions" class="buttonOn" height="18">
+							<a href="javascript:toggleShowDescriptions(&#39;b2&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;show_descriptions&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b2">
+							   <img src="./e_show_descriptions.gif" alt="Show result descriptions" title="Show result descriptions" border="0" id="show_descriptions">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_maximize_restore" class="button" height="18">
+							<a href="javascript:restore_maximize(&#39;b3&#39;, &#39;null&#39;);" onmouseover="javascript:setWindowStatus(&#39;maximize_restore&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b3">
+							   <img src="./maximize.gif" alt="Maximize" title="Maximize" border="0" id="maximize_restore">
+							</a>
+						</td>
+				
+					</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table> 
+		</div>
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+     
+
+
+</body></html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<element_rule name="isDamageShared" validation="Boolean"/>
+	<condition_field name="buffOverTimeActionType">
+		<condition><value>DoDamageAndGiveResourceCostPerc</value>
+			<structure_reference required="true" name="resourceGainPerc" type="GenericLevel"/>
+			<structure_reference required="true" name="damageRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>DoDamage</value>
+			<structure_reference name="damageRate" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+		</condition>
+		<condition><value>DoDamageToPlanet</value>
+			<structure_reference required="true" name="damageRate" type="GenericLevel"/>
+			<structure_reference required="true" name="populationKillRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>DoDamageToTarget</value>
+			<structure_reference name="damageRate" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+		</condition>
+		<condition><value>DoModuleConstruction</value>
+			<structure_reference required="true" name="buildRate" type="GenericLevel"/>
+			<structure_reference required="true" name="moduleCostFraction" type="GenericLevel"/>
+		</condition>
+		<condition><value>DoPercOfMaxDamageToPlanet</value>
+			<structure_reference required="true" name="damageRate" type="GenericLevel"/>
+			<structure_reference required="true" name="populationKillRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>DrainAntiMatter</value>
+			<structure_reference required="true" name="drainAntiMatterRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>DrainAntiMatterAndDoDamage</value>
+			<structure_reference required="true" name="drainAntiMatterRate" type="GenericLevel" />
+			<structure_reference required="true" name="damageRate" type="GenericLevel" />
+			<field required="true" name="isDamageShared" />
+		</condition>
+		<condition><value>EarnResources</value>
+			<structure_reference required="true" name="earnRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>EarnCredits</value>
+			<structure_reference required="true" name="earnRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>Magnetize</value>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxNumTargets" type="GenericLevel"/>
+			<structure_reference required="true" name="damagePerImpact" type="GenericLevel"/>
+			<field required="true" name="pullForceMagnitude" validation="Decimal"/>
+		</condition>
+		<condition><value>RestoreAllegiance</value>
+			<structure_reference required="true" name="allegianceRestoreRate" type="GenericLevel"/>
+		</condition> <!-- diplomacy -->
+		<condition><value>RestoreAntiMatter</value>
+			<structure_reference required="true" name="antiMatterRestoreRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>RestoreHull</value>
+			<structure_reference required="true" name="hullRestoreRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>RestorePlanetHealth</value>
+			<structure_reference required="true" name="planetHealthRestoreRate" type="GenericLevel"/>
+		</condition> <!-- diplomacy -->
+		<condition><value>RestoreShields</value>
+			<structure_reference required="true" name="shieldRestoreRate" type="GenericLevel"/>
+		</condition>
+		<condition><value>StealPlanetProduction</value>
+			<structure_reference required="true" name="stolenPlanetProductionPerc" type="GenericLevel"/>
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

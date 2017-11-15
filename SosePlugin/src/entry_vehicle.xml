@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="EntryVehicle">
+		<field name="AtmosphereEntryEffectName" validation="Particle"/>
+		<field name="HasSurfaceImpactEffect" validation="Boolean"/>
+		<field name="SurfaceImpactEffectName" validation="Particle"/>
+		<field name="SurfaceImpactSoundID" validation="Sound"/>
+		<field name="LaunchSoundID" validation="Sound"/>
+		<field name="mass" validation="Decimal"/>
+		<field name="maxAccelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationStrafe" validation="Decimal"/>
+		<field name="maxDecelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationAngular" validation="Decimal"/>
+		<field name="maxDecelerationAngular" validation="Decimal"/>
+		<field name="maxSpeedLinear" validation="Decimal"/>
+		<field name="maxRollRate" validation="Decimal" version="Entrenchment"/>
+		<field name="maxRollAngle" validation="Decimal" version="Entrenchment"/>
+		<field name="MeshName" validation="Mesh"/>
+		<field name="ExhaustParticleSystemName" validation="Particle"/>
+		<field name="ExhaustTrailTextureName" validation="Texture"/>
+		<field name="ExhaustTrailWidth" validation="Decimal"/>
+		<field name="AtmosphereEntrySoundID" validation="Sound"/>
+		<field name="SpaceTravelSoundID" validation="Sound"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+	</structure>
+</tns:entity_definitions>

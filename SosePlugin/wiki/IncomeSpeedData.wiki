@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary IncomeSpeedData Definition
+==References==
+ * [GameplayConstants]
+
+* [IncomeSpeedData]
+ * incomeRateGameSpeedScalar: [Decimal]
+

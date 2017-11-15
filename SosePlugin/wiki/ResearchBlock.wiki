@@ -1,0 +1,12 @@
+#labels SOASE, DynamicContent
+#summary ResearchBlock Definition
+==References==
+ * [Player]
+
+* [ResearchBlock]
+ * area: [Position]
+ * backdrop: [Brush]
+ * tierIndicatorBackdrop: [Brush]
+ * title: [StringInfo]
+ * picture: [Brush]
+

@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary DamageType Definition
+==References==
+ * [Weapon]
+
+==Values==
+ * [PHYSICAL PHYSICAL]
+ * [ENERGY ENERGY]

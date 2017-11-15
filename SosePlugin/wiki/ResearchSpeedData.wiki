@@ -1,0 +1,8 @@
+#labels SOASE, DynamicContent
+#summary ResearchSpeedData Definition
+==References==
+ * [GameplayConstants]
+
+* [ResearchSpeedData]
+ * researchRateGameSpeedScalar: [Decimal]
+

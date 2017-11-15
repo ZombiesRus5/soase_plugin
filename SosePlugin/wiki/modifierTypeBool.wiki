@@ -1,0 +1,23 @@
+#labels SOASE, DynamicContent
+#summary modifierType Definition
+==References==
+ * [ResearchBoolModifierType]
+ * [ResearchFloatModifierType]
+
+==Values==
+ * [AllowGalaxyTravel AllowGalaxyTravel]
+ * [AllowMissionOffers AllowMissionOffers]
+ * [AllowPacts AllowPacts]
+ * [AllowPirateMissions AllowPirateMissions]
+ * [AllowResourceDemandAndGifts AllowResourceDemandAndGifts]
+ * [AllowUseAlliedPhaseGateWithPhaseJumpPact AllowUseAlliedPhaseGateWithPhaseJumpPact]
+ * [AllowWormHoleTravel AllowWormHoleTravel]
+ * [CultureSpreadIsAlwaysVisible CultureSpreadIsAlwaysVisible]
+ * [HyperspaceDetectionAnyJumps HyperspaceDetectionAnyJumps]
+ * [HyperspaceDetectionOneJump HyperspaceDetectionOneJump]
+ * [HyperspaceDetectionTwoJumps HyperspaceDetectionTwoJumps]
+ * [PirateRaidsOneLevelLower PirateRaidsOneLevelLower]
+ * [PlanetIsColonizable PlanetIsColonizable]
+ * [PlanetsDetectedByCulture PlanetsDetectedByCulture]
+ * [RemoveRacialRelationPenalty RemoveRacialRelationPenalty]
+ * [UnlockPact UnlockPact]

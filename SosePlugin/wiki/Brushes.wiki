@@ -1,0 +1,7 @@
+#labels SOASE, DynamicContent
+#summary Brushes Definition
+* [Brushes]
+ * onlyLoadOnDemand: [Boolean]
+ * brushCount: [Iteration]
+  * [brush]: [BrushType]
+

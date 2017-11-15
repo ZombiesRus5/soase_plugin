@@ -1,0 +1,5 @@
+#labels SOASE, DynamicContent
+#summary MissionColonize Definition
+* [MissionColonize]
+ * [missionType missionType]: [Enumeration]
+

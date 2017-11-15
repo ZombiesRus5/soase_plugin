@@ -1,0 +1,26 @@
+#labels SOASE, DynamicContent
+#summary content Condition Definition
+<wiki:toc max_depth="5"/>
+[content]: [Condition]
+ * Margins
+  * [stretchMargins]: [MarginsType]
+  * [contentMargins]: [MarginsType]
+  * fileName: [Texture]
+  * pixelBox: [Position]
+ * MarginsAndStates
+  * [stretchMargins]: [MarginsType]
+  * [contentMargins]: [MarginsType]
+  * [Disabled]: [StatesType]
+  * [Pressed]: [StatesType]
+  * [CursorOver]: [StatesType]
+  * [Focused]: [StatesType]
+  * [Normal]: [StatesType]
+ * Simple
+  * fileName: [Texture]
+  * pixelBox: [Position]
+ * States
+  * [Disabled]: [StatesType]
+  * [Pressed]: [StatesType]
+  * [CursorOver]: [StatesType]
+  * [Focused]: [StatesType]
+  * [Normal]: [StatesType]

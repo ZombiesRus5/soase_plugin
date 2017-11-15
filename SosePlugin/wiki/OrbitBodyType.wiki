@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary OrbitBodyType Definition
+==References==
+ * [GalaxyScenarioDef]
+
+* [OrbitBodyType]
+ * typeName: [Any]
+ * entityDefName: [Entity]
+ * defaultTemplateName: [Any]
+

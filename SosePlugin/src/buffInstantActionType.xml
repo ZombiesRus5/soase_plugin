@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+	<condition_field help="Note: some buffInstantActionTypes are not applicable to Abilities." name="buffInstantActionType">
+		<condition><value version="Rebellion">GiveExperience</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="experienceToGive" validation="Decimal"/>
+		</condition>
+		<condition><value version="Rebellion">RuinPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="afterRuinBuffType" validation="Entity" />
+		</condition>
+		<condition><value version="Rebellion">ClearRecordedDamage</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value version="Rebellion">ChangePlayerIndexToNeutral</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value version="Rebellion">CreatePlanetModule</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="planetModuleType" validation="Entity"/>
+			<field required="true" name="spawnPlanetModuleSoundID" validation="Sound"/>
+		</condition>
+		<condition><value version="Rebellion">DoAllegianceChangeToPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="allegianceChange" type="GenericLevel"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">GainHullEqualToTarget</value>
+			<value version="Rebellion">GainShieldEqualToTarget</value>
+			<value version="Rebellion">GainAntimatterEqualToTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value version="Rebellion">ApplyBuffToTargetsAtAdjacentOrbitBodies</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value version="Rebellion">DoDamagePerLastSpawnerPopulation</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="damagePerPopulationPoint" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+		</condition>
+		<condition><value version="Rebellion">DoDamagePerEntityInRadius</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="damagePerEntity" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+		</condition>
+		<condition><value version="Rebellion">ConvertFrigateToResources</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="percentageOfCost" type="GenericLevel" />
+		</condition>
+		<condition><value version="Rebellion">ApplyImpulseInSpawnerDirection</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="impulse" validation="Decimal" />
+		</condition>
+		<condition><value version="Rebellion">ApplyBuffToLastSpawnerNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+		</condition>
+		<condition><value version="Rebellion">ApplyBuffToFirstSpawnerNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+		</condition>
+		<condition><value version="Rebellion">TeleportTowardsArbitraryTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition version="Rebellion"><value>CreateFrigateAtArbitraryTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="frigateType" validation="Entity" />
+			<structure_reference required="true" name="numFrigates" type="GenericLevel"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnFrigateSoundID" validation="Sound"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+		</condition>
+		<condition version="Rebellion"><value>RestoreShieldPointsPerc</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="shieldPerc" type="GenericLevel"/>
+		</condition>
+		<condition version="Rebellion"><value>RestoreHullPointsPerc</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="hullPerc" type="GenericLevel"/>
+		</condition>
+		<condition version="Rebellion"><value>IncreaseOwnerAbilityLevel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="abilityIndex" validation="Decimal" />
+			<structure_reference required="true" name="abilityLevel" type="GenericLevel"/>
+		</condition>
+		<condition version="Rebellion"><value>AddPopulationToPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="populationAdded" type="GenericLevel"/>
+		</condition>
+		<condition version="Rebellion"><value>ApplyArbitraryTargettedBuffToSelf</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition version="Rebellion"><value>ApplyBuffToTargetsInDirectionalCone</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<field required="true" name="weaponBank" validation="Simple" values="FRONT,BACK,LEFT,RIGHT"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="coneAngle" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToIncomingHyperspacers</value>
+			<field required="true" name="instantActionTriggerType" type="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToLastSpawnerWithTravelNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToLocalOrbitBody</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToLocalOrbitBodyWithTravel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToSelf</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToSelfWithFilter</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+		</condition>
+		<condition><value>ApplyBuffToTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+		</condition>
+		<condition><value>ApplyBuffToTargetNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetOnWeaponFired</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsAtOrbitBody</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsInColumn</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="columnRadius" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsInRadius</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsInRadiusOfTargetWithTravel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+			<field required="true" name="effectStaggerDelay" validation="Decimal"/>
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsInRadiusWithChainTravel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<field required="true" name="chainDelay" validation="Decimal"/>
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsInRadiusWithTravel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+			<field required="true" name="travelSpeed"  validation="Decimal"  />
+			<field required="true" name="effectStaggerDelay" validation="Decimal"/>
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetsLinked</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetWithEntryVehicles</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="entryVehicleType" validation="Entity" />
+			<structure_reference required="true" name="numEntryVehicles" type="GenericLevel"/>
+			<field required="true" name="travelTime" validation="Decimal"/>
+			<structure_reference required="true" name="entryVehicleLaunchInfo" type="effectInfo"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetWithTravel</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyBuffToTargetWithTravelNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>ApplyForceFromSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<!--  <structure_reference required="true" name="force" type="GenericLevel" version="Entrenchment" />  -->
+			<field required="true" name="force" validation="Decimal" />
+		</condition>
+		<condition><value>ApplyImpulseFromSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="impulse" validation="Decimal"/>
+		</condition>
+		<condition><value>ApplyOrRemoveBuffToSelf</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyRelationshipModifierToOwnerOfPlanetInCurrentGravityWell</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="relationshipIncrease" type="GenericLevel"/>
+		</condition> <!-- diplomacy -->
+		<condition><value>ApplyTargettedBuffToSelf</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyTargettedBuffToSelfNoFilterNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>ApplyTargettedBuffToSelfNoRange</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>AttractDebris</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="travelSpeed"  validation="Decimal" />
+		</condition>
+		<condition><value>ChangePlayerIndexToFirstSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="isPermanent" validation="Boolean" version="Rebellion"/>
+			<field required="true" name="failIfNotEnoughShipSlots" validation="Boolean" version="Rebellion"/>
+			<field required="true" name="experiencePercentageToAward" validation="Decimal" version="Rebellion"/>
+		</condition>
+		<condition><value>ColonizePlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="delayUntilColonization" validation="Decimal" version="Entrenchment"/>
+			<field required="true" name="entryVehicleType" validation="Entity" />
+			<structure_reference required="true" name="numEntryVehicles" type="GenericLevel"/>
+			<field required="true" name="travelTime" validation="Decimal"/>
+			<structure_reference required="true" name="entryVehicleLaunchInfo" type="effectInfo"/>
+			<field required="true" name="afterColonizeBuffType" validation="Entity" />
+		</condition>
+		<condition><value>ConvertDamageToAntiMatter</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="antiMatterFromDamagePerc" type="GenericLevel"/>
+		</condition>
+		<condition><value>ConvertNearbyDebrisToHull</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="hullPerDebris" type="GenericLevel"/>
+			<structure name="debrisCleanupSounds">
+				<iterative_field name="soundCount" limit="6">
+					<field required="false" name="sound" validation="Sound"/>
+				</iterative_field>
+			</structure>
+		</condition>
+		<condition><value>ConvertSquadMembersToMines</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="spaceMineType" validation="Entity" />
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+		</condition>
+		<condition><value>CreateCannonShell</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="cannonShellType" validation="Entity" />
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>CreateClonedFrigate</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="numFrigates" type="GenericLevel"/>
+			<field required="true" name="impulse" validation="Decimal"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnFrigateSoundID" validation="Sound"/>
+		</condition>
+		<condition><value>CreateFrigate</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="frigateType" validation="Entity" />
+			<structure_reference required="true" name="numFrigates" type="GenericLevel"/>
+			<field required="true" name="matchOwnerDamageState" validation="Boolean"/>
+			<field required="true" name="impulse" validation="Decimal"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnFrigateSoundID" validation="Sound"/>
+			<field required="true" name="postSpawnBuff" validation="Entity" />
+		</condition>
+		<condition><value>CreateFrigateAtTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="frigateType" validation="Entity" />
+			<structure_reference required="true" name="numFrigates" type="GenericLevel"/>
+			<field required="true" name="impulse" validation="Decimal"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnFrigateSoundID" validation="Sound"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+		</condition>
+		<condition><value>CreateIllusionFighters</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="numFighters" type="GenericLevel"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>CreateSpaceMine</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="spaceMineType" validation="Entity" />
+			<structure_reference required="true" name="numMines" type="GenericLevel"/>
+			<field required="true" name="impulse" validation="Decimal"/>
+			<field required="true" name="angleVariance" validation="Decimal"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnMineSoundID" validation="Sound"/>
+		</condition>
+		<condition><value>CreateSquad</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="squadType" validation="Entity" />
+			<structure_reference required="true" name="numSquads" type="GenericLevel"/>
+			<structure_reference required="true" name="expiryTime" type="GenericLevel"/>
+			<field required="true" name="spawnSquadSoundID" validation="Sound"/>
+		</condition>
+		<condition><value>CreateStarBase</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="starBaseType" validation="Entity" />
+			<structure_reference required="true" name="placementRadius" type="GenericLevel"/>
+		</condition>
+		<condition><value>DoDamage</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="damage" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+		</condition>
+		<condition><value>DoDamagePercOfCurrentHull</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="hullDamagePerc" type="GenericLevel"/>
+			<field required="true" name="damageAffectType"/>
+			<field required="true" name="damageType"/>
+			<field required="true" name="isDamageShared"/>
+		</condition>
+		<condition><value>DoDamageToPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="damage" type="GenericLevel"/>
+			<structure_reference required="true" name="populationKilled" type="GenericLevel"/>
+		</condition>
+		<condition><value>DoInterrupt</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>DoInterruptUltimate</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>Explore</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>ForceAttackersToRepickAttackTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>GiveCreditsToPlayer</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="credits" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition> <!-- diplomacy -->
+		<condition><value>InitializeMovementTowardLastSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="minLinearSpeed" validation="Decimal"/>
+			<field required="true" name="maxLinearSpeed" validation="Decimal"/>
+		</condition>
+		<condition><value>InitializeRandomMotion</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="minRandomAngularSpeed" validation="Decimal"/>
+			<field required="true" name="maxRandomAngularSpeed" validation="Decimal"/>
+			<field required="true" name="minRandomLinearSpeed" validation="Decimal"/>
+			<field required="true" name="maxRandomLinearSpeed" validation="Decimal"/>
+		</condition>
+		<condition><value>MakeDead</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>MatchTargetVelocity</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>PlayAttachedEffect</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>PlayDetachedEffectsInRadius</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="effectInfo"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<field required="true" name="numEffects" validation="Integer"/>
+			<field required="true" name="delayBetweenEffects" validation="Decimal"/>
+		</condition>
+		<condition><value>PlayPersistantAttachedEffect</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value>PlayPersistantBeamEffect</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="hasWeaponEffects" type="hasWeaponEffects"/>
+		</condition>
+		<condition><value>PropagateWeaponDamageReceivedToTargetsInRadius</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="range" type="GenericLevel"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+		</condition>
+		<condition><value>RecordDamage</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>RemoveAntiMatter</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="antiMatter" type="GenericLevel"/>
+		</condition>
+		<condition><value>RemoveAntiMatterPerc</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="antiMatterPerc" type="GenericLevel"/>
+		</condition>
+		<condition><value>RemoveBuffOfType</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffTypeToRemove" validation="Entity"/>
+		</condition>
+		<condition><value>ResetPhysicsState</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>RestoreAntiMatter</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="antiMatter" type="GenericLevel"/>
+		</condition>
+		<condition><value>RestoreHullPoints</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="hull" type="GenericLevel"/>
+		</condition>
+		<condition><value>RestoreShieldPoints</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="shields" type="GenericLevel"/>
+		</condition>
+		<condition><value>ResurrectCapitalShip</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>RetaliateBounty</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="bountyAmount" type="GenericLevel"/>
+		</condition>
+		<condition><value>RetaliateDamage</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="damageRetaliationPerc" type="GenericLevel"/>
+		</condition>
+		<condition><value>SetTauntTargetToLastSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value>SpawnResourceExtractors</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="numExtractors" type="GenericLevel"/>
+		</condition>
+		<condition><value>SpawnShipsAtPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<iterative_field name="spawnShipsLevelCount" limit="6">
+				<structure_reference required="false" name="spawnShips"/>
+			</iterative_field>
+			<field required="true" name="spawnShipsArrivalDelayTime" validation="Decimal"/>
+			<field required="true" name="spawnShipsHyperspaceSpawnType"/>
+		</condition>
+		<condition><value>StealAntiMatterForFirstSpawner</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="antiMatter" type="GenericLevel"/>
+		</condition>
+		<condition><value>StealResources</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="resourceToSteal"/>
+			<structure_reference required="true" name="resourceAmount" type="GenericLevel"/>
+		</condition>
+		<condition><value>TeleportTowardsMoveTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="teleportDistance" validation="Decimal"/>		
+		</condition>
+		<condition><value>TeleportTowardsTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="teleportStopOffset" validation="Decimal"/>		
+		</condition>
+		<condition><value>TiltUpVectorInTargetDirection</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="angleOffset" validation="Decimal"/>		
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

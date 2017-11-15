@@ -1,0 +1,32 @@
+#labels SOASE, DynamicContent
+#summary Weapon Definition
+==References==
+ * [CapitalShip]
+ * [Fighter]
+ * [Frigate]
+ * [PlanetModuleHangarDefense]
+ * [PlanetModuleWeaponDefense]
+ * [StarBase]
+
+* [Weapon]
+ * [weaponType WeaponType]: [Enumeration]
+ * [damageEnums]
+  * [AttackType AttackType]: [Enumeration]
+  * [damageAffectType DamageAffectType]: [Enumeration]
+  * [DamageApplyType DamageApplyType]: [Enumeration]
+  * [damageType DamageType]: [Enumeration]
+  * [WeaponClassType WeaponClassType]: [Enumeration]
+ * DamagePerBank:FRONT: [Decimal]
+ * DamagePerBank:BACK: [Decimal]
+ * DamagePerBank:LEFT: [Decimal]
+ * DamagePerBank:RIGHT: [Decimal]
+ * Range: [Decimal]
+ * PreBuffCooldownTime: [Decimal]
+ * CanFireAtFighter: [Boolean]
+ * SynchronizedTargeting: [Boolean]
+ * PointStaggerDelay: [Decimal]
+ * TravelSpeed: [Decimal]
+ * Duration: [Decimal]
+ * [fireConstraintType]: [Condition]
+ * [WeaponEffects]: [weaponEffectsDef]
+

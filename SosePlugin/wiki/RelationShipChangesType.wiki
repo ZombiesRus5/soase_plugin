@@ -1,0 +1,12 @@
+#labels SOASE, DynamicContent
+#summary RelationShipChangesType Definition
+==References==
+ * [GameplayConstants]
+
+* [RelationShipChangesType]
+ * Trade: [Decimal]
+ * ExternalVision: [Decimal]
+ * InternalVision: [Decimal]
+ * CeaseFire: [Decimal]
+ * PeaceTreaty: [Decimal]
+

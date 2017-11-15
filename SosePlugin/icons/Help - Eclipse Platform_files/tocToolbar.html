@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- saved from url=(0054)http://help.eclipse.org/kepler/advanced/tocToolbar.jsp -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Toolbar</title>
+ 
+<style type="text/css">
+
+/* need this one for Mozilla */
+HTML { 
+	margin:0px;
+	padding:0px;
+}
+ 
+BODY {
+	background:ButtonFace;
+}
+
+#titleText {
+	font-weight:bold;
+	color:WindowText;
+}
+
+a {
+    cursor : default
+}
+ 
+.buttonOn a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	width:18px;
+	height:18px;
+	border:1px solid Highlight;
+	
+    vertical-align:middle;
+
+	background: Window;
+
+}
+
+.button a, .buttonMenu a { 
+	display:block;
+	margin-left:2px;
+	margin-right:2px;
+	height:18px;
+	border:1px solid ButtonFace;
+	
+	vertical-align:middle;
+}
+
+.button a {
+	width:18px;
+}
+
+.buttonMenu a {
+	width:30px;
+}
+
+.buttonHidden a { 
+	display:none;
+}
+
+.button a:hover, .buttonMenu a:hover { 
+	border-top:1px solid ButtonHighlight; 
+	border-left:1px solid ButtonHighlight; 
+	border-right:1px solid ButtonShadow; 
+	border-bottom:1px solid ButtonShadow;
+}
+
+
+
+.separator {
+	background-color: ThreeDShadow;
+	height:100%;
+	width: 1px;
+	border-top:2px solid ButtonFace;
+	border-bottom:2px solid ButtonFace;
+	border-left:3px solid ButtonFace;
+	border-right:3px solid ButtonFace;
+	
+}
+
+#container {
+	border-bottom:1px solid ThreeDShadow;
+
+	border-top:1px solid ThreeDShadow;
+	height:24px;
+
+}
+
+
+
+</style>
+
+
+
+<script language="JavaScript">
+
+var bRestore = false;
+// Preload images
+
+	var show_all = new Image();
+	show\u005Fall.src = "images\u002Fe\u005Fshow\u005Fall\u002Egif";
+
+	var print_toc = new Image();
+	print\u005Ftoc.src = "images\u002Fe\u005Fprint\u005Ftoc\u002Egif";
+
+	var quick_search = new Image();
+	quick\u005Fsearch.src = "images\u002Fe\u005Fquick\u005Fsearch\u005Fmulti\u002Egif";
+
+	var collapseall = new Image();
+	collapseall.src = "images\u002Fe\u005Fcollapseall\u002Egif";
+
+	var synchnav = new Image();
+	synchnav.src = "images\u002Fe\u005Fauto\u005Fsynch\u005Ftoc\u002Egif";
+
+	var maximize_restore = new Image();
+	maximize\u005Frestore.src = "images\u002Fmaximize\u002Egif";
+
+
+function setTitle(label)
+{
+	if( label == null) label = "";
+	var title = document.getElementById("titleText");
+	if (title == null) return;
+	var text = title.lastChild;
+	if (text == null) return;
+	text.nodeValue = label;
+}
+
+
+function registerMaximizedChangedListener(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.registerMaximizeListener) {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.registerMaximizeListener('tocToolbar', maximizedChanged);
+	}
+}
+registerMaximizedChangedListener();
+
+/**
+ * Handler for double click: maximize/restore this view
+ * Note: Mozilla browsers prior to 1.2.1 do not support programmatic frame resizing well.
+ */
+function mouseDblClickHandler(e) {
+	// ignore double click on buttons
+	var target=e.target;
+	if (target.tagName && (target.tagName == "A" || target.tagName == "IMG"))
+		return;
+	toggleFrame();
+	return false;
+}		
+function restore_maximize(button)
+{
+	toggleFrame();
+	if (button && document.getElementById(button)){
+		document.getElementById(button).blur();
+	}
+}
+function toggleFrame(){
+	// get to the frameset
+	var p = parent;
+	while (p && !p.toggleFrame)  {	   
+	    if (p === p.parent)  {
+	        return;
+        }
+		p = p.parent;
+	}
+	
+	if (p!= null){
+		p.toggleFrame('Contents');
+	}
+	document.selection.clear;	
+}
+
+function maximizedChanged(maximizedNotRestored){
+	if(maximizedNotRestored){
+		document.getElementById("maximize_restore").src="images/e_restore.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Restore");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Restore");
+		bRestore = true;
+	}else{
+		document.getElementById("maximize_restore").src="images/e_maximize.gif";
+		document.getElementById("maximize_restore").setAttribute("title", 
+		    "Maximize");
+		document.getElementById("maximize_restore").setAttribute("alt", 
+		    "Maximize");
+		bRestore = false;
+	}
+}
+
+document.ondblclick = mouseDblClickHandler;
+
+
+function setButtonState(buttonName, pressed) {
+	if(!document.getElementById("tdb_"+buttonName))
+		return;
+	if (pressed == "hidden")
+		document.getElementById("tdb_"+buttonName).className="buttonHidden";
+	else if(pressed == true)
+		document.getElementById("tdb_"+buttonName).className="buttonOn";
+	else
+		document.getElementById("tdb_"+buttonName).className="button";
+}
+
+function setWindowStatus(buttonName){
+	
+		if (buttonName == "show\u005Fall"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Show\u0020All\u0020Topics";
+			}
+		}
+	
+		if (buttonName == "print\u005Ftoc"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Print\u0020topics";
+			}
+		}
+	
+		if (buttonName == "null"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "null";
+			}
+		}
+	
+		if (buttonName == "quick\u005Fsearch"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Search\u0020topics";
+			}
+		}
+	
+		if (buttonName == "collapseall"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Collapse\u0020All";
+			}
+		}
+	
+		if (buttonName == "synchnav"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Link\u0020with\u0020Contents";
+			}
+		}
+	
+		if (buttonName == "maximize\u005Frestore"){
+			if (buttonName == "maximize_restore"){
+				if (bRestore){
+					window.status = "Restore";
+				}else{
+					window.status = "Maximize";
+				}
+			}else{
+				window.status = "Maximize";
+			}
+		}
+	
+}
+
+
+
+function menu(button, param) {
+	var doc = parent.frames[1].document;
+	if (!doc.getElementById("menu")) {
+		var menu = doc.createElement("div");
+		menu.id = "menu";
+		menu.srcButton = button;
+		menu.onmouseout = menuExit;
+		menu.onkeydown = menuKey;
+		
+		menu.style.padding = "2px 2px 2px 2px";
+		menu.style.position = "absolute";
+		menu.style.right = "0px";
+		menu.style.top = "0px";
+		menu.style.background = "ButtonFace";
+		menu.style.font = "icon";
+		menu.style.borderLeft = "1px solid ThreeDShadow";
+		menu.style.borderBottom = "1px solid ThreeDShadow";
+
+		var entries = param.split(",");
+		for (var i=0;i<entries.length;++i) {
+			var properties = entries[i].split("=");
+			var anchor = doc.createElement("a");
+			var text = doc.createTextNode(properties[0]);
+			anchor.title = properties[0];
+			anchor.appendChild(text);
+			anchor.href = "javascript:parent.frames[0].closeMenu(),parent.frames[0]." + properties[1];
+			anchor.target = "_self";
+			anchor.onmouseover = itemEnter;
+			anchor.onmouseout = itemExit;
+			anchor.onfocus = itemEnter;
+			anchor.onblur = itemExit;
+			anchor.style.display = "block";
+			anchor.style.cursor = "default";
+			anchor.style.textDecoration = "none";
+			anchor.style.padding = "4px 4px 4px 4px";
+			anchor.style.background = "transparent";
+			anchor.style.color = "WindowText";
+			menu.appendChild(anchor);
+		}
+
+		doc.body.appendChild(menu);
+		menu.focus();
+	}
+
+	if (button && document.getElementById(button)) {
+		var buttonElem = document.getElementById(button);
+		buttonElem.blur();
+		buttonElem.firstChild.title = "";
+	}
+}
+
+function menuKey(e) {
+	var key;
+	if (!e) var e = parent.frames[parent.frames.length - 1].window.event;
+	if (e.keyCode) key = e.keyCode;
+	else if (e.which) key = e.which;
+    var src = e.srcElement ? e.srcElement : e.target;
+
+  	if (key == 38) { // Up arrow
+  		if (src.id != "menu" && src.previousSibling) {
+  			src.previousSibling.focus();
+  		}
+  	}
+  	else if (key == 40) { // Down arrow
+  		if (src.id == "menu") {
+  			src.firstChild.focus();
+  		}
+  		else if (src.nextSibling) {
+  			src.nextSibling.focus();
+  		}
+  	}
+  	else if (key == 27) { // Esc
+  		closeMenu();
+  	}
+  	else {
+  		return true;
+  	}
+  	return false;
+}
+
+function closeMenu() {
+    parent.frames[parent.frames.length - 1].window.status = "";
+	var menu = parent.frames[1].document.getElementById("menu");
+	menu.parentNode.removeChild(menu);
+
+	var img = document.getElementById(menu.srcButton).firstChild;
+	img.title = img.alt;
+}
+
+function itemEnter(e) {
+    this.style.background = "Highlight";
+    this.style.color = "HighlightText";
+    parent.frames[parent.frames.length - 1].window.status = this.firstChild.nodeValue;
+    return true;
+}
+
+function itemExit(e) {
+    this.style.background = "transparent";
+    this.style.color = "WindowText";
+    parent.frames[parent.frames.length - 1].window.status = "";
+    return true;
+}
+
+function menuExit(e) {
+	if (!e) var e = parent.frames[parent.frames.length - 1].window.event;
+    var target = e.relatedTarget ? e.relatedTarget : e.toElement;
+    while (target && target != this)
+         target = target.parentNode;
+    if (target == this) return;
+    closeMenu();
+}
+
+
+
+</script>
+
+
+<script language="JavaScript" src="./navActions.js.download"></script>
+
+
+<script type="text/javascript" src="chrome-extension://hdokiejnpimakedhajhdlcegeplioahd/xhrExtension.js"></script></head>
+ 
+
+	<body dir="ltr" marginwidth="0" marginheight="0">
+
+
+<table id="container" width="100%" border="0" cellspacing="0" cellpadding="0" height="100%" style="padding-left:8px;">
+
+	<tbody><tr>
+		<td nowrap="" style="font: icon" valign="middle">
+			<div id="titleTextTableDiv" style="overflow:hidden; height:22px;"><table><tbody><tr><td nowrap="" style="font:icon"><div id="titleText">&nbsp;Contents</div></td></tr></tbody></table>
+			</div>
+		
+		
+		<div style="position:absolute; top:1px; right:0px;">
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" height="100%">
+			<tbody><tr>
+				<td align="right">
+					<table align="right" border="0" cellspacing="0" cellpadding="0" height="100%" style="background:ButtonFace">
+					<tbody><tr>
+
+						<td align="middle" id="tdb_show_all" class="buttonHidden" height="18">
+							<a href="javascript:toggleShowAll(&#39;b0&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;show_all&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b0">
+							   <img src="./e_show_all.gif" alt="Show All Topics" title="Show All Topics" border="0" id="show_all">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_print_toc" class="buttonMenu" height="18">
+							<a href="javascript:menu(&#39;b1&#39;, &#39;Print\u0020selected\u0020topic=printTopic(\&#39;You\u0020must\u0020select\u0020a\u0020valid\u0020topic\u0020to\u0020print\&#39;),Print\u0020selected\u0020topic\u0020and\u0020all\u0020subtopics=printToc(\&#39;You\u0020must\u0020select\u0020a\u0020valid\u0020topic\u0020to\u0020print\&#39;)&#39;);" onmouseover="javascript:setWindowStatus(&#39;print_toc&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b1">
+							   <img src="./e_print_toc.gif" alt="Print topics" title="Print topics" border="0" id="print_toc">
+							</a>
+						</td>
+
+						<td align="middle" class="separator" valign="middle">
+						</td>
+
+						<td align="middle" id="tdb_quick_search" class="buttonMenu" height="18">
+							<a href="javascript:menu(&#39;b3&#39;, &#39;Search\u0020selected\u0020topic=quickSearchTopic(\&#39;You\u0020must\u0020select\u0020a\u0020valid\u0020topic\u0020to\u0020search\&#39;),Search\u0020selected\u0020topic\u0020and\u0020all\u0020subtopics=quickSearchToc(\&#39;You\u0020must\u0020select\u0020a\u0020valid\u0020topic\u0020to\u0020search\&#39;)&#39;);" onmouseover="javascript:setWindowStatus(&#39;quick_search&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b3">
+							   <img src="./e_quick_search_multi.gif" alt="Search topics" title="Search topics" border="0" id="quick_search">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_collapseall" class="button" height="18">
+							<a href="javascript:collapseAll(&#39;b4&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;collapseall&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b4">
+							   <img src="./e_collapseall.gif" alt="Collapse All" title="Collapse All" border="0" id="collapseall">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_synchnav" class="buttonOn" height="18">
+							<a href="javascript:toggleAutosynch(&#39;b5&#39;, &#39;&#39;);" onmouseover="javascript:setWindowStatus(&#39;synchnav&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b5">
+							   <img src="./e_auto_synch_toc.gif" alt="Link with Contents" title="Link with Contents" border="0" id="synchnav">
+							</a>
+						</td>
+
+						<td align="middle" id="tdb_maximize_restore" class="button" height="18">
+							<a href="javascript:restore_maximize(&#39;b6&#39;, &#39;null&#39;);" onmouseover="javascript:setWindowStatus(&#39;maximize_restore&#39;);return true;" onmouseout="window.status=&#39;&#39;;" id="b6">
+							   <img src="./maximize.gif" alt="Maximize" title="Maximize" border="0" id="maximize_restore">
+							</a>
+						</td>
+				
+					</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table> 
+		</div>
+		</td>
+	</tr>
+</tbody></table>
+
+
+
+     
+
+
+</body></html>

@@ -1,0 +1,16 @@
+#labels SOASE, DynamicContent
+#summary PirateRaidComposition Definition
+==References==
+ * [GameplayConstants]
+
+* [PirateRaidComposition]
+ * requiredShipCount: [Iteration]
+  * [requiredShip]
+   * type: [Entity]
+   * minCount: [Integer]
+   * maxCount: [Integer]
+ * randomShipCount: [Iteration]
+  * [randomShip]
+   * type: [Entity]
+   * weight: [Integer]
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="StarBase">
+		<field name="ability:0" validation="Entity"/>
+		<field name="ability:1" validation="Entity"/>
+		<field name="ability:2" validation="Entity"/>
+		<field name="ability:3" validation="Entity"/>
+		<field name="ability:4" validation="Entity"/>
+		<field name="defaultAutoAttackRange" type="defaultAutoAttackRange"/>
+		<field name="defaultAutoAttackOn" validation="Boolean"/>
+		<field name="prefersToFocusFire" validation="Boolean"/>
+		<field name="usesFighterAttack" validation="Boolean"/>
+		<field name="numRandomDebrisLarge" validation="Integer"/>
+		<field name="numRandomDebrisSmall" validation="Integer"/>
+		<iterative_field name="numSpecificDebris" limit="2">
+			<field required="false" name="specificDebrisMeshName" validation="Mesh"/>
+		</iterative_field>
+		<field name="armorType"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+		<field name="minZoomDistanceMult" validation="Decimal"/>
+		<iterative_field name="NumWeapons" limit="5">
+			<structure_reference required="false" name="Weapon"/>
+		</iterative_field>
+		<field name="m_weaponIndexForRange" validation="Integer"/>
+		<field name="firingAlignmentType" type="firingAlignmentType"/>
+		<field name="TargetCountPerBank:FRONT" validation="Integer"/>
+		<field name="TargetCountPerBank:BACK" validation="Integer"/>
+		<field name="TargetCountPerBank:LEFT" validation="Integer"/>
+		<field name="TargetCountPerBank:RIGHT" validation="Integer"/>
+		<field name="canOnlyTargetStructures" validation="Boolean"/>
+		<field name="ShieldMeshName" validation="Mesh"/>
+		<field name="renderShield" validation="Boolean"/>
+		<field name="squadTypeEntityDef:0" validation="Entity"/>
+		<field name="squadAntiMatterCost:0" validation="Decimal"/>
+		<field name="squadTypeEntityDef:1" validation="Entity"/>
+		<field name="squadAntiMatterCost:1" validation="Decimal"/>
+		<field name="squadTypeEntityDef:2" validation="Entity"/>
+		<field name="squadAntiMatterCost:2" validation="Decimal"/>
+		<field name="squadTypeEntityDef:3" validation="Entity"/>
+		<field name="squadAntiMatterCost:3" validation="Decimal"/>
+		<field name="mainViewIcon" validation="Brush"/>
+		<field name="experiencePointsForDestroying" validation="Decimal"/>
+		<field name="nameStringID" validation="StringInfo"/>
+		<field name="picture" validation="Brush"/>
+		<field name="statCountType"/>
+		<field name="creationSourceAbility"  validation="Entity"/>
+		<field name="maxUpgradeLevelCount" validation="Integer"/>
+		<iterative_field name="UpgradeTypeCount"  limit="9">
+			<field required="false" name="UpgradeType" validation="Entity"/>
+		</iterative_field>
+		<iterative_field name="MeshNameInfoCount" version="Entrenchment" limit="12">
+			<structure_reference required="false" name="MeshNameInfo"/>
+		</iterative_field>
+		<field name="meshNameIncreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="meshNameDecreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<iterative_field name="NumSoundsFor:ONATTACKORDERISSUED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONCREATION" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONGENERALORDERISSUED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSELECTED" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSTARTPHASEJUMP" limit="6">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<field name="ExplosionName" validation="Explosion"/>
+		<field name="formationRank" validation="Integer" values="0,1,2,3"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+		<field name="cargoShipType" validation="Entity"/>
+		<field name="maxCargoShipCount" validation="Integer"/>
+		<field name="cargoShipRespawnTime" validation="Decimal"/>
+		<field name="baseBuildTime" validation="Decimal"/>
+		<field name="buildEffectName" validation="Particle"/>
+		<field name="angularSpeed" validation="Decimal"/>
+		<field name="rotateSoundName" validation="Sound"/>
+		<field name="rotateFacingType" type="rotateFacingType"/>
+		<field name="rotateConstantly" validation="Boolean"/>
+		<field name="maxAccelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationStrafe" validation="Decimal"/>
+		<field name="maxDecelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationAngular" validation="Decimal"/>
+		<field name="maxDecelerationAngular" validation="Decimal"/>
+		<field name="maxSpeedLinear" validation="Decimal"/>
+		<field name="maxRollRate" validation="Decimal"/>
+		<field name="maxRollAngle" validation="Decimal"/>
+		<field name="mass" validation="Decimal"/>
+		<field name="HyperspaceChargingSoundID" validation="Sound" version="Rebellion"/>
+		<field name="HyperspaceTravelSoundID" validation="Sound" version="Rebellion"/>
+	</structure>
+</tns:entity_definitions>

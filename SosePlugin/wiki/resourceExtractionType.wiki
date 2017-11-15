@@ -1,0 +1,14 @@
+#labels SOASE, DynamicContent
+#summary resourceExtractionType Definition
+==References==
+ * [PlanetModuleHangarDefense]
+ * [PlanetModuleRefinery]
+ * [PlanetModuleShipFactory]
+ * [PlanetModuleStandard]
+ * [PlanetModuleTradePort]
+ * [PlanetModuleWeaponDefense]
+
+==Values==
+ * [Crystal Crystal]
+ * [Metal Metal]
+ * [Invalid Invalid]

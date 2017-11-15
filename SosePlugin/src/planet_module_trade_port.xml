@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+ 	<structure name="PlanetModuleTradePort">
+		<field name="minZoomDistanceMult" validation="Decimal"/>
+		<field name="ability:0" validation="Entity"/>
+		<field name="ability:1" validation="Entity"/>
+		<field name="ability:2" validation="Entity"/>
+		<field name="ability:3" validation="Entity"/>
+		<field name="ability:4" validation="Entity" version="Entrenchment"/>
+		<field name="MaxAntiMatter" validation="Decimal"/>
+		<field name="AntiMatterRestoreRate" validation="Decimal"/>
+		<field name="numRandomDebrisLarge" validation="Decimal"/>
+		<field name="numRandomDebrisSmall" validation="Decimal"/>
+		<iterative_field name="numSpecificDebris" limit="2">
+			<field required="false" name="specificDebrisMeshName" validation="Mesh"/>
+		</iterative_field>
+		<field name="armorType" type="armorType"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+		<field name="planetUpgradeSlotType" type="planetUpgradeSlotType"/>
+		<field name="planetUpgradeSlotCount" validation="Integer"/>
+		<structure_reference name="basePrice" type="Cost"/>
+		<field name="BuildTime" validation="Decimal" version="Vanilla"/>
+		<field name="NameStringID" validation="StringInfo"/>
+		<field name="DescriptionStringID" validation="StringInfo"/>
+		<field name="planetModuleRoleType" type="planetModuleRoleType"/>
+		<field name="statCountType" type="statCountType"/>
+		<structure_reference name="Prerequisites" type="researchPrerequisites"/>
+		<field name="MaxHullPoints" validation="Decimal"/>
+		<field name="HullPointRestoreRate" validation="Decimal"/>
+		<field name="BaseArmorPoints" validation="Decimal"/>
+		<field name="MaxShieldPoints" validation="Decimal"/>
+		<field name="ShieldPointRestoreRate" validation="Decimal"/>
+		<field name="maxShieldMitigation" validation="Decimal"/>
+		<field name="ExperiencePointsForDestroying" validation="Decimal"/>
+		<field name="angularSpeed" validation="Decimal" version="Vanilla"/>
+		<field name="rotateSoundName" validation="Sound" version="Vanilla"/>
+		<field name="resourceExtractionType"/>
+		<field name="cultureSpreadRate" validation="Decimal"/>
+		<field name="rotateToFacePlanet" validation="Boolean" version="Vanilla"/>
+		<field name="rotateConstantly" validation="Boolean" version="Vanilla"/>
+		<field name="isAffectedBySimilarModuleCostResearch" validation="Boolean"/>
+		<field name="placementRadius" validation="Decimal" version="Entrenchment"/>
+		<field name="nearPlacementDistOffset" validation="Decimal" version="Entrenchment"/>
+		<field name="farPlacementDistOffset" validation="Decimal" version="Entrenchment"/>
+		<field name="spawnCount" validation="Integer" version="Entrenchment"/>
+		<field name="swapMineType" validation="Entity" version="Entrenchment"/>
+		<field name="angularSpeed" validation="Decimal" version="Entrenchment"/>
+		<field name="rotateSoundName" validation="Sound" version="Entrenchment"/>
+		<field name="rotateFacingType" type="rotateFacingType" version="Entrenchment"/>
+		<field name="rotateConstantly" validation="Boolean" version="Entrenchment"/>
+		<field name="ShieldMeshName" validation="Mesh"/>
+		<field name="renderShield" validation="Boolean" version="Entrenchment"/>
+		<iterative_field name="NumSoundsFor:ONATTACKORDERISSUED">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONCREATION">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONGENERALORDERISSUED">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSELECTED">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<iterative_field name="NumSoundsFor:ONSTARTPHASEJUMP">
+			<field required="false" name="SoundID" validation="Sound"/>
+		</iterative_field>
+		<field name="MeshName" validation="Mesh" version="Vanilla"/>
+		<iterative_field name="MeshNameInfoCount" version="Entrenchment">
+			<structure_reference required="false" name="MeshNameInfo"/>
+		</iterative_field>
+		<field name="meshNameIncreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="meshNameDecreasedEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="ExplosionName" validation="Explosion"/>
+		<field name="mainViewIcon" validation="Brush"/>
+		<field name="picture" validation="Brush"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+		<field name="formationRank" validation="Integer" values="0,1,2,3"/>
+		<field name="baseBuildTime" validation="Decimal" version="Entrenchment"/>
+		<field name="buildEffectName" validation="Particle" version="Entrenchment"/>
+		<field name="baseIncomeRate" validation="Decimal" version="Vanilla"/>
+		<field name="cargoShipType" validation="Entity"/>
+		<field name="maxCargoShipCount" validation="Integer"/>
+		<field name="cargoShipRespawnTime" validation="Decimal"/>
+		<field name="baseTradeIncomeRate" validation="Decimal" version="Diplomacy"/>
+	</structure>
+</tns:entity_definitions>

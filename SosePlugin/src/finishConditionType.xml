@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="finishConditionType">
+		<condition><value version="Rebellion">OwnerHullAbovePerc</value>
+			<structure_reference required="true" name="hullPercent" type="GenericLevel"/>
+		</condition>
+		<condition><value version="Rebellion">OwnerNoLongerHasBuff</value>
+			<field required="true" name="buffTypeToQuery" validation="Entity"/>
+		</condition>
+		<condition><value>TimeElapsed</value>
+			<structure_reference required="true" name="time" type="GenericLevel"/>
+		</condition>
+		<condition><value>LastSpawnerNoLongerHasBuff</value>
+			<field required="true" name="buffTypeToQuery" validation="Entity"/>
+		</condition>
+		<condition><value>FirstSpawnerNoLongerHasBuff</value>
+			<field required="true" name="buffTypeToQuery" validation="Entity"/>
+		</condition>
+		<condition><value>DamageTaken</value>
+			<structure_reference name="damageNeeded" type="GenericLevel"/>
+			<field required="true" name="typeOfDamageNeeded"/>
+		</condition>
+		<condition><value>ResearchNotMet</value>
+			<structure_reference required="true" name="researchPrerequisites"/>
+		</condition>
+		<condition><value>FightersKilled</value>
+			<structure_reference required="true" name="fightersKilled" type="GenericLevel"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">AbilityUsed</value>
+			<value version="Rebellion">AnyOnConditionInstantActionDone</value>
+			<value>TargetNoLongerActivelyBeingConstructed</value>
+			<value>OwnerIsFriendlyToFirstSpawner</value>
+			<value>ShieldFailure</value>
+			<value>TargetIsConstructed</value>
+			<value>TargetConstructionCannotBeUpdated</value>
+			<value>AntiMatterDepleted</value>
+			<value>ExitHyperspace</value>
+			<value>TargetOwnerIsHostile</value>
+			<value>EnterHyperspace</value>
+			<value>TargetOwnerIsFriendly</value>
+			<value>AllPeriodicActionsDone</value>
+			<value>AllOnDelayInstantActionsDone</value>
+			<value>NoTarget</value>
+			<value>OwnerChanged</value>
+			<value>OutOfRange</value>
+			<value>TargetOwnerIsNeutral</value>
+			<value>Invalid</value>
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

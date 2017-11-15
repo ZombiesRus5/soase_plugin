@@ -1,0 +1,26 @@
+#labels SOASE, DynamicContent
+#summary Quest Definition
+* [Quest]
+ * titleStringId: [StringInfo]
+ * infoCardDescStringId: [StringInfo]
+ * [questType questType]: [Enumeration]
+  * BombAnyPlanet
+  * GiveResources
+  * KillCapitalShips
+  * KillCivilianStructures
+  * KillShips
+  * KillTacticalStructures
+  * SendEnvoy
+ * duration: [Decimal]
+ * relationshipDecayRate: [Decimal]
+ * happinessChangeForSuccess: [Decimal]
+ * happinessChangeForFailure: [Decimal]
+ * [reward]: [Cost]
+ * [priceDemanded]: [Cost]
+ * valueToKill: [Decimal]
+ * numReceiverConstraints: [Iteration]
+  * [ReceiverConstraint]: [QuestTarget]
+ * numTargetConstraints: [Iteration]
+  * [TargetConstraint]: [QuestTarget]
+ * weight: [Decimal]
+

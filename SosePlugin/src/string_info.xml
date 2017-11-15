@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Str">
+		<iterative_field name="NumStrings">
+			<structure_reference required="false" name="StringInfo" type="StringInfo"/>
+		</iterative_field>
+	</structure>
+		
+	<structure name="StringInfo">
+		<field name="ID" validation="Any"/>
+		<field name="Value" validation="Any"/>
+	</structure>
+
+</tns:entity_definitions>

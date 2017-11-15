@@ -1,0 +1,11 @@
+#labels SOASE, DynamicContent
+#summary OrbitBodyDesign Definition
+==References==
+ * [GalaxyScenarioDef]
+
+* [OrbitBodyDesign]
+ * designName: [Any]
+ * designStringId: [StringInfo]
+ * orbitBodyTypeCount: [Iteration]
+  * orbitBodyType: [GalaxyOrbitBodyType]
+

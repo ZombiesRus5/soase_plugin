@@ -1,0 +1,10 @@
+#labels SOASE, DynamicContent
+#summary weaponEffectImpactOffsetType Definition
+==References==
+ * [Ability]
+ * [Buff]
+
+==Values==
+ * [RandomMesh RandomMesh]
+ * [Center Center]
+ * [CenterOffsetBySpatialRadius CenterOffsetBySpatialRadius]

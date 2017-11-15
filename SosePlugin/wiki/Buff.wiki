@@ -1,0 +1,65 @@
+#labels SOASE, DynamicContent
+#summary Buff Definition
+* [Buff]
+ * [onReapplyDuplicateType onReapplyDuplicateType]: [Enumeration]
+ * [buffStackingLimitType buffStackingLimitType]: [Enumeration]
+ * stackingLimit: [Integer]
+ * allowFirstSpawnerToStack: [Boolean]
+ * [buffExclusivityForAIType buffExclusivityForAIType]: [Enumeration]
+ * isInterruptable: [Boolean]
+ * isChannelling: [Boolean]
+ * numInstantActions: [Iteration]
+  * [instantAction]
+   * [buffInstantActionType]: [Condition]
+   * [hasWeaponEffects]: [Condition]
+ * numPeriodicActions: [Iteration]
+  * [periodicAction]
+   * [actionCountType actionCountType]: [Enumeration]
+   * [actionCount]: [GenericLevel]
+   * [actionIntervalTime]: [GenericLevel]
+   * [buffInstantActionType]: [Condition]
+ * numOverTimeActions: [Iteration]
+  * [overTimeAction]
+   * [buffOverTimeActionType]: [Condition]
+ * numEntityModifiers: [Iteration]
+  * [entityModifier]
+   * [buffEntityModifierType buffEntityModifierType]: [Enumeration]
+   * [value]: [GenericLevel]
+ * numEntityBoolModifiers: [Iteration]
+  * [entityBoolModifier entityBoolModifier]: [Enumeration]
+   * ActivelyBeingConstructed
+   * CanBeCaptured
+   * CancelCannotBeDamaged
+   * CancelPhaseOut
+   * CannotBeColonized
+   * CannotBeDamaged
+   * CannotBeScuttled
+   * DetectIncomingHyperspacingEntities
+   * DisableAbilities
+   * DisableAbilitiesUltimate
+   * DisableAngularEngines
+   * DisableConstruction
+   * DisableFighterLaunch
+   * DisableLinearEngines
+   * DisableModuleFunctionality
+   * DisablePhaseJump
+   * DisableRegeneration
+   * DisableWeapons
+   * DisableWeaponsUltimate
+   * ForceIsDamagedOverlayInHyperspace
+   * HasDestabilizedHyperspaceEffect
+   * HasShieldMeshEffect
+   * HasTauntTarget
+   * ImmuneToNonUltimateDisable
+   * InstantBuildFighters
+   * IsIllusionShip
+   * IsPhaseGateEndPoint
+   * IsResourceFocusActive
+   * JumpBlockerImmune
+   * PhaseOut
+   * ProxySensor
+   * WeaponsDealNoDamage
+ * numFinishConditions: [Iteration]
+  * [finishCondition]
+   * [finishConditionType]: [Condition]
+
