@@ -1,0 +1,11 @@
+ * [[Debris| Debris]]
+   * averageLifetime: [[Decimal]]
+   * lifetimeVariancePerc: [[Decimal]]
+   * minLinearSpeed: [[Decimal]]
+   * maxLinearSpeed: [[Decimal]]
+   * minAngularSpeed: [[Decimal]]
+   * maxAngularSpeed: [[Decimal]]
+   * dragRate: [[Decimal]]
+   * minShadow: [[Decimal]]
+   * maxShadow: [[Decimal]]
+

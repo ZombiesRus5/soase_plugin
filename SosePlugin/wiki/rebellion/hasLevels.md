@@ -1,0 +1,17 @@
+[[hasLevels|hasLevels]]: [[Condition]]
+   * FALSE
+     * ExperiencePointsForDestroying: [[Decimal]]
+     * MaxHullPoints: [[Decimal]]
+     * MaxShieldPoints: [[Decimal]]
+     * HullPointRestoreRate: [[Decimal]]
+     * ShieldPointRestoreRate: [[Decimal]]
+     * BaseArmorPoints: [[Decimal]]
+     * maxMitigation: [[Decimal]]
+   * TRUE
+     * [[ExperiencePointsForDestroying|GenericLevel]]: [[GenericLevel]]
+     * [[MaxHullPoints|GenericLevel]]: [[GenericLevel]]
+     * [[MaxShieldPoints|GenericLevel]]: [[GenericLevel]]
+     * [[HullPointRestoreRate|GenericLevel]]: [[GenericLevel]]
+     * [[ShieldPointRestoreRate|GenericLevel]]: [[GenericLevel]]
+     * [[BaseArmorPoints|GenericLevel]]: [[GenericLevel]]
+     * [[maxMitigation|GenericLevel]]: [[GenericLevel]]

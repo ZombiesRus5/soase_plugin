@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary EntityDefPage Definition
-==References==
- * [Player]
-
-* [EntityDefPage]
- * count: [Iteration]
-  * entityDefName: [Entity]
-

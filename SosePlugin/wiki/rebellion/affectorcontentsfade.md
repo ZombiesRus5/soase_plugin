@@ -1,0 +1,21 @@
+==References==
+ * [[ParticleSimulation|ParticleSimulation]]
+
+ * [[AffectorContentsFade| AffectorContentsFade]]
+   * Name: [[Any]]
+   * Enabled: [[Boolean]]
+   * StartTime: [[Decimal]]
+   * HasInfiniteLifeTime: [[Boolean]]
+   * TotalLifeTime: [[Decimal]]
+   * UseYoungParticleAffectThreshold: [[Boolean]]
+   * YoungParticleAffectThreshold: [[Decimal]]
+   * UseOldParticleAffectThreshold: [[Boolean]]
+   * OldParticleAffectThreshold: [[Decimal]]
+   * AffectAttachedParticles: [[Boolean]]
+   * numAttachedEmitters: [[Iteration]]
+     * attachedEmitterName: [[Any]]
+   * DoFadeOut: [[Boolean]]
+   * FadeOutTime: [[Decimal]]
+   * DoFadeIn: [[Boolean]]
+   * FadeInTime: [[Decimal]]
+

@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary hasWeaponLevels Condition Definition
-<wiki:toc max_depth="5"/>
-[hasWeaponLevels]: [Condition]
- * FALSE
- * TRUE
-  * [weaponDamageMult]: [GenericLevel]
-  * [weaponCooldownMult]: [GenericLevel]

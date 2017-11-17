@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary MissionExplore Definition
-* [MissionExplore]
- * [missionType missionType]: [Enumeration]
-

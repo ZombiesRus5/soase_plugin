@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary buffStackingLimitType Definition
-==References==
- * [Buff]
-
-==Values==
- * [PerPlayer PerPlayer]
- * [ForAllPlayers ForAllPlayers]

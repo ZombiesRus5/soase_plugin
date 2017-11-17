@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary StringInfo Definition
-==References==
- * [Str]
-
-* [StringInfo]
- * ID: [Any]
- * Value: [Any]
-

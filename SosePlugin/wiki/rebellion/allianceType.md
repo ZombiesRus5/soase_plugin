@@ -1,0 +1,23 @@
+==References==
+ * [[ResearchBoolModifierType|ResearchBoolModifierType]]
+
+==Values==
+ * [[AntimatterPact|AntimatterPact]]
+ * [[ArmorPact|ArmorPact]]
+ * [[BeamWeaponPact|BeamWeaponPact]]
+ * [[CulturePact|CulturePact]]
+ * [[EfficiencyPact|EfficiencyPact]]
+ * [[EnergyWeaponCooldownPact|EnergyWeaponCooldownPact]]
+ * [[Invalid|Invalid]]
+ * [[MarketPact|MarketPact]]
+ * [[MassReductionPact|MassReductionPact]]
+ * [[MetalCrystalPact|MetalCrystalPact]]
+ * [[PhaseJumpPact|PhaseJumpPact]]
+ * [[PlanetBombingPact|PlanetBombingPact]]
+ * [[ResearchPact|ResearchPact]]
+ * [[ShieldPact|ShieldPact]]
+ * [[SupplyPact|SupplyPact]]
+ * [[TacticalSlotsPact|TacticalSlotsPact]]
+ * [[ThrusterPact|ThrusterPact]]
+ * [[TradeIncomePact|TradeIncomePact]]
+ * [[WeaponCooldownPact|WeaponCooldownPact]]

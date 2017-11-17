@@ -1,0 +1,21 @@
+==References==
+ * [[MissionAttackPlanet|MissionAttackPlanet]]
+ * [[MissionBuildMines|MissionBuildMines]]
+ * [[MissionBuildStarBase|MissionBuildStarBase]]
+ * [[MissionCaptureResources|MissionCaptureResources]]
+ * [[MissionColonize|MissionColonize]]
+ * [[MissionDefendFlagship|MissionDefendFlagship]]
+ * [[MissionExplore|MissionExplore]]
+ * [[MissionFosterRelationships|MissionFosterRelationships]]
+ * [[MissionRaid|MissionRaid]]
+
+==Values==
+ * [[AttackPlanet|AttackPlanet]]
+ * [[BuildMines|BuildMines]]
+ * [[BuildStarBase|BuildStarBase]]
+ * [[CaptureResources|CaptureResources]]
+ * [[Colonize|Colonize]]
+ * [[DefendFlagship|DefendFlagship]]
+ * [[Explore|Explore]]
+ * [[FosterRelationships|FosterRelationships]]
+ * [[Raid|Raid]]

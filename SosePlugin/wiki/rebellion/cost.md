@@ -1,0 +1,23 @@
+==References==
+ * [[Ability|Ability]]
+ * [[CapitalShip|CapitalShip]]
+ * [[Cosmetic|Cosmetic]]
+ * [[Frigate|Frigate]]
+ * [[Planet|Planet]]
+ * [[PlanetModuleHangarDefense|PlanetModuleHangarDefense]]
+ * [[PlanetModuleRefinery|PlanetModuleRefinery]]
+ * [[PlanetModuleShipFactory|PlanetModuleShipFactory]]
+ * [[PlanetModuleStandard|PlanetModuleStandard]]
+ * [[PlanetModuleTradePort|PlanetModuleTradePort]]
+ * [[PlanetModuleWeaponDefense|PlanetModuleWeaponDefense]]
+ * [[Quest|Quest]]
+ * [[ResearchSubject|ResearchSubject]]
+ * [[SpaceMine|SpaceMine]]
+ * [[StarBaseUpgrade|StarBaseUpgrade]]
+ * [[Titan|Titan]]
+
+ * [[Cost| Cost]]
+   * credits: [[Decimal]]
+   * metal: [[Decimal]]
+   * crystal: [[Decimal]]
+

@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary spawnShipsHyperspaceSpawnType Definition
-==References==
- * [Ability]
- * [Buff]
-
-==Values==
- * [FleetBeacon FleetBeacon]

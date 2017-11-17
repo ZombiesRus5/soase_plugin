@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary criteriaType Condition Definition
-<wiki:toc max_depth="5"/>
-[criteriaType]: [Condition]
- * None
- * Research
-  * [prerequisites]: [researchPrerequisites]
- * StarBaseUpgradeLevel
-  * [levelRequirements]

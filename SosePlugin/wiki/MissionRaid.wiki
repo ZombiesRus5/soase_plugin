@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary MissionRaid Definition
-* [MissionRaid]
- * [missionType missionType]: [Enumeration]
-

@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary DamageApplyType Definition
-==References==
- * [Weapon]
-
-==Values==
- * [OVERTIME OVERTIME]
- * [BACKLOADED BACKLOADED]

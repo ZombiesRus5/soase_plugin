@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary buffExclusivityForAIType Definition
-==References==
- * [Buff]
-
-==Values==
- * [ExclusivePerPlayer ExclusivePerPlayer]
- * [ExclusiveForAllPlayers ExclusiveForAllPlayers]
- * [NotExclusive NotExclusive]

@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary resource Definition
-==References==
- * [ResourceAsteroid]
-
-==Values==
- * [Crystal Crystal]
- * [Metal Metal]

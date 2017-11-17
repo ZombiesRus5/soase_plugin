@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary BrushType Definition
-==References==
- * [Brushes]
-
-* [BrushType]
- * name: [Any]
- * [content]: [Condition]
-

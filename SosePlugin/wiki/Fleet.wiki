@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary Fleet Definition
-==References==
- * [Player]
-
-* [Fleet]
- * [defaultCohesionRange defaultCohesionRange]: [Enumeration]
-  * Near
-

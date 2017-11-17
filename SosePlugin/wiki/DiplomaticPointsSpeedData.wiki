@@ -1,8 +1,0 @@
-#labels SOASE, DynamicContent
-#summary DiplomaticPointsSpeedData Definition
-==References==
- * [GameplayConstants]
-
-* [DiplomaticPointsSpeedData]
- * diplomaticPointsRateSpeedScalar: [Decimal]
-

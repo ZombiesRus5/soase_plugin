@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary EntityDesign Definition
-==References==
- * [GalaxyScenarioDef]
-
-* [EntityDesign]
- * designName: [Any]
- * entityDefName: [Entity]
-

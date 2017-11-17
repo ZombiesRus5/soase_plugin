@@ -1,0 +1,3 @@
+ * [[EmpireWindowNode| EmpireWindowNode]]
+   * EmpireWindowHyperspaceNodeIcon: [[Brush]]
+

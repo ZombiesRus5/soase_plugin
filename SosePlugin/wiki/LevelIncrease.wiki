@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary LevelIncrease Definition
-==References==
- * [CapitalShip]
-
-* [LevelIncrease]
- * StartValue: [Decimal]
- * ValueIncreasePerLevel: [Decimal]
-

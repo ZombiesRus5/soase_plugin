@@ -1,0 +1,10 @@
+ * [[Randomeventdefs| Randomeventdefs]]
+   * initialSpawnTimeMin: [[Decimal]]
+   * initialSpawnTimeMax: [[Decimal]]
+   * failedRespawnTimeMin: [[Decimal]]
+   * failedRespawnTimeMax: [[Decimal]]
+   * lowAllegianceCheckPeriod: [[Decimal]]
+   * lowAllegianceThreshold: [[Decimal]]
+   * randomEventDefCount: [[Iteration]]
+     * [[randomEventDef|RandomEventDefType]]: [[RandomEventDefType]]
+

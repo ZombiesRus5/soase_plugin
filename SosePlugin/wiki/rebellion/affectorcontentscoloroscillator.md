@@ -1,0 +1,22 @@
+==References==
+ * [[ParticleSimulation|ParticleSimulation]]
+
+ * [[AffectorContentsColorOscillator| AffectorContentsColorOscillator]]
+   * Name: [[Any]]
+   * Enabled: [[Boolean]]
+   * StartTime: [[Decimal]]
+   * HasInfiniteLifeTime: [[Boolean]]
+   * TotalLifeTime: [[Decimal]]
+   * UseYoungParticleAffectThreshold: [[Boolean]]
+   * YoungParticleAffectThreshold: [[Decimal]]
+   * UseOldParticleAffectThreshold: [[Boolean]]
+   * OldParticleAffectThreshold: [[Decimal]]
+   * AffectAttachedParticles: [[Boolean]]
+   * numAttachedEmitters: [[Iteration]]
+     * attachedEmitterName: [[Any]]
+   * TransitionPeriod: [[Decimal]]
+   * StartColor: [[Color]]
+   * StartAlpha: [[Decimal]]
+   * EndColor: [[Color]]
+   * EndAlpha: [[Decimal]]
+

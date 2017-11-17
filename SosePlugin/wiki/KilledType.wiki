@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary KilledType Definition
-==References==
- * [GameplayConstants]
-
-* [KilledType]
- * AllyKilled: [Decimal]
- * EnemyKilled: [Decimal]
-

@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary typeOfDamageNeeded Definition
-==References==
- * [Buff]
-
-==Values==
- * [AFFECTS_ONLY_HULL AFFECTS_ONLY_HULL]
- * [AFFECTS_ONLY_SHIELDS AFFECTS_ONLY_SHIELDS]
- * [AFFECTS_SHIELDS_AND_HULL AFFECTS_SHIELDS_AND_HULL]

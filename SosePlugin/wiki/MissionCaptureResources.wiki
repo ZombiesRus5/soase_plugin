@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary MissionCaptureResources Definition
-* [MissionCaptureResources]
- * [missionType missionType]: [Enumeration]
-

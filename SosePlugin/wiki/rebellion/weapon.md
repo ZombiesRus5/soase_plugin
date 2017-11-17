@@ -1,0 +1,35 @@
+==References==
+ * [[CapitalShip|CapitalShip]]
+ * [[Cosmetic|Cosmetic]]
+ * [[Fighter|Fighter]]
+ * [[Frigate|Frigate]]
+ * [[PlanetModuleHangarDefense|PlanetModuleHangarDefense]]
+ * [[PlanetModuleWeaponDefense|PlanetModuleWeaponDefense]]
+ * [[StarBase|StarBase]]
+ * [[Titan|Titan]]
+
+ * [[Weapon| Weapon]]
+   * [[WeaponType|WeaponType]]: [[Enumeration]]
+     * Beam
+     * Projectile
+     * Missile
+   * [[damageEnums| damageEnums]]
+     * [[AttackType|AttackType]]: [[Enumeration]]
+     * [[DamageAffectType|damageAffectType]]: [[Enumeration]]
+     * [[DamageApplyType|DamageApplyType]]: [[Enumeration]]
+     * [[DamageType|damageType]]: [[Enumeration]]
+     * [[WeaponClassType|WeaponClassType]]: [[Enumeration]]
+   * [[DamagePerBank:FRONT|DamagePerBank_FRONT]]: [[Decimal]]
+   * [[DamagePerBank:BACK|DamagePerBank_BACK]]: [[Decimal]]
+   * [[DamagePerBank:LEFT|DamagePerBank_LEFT]]: [[Decimal]]
+   * [[DamagePerBank:RIGHT|DamagePerBank_RIGHT]]: [[Decimal]]
+   * Range: [[Decimal]]
+   * [[PreBuffCooldownTime|PreBuffCooldownTime]]: [[Decimal]]
+   * CanFireAtFighter: [[Boolean]]
+   * [[SynchronizedTargeting|SynchronizedTargeting]]: [[Boolean]]
+   * [[PointStaggerDelay|PointStaggerDelay]]: [[Decimal]]
+   * [[TravelSpeed|TravelSpeed]]: [[Decimal]]
+   * [[Duration|Duration]]: [[Decimal]]
+   * [[fireConstraintType|fireConstraintType]]: [[Condition]]
+   * [[WeaponEffects|weaponEffectsDef]]: [[weaponEffectsDef]]
+

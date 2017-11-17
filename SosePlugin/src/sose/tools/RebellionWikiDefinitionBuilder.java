@@ -46,7 +46,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 	}
 	
 	public RebellionWikiDefinitionBuilder(String definitionName) throws IOException {
-		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + definitionName.toLowerCase() + ".txt"))));
+		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/git/soase_plugin/SosePlugin/wiki/rebellion/" + definitionName.toLowerCase() + ".md"))));
 	}
 	
 	public void printHeader(int depth) {
@@ -112,7 +112,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		printBullet();
 		
 		if ((fieldValues != null && fieldValues.length >0 && "Enumeration".equals(fieldType)) || (helpText != null && helpText.trim().length() > 0)) {
-			print("[[Rebellion" + conform(fieldRule) + "|" + fieldName + "]]: [[" + fieldType + "]]");
+			print("[[" + fieldName + "|" + conform(fieldRule) + "]]: [[" + fieldType + "]]");
 			println();
 			
 			if (explicit && (helpText == null || helpText.isEmpty())) {
@@ -125,7 +125,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 				}
 			} else {
 				// it referenced so create a page
-				PrintWriter pwField = new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + conform(fieldRule) + ".txt")));
+				PrintWriter pwField = new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/git/soase_plugin/SosePlugin/wiki/rebellion/" + conform(fieldRule) + ".md")));
 				//pwField.println("#labels SOASE, DynamicContent");
 //				pwField.println("#summary " + fieldName + " Definition");
 	
@@ -138,7 +138,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 					pwField.println("==References==");
 					for (int i=0; i<references.length; i++) {
 						pwField.print(" * [[");
-						pwField.print("Rebellion" + references[i] + "|" + references[i]);
+						pwField.print(references[i] + "|" + references[i]);
 						pwField.println("]]");
 					}
 					pwField.println();
@@ -146,7 +146,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 					pwField.println("==Values==");
 					for (int i=0; i<fieldValues.length; i++) {
 						pwField.print(" * ");
-						pwField.println("[[Rebellion" + fieldValues[i] + "|" + fieldValues[i] + "]]");
+						pwField.println("[[" + fieldValues[i] + "|" + fieldValues[i] + "]]");
 					}
 				}
 				pwField.flush();
@@ -188,7 +188,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 	public void startIteration(String fieldName, String helpText) {
 		printIndent(depth.peek());
 		printBullet();
-		print(fieldName + ": [Iteration]");
+		print(fieldName + ": [[Iteration]]");
 		println();
 		depth.push(depth.peek()+1);
 	}
@@ -200,7 +200,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 				println("==References==");
 				for (int i=0; i<references.length; i++) {
 					print(" * [[");
-					print("Rebellion" + references[i] + "|" + references[i]);
+					print("" + references[i] + "|" + references[i]);
 					println("]]");
 				}
 				println();
@@ -211,9 +211,9 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		printIndent(depth.peek());
 		printBullet();
 		if (structureName.equals(structureType)) {
-			print("[[Rebellion" + structureName + "| " + structureName + "]]");
+			print("[[" + structureName + "| " + structureName + "]]");
 		} else {
-			print("[[Rebellion" + structureType + "|" + structureName + "]]: [[" + structureType + "]]");
+			print("[[" + structureName + "|" + structureType + "]]: [[" + structureType + "]]");
 		}
 		println();
 		depth.push(depth.peek()+1);
@@ -239,11 +239,11 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		if (fieldRule == null) {
 			fieldRule = field;
 		}
-		print("[[Rebellion" + fieldRule + "|" + field + "]]" + ": [[Condition]]");
+		print("[[" + field + "|" + fieldRule + "]]" + ": [[Condition]]");
 		println();
 		depth.push(1);
 		
-		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + fieldRule + ".txt"))));
+		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/git/soase_plugin/SosePlugin/wiki/rebellion/" + fieldRule + ".md"))));
 		//println("#labels SOASE, DynamicContent");
 		//println("#summary " + field + " Condition Definition");
 		//println("<wiki:toc max_depth=\"5\"/>");
@@ -251,7 +251,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 			println();
 			println(helpText);
 		}
-		print("[[Rebellion" + field + "|" + fieldRule + "]]" + ": [[Condition]]");
+		print("[[" + field + "|"+ fieldRule + "]]" + ": [[Condition]]");
 		println();
 	}
 

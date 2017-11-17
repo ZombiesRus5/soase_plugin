@@ -1,0 +1,21 @@
+==References==
+ * [[ParticleSimulation|ParticleSimulation]]
+
+ * [[AffectorContentsRotateAboutAxis| AffectorContentsRotateAboutAxis]]
+   * Name: [[Any]]
+   * Enabled: [[Boolean]]
+   * StartTime: [[Decimal]]
+   * HasInfiniteLifeTime: [[Boolean]]
+   * TotalLifeTime: [[Decimal]]
+   * UseYoungParticleAffectThreshold: [[Boolean]]
+   * YoungParticleAffectThreshold: [[Decimal]]
+   * UseOldParticleAffectThreshold: [[Boolean]]
+   * OldParticleAffectThreshold: [[Decimal]]
+   * AffectAttachedParticles: [[Boolean]]
+   * numAttachedEmitters: [[Iteration]]
+     * attachedEmitterName: [[Any]]
+   * AngularVelocity: [[Decimal]]
+   * Radius: [[Decimal]]
+   * AxisOfRotation: [[Orientation]]
+   * AxisOrigin: [[Orientation]]
+

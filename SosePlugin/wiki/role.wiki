@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary role Definition
-==References==
- * [Squad]
-
-==Values==
- * [Bomber Bomber]
- * [Combat Combat]
- * [MineLayer MineLayer]

@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary MissionBuildStarBase Definition
-* [MissionBuildStarBase]
- * [missionType missionType]: [Enumeration]
-

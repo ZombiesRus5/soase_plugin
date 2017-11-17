@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary MissionAttackPlanet Definition
-* [MissionAttackPlanet]
- * [missionType missionType]: [Enumeration]
-

@@ -1,0 +1,21 @@
+==References==
+ * [[GalaxyScenarioDef|GalaxyScenarioDef]]
+
+ * [[PlayerType| PlayerType]]
+   * designName: [[Any]]
+   * inGameName: [[Any]]
+   * overrideRaceName: [[Any]]
+   * teamIndex: [[Integer]]
+   * startingCredits: [[Integer]]
+   * startingMetal: [[Integer]]
+   * startingCrystal: [[Integer]]
+   * isNormalPlayer: [[Boolean]]
+   * isRaidingPlayer: [[Boolean]]
+   * isInsurgentPlayer: [[Boolean]]
+   * isOccupationPlayer: [[Boolean]]
+   * isMadVasariPlayer: [[Boolean]]
+   * themeGroup: [[Any]]
+   * themeIndex: [[Integer]]
+   * pictureGroup: [[Any]]
+   * pictureIndex: [[Integer]]
+

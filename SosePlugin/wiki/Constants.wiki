@@ -1,5 +1,0 @@
-#labels SOASE, DynamicContent
-#summary Constants Definition
-* [Constants]
- * [GameplayConstants]
-

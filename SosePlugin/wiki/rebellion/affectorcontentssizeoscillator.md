@@ -1,0 +1,22 @@
+==References==
+ * [[ParticleSimulation|ParticleSimulation]]
+
+ * [[AffectorContentsSizeOscillator| AffectorContentsSizeOscillator]]
+   * Name: [[Any]]
+   * Enabled: [[Boolean]]
+   * StartTime: [[Decimal]]
+   * HasInfiniteLifeTime: [[Boolean]]
+   * TotalLifeTime: [[Decimal]]
+   * UseYoungParticleAffectThreshold: [[Boolean]]
+   * YoungParticleAffectThreshold: [[Decimal]]
+   * UseOldParticleAffectThreshold: [[Boolean]]
+   * OldParticleAffectThreshold: [[Decimal]]
+   * AffectAttachedParticles: [[Boolean]]
+   * numAttachedEmitters: [[Iteration]]
+     * attachedEmitterName: [[Any]]
+   * TransitionPeriod: [[Decimal]]
+   * BeginSizeX: [[Decimal]]
+   * BeginSizeY: [[Decimal]]
+   * EndSizeX: [[Decimal]]
+   * EndSizeY: [[Decimal]]
+

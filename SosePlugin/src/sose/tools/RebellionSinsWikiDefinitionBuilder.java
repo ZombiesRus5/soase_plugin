@@ -46,7 +46,7 @@ public class RebellionSinsWikiDefinitionBuilder implements DefinitionHandler {
 	}
 	
 	public RebellionSinsWikiDefinitionBuilder(String definitionName) throws IOException {
-		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + definitionName + ".txt"))));
+		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + definitionName + ".md"))));
 	}
 	
 	public void printHeader(int depth) {
@@ -125,7 +125,7 @@ public class RebellionSinsWikiDefinitionBuilder implements DefinitionHandler {
 				}
 			} else {
 				// it referenced so create a page
-				PrintWriter pwField = new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + conform(fieldRule) + ".txt")));
+				PrintWriter pwField = new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + conform(fieldRule) + ".md")));
 //				pwField.println("#labels SOASE, DynamicContent");
 //				pwField.println("#summary " + fieldName + " Definition");
 				pwField.println("[[RebellionSyntax|Rebellion Syntax]]");
@@ -246,7 +246,7 @@ public class RebellionSinsWikiDefinitionBuilder implements DefinitionHandler {
 		println();
 		depth.push(1);
 		
-		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + fieldRule + ".txt"))));
+		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/workspace/Sins Wiki/rebellion/" + fieldRule + ".md"))));
 //		println("#labels SOASE, DynamicContent");
 //		println("#summary " + field + " Condition Definition");
 		println("[[RebellionSyntax|Rebellion Syntax]]");

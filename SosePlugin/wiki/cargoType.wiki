@@ -1,9 +1,0 @@
-#labels SOASE, DynamicContent
-#summary cargoType Definition
-==References==
- * [Frigate]
-
-==Values==
- * [TradeCredits TradeCredits]
- * [RefineryResources RefineryResources]
- * [Invalid Invalid]

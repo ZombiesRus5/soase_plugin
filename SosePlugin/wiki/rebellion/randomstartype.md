@@ -1,0 +1,20 @@
+==References==
+ * [[Galaxy|Galaxy]]
+
+ * [[RandomStarType| RandomStarType]]
+   * type: [[Any]]
+   * radius: [[Integer]]
+   * [[moveAreaRadius|moveAreaRadius]]: [[Decimal]]
+   * [[hyperspaceExitRadius|hyperspaceExitRadius]]: [[Decimal]]
+   * connectionStarRadiusRange: [[Decimal]]
+   * connectionChance: [[Decimal]]
+   * maxPlayerCount: [[Integer]]
+   * ringCount: [[Iteration]]
+     * [[ring| ring]]
+       * [[starRadiusRange| starRadiusRange]]
+         * minPercentage: [[Decimal]]
+         * maxPercentage: [[Decimal]]
+       * militiaColonizationPerc: [[Integer]]
+       * planetGroupCount: [[Iteration]]
+         * [[planetGroup|PlanetGroupType]]: [[PlanetGroupType]]
+
