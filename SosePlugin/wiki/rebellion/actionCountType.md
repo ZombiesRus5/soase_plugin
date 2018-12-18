@@ -1,4 +1,4 @@
-[[actionCountType|actionCountType]]: [[Condition]]
+[[actionCountType|actionCountType]] : [[Condition]]
    * Finite
-     * [[actionCount|GenericLevel]]: [[GenericLevel]]
+     * [[actionCount|GenericLevel]] : [[GenericLevel]]
    * Infinite

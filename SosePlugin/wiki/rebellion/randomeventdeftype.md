@@ -2,11 +2,11 @@
  * [[Randomeventdefs|Randomeventdefs]]
 
  * [[RandomEventDefType| RandomEventDefType]]
-   * id: [[Any]]
-   * nameID: [[StringInfo]]
-   * warningID: [[StringInfo]]
-   * [[spawnType|spawnType]]: [[Condition]]
-   * [[playerOwnerType|playerOwnerType]]: [[Enumeration]]
+   * id : [[Any]]
+   * nameID : [[StringInfo]]
+   * warningID : [[StringInfo]]
+   * [[spawnType|spawnType]] : [[null]]
+   * [[playerOwnerType|playerOwnerType]] : [[Enumeration]]
      * Invalid
      * LocationOwner
      * MadVasari
@@ -14,7 +14,7 @@
      * Occupation
      * Pirate
      * Rebel
-   * [[spawnLocation|spawnLocation]]: [[Enumeration]]
+   * [[spawnLocation|spawnLocation]] : [[Enumeration]]
      * AllLocations
      * Invalid
      * RandomLocation
@@ -24,8 +24,8 @@
      * RandomPlayerAllLocations
      * RandomStar
      * TriggerLocation
-   * excludedSpawnLocationCount: [[Iteration]]
-     * excludedSpawnLocation: [[Entity]]
-   * [[spawnRequirement|spawnRequirement]]: [[Condition]]
-   * spawnWeight: [[Decimal]]
+   * excludedSpawnLocationCount : [[Iteration]]
+     * excludedSpawnLocation : [[Entity]]
+   * [[spawnRequirement|spawnRequirement]] : [[null]]
+   * spawnWeight : [[Decimal]]
 

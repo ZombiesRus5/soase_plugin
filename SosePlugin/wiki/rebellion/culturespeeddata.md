@@ -2,6 +2,6 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[CultureSpeedData| CultureSpeedData]]
-   * cultureConnectionReferenceLength: [[Decimal]]
-   * allegianceShiftRateScalar: [[Decimal]]
+   * cultureConnectionReferenceLength : [[Decimal]]
+   * allegianceShiftRateScalar : [[Decimal]]
 

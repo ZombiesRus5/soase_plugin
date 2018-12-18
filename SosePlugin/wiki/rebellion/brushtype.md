@@ -2,6 +2,6 @@
  * [[Brushes|Brushes]]
 
  * [[BrushType| BrushType]]
-   * name: [[Any]]
-   * [[content|content]]: [[Condition]]
+   * name : [[Any]]
+   * [[content|content]] : [[null]]
 

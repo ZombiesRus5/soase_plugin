@@ -2,6 +2,6 @@
  * [[BrushType|BrushType]]
 
  * [[StatesType| StatesType]]
-   * fileName: [[Texture]]
-   * pixelBox: [[Position]]
+   * fileName : [[Texture]]
+   * pixelBox : [[Position]]
 

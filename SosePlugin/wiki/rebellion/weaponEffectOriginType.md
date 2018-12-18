@@ -1,6 +1,6 @@
-[[weaponEffectOriginType|weaponEffectOriginType]]: [[Condition]]
+[[weaponEffectOriginType|weaponEffectOriginType]] : [[Condition]]
    * Target
      * [[targetCentricEffectPointSpawnInfo| targetCentricEffectPointSpawnInfo]]
-       * [[spawnType|spawnType]]: [[Condition]]
+       * [[spawnType|spawnType]] : [[null]]
    * Targetter
-     * [[weaponEffectAttachInfo|AttachInfo]]: [[AttachInfo]]
+     * [[weaponEffectAttachInfo|AttachInfo]] : [[AttachInfo]]

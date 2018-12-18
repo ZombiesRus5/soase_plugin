@@ -1,7 +1,7 @@
-[[EmitterType|EmitterType]]: [[Condition]]
+[[EmitterType|EmitterType]] : [[Condition]]
    * Point
-     * [[EmitterContents|EmitterContentsPoint]]: [[EmitterContentsPoint]]
+     * [[EmitterContents|EmitterContentsPoint]] : [[EmitterContentsPoint]]
    * Ring
-     * [[EmitterContents|EmitterContentsRing]]: [[EmitterContentsRing]]
+     * [[EmitterContents|EmitterContentsRing]] : [[EmitterContentsRing]]
    * Sphere
-     * [[EmitterContents|EmitterContentsSphere]]: [[EmitterContentsSphere]]
+     * [[EmitterContents|EmitterContentsSphere]] : [[EmitterContentsSphere]]

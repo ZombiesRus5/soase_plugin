@@ -7,5 +7,5 @@
  * [[Weapon|Weapon]]
 
  * [[weaponEffectsDef| weaponEffectsDef]]
-   * [[weaponType|weaponType]]: [[Condition]]
+   * [[weaponType|weaponType]] : [[null]]
 

@@ -2,6 +2,6 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[KilledType| KilledType]]
-   * AllyKilled: [[Decimal]]
-   * EnemyKilled: [[Decimal]]
+   * AllyKilled : [[Decimal]]
+   * EnemyKilled : [[Decimal]]
 

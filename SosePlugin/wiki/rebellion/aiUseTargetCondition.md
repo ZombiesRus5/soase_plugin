@@ -1,13 +1,13 @@
-[[aiUseTargetCondition|aiUseTargetCondition]]: [[Condition]]
+[[aiUseTargetCondition|aiUseTargetCondition]] : [[Condition]]
    * AntimatterExceedsAmount
-     * [[onlyAutoCastWhenTargetAntimatterExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTargetAntimatterExceedsAmount|GenericLevel]] : [[GenericLevel]]
    * Any
    * HasAbilityInCooldown
    * HasBuff
-     * buffType: [[Entity]]
+     * buffType : [[Entity]]
    * HasNoWeapons
    * HullDamageExceedsAmount
-     * [[onlyAutoCastWhenTargetHullDamageExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTargetHullDamageExceedsAmount|GenericLevel]] : [[GenericLevel]]
    * Invalid
    * IsBoarded
    * IsCapitalShipOrStarbase
@@ -15,4 +15,4 @@
    * IsDifferentRoleType
    * IsNotWeaponDisabled
    * ShieldDamageExceedsAmount
-     * [[onlyAutoCastWhenTargetShieldDamageExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTargetShieldDamageExceedsAmount|GenericLevel]] : [[GenericLevel]]

@@ -1,10 +1,10 @@
-[[canBomb|canBomb]]: [[Condition]]
+[[canBomb|canBomb]] : [[Condition]]
    * FALSE
    * TRUE
-     * [[hasBombingLevels|hasBombingLevels]]: [[Condition]]
-     * bombingFreqTime: [[Decimal]]
-     * baseRange: [[Decimal]]
-     * bombTransitTime: [[Decimal]]
-     * bombEffectCount: [[Integer]]
-     * bombEffectAngleVariance: [[Decimal]]
-     * [[bombEffectsDef|weaponEffectsDef]]: [[weaponEffectsDef]]
+     * [[hasBombingLevels|hasBombingLevels]] : [[null]]
+     * bombingFreqTime : [[Decimal]]
+     * baseRange : [[Decimal]]
+     * bombTransitTime : [[Decimal]]
+     * bombEffectCount : [[Integer]]
+     * bombEffectAngleVariance : [[Decimal]]
+     * [[bombEffectsDef|weaponEffectsDef]] : [[weaponEffectsDef]]

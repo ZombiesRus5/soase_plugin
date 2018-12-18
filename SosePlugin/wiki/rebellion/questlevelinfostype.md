@@ -2,6 +2,6 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[QuestLevelInfosType| QuestLevelInfosType]]
-   * QuestDefNameCount: [[Iteration]]
-     * QuestDefName: [[Entity]]
+   * QuestDefNameCount : [[Iteration]]
+     * QuestDefName : [[Entity]]
 

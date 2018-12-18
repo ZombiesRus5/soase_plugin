@@ -1,3 +1,3 @@
  * [[MissionAttackPlanet| MissionAttackPlanet]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 

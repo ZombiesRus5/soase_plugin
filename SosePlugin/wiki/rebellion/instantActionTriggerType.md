@@ -1,18 +1,18 @@
-[[instantActionTriggerType|instantActionTriggerType]]: [[Condition]]
+[[instantActionTriggerType|instantActionTriggerType]] : [[Condition]]
    * AlwaysPerform
    * OnAbilityUsed
    * OnBuffFinish
    * OnChance
-     * [[buffApplyChance|GenericLevel]]: [[GenericLevel]]
+     * [[buffApplyChance|GenericLevel]] : [[GenericLevel]]
    * OnCondition
-     * [[instantActionConditionType|instantActionConditionType]]: [[Condition]]
+     * [[instantActionConditionType|instantActionConditionType]] : [[null]]
    * OnDamageTaken
-     * [[damageType|damageType]]: [[Enumeration]]
+     * [[damageType|damageType]] : [[Enumeration]]
    * OnDelay
-     * delayTime: [[Decimal]]
+     * delayTime : [[Decimal]]
    * OnHyperspaceExit
    * OnOwnerDeath
    * OnWeaponFired
-     * numWeaponClasses: [[Iteration]]
-       * [[weaponClassForWeaponPassive|WeaponClassType]]: [[Enumeration]]
-     * [[passiveWeaponEffectChance|GenericLevel]]: [[GenericLevel]]
+     * numWeaponClasses : [[Iteration]]
+       * [[weaponClassForWeaponPassive|WeaponClassType]] : [[Enumeration]]
+     * [[passiveWeaponEffectChance|GenericLevel]] : [[GenericLevel]]

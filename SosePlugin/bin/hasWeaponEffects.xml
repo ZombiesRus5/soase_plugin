@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="hasWeaponEffects">
+		<condition value="FALSE"/>
+		<condition value="TRUE">
+			<condition_field name="weaponEffectOriginType" version="Entrenchment">
+				<condition value="Target">
+				<structure name="targetCentricEffectPointSpawnInfo">
+					<condition_field name="spawnType">
+						<condition value="RandomFromUp">
+							<field name="minRadius" validation="Decimal"/>
+							<field name="maxRadius" validation="Decimal"/>
+							<field name="angleVariance" validation="Decimal"/>
+						</condition>
+						<condition value="CompletelyRandom">
+							<field name="minRadius" validation="Decimal"/>
+							<field name="maxRadius" validation="Decimal"/>
+						</condition>
+					</condition_field>
+				</structure>
+				</condition>
+				<condition value="Targetter">
+					<structure_reference name="weaponEffectAttachInfo" type="AttachInfo"/>
+				</condition>
+			</condition_field>
+			<structure_reference required="false" name="weaponEffectAttachInfo" type="AttachInfo" version="Vanilla"/>
+			<field name="weaponEffectImpactOffsetType" type="weaponEffectImpactOffsetType"/>
+			<field name="canWeaponEffectHitHull" validation="Boolean"/>
+			<field name="canWeaponEffectHitShields" validation="Boolean"/>
+			<structure_reference name="weaponEffectsDef"/>
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

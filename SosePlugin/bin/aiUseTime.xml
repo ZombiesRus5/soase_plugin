@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="aiUseTime">
+		<condition>
+			<value version="Rebellion">OnlyWhenHullDamageExceeds</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTotalHullDamageExceedsAmount" type="GenericLevel"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">OnlyWhenManyTargetsInCombatDoNotHaveBuff</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetCountExceedsAmount" type="GenericLevel"/>
+			<field required="true" name="buffType" validation="Entity"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">OnlyIfOwnTitan</value>
+			<value version="Rebellion">NoEnemyShipsInGravityWell</value>
+			<value version="Rebellion">OnlyWhenDisabled</value>
+			<value version="Diplomacy">OnlyWhenOrbitingEnemyOrAlliedPlanet</value>
+			<value version="Diplomacy">OnlyWhenAboutToDie</value>
+			<value version="Diplomacy">OnlyWhenEnemyFleetWillPrevail</value>
+			<value>OnlyWithNoOrderOrAutoAttackButNotIfTargettingMine</value>
+			<value>OnlyWhenAttackTargetIsInFiringSolutionAndHasAttackOrder</value>
+			<value>Anytime</value>
+			<value>Invalid</value>
+			<value>NotInCombat</value>
+			<value>OnlyInCombat</value>
+			<value>OnlyWhenAttackTargetIsInFiringSolution</value>
+			<value>OnlyWhenBombing</value>
+			<value>OnlyWhenManyTargetsHaveShieldDamage</value>
+			<value>OnlyWhenManyTargetsHyperspacingTowardsMyGravityWell</value>
+			<value>OnlyWhenMovingFar</value>
+			<value>OnlyWhenOrbitingEnemyPlanet</value>
+			<value>OnlyWhenTakingDamage</value>
+			<value>OnlyWithNoOrder</value>
+		</condition>
+		<condition>
+			<value version="Entrenchment">OnlyWhenManyTargetsInRange</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetCountExceedsAmount" type="GenericLevel"/>
+		</condition>
+		<condition>
+			<value version="Rebellion">OnlyWhenManyTargetsInRangeOfBank</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetCountExceedsAmount" type="GenericLevel"/>
+			<field name="onlyAutoCastWhenTargetsInBank" validation="Simple" values="FRONT,BACK,LEFT,RIGHT"/>
+		</condition>
+		<condition>
+			<value version="Entrenchment">OnlyWhenMovingThresholdDistance</value>
+			<field required="true" name="thresholdDistance" validation="Decimal"/>
+		</condition>
+		<condition>
+			<value>OnlyWhenManyTargetsHaveHullDamage</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTotalHullDamageExceedsAmount" type="GenericLevel" version="Entrenchment"/>
+		</condition>
+		<condition>
+			<value version="Diplomacy">OnlyWhenDebrisWithinRange</value>
+			<field required="true" name="onlyAutoCastWhenDebrisWithinRange" validation="Decimal"/>
+		</condition>
+	</condition_field>
+</tns:entity_definitions>

@@ -23,4 +23,5 @@ public interface ValidationType {
 	public String GALAXY_ORBIT_BODY_TYPE = "GalaxyOrbitBodyType";
 	public String TEMPLATE_NAME = "TemplateName";
 	public String ORIENTATION = "Orientation";
+	public String GALAXY_PLAYER = "GalaxyPlayer";
 }

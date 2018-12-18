@@ -2,6 +2,6 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[TitanExperienceLevelData| TitanExperienceLevelData]]
-   * ExperienceNeededForNextLevel: [[Decimal]]
-   * ExperienceGainedForDestroying: [[Decimal]]
+   * ExperienceNeededForNextLevel : [[Decimal]]
+   * ExperienceGainedForDestroying : [[Decimal]]
 

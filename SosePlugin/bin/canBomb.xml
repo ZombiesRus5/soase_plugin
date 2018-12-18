@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="hasBombingLevels">
+		<condition><value>FALSE</value>
+			<field required="true" name="baseDamage" validation="Decimal"/>
+			<field required="true" name="basePopulationKilled" validation="Decimal"/>
+		</condition>
+		<condition><value>TRUE</value>
+			<structure_reference name="baseDamage" type="GenericLevel"/>
+			<structure_reference name="basePopulationKilled" type="GenericLevel"/>
+		</condition>
+	</condition_field>
+	<condition_field name="canBomb">
+		<condition><value>TRUE</value>
+			<field required="true" name="hasBombingLevels" type="hasBombingLevels"/>
+			<field required="true" name="bombingFreqTime" validation="Decimal"/>
+			<field required="true" name="baseRange" validation="Decimal"/>
+			<field required="true" name="bombTransitTime" validation="Decimal"/>
+			<field required="true" name="bombEffectCount" validation="Integer"/>
+			<field required="true" name="bombEffectAngleVariance" validation="Decimal"/>
+			<structure_reference name="bombEffectsDef" type="weaponEffectsDef"/>
+		</condition>
+		<condition><value>FALSE</value></condition>
+	</condition_field>
+</tns:entity_definitions>

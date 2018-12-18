@@ -1,3 +1,3 @@
  * [[MissionCaptureResources| MissionCaptureResources]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 

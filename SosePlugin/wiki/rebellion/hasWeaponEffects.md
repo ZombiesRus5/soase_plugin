@@ -1,8 +1,8 @@
-[[hasWeaponEffects|hasWeaponEffects]]: [[Condition]]
+[[hasWeaponEffects|hasWeaponEffects]] : [[Condition]]
    * FALSE
    * TRUE
-     * [[weaponEffectOriginType|weaponEffectOriginType]]: [[Condition]]
-     * [[weaponEffectImpactOffsetType|weaponEffectImpactOffsetType]]: [[Enumeration]]
-     * canWeaponEffectHitHull: [[Boolean]]
-     * canWeaponEffectHitShields: [[Boolean]]
+     * [[weaponEffectOriginType|weaponEffectOriginType]] : [[null]]
+     * [[weaponEffectImpactOffsetType|weaponEffectImpactOffsetType]] : [[Enumeration]]
+     * canWeaponEffectHitHull : [[Boolean]]
+     * canWeaponEffectHitShields : [[Boolean]]
      * [[weaponEffectsDef| weaponEffectsDef]]

@@ -2,5 +2,5 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[IncomeSpeedData| IncomeSpeedData]]
-   * incomeRateGameSpeedScalar: [[Decimal]]
+   * incomeRateGameSpeedScalar : [[Decimal]]
 

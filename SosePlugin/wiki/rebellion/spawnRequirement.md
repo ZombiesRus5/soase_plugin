@@ -1,9 +1,9 @@
-[[spawnRequirement|spawnRequirement]]: [[Condition]]
+[[spawnRequirement|spawnRequirement]] : [[Condition]]
    * Timer
-     * respawnCount: [[Decimal]]
-     * nextSpawnTimeMin: [[Decimal]]
-     * nextSpawnTimeMax: [[Decimal]]
+     * respawnCount : [[Decimal]]
+     * nextSpawnTimeMin : [[Decimal]]
+     * nextSpawnTimeMax : [[Decimal]]
    * TriggerCultureFlip
-     * triggerWeight: [[Decimal]]
+     * triggerWeight : [[Decimal]]
    * TriggerLowAllegiance
-     * triggerWeight: [[Decimal]]
+     * triggerWeight : [[Decimal]]

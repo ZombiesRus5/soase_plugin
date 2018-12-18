@@ -1,4 +1,4 @@
-[[firingAlignmentType|firingAlignmentType]]: [[Condition]]
+[[firingAlignmentType|firingAlignmentType]] : [[Condition]]
    * Default
    * TiltForward
-     * firingTiltAngle: [[Decimal]]
+     * firingTiltAngle : [[Decimal]]

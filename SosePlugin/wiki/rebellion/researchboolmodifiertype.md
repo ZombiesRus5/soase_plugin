@@ -2,5 +2,5 @@
  * [[ResearchSubject|ResearchSubject]]
 
  * [[ResearchBoolModifierType| ResearchBoolModifierType]]
-   * [[modifierType|modifierTypeBool]]: [[Condition]]
+   * [[modifierType|modifierTypeBool]] : [[null]]
 

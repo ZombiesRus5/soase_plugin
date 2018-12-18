@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Explosiondata">
+		<iterative_field name="explosionEffectGroupCount">
+			<structure_reference required="false" name="explosionEffectGroup" type="ExplosionEffectGroupType"/>
+		</iterative_field>
+	</structure>
+	<structure name="ExplosionEffectGroupType">
+		<field name="groupName" validation="Any"/> 
+		<iterative_field name="explosionEffectDefCount">
+			<structure required="false" name="explosionEffectDef">
+				<field name="totalPlayTime" validation="Integer"/>
+				<field name="makeMeshInvisibleTime" validation="Integer"/>
+				<iterative_field name="subExplosionCount">
+					<structure required="false" name="subExplosion">
+						<condition_field name="type">
+							<condition>
+								<value>Effect</value>
+								<field name="playTime" validation="Integer"/>
+								<field name="cameraShakeMaxSize" validation="Decimal"/>
+								<field name="cameraShakeStrength" validation="Decimal"/>
+								<field name="cameraShakeDuration" validation="Decimal"/>
+								<field name="location" validation="Simple">
+									<value>Surface</value>
+									<value>Center</value>
+								</field>
+								<field name="particleSystemName" validation="Particle"/>
+								<structure name="explosionSounds">
+									<iterative_field name="soundCount">
+										<field required="false" name="sound" validation="Sound"/>
+									</iterative_field>
+								</structure>
+							</condition>
+							<condition>
+								<value>Sound</value>
+								<field name="playTime" validation="Integer"/>
+								<field name="cameraShakeMaxSize" validation="Decimal"/>
+								<field name="cameraShakeStrength" validation="Decimal"/>
+								<field name="cameraShakeDuration" validation="Decimal"/>
+								<structure name="explosionSounds">
+									<iterative_field name="soundCount">
+										<field required="false" name="sound" validation="Sound"/>
+									</iterative_field>
+								</structure>
+							</condition>
+						</condition_field>
+					</structure>
+				</iterative_field>
+			</structure>
+		</iterative_field>
+	</structure>
+</tns:entity_definitions>

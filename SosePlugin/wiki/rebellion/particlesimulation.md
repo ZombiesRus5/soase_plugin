@@ -2,11 +2,11 @@
  * [[Particle|Particle]]
 
  * [[ParticleSimulation| ParticleSimulation]]
-   * HasInfiniteLifeTime: [[Boolean]]
-   * TotalLifeTime: [[Decimal]]
-   * NumEmitters: [[Iteration]]
-     * [[EmitterType|EmitterType]]: [[Condition]]
-   * NumAffectors: [[Iteration]]
-     * [[AffectorType|AffectorType]]: [[Condition]]
-   * length: [[Decimal]]
+   * HasInfiniteLifeTime : [[Boolean]]
+   * TotalLifeTime : [[Decimal]]
+   * NumEmitters : [[Iteration]]
+     * [[EmitterType|EmitterType]] : [[null]]
+   * NumAffectors : [[Iteration]]
+     * [[AffectorType|AffectorType]] : [[null]]
+   * length : [[Decimal]]
 

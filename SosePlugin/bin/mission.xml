@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure  version="Rebellion"  name="MissionDefendFlagship">
+		<field name="missionType"/>
+	</structure>
+
+	<structure name="MissionBuildMines">
+		<field name="missionType"/>
+	</structure>
+	
+	<structure name="MissionBuildStarBase">
+		<field name="missionType"/>
+	</structure>
+
+	<structure name="MissionCaptureResources">
+		<field name="missionType"/>
+	</structure>
+
+	<structure name="MissionFosterRelationships">
+		<field name="missionType"/>
+	</structure>
+	
+	<structure name="MissionRaid">
+		<field name="missionType"/>
+	</structure>
+	
+	<structure name="MissionExplore">
+		<field name="missionType"/>
+	</structure>
+	
+	<structure name="MissionColonize">
+		<field name="missionType"/>
+	</structure>
+		
+	<structure name="MissionAttackPlanet">
+		<field name="missionType"/>
+	</structure>
+	
+	<element_rule name="missionType" validation="Simple">
+		<value version="Rebellion">DefendFlagship</value>
+		<value>BuildMines</value>
+		<value>BuildStarBase</value>
+		<value>CaptureResources</value>
+		<value>FosterRelationships</value>
+		<value>Raid</value>
+		<value>Explore</value>
+		<value>Colonize</value>
+		<value>AttackPlanet</value>
+	</element_rule>
+</tns:entity_definitions>

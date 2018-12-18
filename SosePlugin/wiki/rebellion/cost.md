@@ -17,7 +17,7 @@
  * [[Titan|Titan]]
 
  * [[Cost| Cost]]
-   * credits: [[Decimal]]
-   * metal: [[Decimal]]
-   * crystal: [[Decimal]]
+   * credits : [[Decimal]]
+   * metal : [[Decimal]]
+   * crystal : [[Decimal]]
 

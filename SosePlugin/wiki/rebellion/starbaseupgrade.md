@@ -1,17 +1,17 @@
  * [[StarBaseUpgrade| StarBaseUpgrade]]
-   * stageCount: [[Iteration]]
+   * stageCount : [[Iteration]]
      * [[stage| stage]]
-       * [[price|Cost]]: [[Cost]]
-       * upgradeTime: [[Decimal]]
-       * nameStringID: [[StringInfo]]
-       * descStringID: [[StringInfo]]
+       * [[price|Cost]] : [[Cost]]
+       * upgradeTime : [[Decimal]]
+       * nameStringID : [[StringInfo]]
+       * descStringID : [[StringInfo]]
        * [[researchPrerequisites| researchPrerequisites]]
-       * hudIcon: [[Brush]]
-       * smallHudIcon: [[Brush]]
-       * infoCardIcon: [[Brush]]
-       * upgradePropertyCount: [[Iteration]]
+       * hudIcon : [[Brush]]
+       * smallHudIcon : [[Brush]]
+       * infoCardIcon : [[Brush]]
+       * upgradePropertyCount : [[Iteration]]
          * [[upgradeProperty| upgradeProperty]]
-           * [[propertyType|propertyType]]: [[Enumeration]]
+           * [[propertyType|propertyType]] : [[Enumeration]]
              * AbilityALevel
              * AbilityBLevel
              * AbilityCLevel
@@ -35,10 +35,10 @@
              * TradePortMeshLevel
              * WeaponDamage
              * WeaponUpgradeLevel
-           * value: [[Decimal]]
-       * upgradeBoolPropertyCount: [[Iteration]]
-         * [[upgradeBoolProperty|upgradeBoolProperty]]: [[Enumeration]]
+           * value : [[Decimal]]
+       * upgradeBoolPropertyCount : [[Iteration]]
+         * [[upgradeBoolProperty|upgradeBoolProperty]] : [[Enumeration]]
            * CanPreventEnemyColonize
            * CanPreventPlanetLossByBombing
-   * xpModifier: [[Decimal]]
+   * xpModifier : [[Decimal]]
 

@@ -2,7 +2,7 @@
  * [[Quest|Quest]]
 
  * [[QuestTarget| QuestTarget]]
-   * [[type|type]]: [[Enumeration]]
+   * [[type|type]] : [[Enumeration]]
      * TargetCivilianSlots
      * TargetCreditIncome
      * TargetCrystalIncome
@@ -11,6 +11,6 @@
      * TargetMetalIncome
      * TargetShipSlots
      * TargetTacticalSlots
-   * min: [[Decimal]]
-   * max: [[Decimal]]
+   * min : [[Decimal]]
+   * max : [[Decimal]]
 

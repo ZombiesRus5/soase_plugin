@@ -1,23 +1,23 @@
-[[levelSourceType|levelSourceType]]: [[Condition]]
+[[levelSourceType|levelSourceType]] : [[Condition]]
    * FixedLevel0
    * Intrinsic
-     * [[minExperienceLevelRequired|GenericLevel]]: [[GenericLevel]]
+     * [[minExperienceLevelRequired|GenericLevel]] : [[GenericLevel]]
    * ResearchStartsAt0
-     * improveSourceResearchSubject: [[Entity]]
+     * improveSourceResearchSubject : [[Entity]]
    * ResearchWithBase
-     * baseSourceResearchSubject: [[Entity]]
-     * improveSourceResearchSubject: [[Entity]]
+     * baseSourceResearchSubject : [[Entity]]
+     * improveSourceResearchSubject : [[Entity]]
    * ResearchWithoutBase
-     * improveSourceResearchSubject: [[Entity]]
+     * improveSourceResearchSubject : [[Entity]]
    * StarBaseUpgradeLevel
-     * [[sourcePropertyType|sourcePropertyType]]: [[Enumeration]]
+     * [[sourcePropertyType|sourcePropertyType]] : [[Enumeration]]
        * AbilityALevel
        * AbilityBLevel
        * AbilityCLevel
        * AbilityDLevel
        * AbilityELevel
    * TitanUpgradeLevel
-     * [[sourcePropertyType|sourcePropertyType]]: [[Enumeration]]
+     * [[sourcePropertyType|sourcePropertyType]] : [[Enumeration]]
        * AbilityALevel
        * AbilityBLevel
        * AbilityCLevel

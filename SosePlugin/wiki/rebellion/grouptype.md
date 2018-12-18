@@ -4,7 +4,7 @@
 
  * [[GroupType| GroupType]]
    * [[condition| condition]]
-     * [[type|type]]: [[Enumeration]]
+     * [[type|type]] : [[Enumeration]]
        * 
        * Always
        * NoPlanetOwner
@@ -13,9 +13,9 @@
        * PlanetOwnerIsMilitiaWithChance
        * PlanetOwnerIsRaceNormalStart
        * PlanetOwnerIsRaceQuickStart
-     * param: [[Any]]
-   * owner: [[Any]]
-   * colonizeChance: [[Integer]]
-   * items: [[Iteration]]
-     * item: [[GalaxyDesign]]
+     * param : [[Any]]
+   * owner : [[Any]]
+   * colonizeChance : [[Integer]]
+   * items : [[Iteration]]
+     * item : [[GalaxyDesign]]
 

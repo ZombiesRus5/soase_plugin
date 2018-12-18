@@ -1,12 +1,12 @@
  * [[PipCloud| PipCloud]]
-   * [[pipCloudType|pipCloudType]]: [[Enumeration]]
+   * [[pipCloudType|pipCloudType]] : [[Enumeration]]
      * EnemyShips
      * FriendlyShips
      * Modules
      * Planets
-   * empireWindowPipIcon: [[Brush]]
-   * mainViewIconAreaOffsetFromCenter: [[Position]]
-   * mainViewOverlay: [[Brush]]
-   * mainViewOverlayUnderCursor: [[Brush]]
-   * mainViewIconMaxEntityCount: [[Integer]]
+   * empireWindowPipIcon : [[Brush]]
+   * mainViewIconAreaOffsetFromCenter : [[Position]]
+   * mainViewOverlay : [[Brush]]
+   * mainViewOverlayUnderCursor : [[Brush]]
+   * mainViewIconMaxEntityCount : [[Integer]]
 

@@ -3,8 +3,8 @@
  * [[RandomStarType|RandomStarType]]
 
  * [[PlanetGroupType| PlanetGroupType]]
-   * minCount: [[Integer]]
-   * maxCount: [[Integer]]
-   * planetTypeCount: [[Iteration]]
-     * planetType: [[GalaxyDesign]]
+   * minCount : [[Integer]]
+   * maxCount : [[Integer]]
+   * planetTypeCount : [[Iteration]]
+     * planetType : [[GalaxyDesign]]
 

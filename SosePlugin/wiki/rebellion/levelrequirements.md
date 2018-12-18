@@ -2,11 +2,11 @@
  * [[MeshNameInfo|MeshNameInfo]]
 
  * [[levelRequirements| levelRequirements]]
-   * levelRequirementCount: [[Iteration]]
+   * levelRequirementCount : [[Iteration]]
      * [[levelRequirement| levelRequirement]]
-       * [[upgradePropertyType|upgradePropertyType]]: [[Enumeration]]
+       * [[upgradePropertyType|upgradePropertyType]] : [[Enumeration]]
          * CultureMeshLevel
          * TradePortMeshLevel
          * WeaponUpgradeLevel
-       * upgradeLevel: [[Integer]]
+       * upgradeLevel : [[Integer]]
 

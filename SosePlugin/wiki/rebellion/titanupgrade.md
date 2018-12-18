@@ -1,16 +1,16 @@
  * [[TitanUpgrade| TitanUpgrade]]
-   * stageCount: [[Iteration]]
+   * stageCount : [[Iteration]]
      * [[stage| stage]]
-       * nameStringID: [[StringInfo]]
-       * descStringID: [[StringInfo]]
+       * nameStringID : [[StringInfo]]
+       * descStringID : [[StringInfo]]
        * [[researchPrerequisites| researchPrerequisites]]
-       * levelRequirement: [[Integer]]
-       * hudIcon: [[Brush]]
-       * smallHudIcon: [[Brush]]
-       * infoCardIcon: [[Brush]]
-       * upgradePropertyCount: [[Iteration]]
+       * levelRequirement : [[Integer]]
+       * hudIcon : [[Brush]]
+       * smallHudIcon : [[Brush]]
+       * infoCardIcon : [[Brush]]
+       * upgradePropertyCount : [[Iteration]]
          * [[upgradeProperty| upgradeProperty]]
-           * [[propertyType|propertyType]]: [[Enumeration]]
+           * [[propertyType|propertyType]] : [[Enumeration]]
              * AbilityALevel
              * AbilityBLevel
              * AbilityCLevel
@@ -25,9 +25,9 @@
              * MaxShieldPoints
              * ShieldPointRestoreRate
              * WeaponDamage
-           * value: [[Decimal]]
-       * upgradeBoolPropertyCount: [[Iteration]]
-         * [[upgradeBoolProperty|upgradeBoolProperty]]: [[Enumeration]]
+           * value : [[Decimal]]
+       * upgradeBoolPropertyCount : [[Iteration]]
+         * [[upgradeBoolProperty|upgradeBoolProperty]] : [[Enumeration]]
            * CanPreventEnemyColonize
            * CanPreventPlanetLossByBombing
 

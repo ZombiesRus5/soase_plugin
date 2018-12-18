@@ -1,6 +1,6 @@
-[[attachType|attachType]]: [[Condition]]
+[[attachType|attachType]] : [[Condition]]
    * Ability
-     * abilityIndex: [[Integer]]
+     * abilityIndex : [[Integer]]
    * Above
    * Aura
    * Center

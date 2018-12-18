@@ -3,6 +3,6 @@
  * [[PlanetItemTypeCount|PlanetItemTypeCount]]
 
  * [[EntityDesign| EntityDesign]]
-   * designName: [[Any]]
-   * entityDefName: [[Entity]]
+   * designName : [[Any]]
+   * entityDefName : [[Entity]]
 

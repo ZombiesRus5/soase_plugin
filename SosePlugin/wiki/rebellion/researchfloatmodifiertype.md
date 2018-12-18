@@ -2,5 +2,5 @@
  * [[ResearchSubject|ResearchSubject]]
 
  * [[ResearchFloatModifierType| ResearchFloatModifierType]]
-   * [[modifierType|modifierTypeFloat]]: [[Condition]]
+   * [[modifierType|modifierTypeFloat]] : [[null]]
 

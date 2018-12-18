@@ -1,3 +1,3 @@
  * [[MissionDefendFlagship| MissionDefendFlagship]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 

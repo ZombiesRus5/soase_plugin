@@ -2,7 +2,7 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[ShipPhysicsSpeedData| ShipPhysicsSpeedData]]
-   * shipLinearMaxSpeedGameSpeedScalar: [[Decimal]]
-   * shipLinearAccelerationGameSpeedScalar: [[Decimal]]
-   * shipLinearDecelerationGameSpeedScalar: [[Decimal]]
+   * shipLinearMaxSpeedGameSpeedScalar : [[Decimal]]
+   * shipLinearAccelerationGameSpeedScalar : [[Decimal]]
+   * shipLinearDecelerationGameSpeedScalar : [[Decimal]]
 

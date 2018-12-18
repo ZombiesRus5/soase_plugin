@@ -1,4 +1,4 @@
  * [[PlanetItemTypeCount| PlanetItemTypeCount]]
-   * planetItemTypeCount: [[Iteration]]
-     * [[planetItemType|EntityDesign]]: [[EntityDesign]]
+   * planetItemTypeCount : [[Iteration]]
+     * [[planetItemType|EntityDesign]] : [[EntityDesign]]
 

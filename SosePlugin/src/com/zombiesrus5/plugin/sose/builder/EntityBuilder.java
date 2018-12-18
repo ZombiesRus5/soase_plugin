@@ -64,6 +64,8 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 					
 					@Override
 					public boolean visit(IResourceDelta delta) throws CoreException {
+						IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+						
 						if (delta.getResource().getProject() == builder.getProject()) {
 //							System.out.println("my resource: " + delta.getResource());
 //							System.out.println(builder.getProject());
@@ -73,8 +75,10 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 									!(delta.getResource().getFullPath().toOSString().contains(".svn") ||
 									  delta.getResource().getFullPath().toOSString().contains("Template"))) {
 //								System.out.println("file added removed or replaced");
-								if (builder.fullBuildInProcess == false) {
-									builder.fullBuild = true;
+								if (store.getBoolean(PreferenceConstants.FULL_BUILD_ON_NEW_FILE)) {
+									if (builder.fullBuildInProcess == false) {
+										builder.fullBuild = true;
+									}
 								}
 							} else if ((delta.getResource().getName().endsWith(".sounddata") ||
 									   delta.getResource().getName().endsWith(".brushes") ||

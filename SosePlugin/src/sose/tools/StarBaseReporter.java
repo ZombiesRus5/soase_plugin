@@ -59,6 +59,12 @@ public class StarBaseReporter extends ContentHandlerChain {
 				error.error(new EntityParseException(message, lineNumber, fieldName));
 			}
 		}
+		if (fieldName.equals("creationSourceAbility")) {
+			if (fieldValue == null || fieldValue.trim().isEmpty()) {
+				String message = "creationSourceAbility can not be empty";
+				error.error(new EntityParseException(message, lineNumber, fieldName));
+			}
+		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}
 

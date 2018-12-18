@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<condition_field name="aiUseTargetCondition">
+		<condition><value>Any</value>
+		</condition>
+		<condition><value>AntimatterExceedsAmount</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetAntimatterExceedsAmount" type="GenericLevel"/>
+		</condition>
+		<condition><value version="Rebellion">IsCapitalShipOrStarbaseOrTitan</value></condition>
+		<condition><value version="Diplomacy">IsCapitalShipOrStarbase</value>
+		</condition>
+		<condition><value>Invalid</value>
+			<value version="Rebellion">IsBoarded</value>
+		</condition>
+		<condition><value>HasBuff</value>
+			<field required="true" name="buffType" validation="Entity"/>
+		</condition>
+		<condition><value>HasAbilityInCooldown</value>
+		</condition>
+		<condition><value>HasNoWeapons</value>
+		</condition>
+		<condition><value>IsNotWeaponDisabled</value>
+		</condition>
+		<condition><value>ShieldDamageExceedsAmount</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetShieldDamageExceedsAmount" type="GenericLevel"/>
+		</condition>
+		<condition><value>HullDamageExceedsAmount</value>
+			<structure_reference required="true" name="onlyAutoCastWhenTargetHullDamageExceedsAmount" type="GenericLevel"/>
+		</condition>
+		<condition><value>IsDifferentRoleType</value>
+		</condition>
+		</condition_field>
+</tns:entity_definitions>

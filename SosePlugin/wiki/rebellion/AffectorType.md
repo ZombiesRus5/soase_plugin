@@ -1,21 +1,21 @@
-[[AffectorType|AffectorType]]: [[Condition]]
+[[AffectorType|AffectorType]] : [[Condition]]
    * ColorOscillator
-     * [[AffectorContents|AffectorContentsColorOscillator]]: [[AffectorContentsColorOscillator]]
+     * [[AffectorContents|AffectorContentsColorOscillator]] : [[AffectorContentsColorOscillator]]
    * Drag
-     * [[AffectorContents|AffectorContentsDrag]]: [[AffectorContentsDrag]]
+     * [[AffectorContents|AffectorContentsDrag]] : [[AffectorContentsDrag]]
    * Fade
-     * [[AffectorContents|AffectorContentsFade]]: [[AffectorContentsFade]]
+     * [[AffectorContents|AffectorContentsFade]] : [[AffectorContentsFade]]
    * Jitter
-     * [[AffectorContents|AffectorContentsJitter]]: [[AffectorContentsJitter]]
+     * [[AffectorContents|AffectorContentsJitter]] : [[AffectorContentsJitter]]
    * KillParticlesNearPoint
-     * [[AffectorContents|AffectorContentsKillParticlesNearPoint]]: [[AffectorContentsKillParticlesNearPoint]]
+     * [[AffectorContents|AffectorContentsKillParticlesNearPoint]] : [[AffectorContentsKillParticlesNearPoint]]
    * LinearForceInDirection
-     * [[AffectorContents|AffectorContentsLinearForceInDirection]]: [[AffectorContentsLinearForceInDirection]]
+     * [[AffectorContents|AffectorContentsLinearForceInDirection]] : [[AffectorContentsLinearForceInDirection]]
    * LinearForceToPoint
-     * [[AffectorContents|AffectorContentsLinearForceToPoint]]: [[AffectorContentsLinearForceToPoint]]
+     * [[AffectorContents|AffectorContentsLinearForceToPoint]] : [[AffectorContentsLinearForceToPoint]]
    * LinearInflate
-     * [[AffectorContents|AffectorContentsLinearInflate]]: [[AffectorContentsLinearInflate]]
+     * [[AffectorContents|AffectorContentsLinearInflate]] : [[AffectorContentsLinearInflate]]
    * RotateAboutAxis
-     * [[AffectorContents|AffectorContentsRotateAboutAxis]]: [[AffectorContentsRotateAboutAxis]]
+     * [[AffectorContents|AffectorContentsRotateAboutAxis]] : [[AffectorContentsRotateAboutAxis]]
    * SizeOscillator
-     * [[AffectorContents|AffectorContentsSizeOscillator]]: [[AffectorContentsSizeOscillator]]
+     * [[AffectorContents|AffectorContentsSizeOscillator]] : [[AffectorContentsSizeOscillator]]

@@ -4,5 +4,5 @@
  * [[effectInfo|effectInfo]]
 
  * [[AttachInfo| AttachInfo]]
-   * [[attachType|attachType]]: [[Condition]]
+   * [[attachType|attachType]] : [[null]]
 

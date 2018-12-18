@@ -4,6 +4,6 @@
  * [[Titan|Titan]]
 
  * [[LevelIncrease| LevelIncrease]]
-   * StartValue: [[Decimal]]
-   * ValueIncreasePerLevel: [[Decimal]]
+   * StartValue : [[Decimal]]
+   * ValueIncreasePerLevel : [[Decimal]]
 

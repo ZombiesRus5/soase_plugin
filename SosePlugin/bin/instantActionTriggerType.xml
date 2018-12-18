@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+<condition_field name="instantActionTriggerType">
+	    <helpText>OnChance only valid in periodActions</helpText>
+	<condition value="OnCondition" version="Rebellion">
+		<condition_field name="instantActionConditionType">
+			<condition>
+				<value>IfOwnerIsAboutToDie</value>
+				<value>IfOwnerDoesNotHaveDestabilizationProtection</value>
+				<value>IfOwnerIsFirstPlayerOwnedStarbaseAtOrbitbody</value>
+				<value>IfOwnerHasDestabilizationProtection</value>
+				<value>IfOwnerIsNotFirstPlayerOwnedStarbaseAtOrbitbody</value>
+			</condition>
+			<condition>
+				<value>IfFirstSpawnerHasBuff</value>
+				<value>IfOwnerHasBuff</value>
+				<value>IfFirstSpawnerDoesNotHaveBuff</value>
+				<value>IfOwnerDoesNotHaveBuff</value>
+				<field name="conditionBuffType" validation="Entity" />
+				<field name="conditionBuffShortName" validation="StringInfo" />
+			</condition>
+			<condition>
+				<value>IfOwnerHasHullLessThanPerc</value>
+				<structure_reference name="hullPerc" type="GenericLevel"/>
+			</condition>
+		</condition_field>
+	</condition>
+	<condition value="OnDelay">
+		<field name="delayTime" validation="Decimal"/>
+	</condition>
+	<condition value="OnWeaponFired">
+		<iterative_field name="numWeaponClasses">
+			<field required="false" name="weaponClassForWeaponPassive" type="WeaponClassType"/>
+		</iterative_field>
+		<structure_reference name="passiveWeaponEffectChance" type="GenericLevel"/>
+	</condition>
+	<condition value="OnChance" >
+	    <helpText>OnChance only valid in periodActions</helpText>
+		<structure_reference name="buffApplyChance" type="GenericLevel"/>
+	</condition>
+	<condition value="OnDamageTaken">
+		<field required="false" name="damageType" type="damageType"/>
+	</condition>
+	<condition>
+		<value>AlwaysPerform</value>
+		<value>OnAbilityUsed</value>
+		<value>OnHyperspaceExit</value>
+		<value>OnOwnerDeath</value>
+		<value>OnBuffFinish</value>
+	</condition>
+</condition_field>
+
+</tns:entity_definitions>

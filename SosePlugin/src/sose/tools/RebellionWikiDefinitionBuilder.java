@@ -112,7 +112,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		printBullet();
 		
 		if ((fieldValues != null && fieldValues.length >0 && "Enumeration".equals(fieldType)) || (helpText != null && helpText.trim().length() > 0)) {
-			print("[[" + fieldName + "|" + conform(fieldRule) + "]]: [[" + fieldType + "]]");
+			print("[[" + fieldName + "|" + conform(fieldRule) + "]] : [[" + fieldType + "]]");
 			println();
 			
 			if (explicit && (helpText == null || helpText.isEmpty())) {
@@ -153,7 +153,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 				pwField.close();
 			}
 		} else {
-			print(fieldName + ": [[" + fieldType + "]]");
+			print(fieldName + " : [[" + fieldType + "]]");
 			println();
 		}
 	}
@@ -188,13 +188,20 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 	public void startIteration(String fieldName, String helpText) {
 		printIndent(depth.peek());
 		printBullet();
-		print(fieldName + ": [[Iteration]]");
+		print(fieldName + " : [[Iteration]]");
 		println();
 		depth.push(depth.peek()+1);
 	}
 
 	@Override
 	public void startStructure(String structureName, String structureType, boolean explicit, String[] references, String helpText) {
+		if (helpText != null && helpText.trim().length() > 0) {
+			print(" * [[");
+			print("" + helpText);
+			println("]]");
+		}
+
+		
 		if (printStructureReference) {
 			if (references != null && references.length > 0) {
 				println("==References==");
@@ -213,7 +220,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		if (structureName.equals(structureType)) {
 			print("[[" + structureName + "| " + structureName + "]]");
 		} else {
-			print("[[" + structureName + "|" + structureType + "]]: [[" + structureType + "]]");
+			print("[[" + structureName + "|" + structureType + "]] : [[" + structureType + "]]");
 		}
 		println();
 		depth.push(depth.peek()+1);
@@ -239,9 +246,14 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		if (fieldRule == null) {
 			fieldRule = field;
 		}
-		print("[[" + field + "|" + fieldRule + "]]" + ": [[Condition]]");
+		print("[[" + field + "|" + fieldRule + "]]" + " : [[" + helpText + "]]");
 		println();
 		depth.push(1);
+		if (helpText != null && helpText.trim().length() > 0) {
+			print(" * [[");
+			print("" + helpText);
+			println("]]");
+		}
 		
 		pw.push(new PrintWriter(new FileWriter(new File("C:/Users/LaffoonGame/git/soase_plugin/SosePlugin/wiki/rebellion/" + fieldRule + ".md"))));
 		//println("#labels SOASE, DynamicContent");
@@ -251,8 +263,13 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 			println();
 			println(helpText);
 		}
-		print("[[" + field + "|"+ fieldRule + "]]" + ": [[Condition]]");
+		print("[[" + field + "|"+ fieldRule + "]]" + " : [[Condition]]");
 		println();
+		if (helpText != null && helpText.trim().length() > 0) {
+			print(" * [[");
+			print("" + helpText);
+			println("]]");
+		}
 	}
 
 }

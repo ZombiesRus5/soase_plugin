@@ -1,6 +1,6 @@
-[[criteriaType|criteriaType]]: [[Condition]]
+[[criteriaType|criteriaType]] : [[Condition]]
    * None
    * Research
-     * [[prerequisites|researchPrerequisites]]: [[researchPrerequisites]]
+     * [[prerequisites|researchPrerequisites]] : [[researchPrerequisites]]
    * StarBaseUpgradeLevel
      * [[levelRequirements| levelRequirements]]

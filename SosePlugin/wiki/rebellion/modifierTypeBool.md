@@ -1,4 +1,4 @@
-[[modifierType|modifierTypeBool]]: [[Condition]]
+[[modifierType|modifierTypeBool]] : [[Condition]]
    * AllowAlliesToUsePhaseGates
    * AllowGalaxyTravel
    * AllowMissionOffers
@@ -8,17 +8,17 @@
    * AllowUseAlliedPhaseGateWithPhaseJumpPact
    * AllowWormHoleTravel
    * ApplyBuffToAllOwnedShipsWhenOwnedPlanetFalls
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * ApplyBuffToOwnedPlanetAfterLastEnemyShipLeavesOrDies
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * ApplyBuffToPlanetAfterColonization
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * ApplyBuffToPlanetAfterPlayerDestroys
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * ApplyBuffToPlanetsAfterScuttle
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * ApplyBuffToShipsAfterHyperspace
-     * buffToApply: [[Entity]]
+     * buffToApply : [[Entity]]
    * CapitalShipsTitansAndStarBasesCountAsPlanetForNoGameLoss
    * CultureSpreadIsAlwaysVisible
    * DestabilizationProtection
@@ -32,16 +32,16 @@
    * JumpBlockerImmune
    * PirateRaidsOneLevelLower
    * PlanetIsColonizable
-     * [[linkedPlanetType|linkedPlanetType]]: [[Enumeration]]
+     * [[linkedPlanetType|linkedPlanetType]] : [[Enumeration]]
    * PlanetsDetectedByCulture
    * RemoveRacialRelationPenalty
    * ResearchVictory
    * SetFaction
-     * factionNameID: [[StringInfo]]
+     * factionNameID : [[StringInfo]]
    * SpawnCopyOfPirateRaidsAtRandomPlanet
    * StarBasesCanHyperspace
    * StarBasesCanHyperspaceOnlyToPhaseNodes
    * StripPlanetsOnScuttle
    * UnlockPact
-     * [[allianceType|allianceType]]: [[Enumeration]]
-     * pactUnlockEntityDefName: [[Entity]]
+     * [[allianceType|allianceType]] : [[Enumeration]]
+     * pactUnlockEntityDefName : [[Entity]]

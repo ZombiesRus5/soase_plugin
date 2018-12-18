@@ -1,4 +1,4 @@
-[[aiUseTime|aiUseTime]]: [[Condition]]
+[[aiUseTime|aiUseTime]] : [[Condition]]
    * Anytime
    * Invalid
    * NoEnemyShipsInGravityWell
@@ -10,30 +10,30 @@
    * OnlyWhenAttackTargetIsInFiringSolutionAndHasAttackOrder
    * OnlyWhenBombing
    * OnlyWhenDebrisWithinRange
-     * onlyAutoCastWhenDebrisWithinRange: [[Decimal]]
+     * onlyAutoCastWhenDebrisWithinRange : [[Decimal]]
    * OnlyWhenDisabled
    * OnlyWhenEnemyFleetWillPrevail
    * OnlyWhenHullDamageExceeds
-     * [[onlyAutoCastWhenTotalHullDamageExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTotalHullDamageExceedsAmount|GenericLevel]] : [[GenericLevel]]
    * OnlyWhenManyTargetsHaveHullDamage
-     * [[onlyAutoCastWhenTotalHullDamageExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTotalHullDamageExceedsAmount|GenericLevel]] : [[GenericLevel]]
    * OnlyWhenManyTargetsHaveShieldDamage
    * OnlyWhenManyTargetsHyperspacingTowardsMyGravityWell
    * OnlyWhenManyTargetsInCombatDoNotHaveBuff
-     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]]: [[GenericLevel]]
-     * buffType: [[Entity]]
+     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]] : [[GenericLevel]]
+     * buffType : [[Entity]]
    * OnlyWhenManyTargetsInRange
-     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]]: [[GenericLevel]]
+     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]] : [[GenericLevel]]
    * OnlyWhenManyTargetsInRangeOfBank
-     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]]: [[GenericLevel]]
-     * [[onlyAutoCastWhenTargetsInBank|onlyAutoCastWhenTargetsInBank]]: [[Enumeration]]
+     * [[onlyAutoCastWhenTargetCountExceedsAmount|GenericLevel]] : [[GenericLevel]]
+     * [[onlyAutoCastWhenTargetsInBank|onlyAutoCastWhenTargetsInBank]] : [[Enumeration]]
        * FRONT
        * BACK
        * LEFT
        * RIGHT
    * OnlyWhenMovingFar
    * OnlyWhenMovingThresholdDistance
-     * thresholdDistance: [[Decimal]]
+     * thresholdDistance : [[Decimal]]
    * OnlyWhenOrbitingEnemyOrAlliedPlanet
    * OnlyWhenOrbitingEnemyPlanet
    * OnlyWhenTakingDamage

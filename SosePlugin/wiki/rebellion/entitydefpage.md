@@ -2,6 +2,6 @@
  * [[Player|Player]]
 
  * [[EntityDefPage| EntityDefPage]]
-   * count: [[Iteration]]
-     * entityDefName: [[Entity]]
+   * count : [[Iteration]]
+     * entityDefName : [[Entity]]
 

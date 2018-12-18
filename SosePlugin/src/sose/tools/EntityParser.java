@@ -388,7 +388,7 @@ public class EntityParser {
 			return validate(currentLine, contents);
 		}	
 		public void validateValueRequiresQuotes(boolean criticalValue, String currentLine, String[] entityTypeValues) {
-			validateValueRequiresQuotes(criticalValue, currentLine, entityTypeValues, false);
+			validateValueRequiresQuotes(criticalValue, currentLine, entityTypeValues, ignoreCaseOnFiles);
 		}
 		
 		public void validateRequiredMissing(String currentLine, String expectedTag) {
@@ -442,15 +442,22 @@ public class EntityParser {
 			if (!value.endsWith("\"")) {
 				fail("expected \" (quote) at end of value", currentLineNumber, currentLine);
 			}
+			if (currentLine.contains("MeshName")) {
+				// check if there is a file path
+				int lastSlash = value.lastIndexOf('\\');
+				if (lastSlash > 0) {
+					value = "\"" + value.substring(lastSlash+1);
+				}
+			}
 			if (ignoreCase) {
 				for (int i=0; i<validValues.length; i++) {
-					if (currentLine.toUpperCase().contains("\"" + validValues[i].toUpperCase() + "\"")) {
+					if (value.toUpperCase().contains("\"" + validValues[i].toUpperCase() + "\"")) {
 						return;
 					}
 				}
 			} else {
 				for (int i=0; i<validValues.length; i++) {
-					if (currentLine.contains("\"" + validValues[i] + "\"")) {
+					if (value.contains("\"" + validValues[i] + "\"")) {
 						return;
 					}
 				}
@@ -600,7 +607,7 @@ public class EntityParser {
 				while (stk.hasMoreElements()) {
 					String pos = stk.nextToken();
 					try {
-						Integer.parseInt(pos.trim());
+						Long.parseLong(pos.trim());
 					} catch(Exception e) {
 						fail("Expected a numeric value", currentLineNumber, currentLine);
 					}
@@ -829,14 +836,22 @@ public class EntityParser {
 		}
 		public FieldReferenceValidator(String validationType, final String referenceFieldName, final String includes, List<String> locations, boolean criticalValue) throws Exception {
 			setupValidator(validationType, referenceFieldName, includes,
-					locations, criticalValue);
+					locations, null, criticalValue);
+		}
+		public FieldReferenceValidator(String validationType, final String referenceFieldName, final String includes, List<String> locations, List<String> initialValues, boolean criticalValue) throws Exception {
+			setupValidator(validationType, referenceFieldName, includes,
+					locations, initialValues, criticalValue);
 		}
 		public void setupValidator(String validationType,
 				final String referenceFieldName, final String includes,
-				List<String> locations, boolean criticalValue)
+				List<String> locations, List<String> initialValues, boolean criticalValue)
 				throws FileNotFoundException, IOException {
 			Set<String> fieldReferenceSet = new HashSet<String>();
 			List<String> filesProcessed = new ArrayList<String>();
+			
+			if (initialValues != null) {
+				fieldReferenceSet.addAll(initialValues);
+			}
 			
 			for (int i=0; i<locations.size(); i++) {
 				File location = new File(locations.get(i));
@@ -968,7 +983,7 @@ public class EntityParser {
 				if (allowDecimalOnInteger) {
 					new BigDecimal(numericPart.trim());
 				} else {
-					new Integer(numericPart.trim());
+					new Long(numericPart.trim());
 				}
 			} catch(Exception e) {
 				fail("Decimal or Integer expected!", currentLineNumber, currentLine);
@@ -1105,7 +1120,7 @@ public class EntityParser {
 				if ("TRUE".equals(value) || "FALSE".equals(value)) {
 					validateValue(true, currentLine, validValues);
 				} else {
-					validateValueRequiresQuotes(true, currentLine, validValues, true);
+					validateValueRequiresQuotes(true, currentLine, validValues, ignoreCaseOnFiles);
 				}
 				// should this be structure???
 				contentHandler.processField(keyWord, value, getValidationType(), currentLineNumber);

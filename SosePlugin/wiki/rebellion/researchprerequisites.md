@@ -19,10 +19,10 @@
  * [[Weapon|Weapon]]
 
  * [[researchPrerequisites| researchPrerequisites]]
-   * NumResearchPrerequisites: [[Iteration]]
+   * NumResearchPrerequisites : [[Iteration]]
      * [[ResearchPrerequisite| ResearchPrerequisite]]
-       * Subject: [[Entity]]
-       * Level: [[Integer]]
-   * RequiredFactionNameID: [[StringInfo]]
-   * RequiredCompletedResearchSubjects: [[Integer]]
+       * Subject : [[Entity]]
+       * Level : [[Integer]]
+   * RequiredFactionNameID : [[StringInfo]]
+   * RequiredCompletedResearchSubjects : [[Integer]]
 

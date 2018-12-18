@@ -1,4 +1,4 @@
  * [[Str| Str]]
-   * NumStrings: [[Iteration]]
+   * NumStrings : [[Iteration]]
      * [[StringInfo| StringInfo]]
 

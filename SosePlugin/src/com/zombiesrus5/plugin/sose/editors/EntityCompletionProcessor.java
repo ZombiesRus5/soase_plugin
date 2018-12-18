@@ -1,8 +1,13 @@
 package com.zombiesrus5.plugin.sose.editors;
 
+import java.io.InputStream;
+import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.text.ITextViewer;
@@ -25,7 +30,8 @@ import com.zombiesrus5.plugin.sose.editors.utils.WordPartDetector;
 import com.zombiesrus5.plugin.sose.views.EntityDefinitionView;
 
 public class EntityCompletionProcessor implements IContentAssistProcessor {
-		
+	private Map<String, String> cachedProposals = new HashMap<String, String>();
+	
 	public EntityCompletionProcessor(EntityEditor editor) {
 		super();
 		
@@ -82,6 +88,18 @@ public class EntityCompletionProcessor implements IContentAssistProcessor {
 				IContextInformation info= new ContextInformation(possibleProposals[i], MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.ContextInfo.pattern"), new Object[] { possibleProposals[i] })); //$NON-NLS-1$
 				String replacementProposal = possibleProposals[i].substring(wordPart.getString().length());
 				//System.out.println(replacementProposal);
+				if (possibleProposals[i].equals("effectInfo")) {
+					replacementProposal += "\n\teffectAttachInfo\n\t\tattachType \"Invalid\"\n\t\tsmallEffectName \"\"\n\t\tmediumEffectName \"\"\n\t\tlargeEffectName \"\"\n\t\tsoundID \"\"";
+				}
+				if (cachedProposals.containsKey(possibleProposals[i])) {
+					replacementProposal = cachedProposals.get(possibleProposals[i]);
+				} else {
+					InputStream is = getClass().getResourceAsStream("/" + possibleProposals[i] + ".proposal");
+					if (is != null) {
+						Scanner s = new Scanner(is).useDelimiter("\\A");
+						replacementProposal = s.hasNext() ? s.next() : replacementProposal;
+					}
+				}
 				CompletionProposal proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i], info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
 				proposals.add(proposal);
 			}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Fighter">
+		<field name="defaultAutoAttackRange" type="defaultAutoAttackRange"/>
+		<field name="defaultAutoAttackOn" validation="Boolean"/>
+		<field name="prefersToFocusFire" validation="Boolean"/>
+		<field name="usesFighterAttack" validation="Boolean" version="Entrenchment"/>
+		<field name="numRandomDebrisLarge" validation="Integer"/>
+		<field name="numRandomDebrisSmall" validation="Integer"/>
+		<iterative_field name="numSpecificDebris" limit="2">
+			<field required="false" name="specificDebrisMeshName" validation="Mesh"/>
+		</iterative_field>
+		<field name="armorType" type="armorType"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+		<field name="minZoomDistanceMult" validation="Decimal"/>
+		<field name="nameStringID" validation="StringInfo"/>
+		<field name="counterDescriptionStringID" validation="StringInfo"/>
+		<field name="statCountType" type="statCountType"/>
+		<field name="formationOffsetDistance" validation="Decimal" version="Entrenchment"/>
+		<field name="mass" validation="Decimal"/>
+		<field name="maxAccelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationStrafe" validation="Decimal"/>
+		<field name="maxDecelerationLinear" validation="Decimal"/>
+		<field name="maxAccelerationAngular" validation="Decimal"/>
+		<field name="maxDecelerationAngular" validation="Decimal"/>
+		<field name="maxSpeedLinear" validation="Decimal"/>
+		<field name="maxRollRate" validation="Decimal" version="Entrenchment"/>
+		<field name="maxRollAngle" validation="Decimal" version="Entrenchment"/>
+		<iterative_field name="NumWeapons" limit="5">
+			<structure_reference required="false" name="Weapon"/>
+		</iterative_field>
+		<field name="m_weaponIndexForRange" validation="Integer"/>
+		<field name="firingAlignmentType" type="firingAlignmentType" version="Entrenchment"/>
+		<field name="TargetCountPerBank:FRONT" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:BACK" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:LEFT" validation="Integer" version="Entrenchment"/>
+		<field name="TargetCountPerBank:RIGHT" validation="Integer" version="Entrenchment"/>
+		<field name="canOnlyTargetStructures" validation="Boolean" version="Entrenchment"/>
+		<field name="meshName" validation="Mesh"/>
+		<field name="exhaustParticleSystemName" validation="Particle"/>
+		<field name="ExplosionName" validation="Explosion"/>
+		<field name="exhaustTrailTextureName" validation="Texture"/>
+		<field name="exhaustTrailWidth" validation="Decimal"/>
+		<field name="engineSoundID" validation="Sound"/>
+		<field name="maxHullPoints" validation="Decimal"/>
+		<field name="hullPointRestoreRate" validation="Decimal"/>
+		<field name="armorPoints" validation="Decimal"/>
+		<field name="maxMitigation" validation="Decimal"/>
+		<field name="experiencePointsForDestroying" validation="Decimal"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+	</structure>
+</tns:entity_definitions>

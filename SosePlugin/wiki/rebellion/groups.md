@@ -1,4 +1,4 @@
  * [[Groups| Groups]]
-   * groups: [[Iteration]]
-     * [[group|GroupType]]: [[GroupType]]
+   * groups : [[Iteration]]
+     * [[group|GroupType]] : [[GroupType]]
 

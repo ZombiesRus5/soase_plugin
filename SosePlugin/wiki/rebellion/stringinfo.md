@@ -2,6 +2,6 @@
  * [[Str|Str]]
 
  * [[StringInfo| StringInfo]]
-   * ID: [[Any]]
-   * Value: [[Any]]
+   * ID : [[Any]]
+   * Value : [[Any]]
 

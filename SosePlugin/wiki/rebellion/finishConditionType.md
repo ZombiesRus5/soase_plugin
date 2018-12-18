@@ -1,29 +1,29 @@
-[[finishConditionType|finishConditionType]]: [[Condition]]
+[[finishConditionType|finishConditionType]] : [[Condition]]
    * AbilityUsed
    * AllOnDelayInstantActionsDone
    * AllPeriodicActionsDone
    * AntiMatterDepleted
    * AnyOnConditionInstantActionDone
    * DamageTaken
-     * [[damageNeeded|GenericLevel]]: [[GenericLevel]]
-     * [[typeOfDamageNeeded|typeOfDamageNeeded]]: [[Enumeration]]
+     * [[damageNeeded|GenericLevel]] : [[GenericLevel]]
+     * [[typeOfDamageNeeded|typeOfDamageNeeded]] : [[Enumeration]]
    * EnterHyperspace
    * ExitHyperspace
    * FightersKilled
-     * [[fightersKilled|GenericLevel]]: [[GenericLevel]]
+     * [[fightersKilled|GenericLevel]] : [[GenericLevel]]
    * FirstSpawnerNoLongerHasBuff
-     * buffTypeToQuery: [[Entity]]
+     * buffTypeToQuery : [[Entity]]
    * Invalid
    * LastSpawnerNoLongerHasBuff
-     * buffTypeToQuery: [[Entity]]
+     * buffTypeToQuery : [[Entity]]
    * NoTarget
    * OutOfRange
    * OwnerChanged
    * OwnerHullAbovePerc
-     * [[hullPercent|GenericLevel]]: [[GenericLevel]]
+     * [[hullPercent|GenericLevel]] : [[GenericLevel]]
    * OwnerIsFriendlyToFirstSpawner
    * OwnerNoLongerHasBuff
-     * buffTypeToQuery: [[Entity]]
+     * buffTypeToQuery : [[Entity]]
    * ResearchNotMet
      * [[researchPrerequisites| researchPrerequisites]]
    * ShieldFailure
@@ -34,4 +34,4 @@
    * TargetOwnerIsHostile
    * TargetOwnerIsNeutral
    * TimeElapsed
-     * [[time|GenericLevel]]: [[GenericLevel]]
+     * [[time|GenericLevel]] : [[GenericLevel]]

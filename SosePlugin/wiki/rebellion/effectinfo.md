@@ -3,9 +3,9 @@
  * [[Buff|Buff]]
 
  * [[effectInfo| effectInfo]]
-   * [[effectAttachInfo|AttachInfo]]: [[AttachInfo]]
-   * smallEffectName: [[Particle]]
-   * mediumEffectName: [[Particle]]
-   * largeEffectName: [[Particle]]
-   * soundID: [[Sound]]
+   * [[effectAttachInfo|AttachInfo]] : [[AttachInfo]]
+   * smallEffectName : [[Particle]]
+   * mediumEffectName : [[Particle]]
+   * largeEffectName : [[Particle]]
+   * soundID : [[Sound]]
 

@@ -1,4 +1,4 @@
  * [[Explosiondata| Explosiondata]]
-   * explosionEffectGroupCount: [[Iteration]]
-     * [[explosionEffectGroup|ExplosionEffectGroupType]]: [[ExplosionEffectGroupType]]
+   * explosionEffectGroupCount : [[Iteration]]
+     * [[explosionEffectGroup|ExplosionEffectGroupType]] : [[ExplosionEffectGroupType]]
 

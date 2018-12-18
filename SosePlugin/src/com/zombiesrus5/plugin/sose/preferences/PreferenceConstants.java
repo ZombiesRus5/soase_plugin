@@ -24,6 +24,8 @@ public class PreferenceConstants {
 	
 	public static final String IGNORE_CASE_ON_REFERENCE_FILES = "ignoreCaseOnReferenceFiles";
 	
+	public static final String FULL_BUILD_ON_NEW_FILE = "fullBuildOnNewFile";
+	
 	public static final String REQUIRES_DECIMAL_POINT_ON_DECIMAL = "requiresDecimalPoint";
 	
 	public static final String ALLOW_DECIMAL_POINT_ON_INTEGER = "allowDecimalPoint";

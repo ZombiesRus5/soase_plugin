@@ -2,6 +2,6 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[DiplomaticPointsSpeedData| DiplomaticPointsSpeedData]]
-   * diplomaticPointsRateSpeedScalar: [[Decimal]]
-   * occupyVictoryTimeScalar: [[Decimal]]
+   * diplomaticPointsRateSpeedScalar : [[Decimal]]
+   * occupyVictoryTimeScalar : [[Decimal]]
 

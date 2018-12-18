@@ -1,3 +1,3 @@
  * [[MissionColonize| MissionColonize]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 

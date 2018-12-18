@@ -2,6 +2,6 @@
  * [[Player|Player]]
 
  * [[Fleet| Fleet]]
-   * [[defaultCohesionRange|defaultCohesionRange]]: [[Enumeration]]
+   * [[defaultCohesionRange|defaultCohesionRange]] : [[Enumeration]]
      * Near
 

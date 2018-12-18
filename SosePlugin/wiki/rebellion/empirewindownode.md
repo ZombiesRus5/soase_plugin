@@ -1,3 +1,3 @@
  * [[EmpireWindowNode| EmpireWindowNode]]
-   * EmpireWindowHyperspaceNodeIcon: [[Brush]]
+   * EmpireWindowHyperspaceNodeIcon : [[Brush]]
 

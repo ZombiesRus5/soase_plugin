@@ -12,6 +12,6 @@
  * [[Titan|Titan]]
 
  * [[MeshNameInfo| MeshNameInfo]]
-   * meshName: [[Mesh]]
-   * [[criteriaType|criteriaType]]: [[Condition]]
+   * meshName : [[Mesh]]
+   * [[criteriaType|criteriaType]] : [[null]]
 

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Planet">
+		<iterative_field name="meshInfoCount">
+			<structure required="false" name="meshInfo">
+				<field name="typeNameStringID" validation="StringInfo" />
+				<field name="asteroidTemplate" validation="Any">
+				</field>
+				<field name="dustCloudTemplate" validation="Any">
+				</field>
+				<field name="meshName" validation="Mesh" />
+				<field name="cloudColor" validation="Color" />
+				<field name="nullMeshRadius" validation="Decimal" />
+				<field name="nullMeshParticleEffect" validation="Particle" />
+				<field name="hudIcon" validation="Brush" />
+				<field name="smallHudIcon" validation="Brush" />
+				<field name="infoCardIcon" validation="Brush" />
+				<field name="mainViewIcon" validation="Brush" />
+				<field name="undetectedMainViewIcon" validation="Brush" />
+				<field name="picture" validation="Brush" />
+				<field name="shouldPrefer" validation="Boolean" version="Rebellion"/>
+			</structure>
+		</iterative_field>
+		<field name="minZoomDistanceMult" validation="Decimal" />
+		<field name="glowColor" validation="Color" />
+		<field name="ringColor" validation="Color" />
+		<field name="cloudLayerTextureName" validation="Texture" />
+		<structure name="planetResourceSetupInfo">
+			<field name="asteroidSpawnAngleVariance" validation="Decimal" />
+			<field name="totalMaxResourceAsteroids" validation="Integer" />
+			<structure_reference name="metalResourceAsteroidSetup"
+				type="AsteroidSetup" />
+			<structure_reference name="crystalResourceAsteroidSetup"
+				type="AsteroidSetup" />
+			<structure_reference name="neutralMetalResourceAsteroidSetup"
+				type="AsteroidSetup" />
+			<structure_reference name="neutralCrystalResourceAsteroidSetup"
+				type="AsteroidSetup" />
+
+		</structure>
+		<field name="isAsteroid" validation="Boolean" />
+		<field name="healthRegenRate" validation="Decimal" />
+		<structure name="planetUpgradeDef">
+			<structure name="path:Population">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxPopulation" validation="Decimal" />
+						<field name="populationGrowthRate" validation="Decimal" />
+						<field name="developmentTaxPenalty" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:CivilianModules">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxModuleSlotCount:Civilian" validation="Decimal" />
+						<field name="maxModuleConstructorCount" validation="Integer" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:TacticalModules">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxModuleSlotCount:Tactical" validation="Decimal" />
+						<field name="maxModuleConstructorCount" validation="Integer" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:Home">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="isHomePlanet" validation="Boolean" />
+						<field name="homePlanetTaxRateBonus" validation="Decimal" />
+						<field name="homePlanetMetalIncomeBonus" validation="Decimal" version="Entrenchment" />
+						<field name="homePlanetCrystalIncomeBonus" validation="Decimal" version="Entrenchment" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:ArtifactLevel">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:Infrastructure">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxHealth" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:Social" version="Rebellion">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxPopulation" validation="Decimal" />
+						<field name="populationGrowthRate" validation="Decimal" />
+						<field name="tradeIncomeModifier" validation="Decimal" />
+						<field name="shipBuildRateModifier" validation="Decimal" />
+						<field name="cultureSpreadRateModifier" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:Industry" version="Rebellion">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="maxPopulation" validation="Decimal" />
+						<field name="tradeIncomeModifier" validation="Decimal" />
+						<field name="shipBuildRateModifier" validation="Decimal" />
+						<field name="cultureSpreadRateModifier" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+			<structure name="path:Smuggler" version="Rebellion">
+				<iterative_field name="stageCount">
+					<structure required="false" name="stage">
+						<structure_reference name="price" type="Cost" />
+						<field name="upgradeTime" validation="Decimal" />
+						<field name="corruptionPercent" validation="Decimal" />
+						<field name="smugglingPercent" validation="Decimal" />
+					</structure>
+				</iterative_field>
+			</structure>
+		</structure>
+		<field name="ringsChance" validation="Decimal" />
+		<field name="isColonizable" validation="Boolean" />
+		<field name="planetTypeForResearch" validation="Simple">
+			<value version="Rebellion">Moon</value>
+			<value version="Rebellion">Greenhouse</value>
+			<value version="Rebellion">Iron</value>
+			<value version="Rebellion">Barren</value>
+			<value version="Rebellion">Oceanic</value>
+			<value>Asteroid</value>
+			<value>Ice</value>
+			<value>Desert</value>
+			<value>Volcanic</value>
+			<value>Terran</value>
+			<value>Asteroid</value>
+			<value>Uncolonizable</value>
+			<value>Invalid</value>
+		</field>
+		<iterative_field name="skyboxScalarsCount">
+			<structure required="false" name="skyboxScalars">
+				<field name="diffuseScalar" validation="Decimal" />
+				<field name="ambientScalar" validation="Decimal" />
+			</structure>
+		</iterative_field>
+		<iterative_field name="requiredPlanetBonusesCount">
+			<field required="false" name="bonus" validation="Entity" />
+		</iterative_field>
+		<iterative_field name="possibleRandomPlanetBonusesCount">
+			<field required="false" name="bonus" validation="Entity" />
+		</iterative_field>
+		<field name="ambienceSoundID" validation="Sound" />
+		<field name="renderAsVolcanic" validation="Boolean" />
+		<structure name="planetRuinDef" version="Rebellion">
+			<field name="ruinPlanetType" validation="Entity"/>
+			<field name="attachType" />
+			<field name="effectName" validation="Particle"/>
+			<field name="startTime" validation="Decimal"/>
+			<field name="soundID" validation="Sound"/>
+			<field name="creditsOnStrippedToTheCore" validation="Decimal"/>
+			<field name="metalOnStrippedToTheCore" validation="Decimal"/>
+			<field name="crystalOnStrippedToTheCore" validation="Decimal"/>
+			<field name="extraScuttleTimeOnStrip" validation="Decimal"/>
+		</structure>
+		<field name="dlcId" validation="Integer" version="Rebellion"/>
+		<field name="ShieldMeshName" validation="Mesh" />
+		<field name="renderShield" validation="Boolean" version="Entrenchment" />
+		<field name="moveAreaRadius" validation="Decimal" />
+		<field name="hyperspaceExitRadius" validation="Decimal" />
+		<field name="isWormhole" validation="Boolean" />
+		<field name="maxStarBaseCountPerPlayer" validation="Integer" version="Entrenchment" />
+		<field name="maxSpaceMineCountPerPlayer" validation="Integer" version="Entrenchment" />
+		<field name="minShadow" validation="Decimal" />
+		<field name="maxShadow" validation="Decimal" />
+		<field name="ability:0" validation="Entity" />
+		<field name="ability:1" validation="Entity" />
+		<field name="ability:2" validation="Entity" />
+		<field name="ability:3" validation="Entity" />
+		<field name="ability:4" validation="Entity" version="Entrenchment" />
+	</structure>
+
+	<structure name="AsteroidSetup">
+		<field name="minCount" validation="Integer" />
+		<field name="maxCount" validation="Integer" />
+		<field name="extractionRate" validation="Decimal" />
+		<field name="refineryRate" validation="Decimal" />
+		<field name="maxRefineryCount" validation="Integer" />
+	</structure>
+
+</tns:entity_definitions>

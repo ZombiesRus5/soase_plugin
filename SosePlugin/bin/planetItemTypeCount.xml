@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="PlanetItemTypeCount">
+		<iterative_field name="planetItemTypeCount">
+			<structure_reference required="false" name="planetItemType" type="EntityDesign"/>
+		</iterative_field>
+	</structure>
+</tns:entity_definitions>

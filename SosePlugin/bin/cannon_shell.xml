@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+	<structure name="CannonShell">
+		<field name="acceleration" validation="Decimal"/>
+		<field name="startingSpeed" validation="Decimal"/>
+		<field name="maxSpeed" validation="Decimal"/>
+		<field name="buffToApplyOnImpact" validation="Entity"/>
+		<field name="planetImpactEffectName" validation="Particle"/>
+		<structure name="planetImpactSounds">
+			<iterative_field name="soundCount" limit="6">
+				<field required="false" name="sound" validation="Sound"/>
+			</iterative_field>
+		</structure>
+		<field name="planetImpactCameraShakeMaxSize" validation="Decimal"/>
+		<field name="planetImpactCameraShakeStrength" validation="Decimal"/>
+		<field name="planetImpactCameraShakeDuration" validation="Decimal"/>
+		<field name="meshName" validation="Mesh"/>
+		<field name="mainViewIcon" validation="Brush"/>
+		<field name="picture" validation="Brush"/>
+		<field name="nameStringID" validation="StringInfo"/>
+		<field name="descStringID" validation="StringInfo"/>
+		<field name="renderMesh" validation="Boolean"/>
+		<field name="minZoomDistanceMult" validation="Decimal"/>
+		<field name="hudIcon" validation="Brush"/>
+		<field name="smallHudIcon" validation="Brush"/>
+		<field name="infoCardIcon" validation="Brush"/>
+		<field name="minShadow" validation="Decimal"/>
+		<field name="maxShadow" validation="Decimal"/>
+	</structure>
+
+</tns:entity_definitions>

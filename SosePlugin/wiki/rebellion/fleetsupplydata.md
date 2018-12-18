@@ -2,5 +2,5 @@
  * [[GameplayConstants|GameplayConstants]]
 
  * [[FleetSupplyData| FleetSupplyData]]
-   * fleetSupplyScalar: [[Decimal]]
+   * fleetSupplyScalar : [[Decimal]]
 

@@ -1,3 +1,3 @@
  * [[MissionExplore| MissionExplore]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 

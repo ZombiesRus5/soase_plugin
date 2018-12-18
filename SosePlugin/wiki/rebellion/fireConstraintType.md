@@ -1,6 +1,6 @@
-[[fireConstraintType|fireConstraintType]]: [[Condition]]
+[[fireConstraintType|fireConstraintType]] : [[Condition]]
    * CanAlwaysFire
    * Research
      * [[researchPrerequisites| researchPrerequisites]]
    * StarBaseUpgradeLevel
-     * requiredStarBaseWeaponLevel: [[Integer]]
+     * requiredStarBaseWeaponLevel : [[Integer]]

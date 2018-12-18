@@ -1,5 +1,5 @@
-[[hasWeaponLevels|hasWeaponLevels]]: [[Condition]]
+[[hasWeaponLevels|hasWeaponLevels]] : [[Condition]]
    * FALSE
    * TRUE
-     * [[weaponDamageMult|GenericLevel]]: [[GenericLevel]]
-     * [[weaponCooldownMult|GenericLevel]]: [[GenericLevel]]
+     * [[weaponDamageMult|GenericLevel]] : [[GenericLevel]]
+     * [[weaponCooldownMult|GenericLevel]] : [[GenericLevel]]

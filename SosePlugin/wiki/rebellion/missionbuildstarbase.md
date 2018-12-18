@@ -1,3 +1,3 @@
  * [[MissionBuildStarBase| MissionBuildStarBase]]
-   * [[missionType|missionType]]: [[Enumeration]]
+   * [[missionType|missionType]] : [[Enumeration]]
 
