@@ -4,6 +4,7 @@
    * OnBuffFinish
    * OnChance
      * [[buffApplyChance|GenericLevel]] : [[GenericLevel]]
+   * OnColonizeAbilityUsed
    * OnCondition
      * [[instantActionConditionType|instantActionConditionType]] : [[null]]
    * OnDamageTaken

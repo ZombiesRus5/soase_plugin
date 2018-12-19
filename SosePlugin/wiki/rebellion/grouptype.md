@@ -11,6 +11,7 @@
        * NoPlanetOwnerWithChance
        * PlanetOwnerIsMilitia
        * PlanetOwnerIsMilitiaWithChance
+       * PlanetOwnerIsMinorFactionWithFactionName
        * PlanetOwnerIsRaceNormalStart
        * PlanetOwnerIsRaceQuickStart
      * param : [[Any]]

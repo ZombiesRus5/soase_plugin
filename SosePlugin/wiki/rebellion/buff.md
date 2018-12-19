@@ -59,6 +59,7 @@
        * NextAbilityAmplified
        * PhaseDodge
        * PhaseOut
+       * PlanetBombingDamageAsDamageDealer
        * ProxySensor
        * WeaponsDealNoDamage
    * numFinishConditions : [[Iteration]]

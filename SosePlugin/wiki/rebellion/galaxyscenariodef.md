@@ -15,7 +15,7 @@
      * pictureGroup : [[Any]]
    * validThemeGroups : [[Iteration]]
      * themeGroup : [[Any]]
-   * autoAddPlayers : [[Iteration]]
+   * npcPlayers : [[Iteration]]
      * [[player|PlayerType]] : [[PlayerType]]
    * autoAddMiltiaPlayerCountPerGalaxy : [[Decimal]]
    * autoAddMilitiaPlayers : [[Iteration]]

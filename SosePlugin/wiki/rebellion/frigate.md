@@ -17,6 +17,7 @@
    * slotCount : [[Decimal]]
    * BuildTime : [[Decimal]]
    * [[hasLevels|hasLevels]] : [[null]]
+   * relationshipChangeRate : [[Decimal]]
    * [[Prerequisites|researchPrerequisites]] : [[researchPrerequisites]]
    * numRandomDebrisLarge : [[Integer]]
    * numRandomDebrisSmall : [[Integer]]

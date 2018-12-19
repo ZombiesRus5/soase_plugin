@@ -8,3 +8,4 @@
  * [[Friendly|Friendly]]
  * [[NoOwner|NoOwner]]
  * [[Player|Player]]
+ * [[UncontrolledMinorFaction|UncontrolledMinorFaction]]

@@ -212,6 +212,9 @@
    * MilitaryLabsPerCapitalShip
      * baseValue : [[Decimal]]
      * perLevelValue : [[Decimal]]
+   * MinorFactionAbilityLevel
+     * baseValue : [[Decimal]]
+     * perLevelValue : [[Decimal]]
    * ModuleBuildRateAdjustment
      * baseValue : [[Decimal]]
      * perLevelValue : [[Decimal]]

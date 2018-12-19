@@ -38,4 +38,5 @@
    * [[useRandomGenerator|useRandomGenerator]] : [[null]]
    * templates : [[Iteration]]
      * [[template|TemplateType]] : [[TemplateType]]
+   * dlcID : [[Integer]]
 

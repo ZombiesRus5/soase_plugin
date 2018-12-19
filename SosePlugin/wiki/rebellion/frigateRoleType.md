@@ -16,6 +16,7 @@
  * [[Light|Light]]
  * [[Lrm|Lrm]]
  * [[MineLayer|MineLayer]]
+ * [[MinorFactionCapturer|MinorFactionCapturer]]
  * [[ModuleConstructor|ModuleConstructor]]
  * [[ModulePointDefense|ModulePointDefense]]
  * [[ModuleRepair|ModuleRepair]]

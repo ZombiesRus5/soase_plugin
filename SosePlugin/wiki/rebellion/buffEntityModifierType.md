@@ -4,6 +4,7 @@
 ==Values==
  * [[AbilityCooldownRate|AbilityCooldownRate]]
  * [[AngularThrust|AngularThrust]]
+ * [[AntiModuleDamageAsDamageDealer|AntiModuleDamageAsDamageDealer]]
  * [[AntimatterCostOfNonUltimates|AntimatterCostOfNonUltimates]]
  * [[AntimatterRestoration|AntimatterRestoration]]
  * [[AntimatterRestoreRate|AntimatterRestoreRate]]
@@ -14,6 +15,7 @@
  * [[ChanceToHitAsDamageTarget|ChanceToHitAsDamageTarget]]
  * [[ChanceToIgnoreShieldsAsDamageDealer|ChanceToIgnoreShieldsAsDamageDealer]]
  * [[ChanceToIgnoreShieldsAsDamageTarget|ChanceToIgnoreShieldsAsDamageTarget]]
+ * [[CultureRepelRateAdditive|CultureRepelRateAdditive]]
  * [[CultureSpread|CultureSpread]]
  * [[CultureSpreadModifier|CultureSpreadModifier]]
  * [[CultureSpreadRateForOwner|CultureSpreadRateForOwner]]
@@ -37,6 +39,7 @@
  * [[PhysicalDamageAsDamageTarget|PhysicalDamageAsDamageTarget]]
  * [[PlanetBombingCooldown|PlanetBombingCooldown]]
  * [[PlanetBombingDamageAbsorption|PlanetBombingDamageAbsorption]]
+ * [[PlanetBombingDamageAsDamageDealer|PlanetBombingDamageAsDamageDealer]]
  * [[PlanetHealthMaxAdjustment|PlanetHealthMaxAdjustment]]
  * [[PlanetMaxPopulation|PlanetMaxPopulation]]
  * [[PlanetModuleBuildTime|PlanetModuleBuildTime]]

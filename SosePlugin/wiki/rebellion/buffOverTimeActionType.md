@@ -49,3 +49,6 @@
      * [[shieldRestoreRate|GenericLevel]] : [[GenericLevel]]
    * StealPlanetProduction
      * [[stolenPlanetProductionPerc|GenericLevel]] : [[GenericLevel]]
+   * StealPopulationFromAdjacentPlanets
+     * [[populationPercStealRate|GenericLevel]] : [[GenericLevel]]
+     * [[damageRate|GenericLevel]] : [[GenericLevel]]

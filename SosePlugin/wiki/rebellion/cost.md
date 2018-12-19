@@ -1,5 +1,4 @@
 ==References==
- * [[Ability|Ability]]
  * [[CapitalShip|CapitalShip]]
  * [[Cosmetic|Cosmetic]]
  * [[Frigate|Frigate]]

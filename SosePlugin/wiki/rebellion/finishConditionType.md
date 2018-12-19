@@ -3,6 +3,7 @@
    * AllOnDelayInstantActionsDone
    * AllPeriodicActionsDone
    * AntiMatterDepleted
+   * AnyInstantActionWithTriggerTypeDone
    * AnyOnConditionInstantActionDone
    * DamageTaken
      * [[damageNeeded|GenericLevel]] : [[GenericLevel]]

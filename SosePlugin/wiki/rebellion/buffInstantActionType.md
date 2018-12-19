@@ -7,6 +7,11 @@
      * buffType : [[Entity]]
      * [[range|GenericLevel]] : [[GenericLevel]]
      * [[effectInfo| effectInfo]]
+   * ApplyBuffToAllFirstSpawnerShipsAndStructures
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * buffType : [[Entity]]
+     * [[targetFilter| targetFilter]]
+     * [[effectInfo| effectInfo]]
    * ApplyBuffToFirstSpawnerNoFilterNoRange
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * buffType : [[Entity]]
@@ -23,6 +28,13 @@
      * buffType : [[Entity]]
      * travelSpeed : [[Decimal]]
      * [[hasWeaponEffects|hasWeaponEffects]] : [[null]]
+   * ApplyBuffToLocalOrbitBodiesWithinDistance
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * buffType : [[Entity]]
+     * [[targetFilter| targetFilter]]
+     * connectionDistance : [[Decimal]]
+     * [[maxTargetCount|GenericLevel]] : [[GenericLevel]]
+     * [[effectInfo| effectInfo]]
    * ApplyBuffToLocalOrbitBody
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * buffType : [[Entity]]
@@ -194,6 +206,8 @@
      * experiencePercentageToAward : [[Decimal]]
    * ChangePlayerIndexToNeutral
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+   * ChangePlayerIndexToPriorMinorFaction
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
    * ClearRecordedDamage
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
    * ColonizePlanet
@@ -340,6 +354,17 @@
    * GiveExperience
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * experienceToGive : [[Decimal]]
+   * GiveResourceToPlayer
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * [[resourceType|resourceType]] : [[Enumeration]]
+       * Credits
+       * Metal
+       * Crystal
+     * [[resourceAmount|GenericLevel]] : [[GenericLevel]]
+     * [[resourceAmountScalarType|resourceAmountScalarType]] : [[Enumeration]]
+       * PerOwnerShipSlot
+       * Flat
+     * [[effectInfo| effectInfo]]
    * IncreaseOwnerAbilityLevel
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * abilityIndex : [[Decimal]]
@@ -389,6 +414,11 @@
    * RemoveBuffOfType
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * buffTypeToRemove : [[Entity]]
+   * RemovePlanetPopulation
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * [[populationAmount|GenericLevel]] : [[GenericLevel]]
+     * [[populationAmountScalarType|populationAmountScalarType]] : [[Enumeration]]
+       * PerOwnerPlanetPopulation
    * ResetPhysicsState
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
    * RestoreAntiMatter
@@ -430,6 +460,29 @@
        * [[spawnShips| spawnShips]]
      * spawnShipsArrivalDelayTime : [[Decimal]]
      * [[spawnShipsHyperspaceSpawnType|spawnShipsHyperspaceSpawnType]] : [[Enumeration]]
+     * shouldAdoptFirstSpawnersMinorFactionState : [[Boolean]]
+     * spawnShipsMinStartingHullPerc : [[Decimal]]
+     * spawnShipsMaxStartingHullPerc : [[Decimal]]
+   * SpawnShipsAtPlanetWithRandomTarget
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * [[targetFilter| targetFilter]]
+     * spawnShipsLevelCount : [[Iteration]]
+       * [[spawnShips| spawnShips]]
+     * spawnShipsArrivalDelayTime : [[Decimal]]
+     * [[spawnShipsHyperspaceSpawnType|spawnShipsHyperspaceSpawnType]] : [[Enumeration]]
+     * shouldAdoptFirstSpawnersMinorFactionState : [[Boolean]]
+     * spawnShipsMinStartingHullPerc : [[Decimal]]
+     * spawnShipsMaxStartingHullPerc : [[Decimal]]
+   * SpawnShipsAtPlanetWithTarget
+     * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
+     * [[targetFilter| targetFilter]]
+     * spawnShipsLevelCount : [[Iteration]]
+       * [[spawnShips| spawnShips]]
+     * spawnShipsArrivalDelayTime : [[Decimal]]
+     * [[spawnShipsHyperspaceSpawnType|spawnShipsHyperspaceSpawnType]] : [[Enumeration]]
+     * shouldAdoptFirstSpawnersMinorFactionState : [[Boolean]]
+     * spawnShipsMinStartingHullPerc : [[Decimal]]
+     * spawnShipsMaxStartingHullPerc : [[Decimal]]
    * StealAntiMatterForFirstSpawner
      * [[instantActionTriggerType|instantActionTriggerType]] : [[null]]
      * [[antiMatter|GenericLevel]] : [[GenericLevel]]

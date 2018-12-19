@@ -2,6 +2,9 @@
    * FixedLevel0
    * Intrinsic
      * [[minExperienceLevelRequired|GenericLevel]] : [[GenericLevel]]
+   * ResearchFloatModifierValue
+     * [[sourceResearchFloatModifierType|sourceResearchFloatModifierType]] : [[Enumeration]]
+       * MinorFactionAbilityLevel
    * ResearchStartsAt0
      * improveSourceResearchSubject : [[Entity]]
    * ResearchWithBase
