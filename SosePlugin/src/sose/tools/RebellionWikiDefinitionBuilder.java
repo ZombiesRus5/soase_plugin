@@ -29,7 +29,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 		
 		parser.setIgnoreCaseOnFiles(true);
 		parser.setDebug(true);
-		parser.setStrictValidation("Rebellion");
+		parser.setStrictValidation("Rebellion193");
 
 		parser.setup();
 		

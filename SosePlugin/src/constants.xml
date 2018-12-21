@@ -4,6 +4,11 @@
 		<structure_reference name="GameplayConstants" type="GameplayConstants"/>
 	</structure>
 
+	<structure name="IconOffset">
+		<field name="xOffset" validation="Integer"/>
+		<field name="yOffset" validation="Integer"/>
+	</structure>
+	
 	<structure name="ExperienceLevelData">
 		<field name="ExperienceNeededForNextLevel" validation="Decimal" />
 		<field name="ExperienceGainedForDestroying" validation="Decimal" />
@@ -122,6 +127,7 @@
 		<field name="gravWellThickness" validation="Decimal" version="Rebellion"/>
 		<field name="cannonsPerGravityWellRatio" validation="Integer" version="Rebellion"/>
 		<field name="cannonGravityWellRatioDenominator" validation="Integer" version="Rebellion"/>
+		<field name="maxAiCannons" validation="Integer" version="Rebellion193"/>
 		<field name="preferNewAssetsGameCountThreshold" validation="Integer" version="Rebellion"/>
 		<structure name="EconomyData">
 			<field name="DefaultSalvageRefundPercent" validation="Decimal" />
@@ -739,7 +745,7 @@
 			<field name="occupationVictoryPlanetTemplate" validation="GalaxyTemplate"/>
 			<field name="occupationVictoryTime" validation="Integer"/>
 		</structure>
-		<structure name="outlawSectorsData" version="Rebellion">
+		<structure name="outlawSectorsData" version="Rebellion185">
 			<field name="militiaMainViewXOffsetScalar" validation="Decimal"  version="Rebellion"/>
 			<field name="militiaMainViewYOffsetScalar" validation="Decimal"  version="Rebellion"/>
 			<field name="militiaMainViewIconSizeScalar" validation="Decimal"  version="Rebellion"/>
@@ -781,6 +787,93 @@
 			<field name="pirateBountyBonusScalar" validation="Decimal"  version="Rebellion"/>
 			<field name="pirateRaidRaidTimeScalar" validation="Decimal"  version="Rebellion"/>
 		</structure>
+		<structure name="outlawSectorsData" version="Rebellion193">
+			<structure_reference name="npcIconOffset:Mesh" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:MainViewIcon" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:HUDIcon" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:PlanetIcon" type="IconOffset"/>
+			<field name="outlawSpawnShipsType" validation="Simple" values="MatchPlayerRace"/>
+			
+			<iterative_field name="numOutlawSpawnShipsOptionsCount">
+				<structure name="outlawSpawnShipsOptions">
+					<field name="raceEntityName" validation="Entity"/>
+					<structure name="spawnShips">
+						<field name="minFleetPoints" validation="Integer" />
+						<field name="maxFleetPoints" validation="Integer" />
+						<iterative_field name="requiredShipCount">
+							<structure required="false" name="requiredShip">
+								<field name="type" validation="Entity" />
+								<field name="minCount" validation="Integer"/>
+								<field name="maxCount" validation="Integer"/>
+							</structure>
+						</iterative_field>
+						<iterative_field name="randomShipCount">
+							<structure required="false" name="randomShip">
+								<field name="type" validation="Entity" />
+								<field name="weight" validation="Integer" />
+							</structure>
+						</iterative_field>
+					</structure>
+				</structure>
+			</iterative_field>
+			
+			<field name="baseFleetCapacity" validation="Decimal"  version="Rebellion"/>
+			<field name="maxFleetSupplyPerPlanetPopulation" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyMin" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyMax" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyScalarAtMinFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="fleetSupplyScalarAtMaxFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsAtMinFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsAtMaxFleetSupply" validation="Decimal"  version="Rebellion"/>
+			<field name="timeBetweenSpawnShipsVariancePercent" validation="Decimal"  version="Rebellion"/>
+			<field name="planetsAtMinFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="planetsAtMaxFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="minPlanetsFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>	
+			<field name="maxPlanetsFleetSupplyScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="pirateBountyBonusScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="pirateRaidRaidTimeScalar" validation="Decimal"  version="Rebellion"/>
+			
+		</structure>
+		<structure name="minorFactionsData" version="Rebellion193">
+			<structure_reference name="npcIconOffset:Mesh" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:MainViewIcon" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:HUDIcon" type="IconOffset"/>
+			<structure_reference name="npcIconOffset:PlanetIcon" type="IconOffset"/>
+						
+			<iterative_field name="colonizePlanetBlackListCount">
+				<field name="planet" validation="Entity"/>
+			</iterative_field>
+			
+			<field name="colonizablePlanetsWithMinorFactionsPercent" validation="Decimal"  version="Rebellion"/>
+			<field name="minConnectionDistanceToColonizedPlanets" validation="Decimal"  version="Rebellion"/>
+			<field name="minConnectionDistanceToSameFactionPlanets" validation="Decimal"  version="Rebellion"/>
+			<field name="minAdjacentPlanetCount" validation="Decimal"  version="Rebellion"/>
+			<field name="infrastructurePlanetUpgradeLevel" validation="Decimal"  version="Rebellion"/>
+			<field name="populationPlanetUpgradeLevel" validation="Decimal"  version="Rebellion"/>
+			<field name="civilianModulesUpgradeLevel" validation="Decimal"  version="Rebellion"/>
+			<field name="tacticalModulesUpgradeLevel" validation="Decimal"  version="Rebellion"/>
+			<field name="planetIncomeScalar" validation="Decimal"  version="Rebellion"/>
+			<field name="planetCultureRepelAdditiveBonus" validation="Decimal"  version="Rebellion"/>
+			<field name="spawnTime" validation="Decimal"  version="Rebellion"/>
+			<field name="spawnTimeVariance" validation="Decimal"  version="Rebellion"/>	
+			
+			<iterative_field name="minorFactionPlayerDefCount">
+				<structure name="minorFactionPlayerDef">
+					<field name="name" validation="Any"/>
+					<structure name="planetAbilities">
+							<field name="ability:0" validation="Entity"/>
+							<field name="ability:1" validation="Entity"/>
+							<field name="ability:2" validation="Entity"/>
+							<field name="ability:3" validation="Entity"/>
+							<field name="ability:4" validation="Entity"/>
+					</structure>
+					
+				</structure>
+				
+			</iterative_field>
+			
+		</structure>
+		
 	</structure>
 
 </tns:entity_definitions>

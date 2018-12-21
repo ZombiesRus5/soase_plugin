@@ -151,7 +151,8 @@ public class ConvertDataTo implements IObjectActionDelegate {
 			String installationDirectory = parser.getSinsInstallationDirectory();
 			
 			String command = installationDirectory + "\\ConvertData.exe";
-			if (PreferenceConstants.STRICT_REBELLION.equalsIgnoreCase(parser.getStrictValidation())) {
+			if (PreferenceConstants.STRICT_REBELLION193.equalsIgnoreCase(parser.getStrictValidation())
+					|| PreferenceConstants.STRICT_REBELLION185.equalsIgnoreCase(parser.getStrictValidation())) {
 				command = installationDirectory + "\\ConvertData_Rebellion.exe";
 			}
 			String[] cmd = new String[5];

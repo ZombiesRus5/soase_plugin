@@ -17,13 +17,19 @@
 		<condition>
 			<value version="Rebellion">ResourcesAndMustHaveTitan</value>
 			<value>Resources</value>
-			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="resourceCost" type="Cost" version="Rebellion185"/>
+			<structure_reference name="creditCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="metalCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="crystalCost" type="GenericLevel" version = "Rebellion193"/>
 			<structure_reference name="cooldownTime" type="GenericLevel"/>
 			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
 		</condition>
 		<condition>
 			<value version="Rebellion">ResourcesAndMustHaveCapitalCrew</value>
-			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="resourceCost" type="Cost" version="Rebellion185"/>
+			<structure_reference name="creditCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="metalCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="crystalCost" type="GenericLevel" version = "Rebellion193"/>
 			<structure_reference name="requiredShipSlots" type="GenericLevel"/>
 			<structure_reference name="requiredCapitalShipSlots" type="GenericLevel"/>
 			<structure_reference name="cooldownTime" type="GenericLevel"/>
@@ -31,7 +37,10 @@
 		</condition>
 		<condition>
 			<value version="Rebellion">ResourcesAndMustHaveShipSlots</value>
-			<structure_reference name="resourceCost" type="Cost"/>
+			<structure_reference name="resourceCost" type="Cost" version="Rebellion185"/>
+			<structure_reference name="creditCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="metalCost" type="GenericLevel" version = "Rebellion193"/>
+			<structure_reference name="crystalCost" type="GenericLevel" version = "Rebellion193"/>
 			<structure_reference name="requiredShipSlots" type="GenericLevel"/>
 			<structure_reference name="cooldownTime" type="GenericLevel"/>
 			<field name="orderAcknowledgementType" type="orderAcknowledgementType" version="Entrenchment"/>
