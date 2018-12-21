@@ -1,0 +1,111 @@
+Change Log:
+
+* Plugin
+Supports TXT and TXT2 validations (Rebellion)
+Supports TXT Only Validations (Rebellion185)
+Supports TXT2 Only Validations (Rebellion193)
+- Select Strict Version Validation from Window->Preferences->Sins Preferences
+
+General Fixes
+Regenerated Wiki for TXT2 only
+
+Added support for extended proposals
+- Example targetFilter
+- Let me know if there are any more you would like
+
+targetFilter.proposal
+- Autocompleting targetFilter will automatically populate the following in the file:
+targetFilter
+	numOwnerships 0
+	numObjects 0
+	numSpaces 0
+	space "Normal"
+	numConstraints 0
+
+
+* entityBoolModifier
+PlanetBombingDamageAsDamageDealer
+
+* buffInstantActionType
+SpawnShipsAtPlanetWithTarget
+SpawnShipsAtPlanetWithRandomTarget
+SpawnShipsAtPlanet
+GiveResourceToPlayer
+RemovePlanetPopulation
+ApplyBuffToAllFirstSpawnerShipsAndStructures
+ApplyBuffToLocalOrbitBodiesWithinDistance
+ChangePlayerIndexToPriorMinorFaction
+
+* SpawnShipsAtPlanet (New required tags TXT2)
+shouldAdoptFirstSpawnersMinorFactionState
+spawnShipsMinStartingHullPerc
+spawnShipsMaxStartingHullPerc
+
+* buffOverTimeActionType
+StealPopulationFromAdjacentPlanets
+
+* Mission
+MissionCaptureMinorFaction
+
+* frigateRoleType
+MinorFactionCapturer
+
+* Gameplay Constants
+IconOffset (Type)
+maxAiCannons
+outlawSectorsData (TXT)
+outlawSectorsData (TXT2)
+minorFactionsData (TXT2)
+
+* finishConditionType
+AnyInstantActionWithTriggerTypeDone
+
+* Frigate
+relationshipChangeRate (TXT2)
+
+* GalaxyScenarioDef
+autoAddPlayers (TXT)
+npcPlayers (TXT2)
+
+GroupType
+PlanetOwnerIsMinorFactionWithFactionName
+
+PlayerType
+isNormalPlayer (TXT)
+isRaidingPlayer (TXT)
+isInsurgentPlayer (TXT)
+isOccupationPlayer (TXT)
+isMadVasariPlayer (TXT)
+playerType (TXT2)
+minorFactionPlayerDefName (TXT2)
+
+* Galaxy
+PlayerType
+isNormalPlayer (TXT)
+isRaidingPlayer (TXT)
+isInsurgentPlayer (TXT)
+isOccupationPlayer (TXT)
+isMadVasariPlayer (TXT)
+playerType (TXT2)
+
+dlcID (TXT2)
+
+* instantActionTriggerType
+OnColonizeAbilityUsed
+
+* levelSourceType
+ResearchFloatModifierValue
+	sourceResearchFloatModifierType
+
+* Player
+isPsi (TXT)
+playerRaceType (TXT2)
+
+* modifierTypeFloat
+MinorFactionAbilityLevel
+
+useCostType
+resourceCost (TXT)
+creditsCost (TXT2)
+metalCost (TXT2)
+crystalCost (TXT2)
