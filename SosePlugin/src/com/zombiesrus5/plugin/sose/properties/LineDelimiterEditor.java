@@ -131,9 +131,9 @@ public class LineDelimiterEditor {
 
 		entrenchmentButton = new Button(group, SWT.RADIO);
 		if (project == null) {
-			entrenchmentButton.setText("Entrenchment");
+			entrenchmentButton.setText("Rebellion");
 		} else {
-			entrenchmentButton.setText("Entrenchment");
+			entrenchmentButton.setText("Rebellion");
 		}
 		
 		data = new GridData();
@@ -144,9 +144,9 @@ public class LineDelimiterEditor {
 	
 		diplomacyButton = new Button(group, SWT.RADIO);
 		if (project == null) {
-			diplomacyButton.setText("Diplomacy");
+			diplomacyButton.setText("Rebellion193");
 		} else {
-			diplomacyButton.setText("Diplomacy");
+			diplomacyButton.setText("Rebellion193");
 		}
 		
 		data = new GridData();
@@ -157,9 +157,9 @@ public class LineDelimiterEditor {
 	
 		rebellionButton = new Button(group, SWT.RADIO);
 		if (project == null) {
-			rebellionButton.setText("Rebellion");
+			rebellionButton.setText("Rebellion185");
 		} else {
-			rebellionButton.setText("Rebellion");
+			rebellionButton.setText("Rebellion185");
 		}
 		
 		data = new GridData();

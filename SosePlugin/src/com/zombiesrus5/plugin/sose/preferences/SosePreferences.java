@@ -66,7 +66,9 @@ public class SosePreferences
 //				{"&Vanilla", PreferenceConstants.STRICT_VANILLA }, 
 //				{"&Entrenchment", PreferenceConstants.STRICT_ENTRENCHMENT }, 
 //				{"&Diplomacy", PreferenceConstants.STRICT_DIPLOMACY}, 
-				{"&Rebellion", PreferenceConstants.STRICT_REBELLION}
+				{"&Rebellion", PreferenceConstants.STRICT_REBELLION},
+				{"&Rebellion185", PreferenceConstants.STRICT_REBELLION185},
+				{"&Rebellion193", PreferenceConstants.STRICT_REBELLION193}
 		}, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.VALIDATE_RESEARCH_COSTS, 
 				"&Validate Research Costs", getFieldEditorParent()));

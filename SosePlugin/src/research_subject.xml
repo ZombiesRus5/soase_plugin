@@ -150,6 +150,7 @@
 
 		<condition_field name="modifierTypeFloat">
 			<condition>
+			<value version="Rebellion">MinorFactionAbilityLevel</value>
 			<value version="Rebellion">CivilianLabsPerCapitalShip</value> 
 			<value version="Rebellion">MilitaryLabsPerCapitalShip</value> 
 			<value version="Rebellion">OrbitalCannonMaxAdjustment</value> 

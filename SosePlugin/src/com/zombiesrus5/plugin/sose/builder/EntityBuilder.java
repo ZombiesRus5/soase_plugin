@@ -196,7 +196,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		}
 
 		public boolean visit(IResource resource) {
-			myMonitor.subTask(resource.getName());
+			myMonitor.subTask(getProject().getName() + ": " + resource.getName());
 			checkEntity(resource);
 			myMonitor.worked(1);
 			//return true to continue visiting children.
@@ -213,7 +213,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 		public boolean visit(IResource resource) {
 			if (resource.getFileExtension() != null && resource.getFileExtension().equals("entity")) {
-				myMonitor.subTask(resource.getName());
+				myMonitor.subTask(getProject().getName() + ": " + resource.getName());
 				checkEntity(resource);
 				myMonitor.worked(1);
 			}
@@ -230,7 +230,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		}
 
 		public boolean visit(IResource resource) {
-			myMonitor.subTask(resource.getName());
+			myMonitor.subTask(getProject().getName() + ": " + resource.getName());
 			validateReferenced(resource);
 			myMonitor.worked(1);
 			//return true to continue visiting children.
@@ -594,7 +594,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			IProgressMonitor monitor) throws CoreException {
 		setupParser();
 		
-		monitor.beginTask("validating delta: " + getProject().getName() + ", " + delta.getResource().getName(), 1);
+		monitor.beginTask(getProject().getName() + ": validating delta: " + getProject().getName() + ", " + delta.getResource().getName(), 1);
 		delta.accept(new CheckEntityDeltaVisitor());
 		monitor.done();
 	}
@@ -649,7 +649,8 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (store.getBoolean(PreferenceConstants.VALIDATE_PARTICLES) == false) {
 			parser.addExcludedFileExtension("particle");
 		}
-		if (PreferenceConstants.STRICT_REBELLION.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
+		if (PreferenceConstants.STRICT_REBELLION193.equals(store.getString(PreferenceConstants.STRICT_VERSION)) ||
+				PreferenceConstants.STRICT_REBELLION185.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
 		} else {
@@ -666,7 +667,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			parser.setValidateResearchCosts(Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_RESEARCH_COSTS))));
 		} else {
 			// no longer supported pre-rebellion by default
-			parser.setStrictValidation(PreferenceConstants.STRICT_REBELLION);
+			parser.setStrictValidation(store.getString(PreferenceConstants.STRICT_VERSION));
 			parser.setIgnoreCaseOnFiles(store.getBoolean(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES));
 		
 			parser.setValidateResearchCosts(store.getBoolean(PreferenceConstants.VALIDATE_RESEARCH_COSTS));
@@ -745,7 +746,8 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_PARTICLES))) == false) {
 			parser.addExcludedFileExtension("particle");
 		}
-		if (PreferenceConstants.STRICT_REBELLION.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
+		if (PreferenceConstants.STRICT_REBELLION193.equals(store.getString(PreferenceConstants.STRICT_VERSION)) ||
+				PreferenceConstants.STRICT_REBELLION185.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
 		} else {
@@ -762,7 +764,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			parser.setValidateResearchCosts(Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_RESEARCH_COSTS))));
 		} else {
 			// no longer supporting pre-rebellion by default
-			parser.setStrictValidation(store.getString(PreferenceConstants.STRICT_REBELLION));
+			parser.setStrictValidation(store.getString(PreferenceConstants.STRICT_VERSION));
 			parser.setIgnoreCaseOnFiles(store.getBoolean(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES));
 		
 			parser.setValidateResearchCosts(store.getBoolean(PreferenceConstants.VALIDATE_RESEARCH_COSTS));

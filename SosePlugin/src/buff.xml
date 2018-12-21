@@ -40,6 +40,8 @@
 		</iterative_field>
 		<iterative_field name="numEntityBoolModifiers">
 			<field required="false" name="entityBoolModifier" validation="Simple">
+			
+				<value version="Rebellion">PlanetBombingDamageAsDamageDealer</value>
 				<value version="Rebellion">IsInvisible</value>
 				<value version="Rebellion">NextAbilityAmplified</value>
 				<value version="Rebellion">IsInNonFriendlyGravityWell</value>

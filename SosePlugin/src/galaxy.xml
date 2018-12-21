@@ -100,12 +100,13 @@
 						<field name="teamIndex" validation="Integer"/> 
 						<field name="startingCredits" validation="Integer"/> 
 						<field name="startingMetal" validation="Integer"/> 
-						<field name="startingCrystal" validation="Integer"/> 
-						<field name="isNormalPlayer" validation="Boolean"/> 
-						<field name="isRaidingPlayer" validation="Boolean"/> 
-						<field name="isInsurgentPlayer" validation="Boolean"/> 
-						<field name="isOccupationPlayer" validation="Boolean" version="Rebellion"/> 
-						<field name="isMadVasariPlayer" validation="Boolean" version="Rebellion"/> 
+						<field name="startingCrystal" validation="Integer"/>
+						<field name="playerType" validation="Any" version="Rebellion193"/> 
+						<field name="isNormalPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isRaidingPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isInsurgentPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isOccupationPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isMadVasariPlayer" validation="Boolean" version="Rebellion185"/> 
 						<field name="themeGroup" validation="Any"/>
 						<field name="themeIndex" validation="Integer"/> 
 						<field name="pictureGroup" validation="Any"/>
@@ -118,6 +119,7 @@
 		<iterative_field required="false" name="templates">
 			<structure_reference required="false" name="template" type="TemplateType"/>
 		</iterative_field>
+		<field name="dlcID" validation="Integer" version="Rebellion193"/>
 	</structure>
 	
 	<structure name="RandomStarType">

@@ -26,9 +26,6 @@ import java.util.TreeSet;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.core.internal.jobs.OrderedLock;
-import org.eclipse.jdt.internal.corext.refactoring.structure.MoveInstanceMethodProcessor.ReadyOnlyFieldFinder;
-import org.eclipse.swt.graphics.Color;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -181,6 +178,15 @@ public class EntityParser {
 	Map<String, BigDecimal> researchCosts = new HashMap<String, BigDecimal>();
 	Map<String, BigDecimal> upgradeTime = new HashMap<String, BigDecimal>();
 	String currentFile = null;
+
+	HashMap<String, Validator> txtPrototypeValidators = new HashMap<String, Validator>();
+	HashMap<String, Validator> txtValidators = new HashMap<String, Validator>();
+	HashMap<String, StructureValidator> txtStructures = new HashMap<String, StructureValidator>();
+
+	HashMap<String, Validator> txt2PrototypeValidators = new HashMap<String, Validator>();
+	HashMap<String, Validator> txt2Validators = new HashMap<String, Validator>();
+	HashMap<String, StructureValidator> txt2Structures = new HashMap<String, StructureValidator>();
+	
 	HashMap<String, Validator> prototypeValidators = new HashMap<String, Validator>();
 	HashMap<String, Validator> validators = new HashMap<String, Validator>();
 	HashMap<String, StructureValidator> structures = new HashMap<String, StructureValidator>();
@@ -209,12 +215,24 @@ public class EntityParser {
 		researchCosts = null;
 		upgradeTime.clear();
 		upgradeTime = null;
-		prototypeValidators.clear();
-		prototypeValidators = null;
-		validators.clear();
-		validators = null;
-		structures.clear();
-		structures = null;
+//		prototypeValidators.clear();
+//		prototypeValidators = null;
+//		validators.clear();
+//		validators = null;
+//		structures.clear();
+//		structures = null;
+		txtPrototypeValidators.clear();
+		txtPrototypeValidators = null;
+		txtValidators.clear();
+		txtValidators = null;
+		txtStructures.clear();
+		txtStructures = null;
+		txt2PrototypeValidators.clear();
+		txt2PrototypeValidators = null;
+		txt2Validators.clear();
+		txt2Validators = null;
+		txt2Structures.clear();
+		txt2Structures = null;
 		help.clear();
 		help = null;
 	}
@@ -1611,7 +1629,28 @@ public class EntityParser {
 		
 	public void setup(SetupMonitor monitor) throws EntityParseException {
 		String[] definitions = getDefinitions().split(";");
+		String[] archiveTypes = {"TXT", "TXT2"};
+		String currentVersion = strictValidation;
 		
+		if (strictValidation.equals("Rebellion185")) {
+			archiveTypes = new String[]{"TXT"};
+		} else
+		if (strictValidation.equals("Rebellion193")) {
+			archiveTypes = new String[]{"TXT2"};
+		}
+		
+		for (String archiveType: archiveTypes) {
+			if (archiveType.equals("TXT")) {
+				validators = txtValidators;
+				structures = txtStructures;
+				prototypeValidators = txtPrototypeValidators;
+				strictValidation = "Rebellion185";
+			} else {
+				validators = txt2Validators;
+				structures = txt2Structures;
+				prototypeValidators = txt2PrototypeValidators;
+				strictValidation = "Rebellion193";
+			}
 		for (int i=0; i<definitions.length; i++) {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setValidating(false);
@@ -1648,6 +1687,9 @@ public class EntityParser {
 				e.printStackTrace();
 				fatal(e);
 			}
+		}
+
+		strictValidation = currentVersion;
 		}
 	}
 
@@ -1906,9 +1948,40 @@ public class EntityParser {
 		try {
 			LineNumberReader contents = readContents(is);
 			String nextLine = readLine(contents);
+			String sinsArchiveType = "TXT";
+			String sinsArchiveVersion = null;
+			
+			validators = txtValidators;
+			structures = txtStructures;
+			prototypeValidators = txtPrototypeValidators;
+			
 			if (nextLine == null || nextLine.indexOf("TXT") == -1) {
 				fail("Cannot validate binary files", 1, nextLine);
+			} else {
+				if (nextLine.indexOf("TXT2") != -1) {
+					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+						fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
+					}
+					// we've got a version to eat
+					nextLine = readLine(contents);
+					if (nextLine.indexOf("SinsArchiveVersion") == -1) {
+						fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
+					} else {
+						sinsArchiveType = "TXT2";
+						sinsArchiveVersion = parseValue(nextLine);
+						
+						validators = txt2Validators;
+						structures = txt2Structures;
+						prototypeValidators = txt2PrototypeValidators;
+
+					}
+				} else {
+					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+						fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+					}
+				}
 			}
+			
 
 			// what kind of file am I?
 			if ("Entity".equals(fileType)) {
@@ -1952,8 +2025,37 @@ public class EntityParser {
 		try {
 			LineNumberReader contents = readContents(is);
 			String nextLine = readLine(contents);
+			String sinsArchiveType = "TXT";
+			String sinsArchiveVersion = "185";
+			
+			validators = txtValidators;
+			structures = txtStructures;
+			prototypeValidators = txtPrototypeValidators;
+			
 			if (nextLine == null || nextLine.indexOf("TXT") == -1) {
 				fail("Cannot validate binary files", 1, nextLine);
+			} else {
+				if (nextLine.indexOf("TXT2") != -1) {
+					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+						fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
+					}
+					// we've got a version to eat
+					nextLine = readLine(contents);
+					if (nextLine.indexOf("SinsArchiveVersion") == -1) {
+						fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
+					} else {
+						sinsArchiveType = "TXT2";
+						sinsArchiveVersion = parseValue(nextLine);
+						
+						validators = txt2Validators;
+						structures = txt2Structures;
+						prototypeValidators = txt2PrototypeValidators;
+					}
+				} else {
+					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+						fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+					}
+				}
 			}
 			
 			nextLine = readLine(contents);
@@ -2221,6 +2323,10 @@ public class EntityParser {
 	private boolean isVersionSupported(String version) {
 		if (version == null || version.length() == 0) {
 			return true;
+		} else if (getStrictValidation().equals("Rebellion193")) {
+			return version.equals("Rebellion193") || version.equals("Rebellion") || version.equals("Diplomacy") || version.equals("Entrenchment");
+		} else if (getStrictValidation().equals("Rebellion185")) {
+			return version.equals("Rebellion185") || version.equals("Rebellion") || version.equals("Diplomacy") || version.equals("Entrenchment");
 		} else if (getStrictValidation().equals("Rebellion")) {
 			return version.equals("Rebellion") || version.equals("Diplomacy") || version.equals("Entrenchment");
 		} else if (getStrictValidation().equals("Diplomacy")) {

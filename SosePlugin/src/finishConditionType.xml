@@ -27,6 +27,7 @@
 			<structure_reference required="true" name="fightersKilled" type="GenericLevel"/>
 		</condition>
 		<condition>
+			<value version="Rebellion">AnyInstantActionWithTriggerTypeDone</value>
 			<value version="Rebellion">AbilityUsed</value>
 			<value version="Rebellion">AnyOnConditionInstantActionDone</value>
 			<value>TargetNoLongerActivelyBeingConstructed</value>

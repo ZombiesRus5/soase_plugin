@@ -47,6 +47,7 @@
 				<field name="maxMitigation" validation="Decimal"/>
 			</condition>
 		</condition_field>
+		<field name="relationshipChangeRate" validation="Decimal" version="Rebellion193"/>
 		<structure_reference name="Prerequisites" type="researchPrerequisites"/>
 		<field name="numRandomDebrisLarge" validation="Integer"/>
 		<field name="numRandomDebrisSmall" validation="Integer"/>

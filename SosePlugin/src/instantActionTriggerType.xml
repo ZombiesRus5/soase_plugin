@@ -48,6 +48,7 @@
 		<value>OnHyperspaceExit</value>
 		<value>OnOwnerDeath</value>
 		<value>OnBuffFinish</value>
+		<value>OnColonizeAbilityUsed</value>
 	</condition>
 </condition_field>
 

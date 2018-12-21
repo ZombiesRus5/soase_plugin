@@ -3,7 +3,8 @@
 	<structure name="Player">
 		<field name="raceNameStringID" validation="StringInfo"/>
 		<field name="canColonize" validation="Boolean"/>
-		<field name="isPsi" validation="Boolean"/>
+		<field name="isPsi" validation="Boolean" version="Rebellion185"/>
+		<field name="playerRaceType" validation="Any" version="Rebellion193"/>
 		<field name="isSelectable" validation="Boolean"/>
 		<field name="selectablePriorty" validation="Integer"/>
 		<field name="capitalShipNameType" validation="Any" version="Vanilla"/>
@@ -263,6 +264,7 @@
 			<field name="GameEventSound:UseAbilityUnmetConstraintCanSpreadWeaponDamage" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintCanPhaseDodge" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintHasAbilityWithCooldown" validation="Sound" version="Entrenchment"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintHasColonizeAbility" validation="Sound" version="Rebellion193"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintHasAntimatter" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintHasPhaseMissiles" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintHasPopulation" validation="Sound"/>
@@ -273,9 +275,11 @@
 			<field name="GameEventSound:UseAbilityUnmetConstraintHasWeapons" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsCargoShip" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsExplored" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotIsExplored" validation="Sound" version="Rebellion193"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsResourceExtractor" validation="Sound" />
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsMovingToLocalOrbitBody" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsPsi" validation="Sound"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotIsTech" validation="Sound" version="Rebellion193"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintLinkedCargoShip" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintLinkedSquad" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintNotSelf" validation="Sound"/>
@@ -287,12 +291,15 @@
 			<field name="GameEventSound:UseAbilityUnmetConstraintNotInvulnerable" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsInFriendlyGravityWell" validation="Sound" version="Rebellion"/>
 			<field name="GameEventSound:UseAbilityUnmetConstraintIsInNonFriendlyGravityWell" validation="Sound" version="Rebellion"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotIsMinorFactionOwned" validation="Sound" version="Rebellion193"/>
+			<field name="GameEventSound:UseAbilityUnmetConstraintNotIsOutlaw" validation="Sound" version="Rebellion193"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerLinked" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerPlayer" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerFriendly" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerHostile" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerNoOwner" validation="Sound"/>
 			<field name="GameEventSound:UseAbilityUnmetOwnerAlliedOrEnemy" validation="Sound" version="Diplomacy"/> <!-- diplomacy -->
+			<field name="GameEventSound:UseAbilityUnmetOwnerUncontrolledMinorFaction" validation="Sound" version="Rebellion193"/>
 			<field name="GameEventSound:GameStart" validation="Sound"/>
 			<field name="GameEventSound:GameWin" validation="Sound" version="Rebellion"/>
 			<field name="GameEventSound:AllyGameWin" validation="Sound" version="Rebellion"/>

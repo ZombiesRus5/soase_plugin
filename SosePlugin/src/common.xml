@@ -300,6 +300,7 @@
 		<value>MissionAttackPlanet</value>
 		<value>MissionColonize</value>
 		<value version="Rebellion">MissionDefendFlagship</value>
+		<value version="Rebellion">MissionCaptureMinorFaction</value>
 		<value>MissionExplore</value>
 		<value>MissionRaid</value>
 		<value>MissionFosterRelationships</value>
@@ -308,6 +309,7 @@
 		<value version="Rebellion">Trigger</value>
 	</element_rule>
 	<element_rule name="frigateRoleType" validation="Simple">
+		<value version="Rebellion">MinorFactionCapturer</value>
 		<value version="Rebellion">AbilityCreated</value>
 		<value version="Rebellion">Corvette</value>
 		<value>AntiFighter</value>
@@ -429,9 +431,12 @@
 	</element_rule>
 	<element_rule name="buffStackingLimitType" validation="Simple" values="PerPlayer,ForAllPlayers"/>
 	<element_rule name="buffExclusivityForAIType" validation="Simple"  values="ExclusivePerPlayer,ExclusiveForAllPlayers,NotExclusive"/>
-	<element_rule name="instantActionTriggerType" validation="Simple" values="OnAbilityUsed,OnChance,OnHyperspaceExit,OnOwnerDeath,OnDamageTaken,AlwaysPerform,OnDelay,OnBuffFinish,OnWeaponFired"/>
+	<element_rule name="instantActionTriggerType" validation="Simple" values="OnColonizeAbilityUsed,OnAbilityUsed,OnChance,OnHyperspaceExit,OnOwnerDeath,OnDamageTaken,AlwaysPerform,OnDelay,OnBuffFinish,OnWeaponFired"/>
 	<element_rule name="actionCountType" validation="Simple" values="Finite,Infinite"/>
 	<element_rule name="buffEntityModifierType" validation="Simple">
+		<value version="Rebellion">PlanetBombingDamageAsDamageDealer</value>
+		<value version="Rebellion">CultureRepelRateAdditive</value>
+		<value version="Rebellion">AntiModuleDamageAsDamageDealer</value>
 		<value version="Rebellion">EnemyCultureSpread</value>
 		<value version="Rebellion">CultureSpreadModifier</value>
 		<value version="Rebellion">ShieldPointRestoration</value>
@@ -498,6 +503,7 @@
 		<value>Player</value>
 		<value>Allied</value>
 		<value version="Diplomacy">AlliedOrEnemy</value>
+		<value version="Rebellion">UncontrolledMinorFaction</value>
 	</element_rule>
 	<element_rule name="object" validation="Simple">
 		<value version="Rebellion">EnvoyFrigate</value>
@@ -516,6 +522,11 @@
 	</element_rule>
 	<element_rule name="space" validation="Simple" values="Normal,Phase"/>
 	<element_rule name="constraint" validation="Simple">
+		<value version="Rebellion">NotIsTech</value>
+		<value version="Rebellion">NotIsExplored</value>
+		<value version="Rebellion">HasColonizeAbility</value>
+		<value version="Rebellion">NotIsMinorFactionOwned</value>
+		<value version="Rebellion">NotIsOutlaw</value>
 		<value version="Rebellion">IsRuinable</value>
 		<value version="Rebellion">Invalid</value>
 		<value version="Rebellion">NotIsBoarded</value>
@@ -643,6 +654,12 @@
 		<value>CHAOSBOLT</value>
 	</element_rule>
 	<element_rule name="spawnShipsHyperspaceSpawnType" validation="Simple">
+		<value version="Rebellion">MinorFactionSiegeRaid</value>
+		<value version="Rebellion">MinorFactionDefenseRaid</value>
+		<value version="Rebellion">MinorFactionScoutRaid</value>
+		<value version="Rebellion">MinorFactionAntiModuleRaid</value>
+		<value version="Rebellion">FromFactories</value>
+		<value version="Rebellion">MinorFactionAttackRaid</value>
 		<value version="Rebellion">PirateRaid</value>
 		<value>FleetBeacon</value>
 	</element_rule>

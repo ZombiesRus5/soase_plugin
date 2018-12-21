@@ -80,6 +80,9 @@ public class PreferenceConstants {
 
 	public static final String STRICT_REBELLION = "Rebellion";
 
+	public static final String STRICT_REBELLION185 = "Rebellion185";
+	public static final String STRICT_REBELLION193 = "Rebellion193";
+
 	public static final String VALIDATE_PARTICLES = "validateParticles";
 
 	public static final String STRING_FILE_LOCATION = "stringFileLocation";
