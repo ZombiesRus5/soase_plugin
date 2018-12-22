@@ -1977,7 +1977,16 @@ public class EntityParser {
 					}
 				} else {
 					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-						fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+						//fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+					}
+					if ("Galaxy".equals(fileType)) {
+						nextLine = readLine(contents);
+						String versionNumber = parseValue(nextLine);
+						if ("193".equals(versionNumber)) {
+							validators = txt2Validators;
+							structures = txt2Structures;
+							prototypeValidators = txt2PrototypeValidators;
+						}
 					}
 				}
 			}

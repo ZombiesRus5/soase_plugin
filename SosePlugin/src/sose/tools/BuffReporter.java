@@ -36,7 +36,8 @@ public class BuffReporter extends ContentHandlerChain {
 		instantActionTriggerTypes.add("OnHyperspaceExit");
 		instantActionTriggerTypes.add("OnOwnerDeath");
 		instantActionTriggerTypes.add("OnBuffFinish");
-
+		instantActionTriggerTypes.add("OnColonizeAbilityUsed");
+		
 		periodicActionTriggerTypes.add("AlwaysPerform");
 		periodicActionTriggerTypes.add("OnChance");
 		periodicActionTriggerTypes.add("OnCondition");
