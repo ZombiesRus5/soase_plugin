@@ -793,8 +793,9 @@
 			<structure_reference name="npcIconOffset:HUDIcon" type="IconOffset"/>
 			<structure_reference name="npcIconOffset:PlanetIcon" type="IconOffset"/>
 			<field name="outlawSpawnShipsType" validation="Simple" values="MatchPlayerRace"/>
+			
 			<iterative_field name="numOutlawSpawnShipsOptionsCount">
-				<structure required="false" name="outlawSpawnShipsOptions">
+				<structure name="outlawSpawnShipsOptions">
 					<field name="raceEntityName" validation="Entity"/>
 					<structure name="spawnShips">
 						<field name="minFleetPoints" validation="Integer" />
@@ -815,6 +816,7 @@
 					</structure>
 				</structure>
 			</iterative_field>
+			
 			<field name="baseFleetCapacity" validation="Decimal"  version="Rebellion"/>
 			<field name="maxFleetSupplyPerPlanetPopulation" validation="Decimal"  version="Rebellion"/>
 			<field name="fleetSupplyMin" validation="Decimal"  version="Rebellion"/>
@@ -839,7 +841,7 @@
 			<structure_reference name="npcIconOffset:PlanetIcon" type="IconOffset"/>
 						
 			<iterative_field name="colonizePlanetBlackListCount">
-				<field required="false" name="planet" validation="Entity"/>
+				<field name="planet" validation="Entity"/>
 			</iterative_field>
 			
 			<field name="colonizablePlanetsWithMinorFactionsPercent" validation="Decimal"  version="Rebellion"/>
@@ -856,7 +858,7 @@
 			<field name="spawnTimeVariance" validation="Decimal"  version="Rebellion"/>	
 			
 			<iterative_field name="minorFactionPlayerDefCount">
-				<structure required="false" name="minorFactionPlayerDef">
+				<structure name="minorFactionPlayerDef">
 					<field name="name" validation="Any"/>
 					<structure name="planetAbilities">
 							<field name="ability:0" validation="Entity"/>

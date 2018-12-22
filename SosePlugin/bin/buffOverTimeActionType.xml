@@ -2,6 +2,10 @@
 <tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
 	<element_rule name="isDamageShared" validation="Boolean"/>
 	<condition_field name="buffOverTimeActionType">
+		<condition><value>StealPopulationFromAdjacentPlanets</value>
+			<structure_reference required="true" name="populationPercStealRate" type="GenericLevel"/>
+			<structure_reference required="true" name="damageRate" type="GenericLevel"/>
+		</condition>
 		<condition><value>DoDamageAndGiveResourceCostPerc</value>
 			<structure_reference required="true" name="resourceGainPerc" type="GenericLevel"/>
 			<structure_reference required="true" name="damageRate" type="GenericLevel"/>

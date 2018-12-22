@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
 	<structure name="Galaxy">
-		<!--  <field name="versionNumber" validation="Integer"/> -->
+		<field name="versionNumber" validation="Integer"/>
 		<field name="isBrowsable" validation="Boolean"/>
 		<field name="browsePictureName" validation="Any"/> 
 		<field name="browseName" validation="Any"/>
@@ -93,7 +93,25 @@
 				</iterative_field>
 				
 				<iterative_field name="playerCount">
-					<structure_reference required="false" name="player" type="PlayerType"/>
+					<structure required="false" name="player">
+						<field name="designName" validation="Any"/>
+						<field name="inGameName" validation="Any"/>
+						<field name="overrideRaceName" validation="Any"/>
+						<field name="teamIndex" validation="Integer"/> 
+						<field name="startingCredits" validation="Integer"/> 
+						<field name="startingMetal" validation="Integer"/> 
+						<field name="startingCrystal" validation="Integer"/>
+						<field name="playerType" validation="Any" version="Rebellion193"/> 
+						<field name="isNormalPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isRaidingPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isInsurgentPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isOccupationPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="isMadVasariPlayer" validation="Boolean" version="Rebellion185"/> 
+						<field name="themeGroup" validation="Any"/>
+						<field name="themeIndex" validation="Integer"/> 
+						<field name="pictureGroup" validation="Any"/>
+						<field name="pictureIndex" validation="Integer"/> 
+					</structure>
 				</iterative_field>
 			</condition>
 		</condition_field>

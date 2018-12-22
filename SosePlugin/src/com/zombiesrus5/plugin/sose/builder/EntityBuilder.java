@@ -649,8 +649,8 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (store.getBoolean(PreferenceConstants.VALIDATE_PARTICLES) == false) {
 			parser.addExcludedFileExtension("particle");
 		}
-		String strictVersion = store.getString(PreferenceConstants.STRICT_VERSION);
-		if (strictVersion != null && strictVersion.startsWith(PreferenceConstants.STRICT_REBELLION)) {
+		if (PreferenceConstants.STRICT_REBELLION193.equals(store.getString(PreferenceConstants.STRICT_VERSION)) ||
+				PreferenceConstants.STRICT_REBELLION185.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
 		} else {
@@ -746,8 +746,8 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_PARTICLES))) == false) {
 			parser.addExcludedFileExtension("particle");
 		}
-		String strictVersion = store.getString(PreferenceConstants.STRICT_VERSION);
-		if (strictVersion != null && strictVersion.startsWith(PreferenceConstants.STRICT_REBELLION)) {
+		if (PreferenceConstants.STRICT_REBELLION193.equals(store.getString(PreferenceConstants.STRICT_VERSION)) ||
+				PreferenceConstants.STRICT_REBELLION185.equals(store.getString(PreferenceConstants.STRICT_VERSION))) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
 		} else {

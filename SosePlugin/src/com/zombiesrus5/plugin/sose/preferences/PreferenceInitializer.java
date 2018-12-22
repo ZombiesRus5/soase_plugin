@@ -24,7 +24,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(PreferenceConstants.ALLOW_DECIMAL_POINT_ON_INTEGER, true);
 		store.setDefault(PreferenceConstants.WARN_ENTITY_NOT_REFERENCED, false);
 		store.setDefault(PreferenceConstants.FULL_BUILD_ON_NEW_FILE, true);
-		store.setDefault(PreferenceConstants.STRICT_VERSION, PreferenceConstants.STRICT_REBELLION);
+		store.setDefault(PreferenceConstants.STRICT_VERSION, PreferenceConstants.STRICT_REBELLION193);
 		store.setDefault(PreferenceConstants.P_STRING,
 				"Default value");
 		store.setDefault(AbstractDecoratedTextEditorPreferenceConstants.EDITOR_TAB_WIDTH, 4);

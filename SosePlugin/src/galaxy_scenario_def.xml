@@ -31,9 +31,8 @@
 		<iterative_field name="npcPlayers" version="Rebellion193">
 			<structure_reference required="false" name="player" type="PlayerType" />
 		</iterative_field>
-		<field name="npcMiltiaPlayerCountPerGalaxy" validation="Decimal" version="Rebellion193"/>
-		<field name="autoAddMiltiaPlayerCountPerGalaxy" validation="Decimal" version="Rebellion185"/>
-		<iterative_field name="autoAddMilitiaPlayers" version="Rebellion185">
+		<field name="autoAddMiltiaPlayerCountPerGalaxy" validation="Decimal"/>
+		<iterative_field name="autoAddMilitiaPlayers">
 			<structure_reference required="false" name="player" type="PlayerType" />
 		</iterative_field>
 	</structure>
@@ -97,19 +96,8 @@
 		<field name="startingCredits" validation="Integer" />
 		<field name="startingMetal" validation="Integer" />
 		<field name="startingCrystal" validation="Integer" />
-		<condition_field name="playerType" version="Rebellion193">
-			<condition><value version="Rebellion">NPCMinorFaction</value>
-				<field name="minorFactionPlayerDefName" validation="Any" version="Rebellion193"/>
-			</condition>
-			<condition>
-				<value>NPCPirateRaider</value>
-				<value>NPCRebel</value>
-				<value>NPCOccupationVictory</value>
-				<value>NPCMadVasari</value>
-				<value>NPCMilitia</value>
-				<value help="Normal is used in Galaxy Map Files">Normal</value>
-			</condition>
-		</condition_field>
+		<field name="playerType" validation="Any" version="Rebellion193"/>
+		<field name="minorFactionPlayerDefName" validation="Any" version="Rebellion193"/>
 		<field name="isNormalPlayer" validation="Boolean" version="Rebellion185"/>
 		<field name="isRaidingPlayer" validation="Boolean" version="Rebellion185"/>
 		<field name="isInsurgentPlayer" validation="Boolean" version="Rebellion185"/>
@@ -119,5 +107,6 @@
 		<field name="themeIndex" validation="Integer" />
 		<field name="pictureGroup" validation="Any" />
 		<field name="pictureIndex" validation="Integer" />
+		
 	</structure>
 </tns:entity_definitions>
