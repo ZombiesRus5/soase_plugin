@@ -4,7 +4,6 @@
 	<condition_field name="buffOverTimeActionType">
 		<condition><value>StealPopulationFromAdjacentPlanets</value>
 			<structure_reference required="true" name="populationPercStealRate" type="GenericLevel"/>
-			<structure_reference required="true" name="damageRate" type="GenericLevel"/>
 		</condition>
 		<condition><value>DoDamageAndGiveResourceCostPerc</value>
 			<structure_reference required="true" name="resourceGainPerc" type="GenericLevel"/>
