@@ -1637,6 +1637,9 @@ public class EntityParser {
 		} else
 		if (strictValidation.equals("Rebellion193")) {
 			archiveTypes = new String[]{"TXT2"};
+			txtValidators = txt2Validators;
+			txtStructures = txt2Structures;
+			prototypeValidators = txt2PrototypeValidators;
 		}
 		
 		for (String archiveType: archiveTypes) {
