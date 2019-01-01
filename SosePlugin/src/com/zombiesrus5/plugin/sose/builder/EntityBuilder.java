@@ -90,7 +90,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 								if (store.getBoolean(PreferenceConstants.FULL_BUILD_ON_NEW_FILE) == false) {
 									if (builder.fullBuildInProcess == false) {
 										builder.fullBuild = true;
-									}
+									} 
 								}
 							}
 						}
