@@ -75,7 +75,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 									!(delta.getResource().getFullPath().toOSString().contains(".svn") ||
 									  delta.getResource().getFullPath().toOSString().contains("Template"))) {
 //								System.out.println("file added removed or replaced");
-								if (store.getBoolean(PreferenceConstants.FULL_BUILD_ON_NEW_FILE)) {
+								if (store.getBoolean(PreferenceConstants.FULL_BUILD_ON_NEW_FILE) == false) {
 									if (builder.fullBuildInProcess == false) {
 										builder.fullBuild = true;
 									}
@@ -87,8 +87,10 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 									   delta.getResource().getName().endsWith(".galaxyScenarioDef")) &&
 									   (!delta.getResource().getFullPath().toOSString().contains("Templates"))) {
 //								System.out.println("important reference file modified");
-								if (builder.fullBuildInProcess == false) {
-									builder.fullBuild = true;
+								if (store.getBoolean(PreferenceConstants.FULL_BUILD_ON_NEW_FILE) == false) {
+									if (builder.fullBuildInProcess == false) {
+										builder.fullBuild = true;
+									}
 								}
 							}
 						}

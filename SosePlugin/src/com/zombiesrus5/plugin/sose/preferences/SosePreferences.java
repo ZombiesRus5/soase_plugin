@@ -49,7 +49,7 @@ public class SosePreferences
 		addField(new DirectoryFieldEditor(PreferenceConstants.REBELLION_REFERENCE_PATH, 
 				"&Rebellion Reference:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.FULL_BUILD_ON_NEW_FILE,
-				"&Perform Full Build on New File", getFieldEditorParent()));
+				"&Perform Full Build On Changes", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES, 
 				"&Ignore Case on Reference Files", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.ALLOW_DECIMAL_POINT_ON_INTEGER, 

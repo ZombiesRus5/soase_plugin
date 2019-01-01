@@ -1,6 +1,8 @@
 package com.zombiesrus5.plugin.sose.editors.utils;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,6 +17,7 @@ public class ValueCollector implements DefinitionHandler {
 
 	private String keyWord = null;
 	private Set<String> values = new TreeSet<String>();
+	private LinkedList<String> structure = new LinkedList<String>();
 	
 	public Set<String> getValues() {
 		return values;
@@ -24,6 +27,7 @@ public class ValueCollector implements DefinitionHandler {
 	public void startStructure(String structureName, String structureType,
 			boolean explicit, String[] references, String helpText)
 			throws Exception {
+		structure.push(structureName);
 	}
 	
 	@Override
@@ -68,6 +72,10 @@ public class ValueCollector implements DefinitionHandler {
 	public void field(String fieldName, String fieldRule, boolean explicit,
 			String[] fieldValues, String fieldType, String[] references,
 			String helpText) throws Exception {
+		if (keyWord.equals("playerType") && structure.peek().equals("player")) {
+			// this isn't a field
+			return;
+		}
 		if (keyWord.equals(fieldName) && fieldValues != null) {
 			values.addAll(Arrays.asList(fieldValues));
 		} else if (keyWord.equals(fieldName) && ValidationType.DECIMAL.equals(fieldType)) {
@@ -89,7 +97,7 @@ public class ValueCollector implements DefinitionHandler {
 	@Override
 	public void endStructure() throws Exception {
 		// TODO Auto-generated method stub
-		
+		structure.pop();
 	}
 	
 	@Override
