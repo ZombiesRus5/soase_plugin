@@ -153,6 +153,14 @@
                tooltip="Compares this file with a matching Reference File.">
          </action>
          <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.ConvertTXTtoTXT2"
+               enablesFor="*"
+               id="convertTXTtoTXT2Editor"
+               label="Convert TXT to TXT2"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1"
+               tooltip="Converts this file to TXT2.">
+         </action>
+         <action
                class="com.zombiesrus5.plugin.sose.popup.actions.ConvertDataToText"
                enablesFor="*"
                id="com.zombiesrus5.plugin.sose.newAction"
@@ -174,6 +182,51 @@
                menubarPath="com.zombiesrus5.plugin.sose.menu1/group1">
          </action>
       </objectContribution>
+      
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFolder"
+            adaptable="true"
+            id="com.zombiesrus5.plugin.sose.popup.actions.Folders">
+         <menu
+               id="com.zombiesrus5.plugin.sose.menu1"
+               label="Sins"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.NormalizeResearchCosts"
+               enablesFor="*"
+               id="normalizeResearchEditor"
+               label="Normalize Research Costs"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1"
+               tooltip="Compares this file with a matching Reference File.">
+         </action>
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.ConvertTXTtoTXT2"
+               enablesFor="*"
+               id="convertTXTtoTXT2Editor"
+               label="Convert TXT to TXT2"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1"
+               tooltip="Converts this file to TXT2.">
+         </action>
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.ConvertDataToText"
+               enablesFor="*"
+               id="com.zombiesrus5.plugin.sose.newAction"
+               label="Convert Data (TXT)"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1">
+         </action>
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.ConvertDataToBinary"
+               enablesFor="*"
+               id="com.zombiesrus5.plugin.sose.newAction"
+               label="Convert Data (BIN)"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1">
+         </action>
+      </objectContribution>
+      
 <!--      <objectContribution
             id="com.zombiesrus5.plugin.sose.contribution1"
             objectClass="org.eclipse.core.resources.IResource">
@@ -233,6 +286,13 @@
                enablesFor="1"
                id="com.zombiesrus5.plugin.sose.newAction"
                label="Normalize Research Costs"
+               menubarPath="com.zombiesrus5.plugin.sose.menu1/group1">
+         </action>
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.ConvertTXTtoTXT2"
+               enablesFor="1"
+               id="com.zombiesrus5.plugin.sose.newAction"
+               label="Convert TXT to TXT2"
                menubarPath="com.zombiesrus5.plugin.sose.menu1/group1">
          </action>
          <action
