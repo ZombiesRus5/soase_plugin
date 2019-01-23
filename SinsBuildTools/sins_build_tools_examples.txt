@@ -13,7 +13,7 @@
 <taskdef name="normalize_research_costs" classname="sose.ant.NormalizeResearchCosts" classpathref="common.classpath"/>
 <taskdef name="setdata" classname="sose.ant.SetData" classpathref="common.classpath"/>
 <taskdef name="extractdata" classname="sose.ant.ExtractData" classpathref="common.classpath"/>
-
+ 
 <target name="capitals">
 	<extractdata stringInfoFile="${project}/mod/String/English.str" entitytype="CapitalShip" summary="false" tofile="${project}/capital_stats.csv" >
 		<fileset dir="${advent.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
