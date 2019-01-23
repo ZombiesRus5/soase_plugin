@@ -262,6 +262,56 @@
 		<field name="soundID" validation="Sound"/>
 	</structure>
 
+	<structure name="HelperProposal" help="Used to create abilities.">
+		<field required="true" name="SinsArchiveVersion" validation="Integer"/>
+		<field required="true" name="entityType" validation="Simple">
+		<value version="Rebellion">Cosmetic</value>
+		<value version="Rebellion">Titan</value>
+		<value version="Rebellion">TitanUpgrade</value>
+		<value>Ability</value>
+		<value>Buff</value>
+		<value>CapitalShip</value>
+		<value>Debris</value>
+		<value>EmpireWindowNode</value>
+		<value>Frigate</value>
+		<value>CannonShell</value>
+		<value>Fighter</value>
+		<value>Fleet</value>
+		<value>Formation</value>
+		<value>PlanetConnection</value>
+		<value>PlanetModuleWeaponDefense</value>
+		<value>PlanetModuleStandard</value>
+		<value>PlanetModuleShipFactory</value>
+		<value>PlanetModuleHangarDefense</value>
+		<value>PlanetModuleTradePort</value>
+		<value>PlanetModuleRefinery</value>
+		<value>Player</value>
+		<value>ResearchSubject</value>
+		<value>Squad</value>
+		<value>StarBase</value>
+		<value>StarBaseUpgrade</value>
+		<value>EntryVehicle</value>
+		<value>Planet</value>
+		<value>PlanetBonus</value>
+		<value>ResourceAsteroid</value>
+		<value>Star</value>
+		<value>SpaceMine</value>
+		<value>MissionBuildMines</value>
+		<value>MissionBuildStarBase</value>
+		<value>MissionCaptureResources</value>
+		<value>MissionAttackPlanet</value>
+		<value>MissionColonize</value>
+		<value version="Rebellion">MissionDefendFlagship</value>
+		<value version="Rebellion">MissionCaptureMinorFaction</value>
+		<value>MissionExplore</value>
+		<value>MissionRaid</value>
+		<value>MissionFosterRelationships</value>
+		<value>PipCloud</value>
+		<value>Quest</value>
+		<value version="Rebellion">Trigger</value>
+		</field>
+	</structure>
+	
 	<element_rule name="entityType" validation="Structure">
 		<value version="Rebellion">Cosmetic</value>
 		<value version="Rebellion">Titan</value>

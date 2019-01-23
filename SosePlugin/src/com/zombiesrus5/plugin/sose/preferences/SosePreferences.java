@@ -52,6 +52,10 @@ public class SosePreferences
 				"&Rebellion Reference:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.REBELLION_REFERENCE_VALIDATE_PATH,
 				"&Include Rebellion files when performing validation", getFieldEditorParent()));
+
+		addField(new DirectoryFieldEditor(PreferenceConstants.CUSTOM_PROPOSAL_PATH, 
+				"&Custom Proposals:", getFieldEditorParent()));
+
 		addField(new BooleanFieldEditor(PreferenceConstants.FULL_BUILD_ON_NEW_FILE,
 				"&Perform Full Build On Changes", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES, 

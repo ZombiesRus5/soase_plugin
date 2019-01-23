@@ -755,6 +755,9 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (strictVersion != null && strictVersion.startsWith(PreferenceConstants.STRICT_REBELLION)) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
+
+			parser.setIncludeInstallation(store.getBoolean(PreferenceConstants.REBELLION_INSTALLATION_VALIDATE_PATH));
+			parser.setIncludeReference(store.getBoolean(PreferenceConstants.REBELLION_REFERENCE_VALIDATE_PATH));
 		} else {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.SINS_INSTALLATION_PATH));
 			parser.setDiplomacyReferenceDirectory(store.getString(PreferenceConstants.DIPLOMACY_REFERENCE_PATH));

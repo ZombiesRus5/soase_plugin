@@ -22,6 +22,8 @@ public class PreferenceConstants {
 	
 	public static final String REBELLION_REFERENCE_PATH = "rebellionReference";
 	
+	public static final String CUSTOM_PROPOSAL_PATH = "customProposalPath";
+	
 	public static final String REBELLION_REFERENCE_VALIDATE_PATH = "rebellionReferenceValidate";
 	
 	public static final String DIPLOMACY_REFERENCE_PATH = "diplomacyReference";

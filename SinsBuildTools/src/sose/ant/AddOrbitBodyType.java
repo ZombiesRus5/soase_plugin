@@ -34,6 +34,7 @@ import org.apache.tools.ant.types.ResourceCollection;
  * @copyright (C) 2010 ZombiesRus5
  * @copyright Everyone is permitted to copy and distribute verbatim copies of
  *            this source, but changing it is not allowed.
+ * @deprecated Use MergeOrbitBodyType
  */
 public class AddOrbitBodyType extends Task {
 

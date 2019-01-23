@@ -1,5 +1,7 @@
 package com.zombiesrus5.plugin.sose.editors;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.text.MessageFormat;
@@ -10,6 +12,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.TextPresentation;
 import org.eclipse.jface.text.contentassist.CompletionProposal;
@@ -22,11 +25,13 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 import org.eclipse.ui.part.FileEditorInput;
 
 import sose.tools.EntityParser;
+import soseplugin.Activator;
 
 import com.zombiesrus5.plugin.sose.builder.EntityBuilder;
 import com.zombiesrus5.plugin.sose.editors.utils.KeyWordCollector;
 import com.zombiesrus5.plugin.sose.editors.utils.KeyWordDetector;
 import com.zombiesrus5.plugin.sose.editors.utils.WordPartDetector;
+import com.zombiesrus5.plugin.sose.preferences.PreferenceConstants;
 import com.zombiesrus5.plugin.sose.views.EntityDefinitionView;
 
 public class EntityCompletionProcessor implements IContentAssistProcessor {
@@ -88,20 +93,40 @@ public class EntityCompletionProcessor implements IContentAssistProcessor {
 				IContextInformation info= new ContextInformation(possibleProposals[i], MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.ContextInfo.pattern"), new Object[] { possibleProposals[i] })); //$NON-NLS-1$
 				String replacementProposal = possibleProposals[i].substring(wordPart.getString().length());
 				//System.out.println(replacementProposal);
-				if (possibleProposals[i].equals("effectInfo")) {
-					replacementProposal += "\n\teffectAttachInfo\n\t\tattachType \"Invalid\"\n\t\tsmallEffectName \"\"\n\t\tmediumEffectName \"\"\n\t\tlargeEffectName \"\"\n\t\tsoundID \"\"";
-				}
+				CompletionProposal proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i], info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
+				proposals.add(proposal);
+
 				if (cachedProposals.containsKey(possibleProposals[i])) {
 					replacementProposal = cachedProposals.get(possibleProposals[i]);
 				} else {
-					InputStream is = getClass().getResourceAsStream("/" + possibleProposals[i] + ".proposal");
+					InputStream is = getClass().getResourceAsStream("/proposals/" + possibleProposals[i] + ".proposal");
 					if (is != null) {
 						Scanner s = new Scanner(is).useDelimiter("\\A");
-						replacementProposal = s.hasNext() ? s.next() : replacementProposal;
+						replacementProposal += "\n";
+						replacementProposal += s.hasNext() ? s.next() : replacementProposal;
+						proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i] + " (Template)", info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
+						proposals.add(proposal);
+					} else {
+						// check for custom proposal
+						IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+						String customPath = store.getString(PreferenceConstants.CUSTOM_PROPOSAL_PATH);
+						if (customPath != null) {
+							try {
+								InputStream customIS = new FileInputStream(customPath + "/" + possibleProposals[i] + ".proposal");
+								if (customIS != null) {
+									Scanner s = new Scanner(customIS).useDelimiter("\\A");
+									replacementProposal += s.hasNext() ? s.next() : replacementProposal;
+									proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i] + " (Template)", info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
+									proposals.add(proposal);
+								}
+							} catch (FileNotFoundException e) {
+								// ignore
+							}
+							
+						}
+						
 					}
 				}
-				CompletionProposal proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i], info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
-				proposals.add(proposal);
 			}
 		}
 		result = new ICompletionProposal[proposals.size()];

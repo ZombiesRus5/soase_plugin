@@ -1,10 +1,15 @@
 package com.zombiesrus5.plugin.sose.editors;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.TextPresentation;
 import org.eclipse.jface.text.contentassist.CompletionProposal;
@@ -17,11 +22,13 @@ import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 import org.eclipse.ui.part.FileEditorInput;
 
 import sose.tools.EntityParser;
+import soseplugin.Activator;
 
 import com.zombiesrus5.plugin.sose.builder.EntityBuilder;
 import com.zombiesrus5.plugin.sose.editors.utils.KeyWordDetector;
 import com.zombiesrus5.plugin.sose.editors.utils.ValueCollector;
 import com.zombiesrus5.plugin.sose.editors.utils.WordPartDetector;
+import com.zombiesrus5.plugin.sose.preferences.PreferenceConstants;
 import com.zombiesrus5.plugin.sose.views.EntityDefinitionView;
 
 public class EntityValueCompletionProcessor implements IContentAssistProcessor {
@@ -71,6 +78,7 @@ public class EntityValueCompletionProcessor implements IContentAssistProcessor {
 	 * Method declared on IContentAssistProcessor
 	 */
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int documentOffset) {
+		KeyWordDetector keyWord = new KeyWordDetector(viewer, documentOffset);
 		WordPartDetector wordPart = new WordPartDetector(viewer, documentOffset);
 		
 		ICompletionProposal[] result= null;
@@ -84,6 +92,32 @@ public class EntityValueCompletionProcessor implements IContentAssistProcessor {
 				//System.out.println(replacementProposal);
 				CompletionProposal proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i], info, MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]})); //$NON-NLS-1$
 				proposals.add(proposal);
+				
+				InputStream is = getClass().getResourceAsStream("/proposals/" + keyWord.getString() + "." + possibleProposals[i] + ".proposal");
+				if (is != null) {
+					Scanner s = new Scanner(is).useDelimiter("\\A");
+					replacementProposal += s.hasNext() ? s.next() : replacementProposal;
+					proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i] + " (Template)", info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
+					proposals.add(proposal);
+				} else {
+					IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+					String customPath = store.getString(PreferenceConstants.CUSTOM_PROPOSAL_PATH);
+					if (customPath != null) {
+						try {
+							InputStream customIS = new FileInputStream(customPath + "/" + keyWord.getString() + "." + possibleProposals[i] + ".proposal");
+							if (customIS != null) {
+								Scanner s = new Scanner(customIS).useDelimiter("\\A");
+								replacementProposal += s.hasNext() ? s.next() : replacementProposal;
+								proposal = new CompletionProposal(replacementProposal, documentOffset, 0, replacementProposal.length(), null, possibleProposals[i] + " (Template)", info, /*MessageFormat.format(EntityEditorMessages.getString("CompletionProcessor.Proposal.hoverinfo.pattern"), new Object[] { possibleProposals[i]}) */ null); //$NON-NLS-1$
+								proposals.add(proposal);
+							}
+						} catch (FileNotFoundException e) {
+							// ignore
+						}
+						
+					}
+				}
+
 			}
 		}
 		result = new ICompletionProposal[proposals.size()];
@@ -103,7 +137,11 @@ public class EntityValueCompletionProcessor implements IContentAssistProcessor {
 			EntityParser parser = EntityBuilder.getParser(resource.getProject());
 			if (editor.getEditorInput() instanceof FileEditorInput) {
 				if (((FileEditorInput)editor.getEditorInput()).getName().endsWith(".entity")) {
-					entityType = EntityDefinitionView.getEntityType((FileEditorInput)editor.getEditorInput());
+					if ("entityType".equals(keyWord.getString())) {
+						entityType = "HelperProposal";
+					} else {
+						entityType = EntityDefinitionView.getEntityType((FileEditorInput)editor.getEditorInput());
+					}
 				} else if (parser.isSupportsFileType(((FileEditorInput)editor.getEditorInput()).getFile().getFileExtension())) {
 					entityType = ((FileEditorInput)editor.getEditorInput()).getFile().getFileExtension();
 					entityType = entityType.substring(0, 1).toUpperCase() + entityType.substring(1);
