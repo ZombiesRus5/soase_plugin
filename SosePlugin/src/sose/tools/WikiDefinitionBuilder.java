@@ -39,7 +39,7 @@ public class WikiDefinitionBuilder implements DefinitionHandler {
 				System.out.println("pause");
 			}
 			WikiDefinitionBuilder builder = new WikiDefinitionBuilder(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT");
 	}
 	}
 	

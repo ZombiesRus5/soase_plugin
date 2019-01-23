@@ -46,8 +46,12 @@ public class SosePreferences
 //				"&Diplomacy Reference:", getFieldEditorParent()));
 		addField(new DirectoryFieldEditor(PreferenceConstants.REBELLION_INSTALLATION_PATH, 
 				"&Rebellion Installation:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(PreferenceConstants.REBELLION_INSTALLATION_VALIDATE_PATH,
+				"&Include Installation files when performing validation", getFieldEditorParent()));
 		addField(new DirectoryFieldEditor(PreferenceConstants.REBELLION_REFERENCE_PATH, 
 				"&Rebellion Reference:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(PreferenceConstants.REBELLION_REFERENCE_VALIDATE_PATH,
+				"&Include Rebellion files when performing validation", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.FULL_BUILD_ON_NEW_FILE,
 				"&Perform Full Build On Changes", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES, 

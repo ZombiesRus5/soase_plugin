@@ -121,6 +121,8 @@
 			<enumeration value="Rebellion" />
 			<enumeration value="NotRebellion" />
 			<enumeration value="NotDiplomacyOrRebellion" />
+			<enumeration value="Rebellion185" />
+			<enumeration value="Rebellion193" />
 		</restriction>
 	</simpleType>
 

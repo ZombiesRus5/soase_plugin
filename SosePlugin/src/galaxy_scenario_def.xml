@@ -26,15 +26,15 @@
 			<field required="false" name="themeGroup"  validation="Any" />
 		</iterative_field>
 		<iterative_field name="autoAddPlayers" version="Rebellion185">
-			<structure_reference required="false" name="player" type="PlayerType" />
+			<structure_reference required="false" name="player" type="PlayerStructure" />
 		</iterative_field>
 		<iterative_field name="npcPlayers" version="Rebellion193">
-			<structure_reference required="false" name="player" type="PlayerType" />
+			<structure_reference required="false" name="player" type="PlayerStructure" />
 		</iterative_field>
 		<field name="npcMiltiaPlayerCountPerGalaxy" validation="Decimal" version="Rebellion193"/>
 		<field name="autoAddMiltiaPlayerCountPerGalaxy" validation="Decimal" version="Rebellion185"/>
 		<iterative_field name="autoAddMilitiaPlayers" version="Rebellion185">
-			<structure_reference required="false" name="player" type="PlayerType" />
+			<structure_reference required="false" name="player" type="PlayerStructure" />
 		</iterative_field>
 	</structure>
 		
@@ -89,7 +89,7 @@
 		</iterative_field>
 	</structure>
 	
-	<structure name="PlayerType">
+	<structure name="PlayerStructure">
 		<field name="designName" validation="Any" />
 		<field name="inGameName" validation="Any" />
 		<field name="overrideRaceName" validation="Any" />

@@ -18,7 +18,11 @@ public class PreferenceConstants {
 	
 	public static final String REBELLION_INSTALLATION_PATH = "rebellionInstallation";
 	
+	public static final String REBELLION_INSTALLATION_VALIDATE_PATH = "rebellionInstallationValidate";
+	
 	public static final String REBELLION_REFERENCE_PATH = "rebellionReference";
+	
+	public static final String REBELLION_REFERENCE_VALIDATE_PATH = "rebellionReferenceValidate";
 	
 	public static final String DIPLOMACY_REFERENCE_PATH = "diplomacyReference";
 	

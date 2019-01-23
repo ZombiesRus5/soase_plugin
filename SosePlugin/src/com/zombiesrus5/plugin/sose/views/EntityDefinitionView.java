@@ -75,6 +75,8 @@ public class EntityDefinitionView extends ViewPart implements ISelectionListener
 	private Action doubleClickAction;
 	
 	String entityType = "";
+	String textType = "";
+	
 	EntityParser parser = new EntityParser();
 
 	/*
@@ -283,7 +285,7 @@ public class EntityDefinitionView extends ViewPart implements ISelectionListener
 			
 			try {
 				if (entityType != null) {
-					parser.processDefinition(entityType, builder);
+					parser.processDefinition(entityType, builder, textType);
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -510,10 +512,12 @@ public class EntityDefinitionView extends ViewPart implements ISelectionListener
 						entityType = newEntityType;
 						viewer.setContentProvider(new ViewContentProvider());
 					}
+					
 				} else {
 				
 					entityType = "";
 				}
+				textType = getTextType((FileEditorInput)editor.getEditorInput());
 			}
 		}
         if (selection instanceof IStructuredSelection) {
@@ -530,7 +534,11 @@ public class EntityDefinitionView extends ViewPart implements ISelectionListener
 //			entityType = fileEditorInput.getFile().getPersistentProperty(new QualifiedName(null, "entityType"));
 			InputStream is = fileEditorInput.getFile().getContents();
 			LineNumberReader lnr = new LineNumberReader(new InputStreamReader(is));
-			lnr.readLine(); // chew TXT
+			String textType = lnr.readLine(); // chew TXT
+			if (textType.contains("TXT2")) {
+				// eat version line
+				String version = lnr.readLine();
+			}
 			String entityTypeLine = lnr.readLine();
 //			System.out.println(entityTypeLine);
 			entityType = parseValue(entityTypeLine);
@@ -541,6 +549,28 @@ public class EntityDefinitionView extends ViewPart implements ISelectionListener
 			e.printStackTrace();
 		}
 		return entityType;
+	}
+	
+	public static String getTextType(FileEditorInput fileEditorInput) {
+		String textType = "TXT2";
+		try {
+			InputStream is = fileEditorInput.getFile().getContents();
+			LineNumberReader lnr = new LineNumberReader(new InputStreamReader(is));
+			textType = lnr.readLine(); // chew TXT
+
+			// lets clean it up
+			if (textType.contains("TXT2")) {
+				textType = "TXT2";
+			} else {
+				textType = "TXT";
+			}
+
+			is.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return textType;
 	}
 	
 	public static String parseValue(String currentLine) {

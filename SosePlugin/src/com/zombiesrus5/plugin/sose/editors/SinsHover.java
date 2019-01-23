@@ -38,6 +38,7 @@ public class SinsHover extends DefaultTextHover implements ITextHover, ITextHove
 		String hoverFocus = textViewer.getDocument().get(hoverRegion.getOffset(), hoverRegion.getLength());
 			
 		String entityType = null;
+		String textType = "TXT";
 		IResource resource = (IResource) editor.getEditorInput().getAdapter(IResource.class);
 		EntityParser parser = EntityBuilder.getParser(resource.getProject());
 		if (editor.getEditorInput() instanceof FileEditorInput) {
@@ -49,10 +50,11 @@ public class SinsHover extends DefaultTextHover implements ITextHover, ITextHove
 			} else {
 				entityType = "";
 			}
+			textType = EntityDefinitionView.getTextType((FileEditorInput)editor.getEditorInput());
 		}
 		
 		HoverHelpCollector collector = new HoverHelpCollector(hoverFocus);
-		parser.processDefinition(entityType, hoverFocus, collector);
+		parser.processDefinition(entityType, hoverFocus, collector, textType);
 		hoverInfo = collector.getHoverInfo();
 		
 		} catch (Exception e) {

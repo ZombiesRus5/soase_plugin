@@ -36,7 +36,7 @@ public class ExperimentalWikiDefinitionBuilder implements DefinitionHandler {
 		while(definitions.hasNext()) {
 			String definition = definitions.next();
 			ExperimentalWikiDefinitionBuilder builder = new ExperimentalWikiDefinitionBuilder(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT");
 		}
 	}
 	

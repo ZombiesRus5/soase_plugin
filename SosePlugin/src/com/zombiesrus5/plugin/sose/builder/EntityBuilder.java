@@ -655,6 +655,9 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		if (strictVersion != null && strictVersion.startsWith(PreferenceConstants.STRICT_REBELLION)) {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.REBELLION_INSTALLATION_PATH));
 			parser.setVanillaReferenceDirectory(store.getString(PreferenceConstants.REBELLION_REFERENCE_PATH));
+			
+			parser.setIncludeInstallation(store.getBoolean(PreferenceConstants.REBELLION_INSTALLATION_VALIDATE_PATH));
+			parser.setIncludeReference(store.getBoolean(PreferenceConstants.REBELLION_REFERENCE_VALIDATE_PATH));
 		} else {
 			parser.setSinsInstallationDirectory(store.getString(PreferenceConstants.SINS_INSTALLATION_PATH));
 			parser.setDiplomacyReferenceDirectory(store.getString(PreferenceConstants.DIPLOMACY_REFERENCE_PATH));
@@ -851,7 +854,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		for (int i=0; i<referencedProjects.length; i++) {
 			if (processedProjects.contains(referencedProjects[i]) == false) {
 				referencedProjects[i].accept(new AddGameInfoDirectory(referencedProjects[i], parser), 2, false);
-				addReferencedModDirectory(referencedProjects[i], parser, processedProjects);
+				//addReferencedModDirectory(referencedProjects[i], parser, processedProjects);
 			}
 		}
 	}

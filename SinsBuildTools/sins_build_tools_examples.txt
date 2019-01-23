@@ -1,0 +1,133 @@
+<taskdef name="convertTGAtoDDS" classname="sose.ant.ConvertTGAtoDDS" classpathref="common.classpath"/>
+<taskdef name="generateIconEffects" classname="sose.ant.IconEffectsGenerator" classpathref="common.classpath"/>
+<taskdef name="generatePlanet" classname="sose.ant.PlanetGenerator" classpathref="common.classpath"/>
+<taskdef name="addorbitbodytype" classname="sose.ant.AddOrbitBodyType" classpathref="common.classpath"/>
+<taskdef name="addplanetitemstemplate" classname="sose.ant.AddPlanetItemsTemplateGroup" classpathref="common.classpath"/>
+<taskdef name="mergegalaxyscenariodef" classname="sose.ant.MergeGalaxyScenarioDef" classpathref="common.classpath"/>
+<taskdef name="mergeiterativefield" classname="sose.ant.MergeIterativeField" classpathref="common.classpath"/>
+<taskdef name="generatemanifest" classname="sose.ant.ManifestGenerator" classpathref="common.classpath"/>
+<taskdef name="generatebrush" classname="sose.ant.BrushGenerator" classpathref="common.classpath"/>
+<taskdef name="generatestringinfo" classname="sose.ant.StringInfoGenerator" classpathref="common.classpath"/>
+<taskdef name="mergedata" classname="sose.ant.MergeData" classpathref="common.classpath"/>
+<taskdef name="sounddatagenerator" classname="sose.ant.SoundDataGenerator" classpathref="common.classpath"/>
+<taskdef name="normalize_research_costs" classname="sose.ant.NormalizeResearchCosts" classpathref="common.classpath"/>
+<taskdef name="setdata" classname="sose.ant.SetData" classpathref="common.classpath"/>
+<taskdef name="extractdata" classname="sose.ant.ExtractData" classpathref="common.classpath"/>
+
+<target name="capitals">
+	<extractdata stringInfoFile="${project}/mod/String/English.str" entitytype="CapitalShip" summary="false" tofile="${project}/capital_stats.csv" >
+		<fileset dir="${advent.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${tech.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${vasari.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${plague.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${nephilim.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${rogue.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${hypercorp.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${pact.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${archailect.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${colonial.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${cylon.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+					
+	</extractdata>
+</target>
+<target name="summary_capital">
+	<extractdata stringInfoFile="${project}/mod/String/English.str" entitytype="CapitalShip" tofile="${project}/summary_capital_stats.csv" summary="true"
+		summaryheaders="entityName,NameStringID,ability:0,ability:1,ability:2,ability:3,basePrice.credits,basePrice.metal,basePrice.crystal,slotCount,DURABILITY,MaxHullPoints.StartValue,MaxHullPoints.ValueIncreasePerLevel,MaxShieldPoints.StartValue,MaxShieldPoints.ValueIncreasePerLevel,HullPointRestoreRate.StartValue,HullPointRestoreRate.ValueIncreasePerLevel,ShieldPointRestoreRate.StartValue,ShieldPointRestoreRate.ValueIncreasePerLevel,ArmorPointsFromExperience.StartValue,ArmorPointsFromExperience.ValueIncreasePerLevel,maxMitigation.StartValue,maxMitigation.ValueIncreasePerLevel,MaxAntiMatter.StartValue,MaxAntiMatter.ValueIncreasePerLevel,AntiMatterRestoreRate.StartValue,AntiMatterRestoreRate.ValueIncreasePerLevel,DPS:FRONT,DPS:BACK,DPS:LEFT,DPS:RIGHT,DPS:ALL,HULL(10),SHIELDS(10),DURABILITY(10)">
+		<fileset dir="${advent.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${tech.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${vasari.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${plague.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${nephilim.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${rogue.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${hypercorp.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${pact.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${archailect.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${colonial.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+		<fileset dir="${cylon.dir}/mod/GameInfo" includes="CAPITALSHIP*.entity"/>
+					
+	</extractdata>
+</target>
+
+// needs gimp-console-2.8.exe in path
+<generateIconEffects>
+	<fileset dir="${from.dir}/ui" includes="*_Normal*.tga"/>
+</generateIconEffects>
+
+// needs TheCompressonator.exe in path (AMD)
+<convertTGAtoDDS boxfilter="false">
+	<fileset dir="${from.dir}/ui_lowres" includes="*.tga"/>
+</convertTGAtoDDS>
+<convertTGAtoDDS boxfilter="true">
+	<fileset dir="${from.dir}/highres" includes="*.tga"/>
+</convertTGAtoDDS>
+
+generatePlanet, addorbitbodytype, mergegalaxyscenariodef are used to generate planet code
+
+// merges an external planet item template into the gsd
+<addplanetitemstemplate sourcedef="${mymod.dir}/GameInfo/GalaxyScenarioDef.galaxyScenarioDef"
+	outputdef="${mymod.dir}/GameInfo/GalaxyScenarioDef.temp"
+	templateName="Template:DefaultHomePlanetSetup">
+	<fileset dir="${project}/Templates" includes="*.groups"/>
+</addplanetitemstemplate>
+<copy overwrite="true" file="${mymod.dir}/GameInfo/GalaxyScenarioDef.temp" tofile="${mymod.dir}/GameInfo/GalaxyScenarioDef.galaxyScenarioDef"></copy>
+<delete file="${mymod.dir}/GameInfo/GalaxyScenarioDef.temp"></delete>
+
+// Used as one offs usually to quickly add a new option to multiple files, I used mainly for porting to rebellion
+<mergeiterativefield iterativeCountFieldName="NumResearchPrerequisites" endFieldName="RequiredFactionNameID" dir="${project}/mod/GameInfo" includes="TITAN*AI.entity">
+	<fileset dir="${workspace}/Fallen Common/Templates" includes="ResearchAccess_AI.NumResearchPrerequisites"/>
+</mergeiterativefield>
+
+// can generate any manifest
+<generatemanifest manifestType="entityName" manifestFileName="${entity.manifest}">
+	<fileset dir="${workspace}" includes="Fallen*/mod/GameInfo/*.entity"/>
+	<fileset dir="${mymod.dir}/GameInfo" includes="*.entity"/>
+	<fileset dir="${rebellion.installation.dir}/GameInfo" includes="*.entity" excludes="QuestKillTacticalModulesLow.entity,RESEARCHSUBJECT_PACTBONUS_METAL.entity,RESEARCHSUBJECT_PACTBONUS_MISSILE.entity,RESEARCHSUBJECT_PACTBONUS_SHIPSTRUCTUREMAX.entity,RESEARCHSUBJECT_PACTBONUS_SHIPSTRUCTUREREGEN.entity,RESEARCHSUBJECT_PACTBONUS_STRIKECRAFT.entity,RESEARCHSUBJECT_PACTUNLOCK_METAL.entity,RESEARCHSUBJECT_PACTUNLOCK_MISSILE.entity,RESEARCHSUBJECT_PACTUNLOCK_SHIPSTRUCTUREMAX.entity,RESEARCHSUBJECT_PACTUNLOCK_SHIPSTRUCTUREREGEN.entity,RESEARCHSUBJECT_PACTUNLOCK_STRIKECRAFT.entity"/>
+</generatemanifest>
+
+// generates a brush file using a spreadsheet
+<generatebrush brushFileName="${mymod.dir}/Window/Fallen_MainViewIcon.brushes" 
+	brushFileTemplate="${project}/Templates/Fallen_mainviewicon_brush.csv" 
+	prefix = "MAINVIEWICON_"
+	content = "Simple"
+	fileName="Fallen_Unit_Main" >
+</generatebrush>
+
+// generates a string info file from an easier to edit bar delimited file
+<generatestringinfo stringInfoFileName="${mymod.dir}/String/Fallen_English.str" stringInfoTemplate="${project}/Templates/Fallen_stringinfo.txt"
+	baseStringInfoFileName="${project}/Templates/Fallen_English.str"
+	prefix = "IDS">
+</generatestringinfo>
+
+// merges multiple smaller string info files into one master file
+<mergedata dataCountName="NumStrings" dataFileName="${mymod.dir}/String/English.str">
+	<fileset dir="${mymod.dir}/String" includes="*_English.str"/>
+	<fileset dir="${rebellion.reference.dir}/String" includes="English.str"/>
+</mergedata>
+
+// generates dialogue sound file
+<sounddatagenerator sounddatafilename="${project}/Templates/SoundDialogue.sounddata">
+	<fileset dir="${project}/mod/Sound" includes="Planet*.ogg,Capital*.ogg,Frigate*.ogg,Event*.ogg,Squad*.ogg,Planet*.ogg"/>
+</sounddatagenerator>
+
+// allows me to change just the position and then automatically update tier/costs/times
+<normalize_research_costs>
+	<fileset dir="${project}/mod/GameInfo" 
+		includes="RESEARCHSUBJECT_*.entity"
+		excludes="*RESEARCHVICTORY*.entity,RESEARCHSUBJECT_*MAXCAPITALSHIPS*.entity,RESEARCHSUBJECT_*MAXSHIPS*.entity,RESEARCHSUBJECT_*DECLARE*.entity,RESEARCHSUBJECT_*RESEARCHACCESS*.entity"/>
+</normalize_research_costs>
+
+<setdata keyword="block" value="1">
+	<fileset dir="${project}/mod/GameInfo" includes="RESEARCHSUBJECT_PLANET_FOR_A_PLANET.entity" />
+</setdata>
+<setdata keyword="ExplosionName" value="Advent_Frigate1" condition="equals" conditionValue="Frigate1">
+	<fileset dir="${project}/mod/GameInfo" includes="Frigate*.entity" />
+</setdata>
+<setdata keyword="MaxHullPoints" value=".75" rule="multiply">
+	<fileset dir="${project}/mod/GameInfo" includes="Frigate*" />
+</setdata>
+<setdata keyword="MeshData" value="\tmaxDiffuseMipLevel 0" rule="insertAfter">
+	<fileset dir="${project}/mod/Mesh" includes="*.mesh" />
+</setdata>
+<setdata keyword="hudIcon" value="dlcId 204880" rule="insertBefore">
+	<fileset dir="${project}/mod/GameInfo" includes="PlanetBonus*.entity" />
+</setdata>

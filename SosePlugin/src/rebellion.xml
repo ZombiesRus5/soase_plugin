@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="Rebellion" help="">
+		<helpText>
+Rebellion Syntax and Constraints Wiki.
+Created by ZombiesRus5
+</helpText>
+		<structure_reference name="Ability" type="Ability" />
+		<structure_reference name="Buff" type="Buff" />
+		<structure_reference name="CapitalShip" type="CapitalShip" />
+		<structure_reference name="Gameplay Constants" type="Constants" />
+		<structure_reference name="Fighter" type="Fighter" />
+		<structure_reference name="Frigate" type="Frigate" />
+		<structure_reference name="Galaxy" type="Galaxy" />
+		<structure_reference name="GalaxyScenarioDef" type="GalaxyScenarioDef" />
+		<structure_reference name="PlanetBonus" type="PlanetBonus" />
+		<structure name="PlanetModule">
+			<structure_reference name="PlanetModuleHangarDefense" type="PlanetModuleHangarDefense" />
+			<structure_reference name="PlanetModuleRefinery" type="PlanetModuleRefinery" />
+			<structure_reference name="PlanetModuleShipFactory" type="PlanetModuleShipFactory" />
+			<structure_reference name="PlanetModuleStandard" type="PlanetModuleStandard" />
+			<structure_reference name="PlanetModuleTradePort" type="PlanetModuleTradePort" />
+			<structure_reference name="PlanetModuleWeaponDefense" type="PlanetModuleWeaponDefense" />
+		</structure>
+		<structure_reference name="Planet" type="Planet" />
+		<structure_reference name="Player" type="Player" />
+		<structure_reference name="ResearchSubject" type="ResearchSubject" />
+		<structure_reference name="SpaceMine" type="SpaceMine" />
+		<structure_reference name="StarBaseUpgrade" type="StarBaseUpgrade" />
+		<structure_reference name="StarBase"  />
+		<structure_reference name="Star"/>
+		<structure_reference name="StringInfo" type="Str"/>
+		<structure_reference name="Sounddata" />
+		
+	</structure>
+</tns:entity_definitions>

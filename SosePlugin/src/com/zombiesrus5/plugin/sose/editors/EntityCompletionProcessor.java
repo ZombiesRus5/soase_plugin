@@ -114,7 +114,8 @@ public class EntityCompletionProcessor implements IContentAssistProcessor {
 
 		try {
 			String entityType = null;
-		
+			String textType = "TXT";
+			
 			IResource resource = (IResource) editor.getEditorInput().getAdapter(IResource.class);
 			EntityParser parser = EntityBuilder.getParser(resource.getProject());
 			if (editor.getEditorInput() instanceof FileEditorInput) {
@@ -126,10 +127,11 @@ public class EntityCompletionProcessor implements IContentAssistProcessor {
 				} else {
 					entityType = "";
 				}
+				textType = EntityDefinitionView.getTextType((FileEditorInput)editor.getEditorInput());
 			}
 		
 			KeyWordCollector collector = new KeyWordCollector();
-			parser.processDefinition(entityType, collector);
+			parser.processDefinition(entityType, collector, textType);
 			keyWords = new String[collector.getKeyWordSet().size()];
 			collector.getKeyWordSet().toArray(keyWords);
 		} catch (Exception e) {

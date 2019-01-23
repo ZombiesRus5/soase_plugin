@@ -19,6 +19,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(PreferenceConstants.VALIDATE_PARTICLES, true);
+		store.setDefault(PreferenceConstants.REBELLION_INSTALLATION_VALIDATE_PATH, true);
+		store.setDefault(PreferenceConstants.REBELLION_REFERENCE_VALIDATE_PATH, false);
 		store.setDefault(PreferenceConstants.IGNORE_CASE_ON_REFERENCE_FILES, true);
 		store.setDefault(PreferenceConstants.REQUIRES_DECIMAL_POINT_ON_DECIMAL, false);
 		store.setDefault(PreferenceConstants.ALLOW_DECIMAL_POINT_ON_INTEGER, true);

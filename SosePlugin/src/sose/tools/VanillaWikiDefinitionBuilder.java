@@ -41,7 +41,7 @@ public class VanillaWikiDefinitionBuilder implements DefinitionHandler {
 				System.out.println("pause");
 			}
 			VanillaWikiDefinitionBuilder builder = new VanillaWikiDefinitionBuilder(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT");
 	}
 	}
 	

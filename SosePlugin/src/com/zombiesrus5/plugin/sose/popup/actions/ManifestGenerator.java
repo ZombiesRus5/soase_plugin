@@ -140,12 +140,12 @@ public class ManifestGenerator implements IObjectActionDelegate {
 										}
 									}
 									
-									IProject[] referencing = p.getReferencingProjects();
-									if (referencing != null) {
-										for (int i=0; i<referencing.length; i++) {
-											referencing[i].accept(visitor);
-										}
-									}
+//									IProject[] referencing = p.getReferencingProjects();
+//									if (referencing != null) {
+//										for (int i=0; i<referencing.length; i++) {
+//											referencing[i].accept(visitor);
+//										}
+//									}
 								}
 							}
 							IProject project = (IProject)resource;

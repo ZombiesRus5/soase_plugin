@@ -93,7 +93,7 @@
 				</iterative_field>
 				
 				<iterative_field name="playerCount">
-					<structure_reference required="false" name="player" type="PlayerType"/>
+					<structure_reference required="false" name="player" type="PlayerStructure"/>
 				</iterative_field>
 			</condition>
 		</condition_field>

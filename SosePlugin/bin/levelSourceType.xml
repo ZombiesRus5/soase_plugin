@@ -5,6 +5,12 @@
 			<structure_reference required="true" name="minExperienceLevelRequired" type="GenericLevel"/>
 		</condition>
 		<condition>
+			<value version="Rebellion">ResearchFloatModifierValue</value>
+			<field required="true"  name="sourceResearchFloatModifierType" validation="Simple">
+				<value>MinorFactionAbilityLevel</value>
+			</field>
+		</condition>
+		<condition>
 			<value version="Rebellion">ResearchStartsAt0</value>
 			<field required="true"  name="improveSourceResearchSubject" validation="Entity"/>
 		</condition>

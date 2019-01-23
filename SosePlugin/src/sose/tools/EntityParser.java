@@ -153,7 +153,9 @@ public class EntityParser {
 		"planetItemTypeCount.xml;" +
 		"groups.xml;" +
 		"random_event_defs.xml;" +
-		"particle.xml"
+		"particle.xml;" +
+		"rebellion.xml;" + 
+		"asteroidDef.xml"
 ;
 	String idsFile = null;
 	String sinsInstallationDirectory = null;
@@ -162,6 +164,9 @@ public class EntityParser {
 	String vanillaReferenceDirectory = null;
 	String modDirectory = null;
 	List<String> baseModDirectories = new ArrayList<String>();
+	
+	boolean includeInstallation = true;
+	boolean includeReference = true;
 	
 	Map<String, Set<String>> references = new HashMap<String, Set<String>>();
 
@@ -1696,7 +1701,7 @@ public class EntityParser {
 		}
 	}
 
-	public String[] getReferences(String fieldName) {
+	protected String[] getReferences(String fieldName) {
 		TreeSet<String> references = new TreeSet<String>();
 		Iterator<StructureValidator> validators = structures.values().iterator();
 		while (validators.hasNext()) {
@@ -2427,8 +2432,13 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
-			
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
+				
 				prototypeValidators.put("Entity", new FileReferenceValidator(ValidationType.ENTITY, ".entity", dirs, true) );
 			}
 			validator = prototypeValidators.get("Entity");
@@ -2445,8 +2455,12 @@ public class EntityParser {
 					dirs.add(entrenchmentDir + "/Textures");
 					dirs.add(sinsInstallationDir + "/Entrenchment/Textures");
 				}
-				dirs.add(vanillaDir + "/Textures");
-				dirs.add(sinsInstallationDir + "/Textures");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/Textures");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/Textures");
+				}
 			
 				prototypeValidators.put("Texture", new FileReferenceValidator(ValidationType.TEXTURE, "", dirs, false, true) );
 			}
@@ -2464,8 +2478,12 @@ public class EntityParser {
 					dirs.add(sinsInstallationDir + "/Entrenchment/Sound");
 					dirs.add(entrenchmentDir + "/Sound");
 				}
-				dirs.add(vanillaDir + "/Sound");
-				dirs.add(sinsInstallationDir + "/Sound");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/Sound");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/Sound");
+				}
 			
 				prototypeValidators.put("SoundFile", new FileReferenceValidator(ValidationType.SOUNDFILE, "", dirs, false, true) );
 			}
@@ -2481,7 +2499,12 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
 				
 				prototypeValidators.put("Sound", new FieldReferenceValidator(ValidationType.SOUND, "name", ".sounddata", dirs, false));
 			}
@@ -2497,7 +2520,12 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
 				
 				prototypeValidators.put(ValidationType.GALAXY_DESIGN, new FieldReferenceValidator(ValidationType.GALAXY_DESIGN, "designName", ".galaxyScenarioDef", dirs, false));
 			}
@@ -2513,7 +2541,12 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
 				
 				prototypeValidators.put(ValidationType.GALAXY_TEMPLATE, new FieldReferenceValidator(ValidationType.GALAXY_TEMPLATE, "templateName", ".galaxyScenarioDef", dirs, false));
 			}
@@ -2529,7 +2562,12 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
 				
 				prototypeValidators.put(ValidationType.GALAXY_ORBIT_BODY_TYPE, new FieldReferenceValidator(ValidationType.GALAXY_ORBIT_BODY_TYPE, "typeName", ".galaxyScenarioDef", dirs, false));
 			}
@@ -2545,7 +2583,12 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					dirs.add(entrenchmentDir + "/GameInfo");
 				}
-				dirs.add(vanillaDir + "/GameInfo");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/GameInfo");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/GameInfo");
+				}
 				
 				prototypeValidators.put("Explosion", new FieldReferenceValidator(ValidationType.EXPLOSION, "groupName", ".explosiondata", dirs, false));
 			}
@@ -2573,8 +2616,12 @@ public class EntityParser {
 					dirs.add(sinsInstallationDir + "/Entrenchment/Mesh");
 					dirs.add(entrenchmentDir + "/Mesh");
 				}
-				dirs.add(vanillaDir + "/Mesh");
-				dirs.add(sinsInstallationDir + "/Mesh");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/Mesh");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/Mesh");
+				}
 			
 				prototypeValidators.put("Mesh", new FileReferenceValidator(ValidationType.MESH, ".mesh", dirs, true, true) );
 			}
@@ -2592,8 +2639,12 @@ public class EntityParser {
 					dirs.add(entrenchmentDir + "/Particle");
 					dirs.add(sinsInstallationDir + "/Entrenchment/Particle");
 				}
-				dirs.add(vanillaDir + "/Particle");
-				dirs.add(sinsInstallationDir + "/Particle");
+				if (includeReference) {
+					dirs.add(vanillaDir + "/Particle");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/Particle");
+				}
 
 				prototypeValidators.put("Particle", new FileReferenceValidator(ValidationType.PARTICLE, ".particle", dirs, false) );
 			}
@@ -2624,7 +2675,11 @@ public class EntityParser {
 				if (isVersionSupported("Entrenchment")) {
 					hudDirectories.add(entrenchmentDir + "/Window");
 				}
-				hudDirectories.add(vanillaDir + "/Window");
+				if (includeReference) {
+					hudDirectories.add(vanillaDir + "/Window");
+				}
+				if (includeInstallation) {
+				}
 				
 				prototypeValidators.put("Brush", new FieldReferenceValidator(ValidationType.BRUSH, "name", ".brushes", hudDirectories, false) );
 			}
@@ -2869,7 +2924,18 @@ public class EntityParser {
 		this.contentHandler = contentHandler;
 	}
 
-	public void processDefinition(String definition, DefinitionHandler handler)  throws Exception{
+	public void processDefinition(String definition, DefinitionHandler handler, String textType)  throws Exception{
+		if (textType.equals("TXT")) {
+			structures = txtStructures;
+			validators = txtValidators;
+		} else if (textType.equals("TXT2")) {
+			structures = txt2Structures;
+			validators = txt2Validators;
+		} else {
+			structures = txtStructures;
+			validators = txtValidators;
+		}
+		
 		Validator validator = structures.get(definition);
 		
 		if (validator != null && validator instanceof StructureValidator) {
@@ -2879,7 +2945,18 @@ public class EntityParser {
 		}
 	}
 
-	public void processDefinition(String definition, String fieldName, DefinitionHandler handler)  throws Exception{
+	public void processDefinition(String definition, String fieldName, DefinitionHandler handler, String textType)  throws Exception{
+		if (textType.equals("TXT")) {
+			structures = txtStructures;
+			validators = txtValidators;
+		} else if (textType.equals("TXT2")) {
+			structures = txt2Structures;
+			validators = txt2Validators;
+		} else {
+			structures = txtStructures;
+			validators = txtValidators;
+		}
+		
 		Validator validator = structures.get(definition);
 		
 		if (validator != null && validator instanceof StructureValidator) {
@@ -3014,6 +3091,22 @@ public class EntityParser {
 
 	public void setStringDirectory(String stringDirectory) {
 		this.stringDirectory = stringDirectory;
+	}
+
+	public boolean isIncludeInstallation() {
+		return includeInstallation;
+	}
+
+	public void setIncludeInstallation(boolean includeInstallation) {
+		this.includeInstallation = includeInstallation;
+	}
+
+	public boolean isIncludeReference() {
+		return includeReference;
+	}
+
+	public void setIncludeReference(boolean includeReference) {
+		this.includeReference = includeReference;
 	}
 
 }

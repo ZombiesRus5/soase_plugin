@@ -41,7 +41,7 @@ public class RebellionWikiDefinitionBuilder implements DefinitionHandler {
 				System.out.println("pause");
 			}
 			RebellionWikiDefinitionBuilder builder = new RebellionWikiDefinitionBuilder(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT2");
 		}
 	}
 	

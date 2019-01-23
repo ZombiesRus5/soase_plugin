@@ -41,7 +41,7 @@ public class EntrenchmentWikiDefinitionBuilder implements DefinitionHandler {
 				System.out.println("pause");
 			}
 			EntrenchmentWikiDefinitionBuilder builder = new EntrenchmentWikiDefinitionBuilder(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT");
 		}
 	}
 	

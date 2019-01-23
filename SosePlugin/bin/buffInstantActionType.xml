@@ -2,6 +2,67 @@
 <tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
 
 	<condition_field help="Note: some buffInstantActionTypes are not applicable to Abilities." name="buffInstantActionType">
+		<condition><value>SpawnShipsAtPlanetWithTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<iterative_field name="spawnShipsLevelCount" limit="6">
+				<structure_reference required="false" name="spawnShips"/>
+			</iterative_field>
+			<field required="true" name="spawnShipsArrivalDelayTime" validation="Decimal"/>
+			<field required="true" name="spawnShipsHyperspaceSpawnType"/>
+			<field required="true" name="shouldAdoptFirstSpawnersMinorFactionState" validation="Boolean"/>
+			<field required="true" name="spawnShipsMinStartingHullPerc" validation="Decimal"/>
+			<field required="true" name="spawnShipsMaxStartingHullPerc" validation="Decimal"/>
+		</condition>
+		<condition><value>SpawnShipsAtPlanetWithRandomTarget</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="targetFilter"/>
+			<iterative_field name="spawnShipsLevelCount" limit="6">
+				<structure_reference required="false" name="spawnShips"/>
+			</iterative_field>
+			<field required="true" name="spawnShipsArrivalDelayTime" validation="Decimal"/>
+			<field required="true" name="spawnShipsHyperspaceSpawnType"/>
+			<field required="true" name="shouldAdoptFirstSpawnersMinorFactionState" validation="Boolean"/>
+			<field required="true" name="spawnShipsMinStartingHullPerc" validation="Decimal"/>
+			<field required="true" name="spawnShipsMaxStartingHullPerc" validation="Decimal"/>
+		</condition>
+		<condition><value>SpawnShipsAtPlanet</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<iterative_field name="spawnShipsLevelCount" limit="6">
+				<structure_reference required="false" name="spawnShips"/>
+			</iterative_field>
+			<field required="true" name="spawnShipsArrivalDelayTime" validation="Decimal"/>
+			<field required="true" name="spawnShipsHyperspaceSpawnType"/>
+			<field required="true" name="shouldAdoptFirstSpawnersMinorFactionState" validation="Boolean"/>
+			<field required="true" name="spawnShipsMinStartingHullPerc" validation="Decimal"/>
+			<field required="true" name="spawnShipsMaxStartingHullPerc" validation="Decimal"/>
+		</condition>
+		<condition><value>GiveResourceToPlayer</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field name="resourceType" validation="Simple"  values="Credits,Metal,Crystal"/>
+			<structure_reference required="true" name="resourceAmount" type="GenericLevel"/>
+			<field name="resourceAmountScalarType" validation="Simple"  values="PerOwnerShipSlot,Flat"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition> <!-- diplomacy -->
+		<condition><value version="Rebellion">RemovePlanetPopulation</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="populationAmount" type="GenericLevel"/>
+			<field name="populationAmountScalarType" validation="Simple"  values="PerOwnerPlanetPopulation"/>
+		</condition>
+		<condition><value version="Rebellion">ApplyBuffToAllFirstSpawnerShipsAndStructures</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
+		<condition><value version="Rebellion">ApplyBuffToLocalOrbitBodiesWithinDistance</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<field required="true" name="buffType" validation="Entity" />
+			<structure_reference required="true" name="targetFilter"/>
+			<field name="connectionDistance" validation="Decimal"/>
+			<structure_reference required="true" name="maxTargetCount" type="GenericLevel"/>
+			<structure_reference required="true" name="effectInfo"/>
+		</condition>
 		<condition><value version="Rebellion">GiveExperience</value>
 			<field required="true" name="instantActionTriggerType"/>
 			<field required="true" name="experienceToGive" validation="Decimal"/>
@@ -16,6 +77,9 @@
 			<field required="true" name="instantActionTriggerType"/>
 		</condition>
 		<condition><value version="Rebellion">ChangePlayerIndexToNeutral</value>
+			<field required="true" name="instantActionTriggerType"/>
+		</condition>
+		<condition><value version="Rebellion">ChangePlayerIndexToPriorMinorFaction</value>
 			<field required="true" name="instantActionTriggerType"/>
 		</condition>
 		<condition><value version="Rebellion">CreatePlanetModule</value>
@@ -527,6 +591,10 @@
 			</iterative_field>
 			<field required="true" name="spawnShipsArrivalDelayTime" validation="Decimal"/>
 			<field required="true" name="spawnShipsHyperspaceSpawnType"/>
+			<field required="true" name="shouldAdoptFirstSpawnersMinorFactionState" validation="Boolean" version="Rebellion193"/>
+			<field required="true" name="spawnShipsMinStartingHullPerc" validation="Decimal" version="Rebellion193"/>
+			<field required="true" name="spawnShipsMaxStartingHullPerc" validation="Decimal" version="Rebellion193"/>
+			
 		</condition>
 		<condition><value>StealAntiMatterForFirstSpawner</value>
 			<field required="true" name="instantActionTriggerType"/>

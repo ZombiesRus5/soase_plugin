@@ -48,7 +48,7 @@ public class HoverHelpCollector implements DefinitionHandler {
 //				System.out.println("pause");
 			}
 			HoverHelpCollector builder = new HoverHelpCollector(definition);
-			parser.processDefinition(definition, builder);
+			parser.processDefinition(definition, builder, "TXT");
 //			System.out.println(builder.getHoverInfo());
 		}
 	}

@@ -1,45 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
 
-<structure name="Buff">
-		<field required="true" name="onReapplyDuplicateType" type="onReapplyDuplicateType"/>
-		<field required="true" name="buffStackingLimitType" type="buffStackingLimitType" version="Entrenchment"/>
-		<field required="true" name="stackingLimit" validation="Integer" version="Entrenchment"/>
-		<field required="false" name="allowFirstSpawnerToStack" validation="Boolean" version="Entrenchment"/>
-		<field required="true" name="buffExclusivityForAIType" type="buffExclusivityForAIType" />
-		<field required="true" name="isInterruptable" validation="Boolean"/>
-		<field required="true" name="isChannelling" validation="Boolean"/>
-		<iterative_field name="numInstantActions" limit="5">
-			<structure required="false" name="instantAction">
-				<field required="true" name="buffInstantActionType" type="buffInstantActionType"/>
-			</structure>
-		</iterative_field>
-		<iterative_field name="numPeriodicActions" limit="3">
-			<structure required="false" name="periodicAction">
-				<condition_field name="actionCountType">
-					<condition value="Infinite">
-					</condition>
-					<condition value="Finite">
-						<structure_reference required="true" name="actionCount" type="GenericLevel"/>
-					</condition>
-				</condition_field>
-				<structure_reference required="true" name="actionIntervalTime" type="GenericLevel"/>
-				<field required="true" name="buffInstantActionType" type="buffInstantActionType"/>
-			</structure>
-		</iterative_field>
-		<iterative_field name="numOverTimeActions">
-			<structure required="false" name="overTimeAction">
-				<field required="true" name="buffOverTimeActionType" type="buffOverTimeActionType"/>
-			</structure>
-		</iterative_field>
-		<iterative_field name="numEntityModifiers">
-			<structure required="false" name="entityModifier">
-				<field name="buffEntityModifierType"/>
-				<structure_reference required="true" name="value" type="GenericLevel"/>
-			</structure>
-		</iterative_field>
-		<iterative_field name="numEntityBoolModifiers">
-			<field required="false" name="entityBoolModifier" validation="Simple">
+			<element_rule required="false" name="entityBoolModifierType" validation="Simple">
 			
 				<value version="Rebellion">PlanetBombingDamageAsDamageDealer</value>
 				<value version="Rebellion">IsInvisible</value>
@@ -81,7 +43,47 @@
 				<value>ProxySensor</value>
 				<value>WeaponsDealNoDamage</value>
 				<value>PhaseDodge</value>
-			</field>
+			</element_rule>
+
+<structure name="Buff">
+		<field required="true" name="onReapplyDuplicateType" type="onReapplyDuplicateType"/>
+		<field required="true" name="buffStackingLimitType" type="buffStackingLimitType" version="Entrenchment"/>
+		<field required="true" name="stackingLimit" validation="Integer" version="Entrenchment"/>
+		<field required="false" name="allowFirstSpawnerToStack" validation="Boolean" version="Entrenchment"/>
+		<field required="true" name="buffExclusivityForAIType" type="buffExclusivityForAIType" />
+		<field required="true" name="isInterruptable" validation="Boolean"/>
+		<field required="true" name="isChannelling" validation="Boolean"/>
+		<iterative_field name="numInstantActions" limit="5">
+			<structure required="false" name="instantAction">
+				<field required="true" name="buffInstantActionType" type="buffInstantActionType"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="numPeriodicActions" limit="3">
+			<structure required="false" name="periodicAction">
+				<condition_field name="actionCountType">
+					<condition value="Infinite">
+					</condition>
+					<condition value="Finite">
+						<structure_reference required="true" name="actionCount" type="GenericLevel"/>
+					</condition>
+				</condition_field>
+				<structure_reference required="true" name="actionIntervalTime" type="GenericLevel"/>
+				<field required="true" name="buffInstantActionType" type="buffInstantActionType"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="numOverTimeActions">
+			<structure required="false" name="overTimeAction">
+				<field required="true" name="buffOverTimeActionType" type="buffOverTimeActionType"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="numEntityModifiers">
+			<structure required="false" name="entityModifier">
+				<field name="buffEntityModifierType"/>
+				<structure_reference required="true" name="value" type="GenericLevel"/>
+			</structure>
+		</iterative_field>
+		<iterative_field name="numEntityBoolModifiers">
+			<field required="false" name="entityBoolModifier" type="entityBoolModifierType"/>
 		</iterative_field>
 		<iterative_field name="numFinishConditions">
 			<structure required="false" name="finishCondition">

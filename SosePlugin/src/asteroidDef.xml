@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="AsteroidDef">
+		<iterative_field name="meshGroupCount">
+			<structure_reference required="false" name="meshGroup" type="AsteroidDefMeshGroup"/>
+		</iterative_field>
+		<iterative_field name="templateCount">
+			<structure_reference required="false" name="template" type="AsteroidDefTemplate"/>
+		</iterative_field>
+	</structure>
+		
+	<structure name="AsteroidDefMeshGroup">
+		<field name="name" validation="Any"/>
+		<iterative_field name="meshNameCount">
+			<field required="false" name="meshName" validation="Mesh"/>
+		</iterative_field>
+	</structure>
+	<structure name="AsteroidDefTemplate">
+		<field name="name" validation="Any"/>
+		<iterative_field name="clusterCount">
+			<structure_reference required="false" name="cluster" type="AsteroidDefCluster"/>
+		</iterative_field>
+	</structure>
+	<structure name="AsteroidDefCluster">
+		<field name="meshGroupName" validation="Any"/>
+		<field name="asteroidCount" validation="Integer"/>
+		<field name="minDistance" validation="Decimal"/>
+		<field name="maxDistance" validation="Decimal"/>
+		<field name="maxZOffset" validation="Decimal"/>
+		<field name="minAngle" validation="Integer"/>
+		<field name="maxAngle" validation="Integer"/>
+		<field name="minAngularSpeed" validation="Decimal"/>
+		<field name="maxAngularSpeed" validation="Decimal"/>
+	</structure>
+
+</tns:entity_definitions>
