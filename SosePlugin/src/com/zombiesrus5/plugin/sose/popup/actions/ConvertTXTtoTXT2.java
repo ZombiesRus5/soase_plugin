@@ -172,15 +172,30 @@ public class ConvertTXTtoTXT2 implements IObjectActionDelegate {
 			// file is already in TXT2 format
 			return;
 		}
-		defWriter.println("TXT2");
-		defWriter.println("SinsArchiveVersion 193");
-		line = defReader.readLine();
-		if (line.contains("Ability")) {
-			type = "Ability";
-		} else if (line.contains("Frigate")) {
-			type = "Frigate";
+		
+		// need to handle Galaxy Files too
+		if (resource.getFileExtension().endsWith("galaxy")) {
+			type = "Galaxy";
+			// verify if the Version is 193
+			line = defReader.readLine();
+			
+			if (line.contains("193")) { 
+				return;
+			}
+			
+			defWriter.println("TXT");
+			defWriter.println("versionNumber 193");
+		} else {
+			defWriter.println("TXT2");
+			defWriter.println("SinsArchiveVersion 193");
+			line = defReader.readLine();
+			if (line.contains("Ability")) {
+				type = "Ability";
+			} else if (line.contains("Frigate")) {
+				type = "Frigate";
+			}
+			defWriter.println(line);
 		}
-		defWriter.println(line);
 		
 		//System.out.println(keyword);
 		while (defReader.ready()) {
@@ -241,10 +256,10 @@ public class ConvertTXTtoTXT2 implements IObjectActionDelegate {
 				String spacing = line.substring(0, spaceIndex);
 				defWriter.println(spacing + "maxAiCannons 3");
 			} else if (line.contains("isPsi FALSE")) {
-				defWriter.println(line);
+				//defWriter.println(line);
 				defWriter.println("playerRaceType \"Other\"");
 			} else if (line.contains("isPsi TRUE")) {
-				defWriter.println(line);
+				//defWriter.println(line);
 				defWriter.println("playerRaceType \"Psi\"");
 			} else if (line.contains("GameEventSound:UseAbilityUnmetConstraintHasAbilityWithCooldown")) {
 				defWriter.println(line);
@@ -267,9 +282,37 @@ public class ConvertTXTtoTXT2 implements IObjectActionDelegate {
 				defWriter.println(line);
 				String spacing ="\t";
 				defWriter.println(spacing + "GameEventSound:UseAbilityUnmetOwnerUncontrolledMinorFaction \"UI_COMMON_DEFAULTERROR\"");
+			} else if (line.contains("isNormalPlayer")) {
+				String space = line.substring(0, line.indexOf("is"));
+				String normalPlayer = parseValue(line);
+				String raidingPlayer = parseValue(defReader.readLine());
+				String insurgentPlayer = parseValue(defReader.readLine());
+				String occupationPlayer = parseValue(defReader.readLine());
+				String madVasariPlayer = parseValue(defReader.readLine());
+				
+				String playerType = "NPCMilitia";
+				if (normalPlayer.equalsIgnoreCase("TRUE")) {
+					playerType = "Normal";
+				} else if (raidingPlayer.equalsIgnoreCase("TRUE")) {
+					playerType = "NPCPirateRaider";
+				} else if (insurgentPlayer.equalsIgnoreCase("TRUE")) {
+					playerType = "NPCRebel";
+				} else if (occupationPlayer.equalsIgnoreCase("TRUE")) {
+					playerType = "NPCOccupationVictory";
+				} else if (madVasariPlayer.equalsIgnoreCase("TRUE")) {
+					playerType = "NPCMadVasari";
+				} 
+				defWriter.println(space + "playerType \"" + playerType + "\"");
+			} else if (line.trim().isEmpty() && type.equals("Galaxy")) {
+				defWriter.println("dlcID 204880");
 			} else {
 				defWriter.println(line);
 			}
+		}
+		
+		if (!line.trim().isEmpty() && !line.contains("dlcID") && type.equals("Galaxy")) {
+			defWriter.println("dlcID 204880");
+			defWriter.println();
 		}
 		
 //		if (defReader.ready()) {

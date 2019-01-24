@@ -77,16 +77,16 @@ public class BuffReporter extends ContentHandlerChain {
 		} else if (fieldName.equals("instantActionTriggerType")) {
 			String instantActionTriggerType = fieldValue;
 			if (!instantActionTriggerTypes.contains(instantActionTriggerType) && structures.contains("instantAction")) {
-				String message = MessageFormat.format("instantActionTriggerType should not be set to {0}", instantActionTriggerType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				String message = MessageFormat.format("instantActionTriggerType generally should not be set to {0}", instantActionTriggerType);
+				error.info(new EntityParseException(message, lineNumber, fieldName));
 			}
 			if (!periodicActionTriggerTypes.contains(instantActionTriggerType) && structures.contains("periodicAction")) {
-				String message = MessageFormat.format("instantActionTriggerType should not be set to {0}", instantActionTriggerType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				String message = MessageFormat.format("instantActionTriggerType generally should not be set to {0}", instantActionTriggerType);
+				error.info(new EntityParseException(message, lineNumber, fieldName));
 			}
 		} else if (fieldValue.equals("IncreaseOwnerAbilityLevel")) {
-			String message = MessageFormat.format("Frigate abilities should be Intrinsic or Passive when buffed with {0}", fieldValue);
-			error.warn(new EntityParseException(message, lineNumber, fieldName));
+			String message = MessageFormat.format("Please confirm Frigate ability is set to Intrinsic or Passive when buffed with {0}", fieldValue);
+			error.info(new EntityParseException(message, lineNumber, fieldName));
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}

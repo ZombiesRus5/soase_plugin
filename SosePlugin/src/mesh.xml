@@ -11,7 +11,7 @@
 		<field required="true" name="MaxBoundingExtents" validation="Any"/>
 		<field required="true" name="MinBoundingExtents" validation="Any"/>
 		<iterative_field name="NumMaterials">
-			<structure name="Material">
+			<structure name="Material" required="false" >
 				<field required="true" name="DiffuseTextureFileName" validation="Texture"/>
 				<field required="true" name="SelfIlluminationTextureFileName" validation="Texture"/>
 				<field required="true" name="NormalTextureFileName" validation="Texture"/>
@@ -24,13 +24,12 @@
 				<field required="true" name="Glossiness" validation="Decimal"/>
 			</structure>
 		</iterative_field>		
-		<iterative_field name="NumMaterials">
-			<structure required="true" name="Point">
+		<iterative_field name="NumPoints">
+			<structure required="false" name="Point">
 				<field required="true" name="DataString" validation="MeshPoint"/>
 				<field required="true" name="Position" validation="Any"/>
 				<field required="true" name="Orientation" validation="Orientation"/>
 			</structure>
 		</iterative_field>		
-		<end_validation />
 	</structure>
 </tns:entity_definitions>

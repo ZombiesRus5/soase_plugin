@@ -24,4 +24,5 @@ public interface ValidationType {
 	public String TEMPLATE_NAME = "TemplateName";
 	public String ORIENTATION = "Orientation";
 	public String GALAXY_PLAYER = "GalaxyPlayer";
+	public String MESHPOINT = "MeshPoint";
 }

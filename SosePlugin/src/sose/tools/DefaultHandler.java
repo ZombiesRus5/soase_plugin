@@ -70,4 +70,10 @@ public class DefaultHandler implements ErrorHandler, ContentHandler,
 		return null;
 	}
 
+	@Override
+	public void info(EntityParseException e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -153,6 +153,7 @@
 			<enumeration value="GalaxyTemplate"></enumeration>
 			<enumeration value="GalaxyOrbitBodyType"></enumeration>
 			<enumeration value="TemplateName"></enumeration>
+			<enumeration value="MeshPoint"></enumeration>
 		</restriction>
 	</simpleType>
 

@@ -3,7 +3,11 @@ package com.zombiesrus5.plugin.sose.builder;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStream;
+import java.io.LineNumberReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +53,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 	private EntityParser parser = null;
 	private boolean fullBuild = true;
 	private boolean fullBuildInProcess = false;
-	
+		
 	static class ResourceChangedListener implements IResourceChangeListener {
 		EntityBuilder builder = null;
 		
@@ -273,6 +277,10 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 //			exception.printStackTrace();
 			addMarker(exception, IMarker.SEVERITY_WARNING);
 		}
+		
+		public void info(EntityParseException exception) throws EntityParseException {
+			addMarker(exception, IMarker.SEVERITY_INFO);
+		}
 
 		@Override
 		public void endEntity() {
@@ -387,7 +395,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 	void validateReferenced(IResource resource) {
 		try {
-		if (resource instanceof IFile) {
+		if (resource instanceof IFile && !parser.getIgnoredReferenceFiles().contains(resource.getName().toUpperCase())) {
 			IFile file = (IFile) resource;
 			IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 			boolean warnEntityNotReferenced = store.getBoolean(PreferenceConstants.WARN_ENTITY_NOT_REFERENCED);
@@ -400,7 +408,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 				referenced = isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Entity file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_WARNING);
+					addMarker(file, "Entity file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}
 			if (("ogg".equalsIgnoreCase(resource.getFileExtension()) || "mp3".equalsIgnoreCase(resource.getFileExtension())
@@ -412,7 +420,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "SoundFile file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_WARNING);
+					addMarker(file, "SoundFile file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}		
 			if (("mesh".equalsIgnoreCase(resource.getFileExtension())) && warnEntityNotReferenced) {
@@ -423,7 +431,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Mesh file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_WARNING);
+					addMarker(file, "Mesh file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}		
 			if (("particle".equalsIgnoreCase(resource.getFileExtension())) && warnEntityNotReferenced) {
@@ -434,7 +442,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Particle file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_WARNING);
+					addMarker(file, "Particle file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}	
 		}
@@ -646,6 +654,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			project.setPersistentProperty(KEY_MOD_ROOT, "/");
 		}
 		
+		loadIgnoreIsReferencedNames(parser);
 		addReferencedModDirectory(project, parser);
 		
 		if (store.getBoolean(PreferenceConstants.VALIDATE_PARTICLES) == false) {
@@ -730,6 +739,35 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		return parser;
 	}
 	
+	private static void loadIgnoreIsReferencedNames(EntityParser parser) {
+		// TODO Auto-generated method stub
+		try {
+			File ignoreFile = new File(parser.getModDirectory() + "/.soasereference.ignore");
+			List<String> ignoreFiles = new ArrayList<String>();
+			
+			if (ignoreFile.exists()) {
+				FileReader fr = new FileReader(ignoreFile);
+				LineNumberReader lnr = new LineNumberReader(fr);
+				
+				while (lnr.ready()) {
+					String line = lnr.readLine().trim().toUpperCase();
+					if (!line.isEmpty() && !ignoreFiles.contains(line)) {
+						ignoreFiles.add(line);
+					}
+				}
+				
+				lnr.close();
+				fr.close();
+			}
+
+			parser.setIgnoredReferenceFiles(ignoreFiles);
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static EntityParser resetParser(EntityParser oldParser, IProject project) throws CoreException {
 		final EntityParser parser = new EntityParser();
 		IResource r = null;
@@ -746,6 +784,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			project.setPersistentProperty(KEY_MOD_ROOT, "/");
 		}
 		
+		loadIgnoreIsReferencedNames(parser);
 		addReferencedModDirectory(project, parser);
 		
 		if (Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_PARTICLES))) == false) {

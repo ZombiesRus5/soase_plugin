@@ -102,6 +102,9 @@ import sose.tools.xml.XMLToolkit;
  */
 public class EntityParser {
 	String definitions = 
+		"starscape.xml;" +
+		"skyBoxProperties.xml;" +
+		"mesh.xml;" +
 		"cosmetic.xml;" + 
 		"titan.xml;" + 
 		"titan_upgrade.xml;" +
@@ -196,6 +199,9 @@ public class EntityParser {
 	HashMap<String, Validator> validators = new HashMap<String, Validator>();
 	HashMap<String, StructureValidator> structures = new HashMap<String, StructureValidator>();
 	HashMap<String, String> help = new HashMap<String, String>();
+	
+	List<String> ignoredReferenceFiles = null;
+	
 	private int currentLineNumber = 0;
 	
 	HashMap<String, HashMap<String, String>> metaData = new HashMap<String, HashMap<String, String>>();
@@ -277,6 +283,13 @@ public class EntityParser {
 				values.add("BuffDecloakMineForMovement".toUpperCase());
 				values.add("BuffNeutralCapturableEntity".toUpperCase());
 				values.add("BuffRecentlyColonized".toUpperCase());
+				
+				values.add("MissionCaptureMinorFaction.entity".toUpperCase());
+				values.add("AbilityWormHole.entity".toUpperCase());
+				values.add("PLANETMODULE_TECHORBITALCRYSTALEXTRACTOR".toUpperCase());
+				values.add("PLANETMODULE_TECHORBITALMETALEXTRACTOR".toUpperCase());
+				
+
 			}
 		}
 		values.add(reference.toUpperCase());
@@ -424,6 +437,33 @@ public class EntityParser {
 				if (currentLine.contains(validValues[i])) {
 					return;
 				}
+			}
+			String message = getInvalidValueMessage();
+			if (showPossibleValues()) {
+				ArrayList<String> possibleValues = new ArrayList<String>();
+				for (int i=0; i<10 && i<validValues.length; i++) {
+					possibleValues.add(validValues[i]);
+				}
+				if (validValues.length > possibleValues.size()) {
+					possibleValues.add("...");
+				}
+				message += " expected: " + possibleValues;
+			}
+			if (criticalValue) {
+				fail(message, currentLineNumber, currentLine);
+			} else {
+				warn(message, currentLineNumber, currentLine);
+			}
+		}
+		
+		public void validateMeshPoint(boolean criticalValue, String currentLine, String[] validValues) {
+			for (int i=0; i<validValues.length; i++) {
+				if (currentLine.contains(validValues[i])) {
+					return;
+				}
+			}
+			if (currentLine.contains("Flair-")) {
+				
 			}
 			String message = getInvalidValueMessage();
 			if (showPossibleValues()) {
@@ -1470,6 +1510,86 @@ public class EntityParser {
 		}
 	}
 	
+	private class MeshPointValidator extends FileReferenceValidator {
+
+		private boolean criticalValue = true;
+		
+
+		
+		public MeshPointValidator(String validationType, String includes, List<String> locations, boolean criticalValue)
+				throws Exception {
+			super(validationType, includes, locations, criticalValue);
+			// TODO Auto-generated constructor stub
+		}
+
+		public MeshPointValidator(String validationType, String includes, List<String> locations, boolean criticalValue,
+				boolean includeExtension) throws Exception {
+			super(validationType, includes, locations, criticalValue, includeExtension);
+			// TODO Auto-generated constructor stub
+		}
+		
+		public void setupValidator(String validationType,
+				final String includes, List<String> locations,
+				boolean criticalValue, boolean includeExtension) {
+			Set<String> fileReferenceSet = new HashSet<String>();
+		
+			String[] pointNames = new String[] {
+					"Weapon-0", "Weapon-1", "Weapon-2", "Weapon-3", "Weapon-4", 
+					"Above", "Aura", "Center",
+					"Hangar", "Exhaust", "Bomb",
+					"ShipBuild", 
+					"Ability-0", "Ability-1", "Ability-2", "Ability-3", "Ability-4",
+			};
+			
+			// special case validation
+			for (String point: pointNames) {
+				fileReferenceSet.add(point);
+			}
+			
+			for (int i=0; i<locations.size(); i++) {
+				File location = new File(locations.get(i));
+				String[] srcFiles = location.list(new FilenameFilter() {
+					@Override
+					public boolean accept(File dir, String name) {
+						return name.toUpperCase().endsWith(includes.toUpperCase());
+					}
+				}); 
+				if (srcFiles!=null) {
+					for (int j=0; j<srcFiles.length; j++) {
+						if (srcFiles[j].contains(".")) {
+							fileReferenceSet.add("Flair-" + srcFiles[j].substring(0, srcFiles[j].lastIndexOf(".")));
+							fileReferenceSet.add("Build-" + srcFiles[j].substring(0, srcFiles[j].lastIndexOf(".")));
+						}
+						if (includeExtension == true) {
+							fileReferenceSet.add(srcFiles[j]);
+						} 
+					}
+				}
+			}
+
+			String[] fileReferenceArray = new String[fileReferenceSet.size()];
+			fileReferenceArray = fileReferenceSet.toArray(fileReferenceArray);
+			setValidValues(fileReferenceArray);
+			setCriticalValue(criticalValue);
+			setValidationType(validationType);
+			setInvalidValueMessage("missing mesh point [" + includes + "]");
+			setShowPossibleValues(false);
+		}
+
+		@Override
+		public String validate(String currentLine, LineNumberReader contents)
+				throws Exception {
+			String value = parseValue(currentLine);
+			if (value.contains("Flair-")) {
+				addReference(ValidationType.PARTICLE, value.replace("Flair-", ""));
+			} else if (value.contains("Build-")) {
+				addReference(ValidationType.PARTICLE, value.replace("Build-", ""));
+			}
+			return super.validate(currentLine, contents);
+		}
+
+	}
+
 	private class ColorValidator extends Validator {
 		private boolean criticalValue = true;
 		public ColorValidator() {
@@ -1902,17 +2022,63 @@ public class EntityParser {
 		setFileReferenceHandler(reporter);
 		setContentHandler(reporter);
 		fileType = fileType.substring(0, 1).toUpperCase() + fileType.substring(1);
-		FieldReferenceValidator galaxyScenarioValidator = (FieldReferenceValidator)prototypeValidators.get(ValidationType.GALAXY_TEMPLATE);
 		String[] oldGalaxyScenarioValues = null;
 		
+		LineNumberReader contents = readContents(file);
+		String nextLine = readLine(contents);
+		String sinsArchiveType = "TXT";
+		String sinsArchiveVersion = null;
+		
+		validators = txtValidators;
+		structures = txtStructures;
+		prototypeValidators = txtPrototypeValidators;
+		
+		if (nextLine == null || nextLine.indexOf("TXT") == -1) {
+			fail("Cannot validate binary files", 1, nextLine);
+		} else {
+			if (nextLine.indexOf("TXT2") != -1) {
+				if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+					fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
+				}
+				// we've got a version to eat
+				nextLine = readLine(contents);
+				if (nextLine.indexOf("SinsArchiveVersion") == -1) {
+					fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
+				} else {
+					sinsArchiveType = "TXT2";
+					sinsArchiveVersion = parseValue(nextLine);
+					
+					validators = txt2Validators;
+					structures = txt2Structures;
+					prototypeValidators = txt2PrototypeValidators;
+
+				}
+			} else {
+				if (strictValidation.equalsIgnoreCase("Rebellion185")) {
+					//fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+				}
+				if ("Galaxy".equals(fileType)) {
+					nextLine = readLine(contents);
+					String versionNumber = parseValue(nextLine);
+					if ("193".equals(versionNumber)) {
+						validators = txt2Validators;
+						structures = txt2Structures;
+						prototypeValidators = txt2PrototypeValidators;
+					}
+				}
+			}
+		}
+		
+		FieldReferenceValidator galaxyScenarioValidator = (FieldReferenceValidator)prototypeValidators.get(ValidationType.GALAXY_TEMPLATE);
+
 		if (fileType.equals("Galaxy")) {
 			// need to capture template contents then reset afterwards?
 			if (prototypeValidators.containsKey(ValidationType.GALAXY_TEMPLATE)) {
 				// can't validate galaxy files if they didn't include the scenario def in their mod
 				try {
 					List<String> dirs = new ArrayList<String>();
-					dirs.add(modDirectory + "/GameInfo");
-					FieldReferenceValidator galaxyValidator = new FieldReferenceValidator(ValidationType.GALAXY_TEMPLATE, "templateName", ".galaxyScenarioDef", preValidate, false);
+					dirs.add(modDirectory + "/Galaxy");
+					FieldReferenceValidator galaxyValidator = new FieldReferenceValidator(ValidationType.GALAXY_TEMPLATE, "templateName", ".galaxy", preValidate, false);
 					String[] galaxyValues = galaxyValidator.getValidValues();
 					String[] galaxyScenarioValues = galaxyScenarioValidator.getValidValues();
 					ArrayList<String> tempArray = new ArrayList<String>(galaxyValues.length + galaxyScenarioValues.length);
@@ -1928,11 +2094,13 @@ public class EntityParser {
 				}
 			}
 		}
-		validate(file, fileType);
+		validate(contents, fileType);
 		if (fileType.equals("Galaxy")) {
 			galaxyScenarioValidator.setValidValues(oldGalaxyScenarioValues);
 			prototypeValidators.put(ValidationType.GALAXY_TEMPLATE, galaxyScenarioValidator);
 		}
+		} catch(Exception e) {
+			// ignore
 		} finally {
 			// not the best idea but just saving time
 			if (preValidate != null) {
@@ -1952,54 +2120,10 @@ public class EntityParser {
 		}
 	}
 	
-	public void validate(InputStream is, String fileType) throws EntityParseException {
+	public void validate(LineNumberReader contents, String fileType) throws EntityParseException {
 		try {
-			LineNumberReader contents = readContents(is);
-			String nextLine = readLine(contents);
-			String sinsArchiveType = "TXT";
-			String sinsArchiveVersion = null;
+			String nextLine = null;
 			
-			validators = txtValidators;
-			structures = txtStructures;
-			prototypeValidators = txtPrototypeValidators;
-			
-			if (nextLine == null || nextLine.indexOf("TXT") == -1) {
-				fail("Cannot validate binary files", 1, nextLine);
-			} else {
-				if (nextLine.indexOf("TXT2") != -1) {
-					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-						fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
-					}
-					// we've got a version to eat
-					nextLine = readLine(contents);
-					if (nextLine.indexOf("SinsArchiveVersion") == -1) {
-						fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
-					} else {
-						sinsArchiveType = "TXT2";
-						sinsArchiveVersion = parseValue(nextLine);
-						
-						validators = txt2Validators;
-						structures = txt2Structures;
-						prototypeValidators = txt2PrototypeValidators;
-
-					}
-				} else {
-					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-						//fail("TXT not supported in Rebellion 1.93", 1, nextLine);
-					}
-					if ("Galaxy".equals(fileType)) {
-						nextLine = readLine(contents);
-						String versionNumber = parseValue(nextLine);
-						if ("193".equals(versionNumber)) {
-							validators = txt2Validators;
-							structures = txt2Structures;
-							prototypeValidators = txt2PrototypeValidators;
-						}
-					}
-				}
-			}
-			
-
 			// what kind of file am I?
 			if ("Entity".equals(fileType)) {
 				nextLine = readLine(contents);
@@ -2016,6 +2140,9 @@ public class EntityParser {
 						
 						// do we have any unexpected content left?
 						while (contents.ready()) {
+							if (nextLine != null && nextLine.contains("NumVertices")) {
+								break; // this is a mesh so we are done
+							} else 
 							if (nextLine != null && !nextLine.trim().isEmpty()) {
 								throw new EntityParseException("check structure definition. found unexpected keyword", currentLineNumber, nextLine);
 							}
@@ -2649,6 +2776,29 @@ public class EntityParser {
 				prototypeValidators.put("Particle", new FileReferenceValidator(ValidationType.PARTICLE, ".particle", dirs, false) );
 			}
 			validator = prototypeValidators.get("Particle");
+		} else if (validation.equals("MeshPoint")) {
+			if (!prototypeValidators.containsKey("MeshPoint")) {
+				List<String> dirs = new ArrayList<String>();
+				dirs.add(myModDir + "/Particle");
+				addReferenceLocation(dirs, baseModDirs, "/Particle");
+				if (isVersionSupported("Diplomacy")) {
+					dirs.add(sinsInstallationDir + "/Diplomacy/Particle");
+					dirs.add(diplomacyDir + "/Particle");
+				}
+				if (isVersionSupported("Entrenchment")) {
+					dirs.add(entrenchmentDir + "/Particle");
+					dirs.add(sinsInstallationDir + "/Entrenchment/Particle");
+				}
+				if (includeReference) {
+					dirs.add(vanillaDir + "/Particle");
+				}
+				if (includeInstallation) {
+					dirs.add(sinsInstallationDir + "/Particle");
+				}
+
+				prototypeValidators.put("MeshPoint", new MeshPointValidator(ValidationType.PARTICLE, ".particle", dirs, false));
+			}
+			validator = prototypeValidators.get("MeshPoint");
 		} else if (validation.equals("StringInfo")) {
 			if (!prototypeValidators.containsKey("StringInfo")) {
 				List<String> idsFiles = new ArrayList<String>();
@@ -3108,5 +3258,14 @@ public class EntityParser {
 	public void setIncludeReference(boolean includeReference) {
 		this.includeReference = includeReference;
 	}
+
+	public List<String> getIgnoredReferenceFiles() {
+		return ignoredReferenceFiles;
+	}
+
+	public void setIgnoredReferenceFiles(List<String> ignoredReferenceFiles) {
+		this.ignoredReferenceFiles = ignoredReferenceFiles;
+	}
+
 
 }

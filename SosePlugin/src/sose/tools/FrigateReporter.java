@@ -44,7 +44,7 @@ public class FrigateReporter extends ContentHandlerChain {
 				// we're good here
 			} else if (levelSourceType.equals("Intrinsic")) {
 				String message = MessageFormat.format("levelSourceType {0} is generally used for CapitalShip, but required if Frigate is buffed with IncreaseOwnerAbilityLevel.", levelSourceType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.info(new EntityParseException(message, lineNumber, fieldName));
 			} else {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
 				error.error(new EntityParseException(message, lineNumber, fieldName));

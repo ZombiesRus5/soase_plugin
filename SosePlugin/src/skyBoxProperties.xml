@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+	<structure name="SkyBoxProperties">
+		<iterative_field name="numProperties" required="true">
+			<structure name="properties" required="false">
+				<field name="meshName" type="Mesh" />
+				<field name="diffuseLiteColor" type="Color" /> 
+				<field name="diffuseDarkColor" type="Color" /> 
+				<field name="ambientLiteColor" type="Color" /> 
+				<field name="ambientDarkColor" type="Color" /> 
+				<field name="specularColor" type="Color" /> 
+				<field name="dustCloudColor" type="Color" /> 
+				<iterative_field name="numFarStarIconCloudTextureNames" >
+					<field name="textureName" type="Texture" required="false"/>
+				</iterative_field>
+				<field name="environmentMapName" type="Texture" />
+				<field name="environmentIlluminationMapName" type="Texture" />
+			</structure>
+		</iterative_field>
+	</structure>
+</tns:entity_definitions>
