@@ -50,8 +50,7 @@ public class AbilityReporter extends ContentHandlerChain {
 			}
 		} else if (fieldName.equals("levelSourceType") 
 				|| fieldName.equals("useCostType")) {
-			HashMap<String, String> meta = parser.getMetaData(fileReference.getFileName());
-			meta.put(fieldName, fieldValue);
+			parser.setMetaData(fileReference.getFileName(), fieldName, fieldValue);
 		} 
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}

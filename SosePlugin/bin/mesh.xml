@@ -8,8 +8,8 @@
 		<field required="true" name="maxDiffuseMipLevel" validation="Integer"/>
 		<field required="true" name="hasValidTangents" validation="Boolean"/>
 		<field required="true" name="BoundingRadius" validation="Decimal"/>
-		<field required="true" name="MaxBoundingExtents" validation="Any"/>
-		<field required="true" name="MinBoundingExtents" validation="Any"/>
+		<field required="true" name="MaxBoundingExtents" validation="Coordinate"/>
+		<field required="true" name="MinBoundingExtents" validation="Coordinate"/>
 		<iterative_field name="NumMaterials">
 			<structure name="Material" required="false" >
 				<field required="true" name="DiffuseTextureFileName" validation="Texture"/>
@@ -27,7 +27,7 @@
 		<iterative_field name="NumPoints">
 			<structure required="false" name="Point">
 				<field required="true" name="DataString" validation="MeshPoint"/>
-				<field required="true" name="Position" validation="Any"/>
+				<field required="true" name="Position" validation="Coordinate"/>
 				<field required="true" name="Orientation" validation="Orientation"/>
 			</structure>
 		</iterative_field>		

@@ -66,6 +66,20 @@
             adaptable="true"
             id="com.zombiesrus5.plugin.sose.contribution1"
             nameFilter="*"
+            objectClass="org.eclipse.core.resources.IMarker">
+         <action
+               class="com.zombiesrus5.plugin.sose.popup.actions.OpenDeclaration"
+               definitionId="com.zombiesrus5.plugin.sose.popup.commands.OpenEntity"
+               icon="icons/entity.gif"
+               id="SosePlugin.action1"
+               label="Open Declaration"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="com.zombiesrus5.plugin.sose.contribution1"
+            nameFilter="*"
             objectClass="org.eclipse.core.resources.IProject">
          <action
                class="com.zombiesrus5.plugin.sose.builder.ToggleNatureAction"

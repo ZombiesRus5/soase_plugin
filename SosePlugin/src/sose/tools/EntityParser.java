@@ -213,11 +213,22 @@ public class EntityParser {
 	private StringInfo stringInfo = null;
 	private String stringDirectory = null;
 	
+	private List<EntityParser> referencedParsers = new ArrayList<EntityParser>(); 
+	
+	public List<EntityParser> getReferencedParsers() {
+		return referencedParsers;
+	}
+
+	public void setReferencedParsers(List<EntityParser> referencedParsers) {
+		this.referencedParsers = referencedParsers;
+	}
+
 	public void addExcludedFileExtension(String fileExtension) {
 		excludedFileExtensions.add(fileExtension);
 	}
 
 	public void reset() {
+		metaData.clear();
 		baseModDirectories.clear();
 		baseModDirectories = null;
 		references.clear();
@@ -293,6 +304,10 @@ public class EntityParser {
 			}
 		}
 		values.add(reference.toUpperCase());
+		
+		if (reference.contains(".")) {
+			values.add(reference.substring(0, reference.indexOf(".")).toUpperCase());
+		}
 	}
 	
 	public boolean isReferenced(String referenceType, String reference) {
@@ -1111,7 +1126,7 @@ public class EntityParser {
 				}
 				debug("FieldValidator: " + validator);
 				try {
-					if (!(validator instanceof ConditionValidator)) {
+					if (!(validator instanceof ConditionValidator || validator instanceof OrientationValidator)) {
 						contentHandler.processField(fieldName, value, validator.getValidationType(), currentLineNumber);
 					}
 				} catch (Exception e) {
@@ -1537,7 +1552,7 @@ public class EntityParser {
 					"Weapon-0", "Weapon-1", "Weapon-2", "Weapon-3", "Weapon-4", 
 					"Above", "Aura", "Center",
 					"Hangar", "Exhaust", "Bomb",
-					"ShipBuild", 
+					"ShipBuild", "AtmosphereEntry",
 					"Ability-0", "Ability-1", "Ability-2", "Ability-3", "Ability-4",
 			};
 			
@@ -1581,9 +1596,9 @@ public class EntityParser {
 				throws Exception {
 			String value = parseValue(currentLine);
 			if (value.contains("Flair-")) {
-				addReference(ValidationType.PARTICLE, value.replace("Flair-", ""));
+				addReference(ValidationType.PARTICLE, value.replaceFirst("Flair-", ""));
 			} else if (value.contains("Build-")) {
-				addReference(ValidationType.PARTICLE, value.replace("Build-", ""));
+				addReference(ValidationType.PARTICLE, value.replaceFirst("Build-", ""));
 			}
 			return super.validate(currentLine, contents);
 		}
@@ -1652,14 +1667,28 @@ public class EntityParser {
 			setValidationType(ValidationType.ORIENTATION);
 		}
 		public String validate(String currentLine, LineNumberReader contents) throws Exception {
+			String keyWord = parseKeyWord(currentLine);
 			String nextLine = null;
 			String orientationLine = currentLine;
+			StringBuffer orientationValue = new StringBuffer();
+			
+			int lineNumber = currentLineNumber;
+			
 			currentLine = readLine(contents); // skip to what should be first point of orientation
 			validateValueAsCoordinate(criticalValue, currentLine.trim(), orientationLine);
+			orientationValue.append(currentLine.trim());
+			orientationValue.append("\n");
 			currentLine = readLine(contents); // skip to what should be second point of orientation
 			validateValueAsCoordinate(criticalValue, currentLine.trim(), orientationLine);
+			orientationValue.append(currentLine.trim());
+			orientationValue.append("\n");
 			currentLine = readLine(contents); // skip to what should be third point of orientation
 			validateValueAsCoordinate(criticalValue, currentLine.trim(), orientationLine);
+			orientationValue.append(currentLine.trim());
+			orientationValue.append("\n");
+			
+			contentHandler.processField(fieldName, orientationValue.toString(), getValidationType(), lineNumber);
+			
 			nextLine = readLine(contents);
 			return nextLine;
 		}
@@ -2132,9 +2161,15 @@ public class EntityParser {
 			} else {
 				nextLine = readLine(contents);
 				Validator validator = structures.get(fileType);
-
+				ContentHandlerChain chain = null;
+				
 				if (validator != null) {
 					try {
+						if (fileType.equals("Mesh")) {
+							chain = new MeshReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							setContentHandler(chain);
+						} 
+
 						contentHandler.startEntity(fileType, currentLineNumber);
 						nextLine = validator.validate(nextLine, contents);
 						
@@ -2246,7 +2281,7 @@ public class EntityParser {
 					if (validator instanceof StructureLookupValidator) {
 						String value = parseValue(currentLine);
 					
-						chain = new WeaponTypeReporter(this, getContentHandler(), getErrorHandler());
+						chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 						setContentHandler(chain);
 						
 						if (value.equals("Ability")) {
@@ -3215,6 +3250,7 @@ public class EntityParser {
 
 	public HashMap<String, String> getMetaData(String key) {
 		HashMap<String, String> meta = metaData.get(key);
+		
 		if (meta == null) {
 			meta = new HashMap<String, String>();
 			metaData.put(key, meta);
@@ -3265,6 +3301,16 @@ public class EntityParser {
 
 	public void setIgnoredReferenceFiles(List<String> ignoredReferenceFiles) {
 		this.ignoredReferenceFiles = ignoredReferenceFiles;
+	}
+
+	public void setMetaData(String fileName, String fieldName, String fieldValue) {
+		HashMap<String, String> meta = this.getMetaData(fileName);
+		meta.put(fieldName, fieldValue);
+		// System.out.println(fileName + " " + fieldName + " " + fieldValue);
+	}
+
+	public void addReferencedParser(EntityParser referencedParser) {
+		referencedParsers.add(referencedParser);
 	}
 
 

@@ -457,20 +457,20 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			referenced = true;
 		}
 		if (referenced == false) {
-		IProject[] referencedProjects = getReferencedProjects(getProject().getReferencedProjects());
-		for (int i=0; i<referencedProjects.length; i++) {
-			EntityParser referencedParser = (EntityParser)referencedProjects[i].getSessionProperty(KEY_PARSER);
-			if (referencedParser != null) {
-				if (referencedParser.isReferenced(referenceType, referenceName)) {
-					referenced = true;
+			IProject[] referencedProjects = getReferencedProjects(getProject().getReferencedProjects());
+			for (int i=0; i<referencedProjects.length; i++) {
+				EntityParser referencedParser = (EntityParser)referencedProjects[i].getSessionProperty(KEY_PARSER);
+				if (referencedParser != null) {
+					if (referencedParser.isReferenced(referenceType, referenceName)) {
+						referenced = true;
+					}
 				}
 			}
-		}
 		}
 		return referenced;
 	}
 	
-	private IProject[] getReferencedProjects(IProject[] referencedProjects) throws CoreException {
+	private static IProject[] getReferencedProjects(IProject[] referencedProjects) throws CoreException {
 		List<IProject> projects = new ArrayList<IProject>();
 		
 		addReferencedProjects(referencedProjects, projects);
@@ -479,7 +479,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		return projects.toArray(projectsArray);
 	}
 
-	private void addReferencedProjects(IProject[] referencedProjects,
+	private static void addReferencedProjects(IProject[] referencedProjects,
 			List<IProject> projects) throws CoreException {
 		
 		for (int i=0; i<referencedProjects.length; i++) {
@@ -656,6 +656,11 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		
 		loadIgnoreIsReferencedNames(parser);
 		addReferencedModDirectory(project, parser);
+		IProject[] referencedProjects = getReferencedProjects(project.getReferencedProjects());
+		for (int i=0; i<referencedProjects.length; i++) {
+			EntityParser referencedParser = (EntityParser)referencedProjects[i].getSessionProperty(KEY_PARSER);
+			parser.addReferencedParser(referencedParser);
+		}
 		
 		if (store.getBoolean(PreferenceConstants.VALIDATE_PARTICLES) == false) {
 			parser.addExcludedFileExtension("particle");
@@ -786,6 +791,11 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		
 		loadIgnoreIsReferencedNames(parser);
 		addReferencedModDirectory(project, parser);
+		IProject[] referencedProjects = getReferencedProjects(project.getReferencedProjects());
+		for (int i=0; i<referencedProjects.length; i++) {
+			EntityParser referencedParser = (EntityParser)referencedProjects[i].getSessionProperty(KEY_PARSER);
+			parser.addReferencedParser(referencedParser);
+		}
 		
 		if (Boolean.parseBoolean(project.getPersistentProperty(new QualifiedName(PreferenceConstants.SOASE, PreferenceConstants.VALIDATE_PARTICLES))) == false) {
 			parser.addExcludedFileExtension("particle");

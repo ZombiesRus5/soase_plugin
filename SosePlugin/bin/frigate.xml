@@ -36,6 +36,7 @@
 				<structure_reference name="ShieldPointRestoreRate" type="GenericLevel"/>
 				<structure_reference name="BaseArmorPoints" type="GenericLevel"/>
 				<structure_reference name="maxMitigation" type="GenericLevel"/>
+				<structure_reference name="relationshipChangeRate" type="GenericLevel" version="Rebellion193"/>
 			</condition>
 			<condition value="FALSE">
 				<field name="ExperiencePointsForDestroying" validation="Decimal"/>
@@ -45,9 +46,9 @@
 				<field name="ShieldPointRestoreRate" validation="Decimal"/>
 				<field name="BaseArmorPoints" validation="Decimal"/>
 				<field name="maxMitigation" validation="Decimal"/>
+				<field name="relationshipChangeRate" validation="Decimal" version="Rebellion193"/>
 			</condition>
 		</condition_field>
-		<field name="relationshipChangeRate" validation="Decimal" version="Rebellion193"/>
 		<structure_reference name="Prerequisites" type="researchPrerequisites"/>
 		<field name="numRandomDebrisLarge" validation="Integer"/>
 		<field name="numRandomDebrisSmall" validation="Integer"/>

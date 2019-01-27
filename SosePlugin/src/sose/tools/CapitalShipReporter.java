@@ -2,8 +2,12 @@ package sose.tools;
 
 import java.math.BigDecimal;
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.StringTokenizer;
+
+import org.eclipse.jdt.internal.ui.preferences.formatter.ProfileManager.KeySet;
 
 public class CapitalShipReporter extends ContentHandlerChain {
 	ErrorHandler error = null;
@@ -22,6 +26,7 @@ public class CapitalShipReporter extends ContentHandlerChain {
 	@Override
 	public void startStructure(String structureName, String structureType, int lineNumber) {
 		currentStructure = structureName;
+		
 		super.startStructure(structureName, structureType, lineNumber);
 	}
 
