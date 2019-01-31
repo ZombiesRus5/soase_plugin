@@ -444,7 +444,7 @@ public class EntityParser {
 		
 		public void validateRequiredMissing(String currentLine, String expectedTag) {
 			String message = "Expected keyword missing: " + expectedTag + ". Found";
-			warn(message, currentLineNumber, currentLine);
+			warn(message, currentLineNumber, currentLine, validationType);
 		}
 		
 		public void validateValue(boolean criticalValue, String currentLine, String[] validValues) {
@@ -465,9 +465,9 @@ public class EntityParser {
 				message += " expected: " + possibleValues;
 			}
 			if (criticalValue) {
-				fail(message, currentLineNumber, currentLine);
+				fail(message, currentLineNumber, currentLine, validationType);
 			} else {
-				warn(message, currentLineNumber, currentLine);
+				warn(message, currentLineNumber, currentLine, validationType);
 			}
 		}
 		
@@ -492,9 +492,9 @@ public class EntityParser {
 				message += " expected: " + possibleValues;
 			}
 			if (criticalValue) {
-				fail(message, currentLineNumber, currentLine);
+				fail(message, currentLineNumber, currentLine, validationType);
 			} else {
-				warn(message, currentLineNumber, currentLine);
+				warn(message, currentLineNumber, currentLine, validationType);
 			}
 		}
 		
@@ -511,14 +511,14 @@ public class EntityParser {
 				parts[0] = currentLine;
 			}
 			if (parts.length <= 1) {
-				fail("value expected for line", currentLineNumber, currentLine);
+				fail("value expected for line", currentLineNumber, currentLine, validationType);
 			}
 			String value = parts[1].trim();
 			if (!value.startsWith("\"")) {
-				fail("expected \" (quote) at beginning of value", currentLineNumber, currentLine);
+				fail("expected \" (quote) at beginning of value", currentLineNumber, currentLine, validationType);
 			}
 			if (!value.endsWith("\"")) {
-				fail("expected \" (quote) at end of value", currentLineNumber, currentLine);
+				fail("expected \" (quote) at end of value", currentLineNumber, currentLine, validationType);
 			}
 			if (currentLine.contains("MeshName")) {
 				// check if there is a file path
@@ -552,9 +552,9 @@ public class EntityParser {
 				message += " expected: " + possibleValues;
 			}
 			if (criticalValue) {
-				fail(message, currentLineNumber, currentLine);
+				fail(message, currentLineNumber, currentLine, validationType);
 			} else {
-				warn(message, currentLineNumber, currentLine);
+				warn(message, currentLineNumber, currentLine, validationType);
 			}
 		}
 		
@@ -571,21 +571,22 @@ public class EntityParser {
 				parts[0] = currentLine;
 			}
 			if (parts.length <= 1) {
-				fail("value expected for line", currentLineNumber, currentLine);
+				fail("value expected for line", currentLineNumber, currentLine, validationType);
 			}
 			String value = parts[1].trim();
 			if (!value.startsWith("\"")) {
-				fail("expected \" (quote) at beginning of value", currentLineNumber, currentLine);
+				fail("expected \" (quote) at beginning of value", currentLineNumber, currentLine, validationType);
 			}
 			if (!value.endsWith("\"")) {
-				fail("expected \" (quote) at end of value", currentLineNumber, currentLine);
+				fail("expected \" (quote) at end of value", currentLineNumber, currentLine, validationType);
 			}
 		}
 		
 		public void validateReferenced(String referenceType, String currentLine) {
 			
 			if (!isReferenced(referenceType, parseValue(currentLine))) {
-				fail(referenceType + " entry does not appear to be referenced from another entity. This may or may not be an issue.", currentLineNumber, currentLine);
+				fail(referenceType + " entry does not appear to be referenced from another entity. This may or may not be an issue.", currentLineNumber, currentLine
+						, validationType);
 			}
 
 		}
@@ -619,23 +620,23 @@ public class EntityParser {
 		public void validateValueAsColor(boolean criticalValue, String currentLine) {
 			String value = parseValue(currentLine);
 			if (value == null || value.length() == 0) {
-				fail("Expected a Hex Color Value", currentLineNumber, currentLine);
+				fail("Expected a Hex Color Value", currentLineNumber, currentLine, validationType);
 			} else if ("0".equals(value)) {
 				// ignore this value
 			} else if (!(value.length() == 8 || value.length() == 6 || value.length() == 4)) {
-				fail("Expected a Hex Color Value", currentLineNumber, currentLine);
+				fail("Expected a Hex Color Value", currentLineNumber, currentLine, validationType);
 			} else if (value.length() == 4) {
 				String[] colors = {value.substring(0, 2), value.substring(2, 4)};
 				for (int i=0; i<colors.length; i++) {
 					try {
 						int color = Integer.decode("0X" + colors[i].toLowerCase());
 						if (color < 0 || color > 256) {
-							fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+							fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 						}
 					} catch (NumberFormatException e) {
-						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 					} catch (EntityParseException e) {
-						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 					}
 				}
 			} else if (value.length() == 6) {
@@ -644,12 +645,12 @@ public class EntityParser {
 					try {
 						int color = Integer.decode("0X" + colors[i].toLowerCase());
 						if (color < 0 || color > 256) {
-							fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+							fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 						}
 					} catch (NumberFormatException e) {
-						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 					} catch (EntityParseException e) {
-						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGB Color Value", currentLineNumber, currentLine, validationType);
 					}
 				}
 			} else if (value.length() == 8) {
@@ -658,16 +659,16 @@ public class EntityParser {
 					try {
 						int color = Integer.decode("0X" + colors[i].toLowerCase());
 						if (color < 0 || color > 256) {
-							fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine);
+							fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine, validationType);
 						}
 					} catch (NumberFormatException e) {
-						fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine, validationType);
 					} catch (EntityParseException e) {
-						fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine);
+						fail("Expected a Hex RGBA Color Value", currentLineNumber, currentLine, validationType);
 					}
 				}
 			} else {
-				fail("Unexpected Hex Color Value", currentLineNumber, currentLine);
+				fail("Unexpected Hex Color Value", currentLineNumber, currentLine, validationType);
 			}
 		}
 		public void validateValueAsPosition(boolean criticalValue,
@@ -675,11 +676,11 @@ public class EntityParser {
 			String value = parseValue(currentLine);
 			
 			if (value == null) {
-				fail("value expected for line", currentLineNumber, currentLine);
+				fail("value expected for line", currentLineNumber, currentLine, validationType);
 			} else 	if (!value.startsWith("[")) {
-				fail("expected [ at beginning of value", currentLineNumber, currentLine);
+				fail("expected [ at beginning of value", currentLineNumber, currentLine, validationType);
 			} else if (!value.endsWith("]")) {
-				fail("expected ] at end of value", currentLineNumber, currentLine);
+				fail("expected ] at end of value", currentLineNumber, currentLine, validationType);
 			} else {
 				StringTokenizer stk = new StringTokenizer(value, "[],", false);
 				while (stk.hasMoreElements()) {
@@ -687,7 +688,7 @@ public class EntityParser {
 					try {
 						Long.parseLong(pos.trim());
 					} catch(Exception e) {
-						fail("Expected a numeric value", currentLineNumber, currentLine);
+						fail("Expected a numeric value", currentLineNumber, currentLine, validationType);
 					}
 				}
 			}
@@ -695,11 +696,11 @@ public class EntityParser {
 		public void validateValueAsCoordinate(boolean criticalValue,
 				String value, String currentLine) {
 			if (value == null) {
-				fail("value expected for line", currentLineNumber, currentLine);
+				fail("value expected for line", currentLineNumber, currentLine, validationType);
 			} else 	if (!value.startsWith("[")) {
-				fail("expected [ at beginning of value", currentLineNumber, currentLine);
+				fail("expected [ at beginning of value", currentLineNumber, currentLine, validationType);
 			} else if (!value.endsWith("]")) {
-				fail("expected ] at end of value", currentLineNumber, currentLine);
+				fail("expected ] at end of value", currentLineNumber, currentLine, validationType);
 			} else {
 				StringTokenizer stk = new StringTokenizer(value, "[] ", false);
 				while (stk.hasMoreElements()) {
@@ -707,7 +708,7 @@ public class EntityParser {
 					try {
 						new BigDecimal(pos);
 					} catch(Exception e) {
-						fail("Expected a numeric value", currentLineNumber, currentLine);
+						fail("Expected a numeric value", currentLineNumber, currentLine, validationType);
 					}
 				}
 			}
@@ -755,7 +756,7 @@ public class EntityParser {
 			if (validator == null) {
 //				fail("Entity Validation not supported for type yet! [" + value + "]", currentLineNumber, currentLine);
 				// might as well drop out at this point
-				throw new EntityParseException("Entity Validation not supported for type yet! [" + value + "]", currentLineNumber, currentLine);
+				throw new EntityParseException("Entity", "Entity Validation not supported for type yet! [" + value + "]", currentLineNumber, currentLine);
 			}
 
 			contentHandler.startStructure(getFieldName(), value, currentLineNumber);
@@ -1020,19 +1021,19 @@ public class EntityParser {
 					if (constraintType != null) {
 						if (">0".equalsIgnoreCase(constraintType)) {
 							if (value.compareTo(new BigDecimal(0.0)) <= 0) {
-								fail("expected a positive decimal value: " + decimalPart.trim(), currentLineNumber, currentLine);
+								fail("expected a positive decimal value: " + decimalPart.trim(), currentLineNumber, currentLine, validationType);
 							}
 						} else if (">=0".equalsIgnoreCase(constraintType)) {
 							if (value.compareTo(new BigDecimal(0.0)) <= 0) {
-								fail("expected a positive decimal value: " + decimalPart.trim(), currentLineNumber, currentLine);
+								fail("expected a positive decimal value: " + decimalPart.trim(), currentLineNumber, currentLine, validationType);
 							}
 						}
 					}				
 				} catch (Exception e) {
-					fail("expected '.' in decimal value: " + decimalPart.trim(), currentLineNumber, currentLine);
+					fail("expected '.' in decimal value: " + decimalPart.trim(), currentLineNumber, currentLine, validationType);
 				}
 			} else {
-				fail("expected '.' in decimal value: " + decimalPart.trim(), currentLineNumber, currentLine);
+				fail("expected '.' in decimal value: " + decimalPart.trim(), currentLineNumber, currentLine, validationType);
 			}
 
 //			validateValue(currentLine, validValues);
@@ -1064,7 +1065,7 @@ public class EntityParser {
 					new Long(numericPart.trim());
 				}
 			} catch(Exception e) {
-				fail("Decimal or Integer expected!", currentLineNumber, currentLine);
+				fail("Decimal or Integer expected!", currentLineNumber, currentLine, validationType);
 			}
 			nextLine = readLine(contents);
 			return nextLine;
@@ -1214,7 +1215,7 @@ public class EntityParser {
 					nextLine = conditionValidators.get(value).validate(nextLine, contents, false);
 				} 
 			} catch(Exception e) {
-				fail(e, currentLineNumber, currentLine);
+				fail(e, currentLineNumber, currentLine, validationType);
 			}
 
 			return nextLine;
@@ -1289,7 +1290,7 @@ public class EntityParser {
 				int repeats = new Integer(numericPart.trim()).intValue();
 				
 				if (limit != -1 && repeats > limit) {
-					fail("exceeded hard limit of " + limit + " occurrences, found " + repeats, iterativeLineNumber, iterativeLine);
+					fail("exceeded hard limit of " + limit + " occurrences, found " + repeats, iterativeLineNumber, iterativeLine, validationType);
 				}
 				// eat repeat line
 				currentLine = readLine(contents);
@@ -1298,8 +1299,8 @@ public class EntityParser {
 					int tempLine = currentLineNumber;
 					currentLine = structureValidator.validate(currentLine, contents, false);
 					if (tempLine == currentLineNumber && i<repeats) {
-						fail("expected " + repeats + " occurences, only found " + (i), iterativeLineNumber, iterativeLine);
-						fail("expected " + repeats + " occurences, unexpected value found", currentLineNumber, currentLine);
+						fail("expected " + repeats + " occurences, only found " + (i), iterativeLineNumber, iterativeLine, validationType);
+						fail("expected " + repeats + " occurences, unexpected value found", currentLineNumber, currentLine, validationType);
 						break;
 						//fail("expected " + repeats + " occurences, only found " + (i), currentLineNumber, currentLine);
 					} 
@@ -1313,19 +1314,19 @@ public class EntityParser {
 					String tempLine = currentLine;
 					currentLine = structureValidator.validate(currentLine, contents, false);
 					if (tempLineNumber != currentLineNumber) {
-						fail("expected only " + repeats + " occurences", iterativeLineNumber, iterativeLine);
-						fail("expected only " + repeats + " occurences", tempLineNumber, tempLine);
+						fail("expected only " + repeats + " occurences", iterativeLineNumber, iterativeLine, validationType);
+						fail("expected only " + repeats + " occurences", tempLineNumber, tempLine, validationType);
 						found++;
 					} else {
 						check = false;
 					}
 				}
 				if (found > repeats) {
-					fail("expected only " + repeats + " occurences, found " + found, iterativeLineNumber, iterativeLine);
+					fail("expected only " + repeats + " occurences, found " + found, iterativeLineNumber, iterativeLine, validationType);
 				}
 				contentHandler.endStructure();
 			} catch (Exception e) {
-				fail(e, currentLineNumber, currentLine);
+				fail(e, currentLineNumber, currentLine, validationType);
 			}
 			return currentLine;
 		}
@@ -2063,16 +2064,16 @@ public class EntityParser {
 		prototypeValidators = txtPrototypeValidators;
 		
 		if (nextLine == null || nextLine.indexOf("TXT") == -1) {
-			fail("Cannot validate binary files", 1, nextLine);
+			fail("Cannot validate binary files", 1, nextLine, "Entity");
 		} else {
 			if (nextLine.indexOf("TXT2") != -1) {
 				if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-					fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
+					fail("TXT2 not supported in Rebellion 1.85", 1, nextLine, "Entity");
 				}
 				// we've got a version to eat
 				nextLine = readLine(contents);
 				if (nextLine.indexOf("SinsArchiveVersion") == -1) {
-					fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
+					fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine, "Entity");
 				} else {
 					sinsArchiveType = "TXT2";
 					sinsArchiveVersion = parseValue(nextLine);
@@ -2179,7 +2180,7 @@ public class EntityParser {
 								break; // this is a mesh so we are done
 							} else 
 							if (nextLine != null && !nextLine.trim().isEmpty()) {
-								throw new EntityParseException("check structure definition. found unexpected keyword", currentLineNumber, nextLine);
+								throw new EntityParseException(fileType, "check structure definition. found unexpected keyword", currentLineNumber, nextLine);
 							}
 							nextLine = readLine(contents);
 						}
@@ -2189,7 +2190,7 @@ public class EntityParser {
 						fatal(e);
 					}
 				} else {
-					fail("check structure definition. found unexpected keyword: " + fileType, currentLineNumber, nextLine);
+					fail("check structure definition. found unexpected keyword: " + fileType, currentLineNumber, nextLine, "Entity");
 					nextLine = readLine(contents);
 				}
 			}
@@ -2212,16 +2213,16 @@ public class EntityParser {
 			prototypeValidators = txtPrototypeValidators;
 			
 			if (nextLine == null || nextLine.indexOf("TXT") == -1) {
-				fail("Cannot validate binary files", 1, nextLine);
+				fail("Cannot validate binary files", 1, nextLine, "Entity");
 			} else {
 				if (nextLine.indexOf("TXT2") != -1) {
 					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-						fail("TXT2 not supported in Rebellion 1.85", 1, nextLine);
+						fail("TXT2 not supported in Rebellion 1.85", 1, nextLine, "Entity");
 					}
 					// we've got a version to eat
 					nextLine = readLine(contents);
 					if (nextLine.indexOf("SinsArchiveVersion") == -1) {
-						fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine);
+						fail("TXT2 must be followed by SinsArchiveVersion", 2, nextLine, "Entity");
 					} else {
 						sinsArchiveType = "TXT2";
 						sinsArchiveVersion = parseValue(nextLine);
@@ -2232,7 +2233,7 @@ public class EntityParser {
 					}
 				} else {
 					if (strictValidation.equalsIgnoreCase("Rebellion185")) {
-						fail("TXT not supported in Rebellion 1.93", 1, nextLine);
+						fail("TXT not supported in Rebellion 1.93", 1, nextLine, "Entity");
 					}
 				}
 			}
@@ -2342,12 +2343,12 @@ public class EntityParser {
 							setContentHandler(chain.getChain());
 						}
 					} else {
-						fail("check structure definition. found unexpected keyword: " + keyWord, currentLineNumber, currentLine);
+						fail("check structure definition. found unexpected keyword: " + keyWord, currentLineNumber, currentLine, "Entity");
 					}
 					// do we have any unexpected content left?
 					while (contents.ready()) {
 						if (nextLine != null && !nextLine.trim().isEmpty()) {
-							throw new EntityParseException("check structure definition. found unexpected keyword", currentLineNumber, nextLine);
+							throw new EntityParseException(keyWord, "check structure definition. found unexpected keyword", currentLineNumber, nextLine);
 						}
 						nextLine = readLine(contents);
 					}
@@ -2356,11 +2357,11 @@ public class EntityParser {
 					fatal(e);
 				}
 			} else {
-				fail("check structure definition. found unexpected keyword: " + keyWord, currentLineNumber, currentLine);
+				fail("check structure definition. found unexpected keyword: " + keyWord, currentLineNumber, currentLine, "Entity");
 				nextLine = readLine(contents);
 			}
 		} else {
-			fail("Invalid key word for current line", currentLineNumber, currentLine);
+			fail("Invalid key word for current line", currentLineNumber, currentLine, "Entity");
 			// might be fail on error false
 			nextLine = readLine(contents);
 		}
@@ -2368,38 +2369,38 @@ public class EntityParser {
 	}
 
 	
-	private void fail(Exception e, int currentLineNumber, String currentLine) throws EntityParseException {
+	private void fail(Exception e, int currentLineNumber, String currentLine, String validationType) throws EntityParseException {
 		debug(e.toString() + "[" + currentFile + ":" + currentLineNumber + ":" + currentLine + "]");
-		EntityParseException parseException = new EntityParseException(e.getMessage(), currentLineNumber, currentLine, e);
+		EntityParseException parseException = new EntityParseException(validationType, e.getMessage(), currentLineNumber, currentLine, e);
 		if (errorHandler != null) {
 			errorHandler.error(parseException);
 		}
 		//throw parseException;
 	}
 
-	private void fail(String message, int currentLineNumber, String currentLine) throws EntityParseException {
+	private void fail(String message, int currentLineNumber, String currentLine, String validationType) throws EntityParseException {
 		debug(message + "[" + currentFile + ":" + currentLineNumber + ":" + currentLine + "]");
-		EntityParseException parseException = new EntityParseException(message, currentLineNumber, currentLine);
+		EntityParseException parseException = new EntityParseException(validationType, message, currentLineNumber, currentLine);
 		if (errorHandler != null) {
 			errorHandler.error(parseException);
 		}
 		//throw parseException;
 	}
 	
-	private void warn(Exception e, int currentLineNumber, String currentLine) throws EntityParseException {
+	private void warn(Exception e, int currentLineNumber, String currentLine, String validationType) throws EntityParseException {
 		if (warn) {
 			System.err.println(e.toString() + "[" + currentFile + ":" + currentLineNumber + ":" + currentLine + "]");
 		}
-		EntityParseException parseException = new EntityParseException(e.getMessage(), currentLineNumber, currentLine, e);
+		EntityParseException parseException = new EntityParseException(validationType, e.getMessage(), currentLineNumber, currentLine, e);
 		if (errorHandler != null) {
 			errorHandler.warn(parseException);
 		}
 		//throw parseException;
 	}
 
-	private void warn(String message, int currentLineNumber, String currentLine) throws EntityParseException {
+	private void warn(String message, int currentLineNumber, String currentLine, String validationTYpe) throws EntityParseException {
 		debug(message + "[" + currentFile + ":" + currentLineNumber + ":" + currentLine + "]");
-		EntityParseException parseException = new EntityParseException(message, currentLineNumber, currentLine);
+		EntityParseException parseException = new EntityParseException(validationTYpe, message, currentLineNumber, currentLine);
 		if (errorHandler != null) {
 			errorHandler.warn(parseException);
 		}
@@ -2423,12 +2424,12 @@ public class EntityParser {
 		}
 	}
 
-	private void warn(String message, String arg) {
+	private void warn(String message, String arg, String validationType) {
 		if (warn == true) {
 			System.out.println(((currentFile != null) ? (currentFile + ": ") : ("")) + message + " " + arg);
 		}
 		if (errorHandler != null) {
-			EntityParseException e = new EntityParseException(message, currentLineNumber, arg);
+			EntityParseException e = new EntityParseException(validationType, message, currentLineNumber, arg);
 			errorHandler.warn(e);
 		}
 	}

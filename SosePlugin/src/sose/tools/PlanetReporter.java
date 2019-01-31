@@ -36,22 +36,22 @@ public class PlanetReporter extends ContentHandlerChain {
 			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
-//				error.error(new EntityParseException(message, lineNumber, fieldName));
+//				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else if (levelSourceType.equals("FixedLevel0")) {
 				// we're good here
 			} else {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
-				error.error(new EntityParseException(message, lineNumber, fieldName));
+				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 			String useCostType = parser.getMetaData(fieldValue, "useCostType");
 			if (useCostType == null) {
 //				String message = MessageFormat.format("useCostType unknown {0}", levelSourceType);
-//				error.error(new EntityParseException(message, lineNumber, fieldName));
+//				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else if (useCostType.equals("Passive")) {
 				// we're good here
 			} else {
 				String message = MessageFormat.format("useCostType should not be set to {0}", levelSourceType);
-				error.error(new EntityParseException(message, lineNumber, fieldName));
+				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);

@@ -67,26 +67,26 @@ public class BuffReporter extends ContentHandlerChain {
 			if ("-1".equals(stackingLimit) || "0".equals(stackingLimit)) {
 				// this field shouldn't be set
 				String message = MessageFormat.format("allowFirstSpawnerToStack should not be set when stackingLimit is {0}", stackingLimit);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldName.equals("buffExclusivityForAIType")) {
 			if (Integer.parseInt(stackingLimit) > 0 && allowFirstSpawnerToStack == null) {
 				String message = "allowFirstSpawnerToStack should be set when stackingLimit is >0";
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldName.equals("instantActionTriggerType")) {
 			String instantActionTriggerType = fieldValue;
 			if (!instantActionTriggerTypes.contains(instantActionTriggerType) && structures.contains("instantAction")) {
 				String message = MessageFormat.format("instantActionTriggerType generally should not be set to {0}", instantActionTriggerType);
-				error.info(new EntityParseException(message, lineNumber, fieldName));
+				error.info(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 			if (!periodicActionTriggerTypes.contains(instantActionTriggerType) && structures.contains("periodicAction")) {
 				String message = MessageFormat.format("instantActionTriggerType generally should not be set to {0}", instantActionTriggerType);
-				error.info(new EntityParseException(message, lineNumber, fieldName));
+				error.info(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldValue.equals("IncreaseOwnerAbilityLevel")) {
 			String message = MessageFormat.format("Please confirm Frigate ability is set to Intrinsic or Passive when buffed with {0}", fieldValue);
-			error.info(new EntityParseException(message, lineNumber, fieldName));
+			error.info(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}

@@ -39,13 +39,13 @@ public class AbilityReporter extends ContentHandlerChain {
 			if (needsToFaceTarget.contains("ApplyBuffToSelf") || needsToFaceTarget.contains("ApplyBuffToTargets")) {
 				// this field shouldn't be set
 				String message = MessageFormat.format("needsToFaceTarget should not be set to TRUE when applying buff to self or multiple targets", needsToFaceTarget);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldName.equals("instantActionTriggerType")) {
 			String instantActionTriggerType = fieldValue;
 			if (instantActionTriggerType.equals("OnDelay")) {
 				String message = MessageFormat.format("instantActionTriggerType should not be set to {0}", instantActionTriggerType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 
 			}
 		} else if (fieldName.equals("levelSourceType") 

@@ -334,7 +334,18 @@
    </extension>
    <extension
          id="com.zombiesrus5.plugin.sose.entityProblem"
-         name="%extension.name.1"
+         name="%problemType.Entity"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="com.zombiesrus5.plugin.sose.referenceProblem"
+         name="%problemType.Reference"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">
@@ -372,7 +383,7 @@
             extensions="particle"
             icon="icons/file_particle.png"
             id="com.zombiesrus5.plugin.sose.editors.ParticleEditor"
-            name="%editor.name">
+            name="Particle Editor">
       </editor>
       <editor
             class="com.zombiesrus5.plugin.sose.editors.EntityEditor"
@@ -380,22 +391,14 @@
             extensions="galaxy"
             icon="icons/file_galaxy.png"
             id="com.zombiesrus5.plugin.sose.editors.GalaxyScenarioEditor"
-            name="%editor.name">
+            name="Galaxy Editor">
       </editor>
       <editor
             class="com.zombiesrus5.plugin.sose.editors.EntityEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            extensions="manifest,brushanimations,color,window,brushlayout,randomeventdefs,galaxyScenarioDef,sounddata,brushes,explosiondata,gameeventdata,planetItemTypeCount,groups,AchievementsDef,asteroidDef,coronadata,renderingDef,exhaustTrailDef,explosiondata,data,musicdata,lensflaredata,postprocessdata,skyboxbackdropdata,skyboxstarsdata,starscapedata,screen,playerPictures,playerThemes,playerPicturesDef,playerPictures,playerThemes,playerThemesDef"
+            extensions="mesh,constants,manifest,brushanimations,color,window,brushlayout,randomeventdefs,galaxyScenarioDef,sounddata,brushes,explosiondata,gameeventdata,planetItemTypeCount,groups,AchievementsDef,asteroidDef,coronadata,renderingDef,exhaustTrailDef,explosiondata,data,musicdata,lensflaredata,postprocessdata,skyboxbackdropdata,skyboxstarsdata,starscapedata,screen,playerPictures,playerThemes,playerPicturesDef,playerPictures,playerThemes,playerThemesDef"
             icon="icons/entity.gif"
             id="com.zombiesrus5.plugin.sose.editors.SinsGeneralEditor"
-            name="%editor.name">
-      </editor>
-      <editor
-            class="com.zombiesrus5.plugin.sose.editors.EntityEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            extensions="constants"
-            icon="icons/entity.gif"
-            id="com.zombiesrus5.plugin.sose.editors.ConstantsEditor"
             name="%editor.name">
       </editor>
       <editor
@@ -405,7 +408,7 @@
             extensions="entity"
             icon="icons/diplomacy3.ico"
             id="com.zombiesrus5.plugin.sose.editors.EntityEditor"
-            name="%editor.name">
+            name="Entity Editor">
       </editor>
    </extension>
    <extension

@@ -1,6 +1,8 @@
 package sose.tools;
 
 public interface ValidationType {
+	public String REFERENCE = "Reference";
+	
 	public String SOUND = "Sound";
 	public String EXPLOSION = "Explosion";
 	public String STRINGINFO = "StringInfo";

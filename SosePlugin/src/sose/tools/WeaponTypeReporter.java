@@ -28,7 +28,7 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 		HashMap<String, String> meshMetaData = parser.getMetaData(meshName);
 		if (meshMetaData != null && !meshMetaData.isEmpty()) {
 			if (!meshMetaData.containsKey("DataString." + meshPoint)) {
-				error.warn(new EntityParseException("Missing mesh point " + meshPoint + ", is this intended?", lineNumber, structureName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, "Missing mesh point " + meshPoint + ", is this intended?", lineNumber, structureName));
 			}
 		}
 	}
@@ -54,7 +54,7 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 			weaponEffectType = fieldValue;
 			if (weaponType != null && weaponEffectType != null && !weaponType.equals(weaponEffectType)) {
 				String message = MessageFormat.format("WeaponEffect's weaponType '{0}' must match Weapon's WeaponType '{1}'", weaponEffectType, weaponType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldName.equals("TravelSpeed")) {
 			BigDecimal value = new BigDecimal(fieldValue);
@@ -62,13 +62,13 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 				// travelSpeed should be 0.000000
 				if (value.compareTo(new BigDecimal("0.0")) != 0) {
 					String message = "TravelSpeed for Beam weapons should be 0.00000";
-					error.warn(new EntityParseException(message, lineNumber, fieldName));
+					error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 				}
 			} else {
 				// travelSpeed should be 0.000000
 				if (value.compareTo(new BigDecimal("0.0")) <= 0) {
 					String message = MessageFormat.format("TravelSpeed for {0} weapons should be greater than 0.00000", weaponType);
-					error.warn(new EntityParseException(message, lineNumber, fieldName));
+					error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 				}
 				
 			}
@@ -113,7 +113,7 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 					}
 				}
 				if (!hasWeapon && meshFound) {
-					error.warn(new EntityParseException("Mesh appears to be missing Weapon-" + numWeapon + " for " + direction + " bank", lineNumber, fieldName));
+					error.warn(new EntityParseException(ValidationType.ENTITY, "Mesh appears to be missing Weapon-" + numWeapon + " for " + direction + " bank", lineNumber, fieldName));
 				}
 			}
 		}

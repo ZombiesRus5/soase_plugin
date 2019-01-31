@@ -48,19 +48,19 @@ public class UseCostTypeReporter extends ContentHandlerChain {
 		} else if (fieldName.equals("useCostType") && fieldValue.equals("Passive")) {
 			if (!"Invalid".equals(aiUseTime)) {
 				String message = "aiUseTime must be Invalid for passive effects";
-				error.warn(new EntityParseException(message, aiUseTimeLineNumber, "aiUseTime"));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, aiUseTimeLineNumber, "aiUseTime"));
 			}
 			if (!"Invalid".equals(aiUseTargetCondition)) {
 				String message = "aiUseTargetCondition must be Invalid for passive effects";
-				error.warn(new EntityParseException(message, aiUseTargetConditionLineNumber, "aiUseTargetCondition"));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, aiUseTargetConditionLineNumber, "aiUseTargetCondition"));
 			}
 			if (!"FALSE".equals(isAutoCastAvailable)) {
 				String message = "isAutoCastAvailable must be FALSE for passive effects";
-				error.warn(new EntityParseException(message, isAutoCastAvailableLineNumber, "isAutoCastAvailable"));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, isAutoCastAvailableLineNumber, "isAutoCastAvailable"));
 			}
 			if (!"FALSE".equals(isAutoCastOnByDefault)) {
 				String message = "isAutoCastOnByDefault must be FALSE for passive effects";
-				error.warn(new EntityParseException(message, isAutoCastOnByDefaultLineNumber, "isAutoCastOnByDefault"));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, isAutoCastOnByDefaultLineNumber, "isAutoCastOnByDefault"));
 			}
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);

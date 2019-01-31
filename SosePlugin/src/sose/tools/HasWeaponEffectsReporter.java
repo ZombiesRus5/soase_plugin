@@ -39,13 +39,13 @@ public class HasWeaponEffectsReporter extends ContentHandlerChain {
 			canWeaponEffectHitHull = fieldValue;
 			if ("TRUE".equalsIgnoreCase(canWeaponEffectHitHull) && !("RandomMesh".equals(weaponEffectImpactOffsetType) || "CenterOffsetBySpatialRadius".equals(weaponEffectImpactOffsetType)) ) {
 				String message = MessageFormat.format("'canWeaponEffectHitHull' and 'canWeaponEffectHitShields' only make sense when then ImpactOffsetType is 'RandomMesh'. If the impact isn't on the mesh then these values are ignored.", weaponEffectImpactOffsetType, canWeaponEffectHitHull);
-				error.info(new EntityParseException(message, lineNumber, fieldName));
+				error.info(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		} else if (fieldName.equals("canWeaponEffectHitShields")) {
 			canWeaponEffectHitShields = fieldValue;
 			if ("TRUE".equalsIgnoreCase(canWeaponEffectHitShields) && !("RandomMesh".equals(weaponEffectImpactOffsetType) || "CenterOffsetBySpatialRadius".equals(weaponEffectImpactOffsetType)) ) {
 				String message = MessageFormat.format("'canWeaponEffectHitHull' and 'canWeaponEffectHitShields' only make sense when then ImpactOffsetType is 'RandomMesh'. If the impact isn't on the mesh then these values are ignored.", weaponEffectImpactOffsetType, canWeaponEffectHitShields);
-				error.info(new EntityParseException(message, lineNumber, fieldName));
+				error.info(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);

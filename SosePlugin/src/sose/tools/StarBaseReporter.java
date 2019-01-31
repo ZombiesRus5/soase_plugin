@@ -36,14 +36,14 @@ public class StarBaseReporter extends ContentHandlerChain {
 			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
-//				error.error(new EntityParseException(message, lineNumber, fieldName));
+//				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else if (levelSourceType.equals("StarBaseUpgradeLevel")) {
 				// we're good here
 				if (fieldName.equals("ability:4")) {
 					String useCostType = parser.getMetaData(fieldValue, "useCostType");
 					if (useCostType.equals("Passive") == false) {
 						String message = MessageFormat.format("useCostType must be passive for ability:4 {0}", useCostType);
-						error.error(new EntityParseException(message, lineNumber, fieldName));
+						error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 					}
 				}
 			} else if (levelSourceType.equals("ResearchStartsAt0") 
@@ -53,16 +53,16 @@ public class StarBaseReporter extends ContentHandlerChain {
 				// these should only be passive
 			} else if (levelSourceType.equals("Intrinsic")) {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
-				error.error(new EntityParseException(message, lineNumber, fieldName));
+				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		}
 		if (fieldName.equals("creationSourceAbility")) {
 			if (fieldValue == null || fieldValue.trim().isEmpty()) {
 				String message = "creationSourceAbility can not be empty";
-				error.error(new EntityParseException(message, lineNumber, fieldName));
+				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);

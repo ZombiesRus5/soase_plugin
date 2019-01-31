@@ -51,11 +51,11 @@ public class MeshReporter extends ContentHandlerChain {
 		
 		if ((boundingRadius + 1) < maxExtents.getMaxBounding()) {
 			String message = "MaxBoundingExtents exceeds BoundingRadius";
-			error.warn(new EntityParseException(message, 1, "MeshData"));
+			error.warn(new EntityParseException(ValidationType.MESH, message, 1, "MeshData"));
 		}
 		if ((boundingRadius + 1) < minExtents.getMaxBounding()) {
 			String message = "MinBoundingExtents exceeds BoundingRadius";
-			error.warn(new EntityParseException(message, 1, "MeshData"));
+			error.warn(new EntityParseException(ValidationType.MESH, message, 1, "MeshData"));
 		}
 		pointName = null;
 		super.endEntity();
@@ -76,18 +76,22 @@ public class MeshReporter extends ContentHandlerChain {
 			parser.setMetaData(fileReference.getFileName(), pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
 		} else if (fieldName.equals("Orientation")) {
 			parser.setMetaData(fileReference.getFileName(), pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
-			Orientation o = new Orientation(fieldValue);
-			if (o.isFront()) {
-				parser.setMetaData(fileReference.getFileName(), pointName + ".FRONT", "TRUE");
-			} 
-			if (o.isBack()) {
-				parser.setMetaData(fileReference.getFileName(), pointName + ".BACK", "TRUE");
-			} 
-			if (o.isRight()) {
-				parser.setMetaData(fileReference.getFileName(), pointName + ".RIGHT", "TRUE");
-			} 
-			if (o.isLeft()) {
-				parser.setMetaData(fileReference.getFileName(), pointName + ".LEFT", "TRUE");
+			try {
+				Orientation o = new Orientation(fieldValue);
+				if (o.isFront()) {
+					parser.setMetaData(fileReference.getFileName(), pointName + ".FRONT", "TRUE");
+				} 
+				if (o.isBack()) {
+					parser.setMetaData(fileReference.getFileName(), pointName + ".BACK", "TRUE");
+				} 
+				if (o.isRight()) {
+					parser.setMetaData(fileReference.getFileName(), pointName + ".RIGHT", "TRUE");
+				} 
+				if (o.isLeft()) {
+					parser.setMetaData(fileReference.getFileName(), pointName + ".LEFT", "TRUE");
+				}
+			} catch (EntityParseException e) {
+				error.warn(new EntityParseException(ValidationType.MESH, e.getMessage(), lineNumber, fieldValue));
 			}
 			pointIndex++;
 		}

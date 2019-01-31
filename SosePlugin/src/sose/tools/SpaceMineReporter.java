@@ -36,7 +36,7 @@ public class SpaceMineReporter extends ContentHandlerChain {
 			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
-//				error.error(new EntityParseException(message, lineNumber, fieldName));
+//				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else if (levelSourceType.equals("ResearchStartsAt0") 
 					|| levelSourceType.equals("FixedLevel0")
 					|| levelSourceType.equals("ResearchWithBase")
@@ -44,10 +44,10 @@ public class SpaceMineReporter extends ContentHandlerChain {
 				// we're good here
 			} else if (levelSourceType.equals("Intrinsic")) {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
-				error.warn(new EntityParseException(message, lineNumber, fieldName));
+				error.warn(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
-				error.error(new EntityParseException(message, lineNumber, fieldName));
+				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);

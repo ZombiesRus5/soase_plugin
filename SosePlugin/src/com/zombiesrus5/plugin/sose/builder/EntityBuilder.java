@@ -37,6 +37,7 @@ import sose.tools.EntityParseException;
 import sose.tools.EntityParser;
 import sose.tools.SetupMonitor;
 import sose.tools.StringInfo;
+import sose.tools.ValidationType;
 import soseplugin.Activator;
 
 import com.zombiesrus5.plugin.sose.domain.EntityObject;
@@ -259,8 +260,12 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		}
 		
 		private void addMarker(EntityParseException e, int severity) {
-			EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
-					.getLineNumber(), severity);
+			if (ValidationType.REFERENCE.equals(e.getProblemType()) || e.getMessage().contains("missing reference")) {
+				EntityBuilder.this.addReferenceMarker(file,  e.getMessage() + ": " + e.getLineContents().trim(), e.getLineNumber(),  severity);
+			} else {
+				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+						.getLineNumber(), severity);
+			}
 		}
 
 		public void error(EntityParseException exception) throws EntityParseException {
@@ -350,8 +355,24 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 	public static final String MARKER_TYPE = "com.zombiesrus5.plugin.sose.entityProblem";
 
+	public static final String MARKER_TYPE_REFERENCE = "com.zombiesrus5.plugin.sose.referenceProblem";
+
 	//private SAXParserFactory parserFactory;
 
+	private void addReferenceMarker(IFile file, String message, int lineNumber,
+			int severity) {
+		try {
+			IMarker marker = file.createMarker(MARKER_TYPE_REFERENCE);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, severity);
+			if (lineNumber == -1) {
+				lineNumber = 1;
+			}
+			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+		} catch (CoreException e) {
+		}
+	}
+	
 	private void addMarker(IFile file, String message, int lineNumber,
 			int severity) {
 		try {
@@ -408,7 +429,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 				referenced = isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Entity file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
+					addReferenceMarker(file, "Entity file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}
 			if (("ogg".equalsIgnoreCase(resource.getFileExtension()) || "mp3".equalsIgnoreCase(resource.getFileExtension())
@@ -420,7 +441,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "SoundFile file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
+					addReferenceMarker(file, "SoundFile file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}		
 			if (("mesh".equalsIgnoreCase(resource.getFileExtension())) && warnEntityNotReferenced) {
@@ -431,7 +452,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Mesh file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
+					addReferenceMarker(file, "Mesh file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}		
 			if (("particle".equalsIgnoreCase(resource.getFileExtension())) && warnEntityNotReferenced) {
@@ -442,7 +463,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				String referenceName = resource.getName().replaceFirst("." + resource.getFileExtension(), "");
 				referenced = referenced || isReferenced(referenceName, referenceType, referenced);
 				if (!referenced) {
-					addMarker(file, "Particle file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
+					addReferenceMarker(file, "Particle file does not appear to be referenced from another entity. This may or may not be an issue.", 1, IMarker.SEVERITY_INFO);
 				}
 			}	
 		}

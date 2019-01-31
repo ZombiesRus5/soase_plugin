@@ -17,6 +17,7 @@ import org.eclipse.ui.editors.text.EditorsUI;
 import org.eclipse.ui.part.FileEditorInput;
 
 import sose.tools.EntityParser;
+import sose.tools.Orientation;
 
 import com.zombiesrus5.plugin.sose.builder.EntityBuilder;
 import com.zombiesrus5.plugin.sose.editors.utils.HoverHelpCollector;
@@ -57,6 +58,26 @@ public class SinsHover extends DefaultTextHover implements ITextHover, ITextHove
 		parser.processDefinition(entityType, hoverFocus, collector, textType);
 		hoverInfo = collector.getHoverInfo();
 		
+		if ("Orientation".equals(hoverFocus)) {
+			// somehow get the next 3 lines
+			int orientationLine = textViewer.getDocument().getLineOfOffset(hoverRegion.getOffset());
+			IRegion orientationRegion = textViewer.getDocument().getLineInformation(++orientationLine); 
+			String orientationValue = textViewer.getDocument().get(orientationRegion.getOffset(), orientationRegion.getLength());
+			orientationValue += "\n";
+			orientationRegion = textViewer.getDocument().getLineInformation(++orientationLine); 
+			orientationValue += textViewer.getDocument().get(orientationRegion.getOffset(), orientationRegion.getLength());
+			orientationValue += "\n";
+			orientationRegion = textViewer.getDocument().getLineInformation(++orientationLine); 
+			orientationValue += textViewer.getDocument().get(orientationRegion.getOffset(), orientationRegion.getLength());
+			orientationValue += "\n";
+			
+			Orientation orientation = new Orientation(orientationValue);
+			
+			hoverInfo += "\n";
+			hoverInfo += "Rotation (Y-Axis): " + orientation.getHeadingDegree();
+			hoverInfo += "\n" + orientation.getOrientationNames();
+			
+		}
 		} catch (Exception e) {
 			// do nothing
 		}
