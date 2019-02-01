@@ -51,11 +51,11 @@ public class MeshReporter extends ContentHandlerChain {
 		
 		if ((boundingRadius + 1) < maxExtents.getMaxBounding()) {
 			String message = "MaxBoundingExtents exceeds BoundingRadius";
-			error.warn(new EntityParseException(ValidationType.MESH, message, 1, "MeshData"));
+			error.warn(new EntityParseException(ValidationType.MESH, message, 1, ValidationType.MESH));
 		}
 		if ((boundingRadius + 1) < minExtents.getMaxBounding()) {
 			String message = "MinBoundingExtents exceeds BoundingRadius";
-			error.warn(new EntityParseException(ValidationType.MESH, message, 1, "MeshData"));
+			error.warn(new EntityParseException(ValidationType.MESH, message, 1, ValidationType.MESH));
 		}
 		pointName = null;
 		super.endEntity();

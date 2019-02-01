@@ -18,6 +18,7 @@ public class EntityParseException extends RuntimeException {
 
 	public EntityParseException(String problemType, String message, int lineNumber, String lineContents) {
 		super(message);
+		this.problemType = problemType;
 		this.lineContents = lineContents;
 		this.lineNumber = lineNumber;
 	}

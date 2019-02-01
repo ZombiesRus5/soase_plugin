@@ -11,6 +11,7 @@ public class SoaseObject implements Serializable {
 	 */
 	private static final long serialVersionUID = 6744746270528240766L;
 	private List<SoaseObject> elements = new ArrayList<SoaseObject>();
+	protected int lineNumber;
 
 	public List<SoaseObject> getElements() {
 		return elements;
@@ -22,6 +23,14 @@ public class SoaseObject implements Serializable {
 	
 	public void add(SoaseObject obj) {
 		elements.add(obj);
+	}
+
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
 	}
 	
 

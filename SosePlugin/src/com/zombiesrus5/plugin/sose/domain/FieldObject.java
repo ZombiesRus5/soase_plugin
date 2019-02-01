@@ -8,7 +8,6 @@ public class FieldObject extends SoaseObject {
 	private String name;
 	private String value;
 	private String fieldType;
-	private int lineNumber;
 	public String getName() {
 		return name;
 	}
@@ -26,12 +25,6 @@ public class FieldObject extends SoaseObject {
 	}
 	public void setFieldType(String fieldType) {
 		this.fieldType = fieldType;
-	}
-	public int getLineNumber() {
-		return lineNumber;
-	}
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
 	}
 	public String toString() {
 		return "Field(" + name + ", " + value + "," + fieldType + ", " + lineNumber + ")";

@@ -10,8 +10,6 @@ public class StructureObject extends SoaseObject {
 	private static final long serialVersionUID = 3635220551218033473L;
 	private String labelName;
 	private String structureType;
-	private int lineNumber;
-	
 	public String getLabelName() {
 		return labelName;
 	}
@@ -26,14 +24,6 @@ public class StructureObject extends SoaseObject {
 
 	public void setStructureType(String structureType) {
 		this.structureType = structureType;
-	}
-
-	public int getLineNumber() {
-		return lineNumber;
-	}
-
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
 	}
 
 	public String toString() {

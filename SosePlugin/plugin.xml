@@ -344,8 +344,52 @@
       </persistent>
    </extension>
    <extension
-         id="com.zombiesrus5.plugin.sose.referenceProblem"
-         name="%problemType.Reference"
+         id="com.zombiesrus5.plugin.sose.stringInfoProblem"
+         name="%problemType.StringInfo"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="com.zombiesrus5.plugin.sose.brushProblem"
+         name="%problemType.Brush"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="com.zombiesrus5.plugin.sose.soundProblem"
+         name="%problemType.Sound"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="com.zombiesrus5.plugin.sose.meshProblem"
+         name="%problemType.Mesh"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+    <extension
+         id="com.zombiesrus5.plugin.sose.particleProblem"
+         name="%problemType.Particle"
          point="org.eclipse.core.resources.markers">
       <super
             type="org.eclipse.core.resources.problemmarker">

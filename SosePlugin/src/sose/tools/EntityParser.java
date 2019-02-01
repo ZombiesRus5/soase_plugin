@@ -1588,7 +1588,7 @@ public class EntityParser {
 			setValidValues(fileReferenceArray);
 			setCriticalValue(criticalValue);
 			setValidationType(validationType);
-			setInvalidValueMessage("missing mesh point [" + includes + "]");
+			setInvalidValueMessage("missing or invalid mesh point [" + includes + "]");
 			setShowPossibleValues(false);
 		}
 
@@ -2282,9 +2282,6 @@ public class EntityParser {
 					if (validator instanceof StructureLookupValidator) {
 						String value = parseValue(currentLine);
 					
-						chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
-						setContentHandler(chain);
-						
 						if (value.equals("Ability")) {
 							chain = new AbilityReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							chain = new HasWeaponEffectsReporter(this, chain, getErrorHandler());
@@ -2306,9 +2303,11 @@ public class EntityParser {
 						} else
 						if (value.equals("CapitalShip")) {
 							chain = new CapitalShipReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							setContentHandler(chain);
 						} else if (value.equals("Frigate")) {
 							chain = new FrigateReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							setContentHandler(chain);
 						} else if (value.equals("SpaceMine")) {
 							chain = new FrigateReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
@@ -2318,9 +2317,14 @@ public class EntityParser {
 							setContentHandler(chain);
 						} else if (value.equals("Titan")) {
 							chain = new TitanReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							setContentHandler(chain);
 						} else if (value.equals("StarBase")) {
 							chain = new StarBaseReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							setContentHandler(chain);
+						} else if (value.equals("Fighter")) {
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							setContentHandler(chain);
 						} else if (value.equals("PlanetModuleStandard")
 								|| value.equals("PlanetModuleShipFactory")
@@ -2328,6 +2332,7 @@ public class EntityParser {
 								|| value.equals("PlanetModuleHangarDefense")
 								|| value.equals("PlanetModuleTradePort")) {
 							chain = new PlanetModuleReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
+							chain = new WeaponTypeReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());
 							setContentHandler(chain);
 						} else if (value.equals("Planet")) {
 							chain = new PlanetReporter(this, getFileReferenceHandler(), getContentHandler(), getErrorHandler());

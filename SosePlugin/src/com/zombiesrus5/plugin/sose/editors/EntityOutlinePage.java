@@ -17,6 +17,8 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
@@ -61,7 +63,7 @@ public class EntityOutlinePage extends ContentOutlinePage implements IElementSta
 	private Object[] EMPTY_ARRAY = {};
 	private TreeViewer viewer;
 	
-	boolean hideTopLevel = true;
+	boolean hideTopLevel = false;
 	
 	class OutlineReporter extends DefaultHandler {
 		
@@ -117,6 +119,7 @@ public class EntityOutlinePage extends ContentOutlinePage implements IElementSta
 					strfield.setFieldType("Any");
 					strfield.setName("Value");
 					strfield.setValue(value);
+					strfield.setLineNumber(lineNumber);
 					field.add(strfield);
 				}
 			}
@@ -310,7 +313,22 @@ public class EntityOutlinePage extends ContentOutlinePage implements IElementSta
 	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// TODO Auto-generated method stub
-		
+		if (event.getSelection() instanceof TreeSelection) {
+			TreeSelection field = (TreeSelection)event.getSelection();
+			if (field.getFirstElement() instanceof SoaseObject) {
+				SoaseObject f = (SoaseObject)field.getFirstElement();
+				
+				IDocument d = entityEditor.getDocumentProvider().getDocument(entityEditor.getEditorInput());
+				try {
+					int lineStart = d.getLineOffset(f.getLineNumber()-1);
+					entityEditor.selectAndReveal(lineStart, 0);
+				
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().activate(entityEditor);
+				} catch (BadLocationException e) {
+					// ignoring;
+				}
+			}
+		}
 		super.selectionChanged(event);
 	}
 
@@ -367,7 +385,7 @@ public class EntityOutlinePage extends ContentOutlinePage implements IElementSta
 		Action action1 = new Action() {
 			public void run() {
 				
-				showMessage("Action 1 executed");
+				//showMessage("Action 1 executed");
 
 				if (hideTopLevel) {
 					hideTopLevel = false;

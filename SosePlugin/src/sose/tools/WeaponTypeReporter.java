@@ -24,11 +24,16 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 	String weaponEffectType = null;
 	
 	private void validateMeshPointExists(String meshPoint, String structureName, int lineNumber) {
-		String meshName = parser.getMetaData(fileReference.getFileName(), "meshName");
-		HashMap<String, String> meshMetaData = parser.getMetaData(meshName);
-		if (meshMetaData != null && !meshMetaData.isEmpty()) {
-			if (!meshMetaData.containsKey("DataString." + meshPoint)) {
-				error.warn(new EntityParseException(ValidationType.ENTITY, "Missing mesh point " + meshPoint + ", is this intended?", lineNumber, structureName));
+		String meshNames = parser.getMetaData(fileReference.getFileName(), "meshName");
+		
+		StringTokenizer stk = new StringTokenizer(meshNames, ",");
+		while (stk.hasMoreTokens()) {
+			String meshName = stk.nextToken();
+			HashMap<String, String> meshMetaData = parser.getMetaData(meshName);
+			if (meshMetaData != null && !meshMetaData.isEmpty()) {
+				if (!meshMetaData.containsKey("DataString." + meshPoint)) {
+					error.warn(new EntityParseException(ValidationType.ENTITY, "Missing mesh point " + meshPoint + ", is this intended?", lineNumber, meshName));
+				}
 			}
 		}
 	}

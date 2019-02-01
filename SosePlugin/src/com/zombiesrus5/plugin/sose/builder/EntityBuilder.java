@@ -260,7 +260,22 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		}
 		
 		private void addMarker(EntityParseException e, int severity) {
-			if (ValidationType.REFERENCE.equals(e.getProblemType()) || e.getMessage().contains("missing reference")) {
+			if (ValidationType.STRINGINFO.equals(e.getProblemType())) {
+				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+						.getLineNumber(), severity, MARKER_TYPE_STRINGINFO);
+			} else if (ValidationType.BRUSH.equals(e.getProblemType())) {
+					EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+							.getLineNumber(), severity, MARKER_TYPE_BRUSH);
+			} else if (ValidationType.SOUND.equals(e.getProblemType())) {
+				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+						.getLineNumber(), severity, MARKER_TYPE_SOUND);
+			} else if (ValidationType.MESH.equals(e.getProblemType())) {
+				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+						.getLineNumber(), severity, MARKER_TYPE_MESH);
+			} else if (ValidationType.PARTICLE.equals(e.getProblemType())) {
+				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
+						.getLineNumber(), severity, MARKER_TYPE_PARTICLE);
+			} else if (ValidationType.REFERENCE.equals(e.getProblemType()) || e.getMessage().contains("missing reference")) {
 				EntityBuilder.this.addReferenceMarker(file,  e.getMessage() + ": " + e.getLineContents().trim(), e.getLineNumber(),  severity);
 			} else {
 				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
@@ -357,6 +372,17 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 	public static final String MARKER_TYPE_REFERENCE = "com.zombiesrus5.plugin.sose.referenceProblem";
 
+	public static final String MARKER_TYPE_STRINGINFO = "com.zombiesrus5.plugin.sose.stringInfoProblem";
+
+	public static final String MARKER_TYPE_BRUSH = "com.zombiesrus5.plugin.sose.brushProblem";
+
+	public static final String MARKER_TYPE_SOUND = "com.zombiesrus5.plugin.sose.soundProblem";
+
+	public static final String MARKER_TYPE_MESH = "com.zombiesrus5.plugin.sose.meshProblem";
+
+	public static final String MARKER_TYPE_PARTICLE = "com.zombiesrus5.plugin.sose.particleProblem";
+
+	
 	//private SAXParserFactory parserFactory;
 
 	private void addReferenceMarker(IFile file, String message, int lineNumber,
@@ -377,6 +403,20 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			int severity) {
 		try {
 			IMarker marker = file.createMarker(MARKER_TYPE);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, severity);
+			if (lineNumber == -1) {
+				lineNumber = 1;
+			}
+			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+		} catch (CoreException e) {
+		}
+	}
+
+	private void addMarker(IFile file, String message, int lineNumber,
+			int severity, String markerType) {
+		try {
+			IMarker marker = file.createMarker(markerType);
 			marker.setAttribute(IMarker.MESSAGE, message);
 			marker.setAttribute(IMarker.SEVERITY, severity);
 			if (lineNumber == -1) {
