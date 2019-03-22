@@ -38,14 +38,14 @@ public class CapitalShipReporter extends ContentHandlerChain {
 				fieldName.equals("ability:2") ||
 				fieldName.equals("ability:3") ||
 				fieldName.equals("ability:4"))) {
-			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
+			String levelSourceType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
 //				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			} else if (levelSourceType.equals("Intrinsic")) {
 				// we're good here
 				if (fieldName.equals("ability:4")) {
-					String useCostType = parser.getMetaData(fieldValue, "useCostType");
+					String useCostType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "useCostType");
 					if (useCostType.equals("Passive") == false) {
 						String message = MessageFormat.format("useCostType must be passive for ability:4 {0}", useCostType);
 						error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
@@ -56,7 +56,7 @@ public class CapitalShipReporter extends ContentHandlerChain {
 					|| levelSourceType.equals("ResearchWithBase")
 					|| levelSourceType.equals("ResearchWithoutBase")) {
 				// these should only be passive
-				String useCostType = parser.getMetaData(fieldValue, "useCostType");
+				String useCostType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "useCostType");
 				if (useCostType.equals("Passive") == false) {
 					String message = MessageFormat.format("useCostType must be passive for non Intrinsic abilities {0}", levelSourceType);
 					error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));

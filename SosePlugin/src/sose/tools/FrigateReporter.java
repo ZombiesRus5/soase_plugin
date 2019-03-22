@@ -33,7 +33,7 @@ public class FrigateReporter extends ContentHandlerChain {
 				fieldName.equals("ability:2") ||
 				fieldName.equals("ability:3") ||
 				fieldName.equals("ability:4")) {
-			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
+			String levelSourceType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
 //				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));

@@ -33,7 +33,7 @@ public class StarReporter extends ContentHandlerChain {
 				fieldName.equals("ability:2") ||
 				fieldName.equals("ability:3") ||
 				fieldName.equals("ability:4")) {
-			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
+			String levelSourceType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
 //				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
@@ -43,7 +43,7 @@ public class StarReporter extends ContentHandlerChain {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
 				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
-			String useCostType = parser.getMetaData(fieldValue, "useCostType");
+			String useCostType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "useCostType");
 			if (useCostType == null) {
 //				String message = MessageFormat.format("useCostType unknown {0}", levelSourceType);
 //				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));

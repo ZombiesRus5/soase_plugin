@@ -73,8 +73,8 @@ public class StringInfo {
 	
 	public StringInfo(EntityParser p, InputStream stringInfoStream) {
 		StringInfoVisitor visitor = new StringInfoVisitor(stringInfos);
-		p.setContentHandler(visitor);
-		p.validate(new LineNumberReader(new InputStreamReader(stringInfoStream)), "Str");
+		//p.setContentHandler(visitor);
+		p.validate(stringInfoStream, (InputStream)null, "Str", visitor);
 	}
 	
 	public String getValue(String id) {

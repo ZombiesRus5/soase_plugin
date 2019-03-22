@@ -50,7 +50,7 @@ public class AbilityReporter extends ContentHandlerChain {
 			}
 		} else if (fieldName.equals("levelSourceType") 
 				|| fieldName.equals("useCostType")) {
-			parser.setMetaData(fileReference.getFileName(), fieldName, fieldValue);
+			parser.setMetaData(fileReference, fieldName, fieldValue);
 		} 
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}

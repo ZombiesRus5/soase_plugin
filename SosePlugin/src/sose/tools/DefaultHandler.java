@@ -57,6 +57,10 @@ public class DefaultHandler implements ErrorHandler, ContentHandler,
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String getFileExtension() {
+		return null;
+	}
 
 	@Override
 	public void setProperty(String property, String value) {

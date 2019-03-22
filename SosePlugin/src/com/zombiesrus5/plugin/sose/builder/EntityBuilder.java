@@ -47,6 +47,16 @@ import com.zombiesrus5.plugin.sose.domain.StructureObject;
 import com.zombiesrus5.plugin.sose.preferences.PreferenceConstants;
 
 public class EntityBuilder extends IncrementalProjectBuilder {
+	public EntityBuilder() {
+		super();
+		
+		try {
+			setupParser();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static QualifiedName KEY_PARSER = new QualifiedName("soase", "entityParser");
 	public static QualifiedName KEY_MOD_ROOT = new QualifiedName("soase", "modRoot");
 	public static QualifiedName KEY_ENTITY_TYPE = new QualifiedName("soase", "entityType");
@@ -88,6 +98,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 							} else if ((delta.getResource().getName().endsWith(".sounddata") ||
 									   delta.getResource().getName().endsWith(".brushes") ||
 									   delta.getResource().getName().endsWith(".str") ||
+									   delta.getResource().getName().endsWith(".mesh") ||
 									   delta.getResource().getName().endsWith(".explosiondata") ||
 									   delta.getResource().getName().endsWith(".galaxyScenarioDef")) &&
 									   (!delta.getResource().getFullPath().toOSString().contains("Templates"))) {
@@ -178,6 +189,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
+				deleteMarkers(resource);
 				checkEntity(resource);
 				validateReferenced(resource);
 				break;
@@ -186,6 +198,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
+				deleteMarkers(resource);
 				checkEntity(resource);
 				validateReferenced(resource);
 				break;
@@ -245,6 +258,24 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	class DeleteMarkersResourceVisitor implements IResourceVisitor {
+		IProgressMonitor myMonitor = null;
+		public DeleteMarkersResourceVisitor(IProgressMonitor monitor) {
+			// TODO Auto-generated constructor stub
+			myMonitor = monitor;
+		}
+
+		public boolean visit(IResource resource) {
+			myMonitor.subTask(getProject().getName() + ": " + resource.getName());
+			if (resource instanceof IFile) {
+				deleteMarkers((IFile)resource);
+			}
+			myMonitor.worked(1);
+			//return true to continue visiting children.
+			return true;
+		}
+	}
+
 	class EntityErrorHandler extends DefaultHandler {
 		
 		private IFile file;
@@ -275,6 +306,17 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			} else if (ValidationType.PARTICLE.equals(e.getProblemType())) {
 				EntityBuilder.this.addMarker(file, e.getMessage() + ": " + e.getLineContents().trim(), e
 						.getLineNumber(), severity, MARKER_TYPE_PARTICLE);
+			} else if (ValidationType.ENTITY.equals(e.getProblemType()) && e.getMessage().contains("mesh point")) {
+				// lookup file.
+				try {
+					String modRoot = (String) file.getProject().getPersistentProperty(EntityBuilder.KEY_MOD_ROOT);
+		            
+		            IFile meshFile = file.getProject().getFile(modRoot + "/Mesh/" + e.getLineContents().trim() + ".mesh");
+		            EntityBuilder.this.addMarker(meshFile, e.getMessage() + ": " + e.getLineContents().trim(), e
+							.getLineNumber(), severity, MARKER_TYPE_MESH);
+				} catch (CoreException ce) {
+					// file probably isn't in this mod directory
+				}
 			} else if (ValidationType.REFERENCE.equals(e.getProblemType()) || e.getMessage().contains("missing reference")) {
 				EntityBuilder.this.addReferenceMarker(file,  e.getMessage() + ": " + e.getLineContents().trim(), e.getLineNumber(),  severity);
 			} else {
@@ -363,6 +405,12 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 		public void setRoot(EntityObject root) {
 			this.root = root;
 		}
+
+		@Override
+		public String getFileExtension() {
+			// TODO Auto-generated method stub
+			return getFile().getFileExtension();
+		}
 		
 	}
 
@@ -387,42 +435,38 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 	private void addReferenceMarker(IFile file, String message, int lineNumber,
 			int severity) {
-		try {
-			IMarker marker = file.createMarker(MARKER_TYPE_REFERENCE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-		} catch (CoreException e) {
-		}
+		addMarker(file, message, lineNumber, severity, MARKER_TYPE_REFERENCE);
 	}
 	
 	private void addMarker(IFile file, String message, int lineNumber,
 			int severity) {
-		try {
-			IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-		} catch (CoreException e) {
-		}
+		addMarker(file, message, lineNumber, severity, MARKER_TYPE);
 	}
 
 	private void addMarker(IFile file, String message, int lineNumber,
 			int severity, String markerType) {
 		try {
-			IMarker marker = file.createMarker(markerType);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
+			IMarker[] markerList = file.findMarkers(markerType, true, IResource.DEPTH_INFINITE);
+			boolean found = false;
+			
+			if (markerList != null && markerList.length > 0) {
+				for (IMarker marker: markerList) {
+					if (marker.getAttribute(IMarker.MESSAGE).equals(message) &&
+							marker.getAttribute(IMarker.LINE_NUMBER).equals(lineNumber)) {
+						found = true;
+					}
+				}
 			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+			
+			if (!found) {
+				IMarker marker = file.createMarker(markerType);
+				marker.setAttribute(IMarker.MESSAGE, message);
+				marker.setAttribute(IMarker.SEVERITY, severity);
+				if (lineNumber == -1) {
+					lineNumber = 1;
+				}
+				marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+			}
 		} catch (CoreException e) {
 		}
 	}
@@ -554,10 +598,10 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 	void checkEntity(IResource resource) {
 		if (resource instanceof IFile) {
 			IFile file = (IFile) resource;
-			deleteMarkers(file);
+//			deleteMarkers(file);
+			EntityErrorHandler reporter = new EntityErrorHandler(file);
 			try {
 			if (parser.isSupportsFileType(resource.getFileExtension())) {
-				EntityErrorHandler reporter = new EntityErrorHandler(file);
 				String fileType = file.getFileExtension();
 				
 //				System.out.println(file.toString());
@@ -575,16 +619,33 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 
 //				System.out.println(reporter.getRoot());
 				//getParser().parse(file.getContents(), reporter);
-			}
+			} 
+			} catch (EntityParseException epe) {
+				reporter.fatal(epe);
 			} catch (Exception e1) {
+				EntityParseException epe = new EntityParseException(ValidationType.ENTITY, e1.getMessage(), 1, "TXT");
+				reporter.fatal(epe);
 			}
 		}
 	}
 
+	private void deleteMarkers(IResource resource) {
+		if (resource instanceof IFile) {
+			deleteMarkers((IFile)resource);
+		}
+	}
 	private void deleteMarkers(IFile file) {
 		try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_BRUSH, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_MESH, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_PARTICLE, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_REFERENCE, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_SOUND, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(MARKER_TYPE_STRINGINFO, false, IResource.DEPTH_ZERO);
+			
 		} catch (CoreException ce) {
+			ce.printStackTrace();
 		}
 	}
 
@@ -606,6 +667,7 @@ public class EntityBuilder extends IncrementalProjectBuilder {
 			// etc
 			
 			// pass one
+			getProject().accept(new DeleteMarkersResourceVisitor(monitor));
 			getProject().accept(new CheckEntityResourceVisitor(monitor));
 			// pass two
 			getProject().accept(new CheckEntityResourcePass2Visitor(monitor));

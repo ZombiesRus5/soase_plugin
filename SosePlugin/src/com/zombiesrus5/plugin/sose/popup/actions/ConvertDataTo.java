@@ -143,7 +143,7 @@ public class ConvertDataTo implements IObjectActionDelegate {
 	 * @param project
 	 *            to have sample nature added or removed
 	 */
-	private void convertToText(IResource resource, IProgressMonitor monitor) throws Exception {
+	private synchronized void convertToText(IResource resource, IProgressMonitor monitor) throws Exception {
 		try {
 			EntityParser parser = EntityBuilder.getParser(resource.getProject());
 			IProject project = resource.getProject();
@@ -151,8 +151,7 @@ public class ConvertDataTo implements IObjectActionDelegate {
 			String installationDirectory = parser.getSinsInstallationDirectory();
 			
 			String command = installationDirectory + "\\ConvertData.exe";
-			if (PreferenceConstants.STRICT_REBELLION193.equalsIgnoreCase(parser.getStrictValidation())
-					|| PreferenceConstants.STRICT_REBELLION185.equalsIgnoreCase(parser.getStrictValidation())) {
+			if (parser.getStrictValidation().startsWith(PreferenceConstants.STRICT_REBELLION)) {
 				command = installationDirectory + "\\ConvertData_Rebellion.exe";
 			}
 			String[] cmd = new String[5];

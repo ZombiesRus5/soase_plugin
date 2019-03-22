@@ -45,9 +45,9 @@ public class MeshReporter extends ContentHandlerChain {
 
 	@Override
 	public void endEntity() {
-		double boundingRadius = Double.parseDouble(parser.getMetaData(fileReference.getFileName(), "BoundingRadius"));
-		Coordinate maxExtents = new Coordinate(parser.getMetaData(fileReference.getFileName(), "MaxBoundingExtents"));
-		Coordinate minExtents = new Coordinate(parser.getMetaData(fileReference.getFileName(), "MinBoundingExtents"));
+		double boundingRadius = Double.parseDouble(parser.getMetaData(fileReference, "BoundingRadius"));
+		Coordinate maxExtents = new Coordinate(parser.getMetaData(fileReference, "MaxBoundingExtents"));
+		Coordinate minExtents = new Coordinate(parser.getMetaData(fileReference, "MinBoundingExtents"));
 		
 		if ((boundingRadius + 1) < maxExtents.getMaxBounding()) {
 			String message = "MaxBoundingExtents exceeds BoundingRadius";
@@ -66,29 +66,29 @@ public class MeshReporter extends ContentHandlerChain {
 	public void processField(String fieldName, String fieldValue,
 			String fieldType, int lineNumber) {
 		if (captureMeta.contains(fieldName)) {
-			parser.setMetaData(fileReference.getFileName(), fieldName, fieldValue);
+			parser.setMetaData(fileReference, fieldName, fieldValue);
 		} else
 		if (fieldName.equals("DataString")) {
 			pointName = fieldValue;
-			parser.setMetaData(fileReference.getFileName(), fieldName + "." + fieldValue, "TRUE");
+			parser.setMetaData(fileReference, fieldName + "." + fieldValue, "TRUE");
 		} else
 		if (fieldName.equals("Position")) {
-			parser.setMetaData(fileReference.getFileName(), pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
+			parser.setMetaData(fileReference, pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
 		} else if (fieldName.equals("Orientation")) {
-			parser.setMetaData(fileReference.getFileName(), pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
+			parser.setMetaData(fileReference, pointName + "[" + pointIndex + "]." + fieldName, fieldValue);
 			try {
 				Orientation o = new Orientation(fieldValue);
 				if (o.isFront()) {
-					parser.setMetaData(fileReference.getFileName(), pointName + ".FRONT", "TRUE");
+					parser.setMetaData(fileReference, pointName + ".FRONT", "TRUE");
 				} 
 				if (o.isBack()) {
-					parser.setMetaData(fileReference.getFileName(), pointName + ".BACK", "TRUE");
+					parser.setMetaData(fileReference, pointName + ".BACK", "TRUE");
 				} 
 				if (o.isRight()) {
-					parser.setMetaData(fileReference.getFileName(), pointName + ".RIGHT", "TRUE");
+					parser.setMetaData(fileReference, pointName + ".RIGHT", "TRUE");
 				} 
 				if (o.isLeft()) {
-					parser.setMetaData(fileReference.getFileName(), pointName + ".LEFT", "TRUE");
+					parser.setMetaData(fileReference, pointName + ".LEFT", "TRUE");
 				}
 			} catch (EntityParseException e) {
 				error.warn(new EntityParseException(ValidationType.MESH, e.getMessage(), lineNumber, fieldValue));

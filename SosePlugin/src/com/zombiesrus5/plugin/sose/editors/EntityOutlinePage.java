@@ -116,7 +116,7 @@ public class EntityOutlinePage extends ContentOutlinePage implements IElementSta
 				if (parser.getStringInfo() != null && parser.getStringInfo().getValue(fieldValue) != null) {
 					String value = parser.getStringInfo().getValue(fieldValue);
 					FieldObject strfield = new FieldObject();
-					strfield.setFieldType("Any");
+					strfield.setFieldType(fieldType);
 					strfield.setName("Value");
 					strfield.setValue(value);
 					strfield.setLineNumber(lineNumber);

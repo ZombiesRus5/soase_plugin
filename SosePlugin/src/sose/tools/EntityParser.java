@@ -529,6 +529,9 @@ public class EntityParser {
 			}
 			if (ignoreCase) {
 				for (int i=0; i<validValues.length; i++) {
+//					if (validValues[i].equalsIgnoreCase("HUDICON_E4X_AbandonStructure")) {
+//						System.out.println(validValues[i]);
+//					}
 					if (value.toUpperCase().contains("\"" + validValues[i].toUpperCase() + "\"")) {
 						return;
 					}
@@ -2521,7 +2524,7 @@ public class EntityParser {
 		} else if (getStrictValidation().equals("Vanilla")) {
 			return version.equals("Vanilla") || version.equals("NotRebellion") || version.equals("NotDiplomacyOrRebellion");
 		} 
-		return true;
+		return false;
 	}
 
 	private Validator parseRule(XMLToolkit toolkit, Element rule)
@@ -3254,7 +3257,8 @@ public class EntityParser {
 		this.fileReferenceHandler = fileReferenceHandler;
 	}
 
-	public HashMap<String, String> getMetaData(String key) {
+	public HashMap<String, String> getMetaData(FileReferenceHandler fileReferenceHandler) {
+		String key = fileReferenceHandler.getFileName() + "." + fileReferenceHandler.getFileExtension();
 		HashMap<String, String> meta = metaData.get(key);
 		
 		if (meta == null) {
@@ -3264,8 +3268,8 @@ public class EntityParser {
 		return meta;
 	}
 
-	public String getMetaData(String key, String property) {
-		HashMap<String, String> meta = getMetaData(key);
+	public String getMetaData(FileReferenceHandler fileReference, String property) {
+		HashMap<String, String> meta = getMetaData(fileReference);
 		return meta.get(property);
 	}
 
@@ -3309,8 +3313,8 @@ public class EntityParser {
 		this.ignoredReferenceFiles = ignoredReferenceFiles;
 	}
 
-	public void setMetaData(String fileName, String fieldName, String fieldValue) {
-		HashMap<String, String> meta = this.getMetaData(fileName);
+	public void setMetaData(FileReferenceHandler fileReferenceHandler, String fieldName, String fieldValue) {
+		HashMap<String, String> meta = this.getMetaData(fileReferenceHandler);
 		meta.put(fieldName, fieldValue);
 		// System.out.println(fileName + " " + fieldName + " " + fieldValue);
 	}

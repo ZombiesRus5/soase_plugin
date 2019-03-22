@@ -32,7 +32,7 @@ public class PlanetModuleReporter extends ContentHandlerChain {
 				fieldName.equals("ability:1") ||
 				fieldName.equals("ability:2") ||
 				fieldName.equals("ability:3")) {
-			String levelSourceType = parser.getMetaData(fieldValue, "levelSourceType");
+			String levelSourceType = parser.getMetaData(new SimpleFileReferenceHandler(fieldValue, "entity"), "levelSourceType");
 			if (levelSourceType == null) {
 //				String message = MessageFormat.format("levelSourceType unknown {0}", levelSourceType);
 //				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
@@ -48,6 +48,8 @@ public class PlanetModuleReporter extends ContentHandlerChain {
 				String message = MessageFormat.format("levelSourceType should not be set to {0}", levelSourceType);
 				error.error(new EntityParseException(ValidationType.ENTITY, message, lineNumber, fieldName));
 			}
+		} else if (fieldName.equals("statCountType")) {
+			parser.setMetaData(fileReference, fieldName, fieldValue);
 		}
 		super.processField(fieldName, fieldValue, fieldType, lineNumber);
 	}

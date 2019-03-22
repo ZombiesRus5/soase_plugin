@@ -24,15 +24,17 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 	String weaponEffectType = null;
 	
 	private void validateMeshPointExists(String meshPoint, String structureName, int lineNumber) {
-		String meshNames = parser.getMetaData(fileReference.getFileName(), "meshName");
+		String meshNames = parser.getMetaData(fileReference, "meshName");
 		
-		StringTokenizer stk = new StringTokenizer(meshNames, ",");
-		while (stk.hasMoreTokens()) {
-			String meshName = stk.nextToken();
-			HashMap<String, String> meshMetaData = parser.getMetaData(meshName);
-			if (meshMetaData != null && !meshMetaData.isEmpty()) {
-				if (!meshMetaData.containsKey("DataString." + meshPoint)) {
-					error.warn(new EntityParseException(ValidationType.ENTITY, "Missing mesh point " + meshPoint + ", is this intended?", lineNumber, meshName));
+		if (meshNames != null) {
+			StringTokenizer stk = new StringTokenizer(meshNames, ",");
+			while (stk.hasMoreTokens()) {
+				String meshName = stk.nextToken();
+				HashMap<String, String> meshMetaData = parser.getMetaData(new SimpleFileReferenceHandler(meshName, "mesh"));
+				if (meshMetaData != null && !meshMetaData.isEmpty()) {
+					if (!meshMetaData.containsKey("DataString." + meshPoint)) {
+						error.info(new EntityParseException(ValidationType.ENTITY, "Missing mesh point " + meshPoint + ", is this intended?", lineNumber, meshName));
+					}
 				}
 			}
 		}
@@ -82,43 +84,48 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 				validateMeshPointExists("Bomb", fieldName, lineNumber);
 			}
 		} else if (fieldName.equals("meshName")) {
-			String meshName = parser.getMetaData(fileReference.getFileName(), "meshName");
-			if (meshName == null) {
-				meshName = fieldValue;
-			} else {
-				meshName = meshName + "," + fieldValue;
+			String statCountType = parser.getMetaData(fileReference, "statCountType");
+			if (statCountType != null && !statCountType.contains("Extractor")) {
+				String meshName = parser.getMetaData(fileReference, "meshName");
+				if (meshName == null) {
+					meshName = fieldValue;
+				} else {
+					meshName = meshName + "," + fieldValue;
+				}
+				parser.setMetaData(fileReference, fieldName, meshName);
+				validateMeshPointExists("Aura", fieldName, 1);
+				validateMeshPointExists("Above", fieldName, 1);
+				validateMeshPointExists("Center", fieldName, 1);
 			}
-			parser.setMetaData(fileReference.getFileName(), fieldName, meshName);
-			validateMeshPointExists("Aura", fieldName, 1);
-			validateMeshPointExists("Above", fieldName, 1);
-			validateMeshPointExists("Center", fieldName, 1);
 		} else if (fieldName.contains("DamagePerBank:")) {
-			String meshNames = parser.getMetaData(fileReference.getFileName(), "meshName");
+			String meshNames = parser.getMetaData(fileReference, "meshName");
 			double weaponDamage = Double.parseDouble(fieldValue);
 			boolean meshFound = false;
 			
-			StringTokenizer stk = new StringTokenizer(meshNames, ",");
-			
-			boolean hasWeapon = false;
-			if (weaponDamage > 0) {
-				String direction = fieldName.substring(fieldName.indexOf(":")+1);
-				while (stk.hasMoreTokens()) {
-					String meshName = stk.nextToken();
-					HashMap<String, String> meshMetaData = parser.getMetaData(meshName);
-					
-					
-					if (meshMetaData.isEmpty()) {
-						// Can't validate weapons because the mesh doesn't reside in the same project
-					} else {
-						meshFound = true;
-						String exists = meshMetaData.get("Weapon-" + numWeapon + "." + direction);
-						if ("TRUE".equalsIgnoreCase(exists)) {
-							hasWeapon = true;
+			if (meshNames != null) {
+				StringTokenizer stk = new StringTokenizer(meshNames, ",");
+				
+				boolean hasWeapon = false;
+				if (weaponDamage > 0) {
+					String direction = fieldName.substring(fieldName.indexOf(":")+1);
+					while (stk.hasMoreTokens()) {
+						String meshName = stk.nextToken();
+						HashMap<String, String> meshMetaData = parser.getMetaData(new SimpleFileReferenceHandler(meshName, "mesh"));
+						
+						
+						if (meshMetaData.isEmpty()) {
+							// Can't validate weapons because the mesh doesn't reside in the same project
+						} else {
+							meshFound = true;
+							String exists = meshMetaData.get("Weapon-" + numWeapon + "." + direction);
+							if ("TRUE".equalsIgnoreCase(exists)) {
+								hasWeapon = true;
+							}
 						}
 					}
-				}
-				if (!hasWeapon && meshFound) {
-					error.warn(new EntityParseException(ValidationType.ENTITY, "Mesh appears to be missing Weapon-" + numWeapon + " for " + direction + " bank", lineNumber, fieldName));
+					if (!hasWeapon && meshFound) {
+						error.warn(new EntityParseException(ValidationType.ENTITY, "Mesh appears to be missing Weapon-" + numWeapon + " for " + direction + " bank", lineNumber, fieldName));
+					}
 				}
 			}
 		}
@@ -141,7 +148,7 @@ public class WeaponTypeReporter extends ContentHandlerChain {
 
 	@Override
 	public void startEntity(String entityType, int lineNumber) {
-		parser.setMetaData(fileReference.getFileName(), "meshName", null);
+		parser.setMetaData(fileReference, "meshName", null);
 		super.startEntity(entityType, lineNumber);
 	}
 

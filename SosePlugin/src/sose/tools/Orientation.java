@@ -155,13 +155,15 @@ public class Orientation {
 		matrix[2][1] = Double.parseDouble(stk.nextToken().trim());
 		matrix[2][2] = Double.parseDouble(stk.nextToken().trim());
 		
-		if (matrix[1][1] == 0.0) {
-			throw new EntityParseException("Rotation[1][1] is zero, is this intended?");
-		}
-		
+//		if (matrix[1][1] == 0.0) {
+//			throw new EntityParseException("Rotation[1][1] is zero, is this intended?");
+//		}
+//		
 		axisAngle = toAxisAngle(matrix);
 		toEuler(axisAngle);
 		headingDegree = Math.toDegrees(heading);
+		} catch (EntityParseException e) {
+			throw e;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

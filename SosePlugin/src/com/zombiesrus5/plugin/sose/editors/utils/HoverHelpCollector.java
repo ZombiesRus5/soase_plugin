@@ -7,6 +7,8 @@ import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.Stack;
 
+import com.zombiesrus5.plugin.sose.domain.FieldObject;
+
 import sose.tools.DefinitionHandler;
 import sose.tools.EntityParser;
 import sose.tools.WikiDefinitionBuilder;
@@ -24,6 +26,8 @@ public class HoverHelpCollector implements DefinitionHandler {
 		return hoverInfo.toString();
 	}
 
+	private EntityParser parser = null;
+	
 	private Stack<Integer> depth = new Stack<Integer>();
 	StringWriter hoverInfo = new StringWriter();
 	PrintWriter pw = new PrintWriter(hoverInfo);
@@ -117,6 +121,7 @@ public class HoverHelpCollector implements DefinitionHandler {
 			String[] fieldValues, String fieldType, String[] references,
 			String helpText) throws Exception {
 		printIndent(depth.peek());
+
 
 		if ((fieldValues != null && fieldValues.length > 0 && "Enumeration"
 				.equals(fieldType))
