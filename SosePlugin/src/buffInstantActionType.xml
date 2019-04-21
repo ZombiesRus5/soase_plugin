@@ -2,6 +2,10 @@
 <tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
 
 	<condition_field help="Note: some buffInstantActionTypes are not applicable to Abilities." name="buffInstantActionType">
+		<condition><value version="Rebellion">DoScuttle</value>
+			<field required="true" name="instantActionTriggerType"/>
+			<structure_reference required="true" name="scuttleRefundPercentage" type="GenericLevel"/>
+		</condition>
 		<condition><value>SpawnShipsAtPlanetWithTarget</value>
 			<field required="true" name="instantActionTriggerType"/>
 			<structure_reference required="true" name="targetFilter"/>

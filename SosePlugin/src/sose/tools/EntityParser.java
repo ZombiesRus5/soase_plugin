@@ -117,6 +117,7 @@ public class EntityParser {
 		"buffInstantActionType.xml;" + 
 		"buffOverTimeActionType.xml;" +
 		"canBomb.xml;" +
+		"useCustomHyperspaceEffects.xml;" +
 		"cannon_shell.xml;" + 
 		"capital_ship.xml;" + 
 		"constants.xml;" + 
@@ -2698,7 +2699,11 @@ public class EntityParser {
 					dirs.add(sinsInstallationDir + "/GameInfo");
 				}
 				
-				prototypeValidators.put(ValidationType.GALAXY_DESIGN, new FieldReferenceValidator(ValidationType.GALAXY_DESIGN, "designName", ".galaxyScenarioDef", dirs, false));
+				List<String> initialValues = new ArrayList<String>();
+				initialValues.add("RandomMilitia");
+				initialValues.add("PlanetOwner");
+				
+				prototypeValidators.put(ValidationType.GALAXY_DESIGN, new FieldReferenceValidator(ValidationType.GALAXY_DESIGN, "designName", ".galaxyScenarioDef", dirs, initialValues, false));
 			}
 			validator =  prototypeValidators.get(ValidationType.GALAXY_DESIGN);
 		} else if (validation.equals(ValidationType.GALAXY_TEMPLATE)) {

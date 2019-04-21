@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:entity_definitions xmlns:tns="http://www.example.org/element_definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/element_definitions/ entity_definitions.xsd ">
+
+	<condition_field name="useCustomHyperspaceEffects">
+		<condition><value>TRUE</value>
+			<field required="true" name="chargeUpEffectName" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="chargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="chargeUpEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="chargeUpEffectSoundID" validation="Sound"/>
+			<field required="true" name="travelEffectName" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="travelEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="travelEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="travelEffectSoundID" validation="Sound"/>
+			<field required="true" name="exitEffectName" validation="Particle" version="Rebellion193"/>
+			<field required="true" name="exitEffectSoundID" validation="Sound"/>
+		</condition>
+		<condition><value>FALSE</value></condition>
+	</condition_field>
+</tns:entity_definitions>

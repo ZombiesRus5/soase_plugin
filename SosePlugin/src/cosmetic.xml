@@ -63,6 +63,7 @@
 		<field name="maxSpeedLinear" validation="Decimal"/>
 		<field name="maxRollRate" validation="Decimal" version="Entrenchment"/>
 		<field name="maxRollAngle" validation="Decimal" version="Entrenchment"/>
+		<field name="useCustomHyperspaceEffects" type="useCustomHyperspaceEffects"/>
 		<iterative_field name="NumSoundsFor:ONATTACKORDERISSUED" limit="6">
 			<field required="false" name="SoundID" validation="Sound"/>
 		</iterative_field>

@@ -91,6 +91,7 @@
 		<field name="maxSpeedLinear" validation="Decimal"/>
 		<field name="maxRollRate" validation="Decimal"/>
 		<field name="maxRollAngle" validation="Decimal"/>
+		<field name="useCustomHyperspaceEffects" type="useCustomHyperspaceEffects" version="Rebellion193"/>
 		<field name="mass" validation="Decimal"/>
 		<field name="HyperspaceChargingSoundID" validation="Sound" version="Rebellion"/>
 		<field name="HyperspaceTravelSoundID" validation="Sound" version="Rebellion"/>

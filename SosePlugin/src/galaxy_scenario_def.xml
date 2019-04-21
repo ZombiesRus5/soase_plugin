@@ -69,7 +69,33 @@
 	
 	<structure name="GroupType">
 		<structure name="condition">
-			<field name="type" validation="Simple" >
+			<condition_field name="type">
+				<condition value="Always">
+					<field name="param" validation="Any" />
+				</condition>
+				<condition value="NoPlanetOwner">
+					<field name="param" validation="Any" />
+				</condition>
+				<condition value="PlanetOwnerIsMilitiaWithChance">
+					<field name="param" validation="Decimal" />
+				</condition>
+				<condition value="NoPlanetOwnerWithChance">
+					<field name="param" validation="Decimal" />
+				</condition>
+				<condition value="PlanetOwnerIsMilitia">
+					<field name="param" validation="Any" />
+				</condition>
+				<condition value="PlanetOwnerIsRaceNormalStart">
+					<field name="param" validation="GalaxyDesign" />
+				</condition>
+				<condition value="PlanetOwnerIsRaceQuickStart">
+					<field name="param" validation="GalaxyDesign" />
+				</condition>
+				<condition value="PlanetOwnerIsMinorFactionWithFactionName">
+					<field name="param" validation="GalaxyDesign" />
+				</condition>
+			</condition_field>
+			<!-- <field name="type" validation="Simple" >
 				<value></value>
 				<value>Always</value>
 				<value>NoPlanetOwner</value>
@@ -80,9 +106,9 @@
 				<value>PlanetOwnerIsRaceQuickStart</value>
 				<value>PlanetOwnerIsMinorFactionWithFactionName</value>
 			</field>
-			<field name="param" validation="Any" />
+			<field name="param" validation="Any" /> -->
 		</structure>
-		<field name="owner" validation="Any"/>
+		<field name="owner" validation="GalaxyDesign"/>
 		<field name="colonizeChance" validation="Integer"/>
 		<iterative_field name="items">
 			<field required="false" name="item" validation="GalaxyDesign" />

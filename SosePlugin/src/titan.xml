@@ -64,6 +64,7 @@
 		<field name="maxSpeedLinear" validation="Decimal"/>
 		<field name="maxRollRate" validation="Decimal" version="Entrenchment"/>
 		<field name="maxRollAngle" validation="Decimal" version="Entrenchment"/>
+		<field name="useCustomHyperspaceEffects" type="useCustomHyperspaceEffects" version="Rebellion193"/>
 		<field name="squadTypeEntityDef:0" validation="Entity"/>
 		<field name="squadAntiMatterCost:0" validation="Decimal"/>
 		<field name="squadTypeEntityDef:1" validation="Entity"/>
