@@ -94,6 +94,9 @@
 				<condition value="PlanetOwnerIsMinorFactionWithFactionName">
 					<field name="param" validation="GalaxyDesign" />
 				</condition>
+				<condition value="PlanetHasAnyOwner">
+					<field name="param" validation="Any" />
+				</condition>				
 			</condition_field>
 			<!-- <field name="type" validation="Simple" >
 				<value></value>
@@ -105,6 +108,7 @@
 				<value>PlanetOwnerIsRaceNormalStart</value>
 				<value>PlanetOwnerIsRaceQuickStart</value>
 				<value>PlanetOwnerIsMinorFactionWithFactionName</value>
+				<value>PlanetHasAnyOwner</value>
 			</field>
 			<field name="param" validation="Any" /> -->
 		</structure>
