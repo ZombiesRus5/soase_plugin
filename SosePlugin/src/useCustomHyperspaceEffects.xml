@@ -3,16 +3,18 @@
 
 	<condition_field name="useCustomHyperspaceEffects">
 		<condition><value>TRUE</value>
-			<field required="true" name="chargeUpEffectName" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="chargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="chargeUpEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="chargeUpEffectSoundID" validation="Sound"/>
-			<field required="true" name="travelEffectName" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="travelEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="travelEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="travelEffectSoundID" validation="Sound"/>
-			<field required="true" name="exitEffectName" validation="Particle" version="Rebellion193"/>
-			<field required="true" name="exitEffectSoundID" validation="Sound"/>
+			<structure name="effects">
+				<field required="true" name="chargeUpEffectName" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="chargeUpEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="chargeUpEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="chargeUpEffectSoundID" validation="Sound"/>
+				<field required="true" name="travelEffectName" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="travelEffectNameBetweenStars" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="travelEffectNameDestabilized" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="travelEffectSoundID" validation="Sound"/>
+				<field required="true" name="exitEffectName" validation="Particle" version="Rebellion193"/>
+				<field required="true" name="exitEffectSoundID" validation="Sound"/>
+			</structure>
 		</condition>
 		<condition><value>FALSE</value></condition>
 	</condition_field>

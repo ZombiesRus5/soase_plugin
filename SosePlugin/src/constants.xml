@@ -872,28 +872,28 @@
 			
 		</structure>
 		<structure name="miscEntityDefNames" version="Rebellion193">
-			<field name="weaponDefName =" validation="Entity"/>
-			<field name="debrisDefName =" validation="Entity"/>
-			<field name="missionAttackPlanetDefName =" validation="Entity"/>
-			<field name="missionCaptureResourcesDefName =" validation="Entity"/>
-			<field name="missionCaptureMinorFactionDefName =" validation="Entity"/>
-			<field name="missionColonizeDefName =" validation="Entity"/>
-			<field name="missionDefendFlagshipDefName =" validation="Entity"/>
-			<field name="missionBuildStarBaseDefName =" validation="Entity"/>
-			<field name="missionBuildMinesDefName =" validation="Entity"/>
-			<field name="missionFosterRelationshipsDefName =" validation="Entity"/>
-			<field name="missionExploreDefName =" validation="Entity"/>
-			<field name="missionRaidDefName =" validation="Entity"/>
-			<field name="empireWindowNodeDefName =" validation="Entity"/>
-			<field name="resourceAsteroidMetalDefName =" validation="Entity"/>
-			<field name="resourceAsteroidCrystalDefName =" validation="Entity"/>
-			<field name="neutralMetalExtractorDefName =" validation="Entity"/>
-			<field name="neutralCrystalExtractorDefName =" validation="Entity"/>
-			<field name="neutralCaptureBuffDefName =" validation="Entity"/>
-			<field name="fleetDefName =" validation="Entity"/>
-			<field name="formationDefName =" validation="Entity"/>
-			<field name="spacePonyBonusDefName =" validation="Entity"/>
-			<field name="decloakMineForMovementBuffDefName =" validation="Entity"/>
+			<field name="weaponDefName" validation="Entity"/>
+			<field name="debrisDefName" validation="Entity"/>
+			<field name="missionAttackPlanetDefName" validation="Entity"/>
+			<field name="missionCaptureResourcesDefName" validation="Entity"/>
+			<field name="missionCaptureMinorFactionDefName" validation="Entity"/>
+			<field name="missionColonizeDefName" validation="Entity"/>
+			<field name="missionDefendFlagshipDefName" validation="Entity"/>
+			<field name="missionBuildStarBaseDefName" validation="Entity"/>
+			<field name="missionBuildMinesDefName" validation="Entity"/>
+			<field name="missionFosterRelationshipsDefName" validation="Entity"/>
+			<field name="missionExploreDefName" validation="Entity"/>
+			<field name="missionRaidDefName" validation="Entity"/>
+			<field name="empireWindowNodeDefName" validation="Entity"/>
+			<field name="resourceAsteroidMetalDefName" validation="Entity"/>
+			<field name="resourceAsteroidCrystalDefName" validation="Entity"/>
+			<field name="neutralMetalExtractorDefName" validation="Entity"/>
+			<field name="neutralCrystalExtractorDefName" validation="Entity"/>
+			<field name="neutralCaptureBuffDefName" validation="Entity"/>
+			<field name="fleetDefName" validation="Entity"/>
+			<field name="formationDefName" validation="Entity"/>
+			<field name="spacePonyBonusDefName" validation="Entity"/>
+			<field name="decloakMineForMovementBuffDefName" validation="Entity"/>
 		</structure>
 		
 	</structure>

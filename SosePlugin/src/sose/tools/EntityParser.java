@@ -2473,6 +2473,9 @@ public class EntityParser {
 		if (lnr.ready()) {
 			nextLine = lnr.readLine();
 		}
+		if (nextLine.indexOf('=') != -1) {
+			nextLine = nextLine.replace('=', ' ');
+		}
 		debug("readLine: " + nextLine + "[" + currentLineNumber + "]");
 		return nextLine;
 	}
@@ -3211,6 +3214,7 @@ public class EntityParser {
 			value = currentLine.substring(index).trim();
 		}
 		if (value != null) {
+			value = value.replace("=", " ");
 			value = value.replace("\"", " ").trim();
 		}
 		return value;
@@ -3224,6 +3228,10 @@ public class EntityParser {
 		for (int i=0; i<currentLine.length(); i++) {
 			char c = currentLine.charAt(i);
 			if (Character.isWhitespace(c)) {
+				index = i;
+				break;
+			}
+			if (c == '=') {
 				index = i;
 				break;
 			}
